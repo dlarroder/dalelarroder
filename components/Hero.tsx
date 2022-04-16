@@ -1,0 +1,77 @@
+import Link from '@/components/Link'
+import React, { ReactElement, useContext, useEffect, useRef } from 'react'
+import { renderCanvas } from './renderCanvas'
+import { ScrollContext } from './ScrollObserver'
+
+export default function Hero(): ReactElement {
+  const ref = useRef<HTMLHeadingElement>(null)
+  const { scrollY } = useContext(ScrollContext)
+
+  let progress = 0
+
+  const { current: elContainer } = ref
+
+  if (elContainer) {
+    progress = Math.min(1, scrollY / elContainer.clientHeight)
+  }
+
+  useEffect(() => {
+    renderCanvas()
+    ref.current?.classList.add('transition-in')
+  }, [])
+
+  // Hello I'm Dale Larroder
+  // 3.375rem = 54px
+  // 5.375rem = 86px
+  // 8.5rem = 136px
+
+  // Software Engineer
+  // 1.625rem = 26px
+  // 2.688rem = 43px
+  // 4.25rem = 68px
+
+  return (
+    <div>
+      <div className="relative z-10 flex h-screen items-center">
+        <div
+          ref={ref}
+          className="flex justify-center md:text-4xl font-dm mt-[-120px] mx-auto"
+          style={{
+            transform: `translateY(${progress * 20}vh)`,
+          }}
+        >
+          <div className="flex flex-col gap-3">
+            <div className="cursor-default">
+              <h1 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[8.5rem] lg:leading-[8.5rem] animate-fade-top">
+                {/* <FancyHoverText text="Hello," /> */}
+                Hello
+              </h1>
+              <div className="flex gap-3 items-center justify-between">
+                <h1 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[8.5rem] lg:leading-[8.5rem] animate-fade-top">
+                  I'm
+                </h1>
+                <div className="opacity-70 animate-fade-right">
+                  <h1 className="text-[1.625rem] leading-[1.625rem] md:text-[2.688rem] md:leading-[2.688rem] lg:text-[4.25rem] lg:leading-[4.25rem]">
+                    Software Engineer
+                  </h1>
+                  <h1 className="text-[1.625rem] leading-[1.625rem] md:text-[2.688rem] md:leading-[2.688rem] lg:text-[4.25rem] lg:leading-[4.25rem]">
+                    Fullstack Developer
+                  </h1>
+                </div>
+              </div>
+              <h1 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[8.5rem] lg:leading-[8.5rem] animate-fade-top">
+                Dale Larroder
+              </h1>
+            </div>
+            <Link href="/about">
+              <h1 className="text-sm md:text-xl ml-1 font-dm animate-fade-in-2s">
+                Read more about me &rarr;
+              </h1>
+            </Link>
+          </div>
+        </div>
+      </div>
+      <canvas className="bg-skin-base pointer-events-none absolute inset-0" id="canvas"></canvas>
+    </div>
+  )
+}
