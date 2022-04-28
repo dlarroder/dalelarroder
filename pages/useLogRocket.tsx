@@ -20,7 +20,7 @@ const useLogRocket = (env: string, logrocketId: string) => {
         email: `${randomId}-random@email.com`,
       })
     }
-  }, 1000)
+  }, 100)
   return null
 }
 
