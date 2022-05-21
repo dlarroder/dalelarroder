@@ -4,7 +4,7 @@ const siteMetadata = {
   headerTitle: 'dalelarroder',
   description: 'Software Engineer at Aphex',
   language: 'en-us',
-  theme: 'system', // system, dark or light
+  theme: 'dark', // system, dark or light
   siteUrl: 'https://dalelarroder.com',
   siteRepo: 'https://github.com/dlarroder/dalelarroder-blog',
   siteLogo: '/static/images/logo.png',

@@ -72,7 +72,7 @@ export default function PostLayout({ frontMatter, authorDetails, children }: Pro
             style={{ gridTemplateRows: 'auto 1fr' }}
           >
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-4 xl:row-span-2">
-              <div className="pt-8 pb-8 prose prose-lime prose-xl dark:prose-dark max-w-none">
+              <div className="pt-8 pb-8 prose prose-lime dark:prose-dark max-w-none">
                 {children}
               </div>
             </div>
