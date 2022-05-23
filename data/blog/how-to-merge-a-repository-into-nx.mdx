@@ -134,6 +134,25 @@ For Example when you merged in a react app to nx:
 +NX_AUTH_HOST=http://localhost:3002
 ```
 
+#### Fixing absolute imports from your Create React App
+
+If you are importing a CRA, One of the errors you'll be getting is `@nrwl/nx/enforce-module-boundaries` error.
+
+To fix this, you will need to update all your absolute paths to the path you specified in `tsconfig.base.json`
+
+```:tsconfig.base.json
+    "paths": {
+      "@design-system": ["libs/design/src/index.ts"],
+      },
+```
+
+and fix all the files that use absolute paths
+
+```diff
+-import Modal from 'src/components/Modal/Modal';
++import Modal from '@design-system/src/components/Modal/Modal';
+```
+
 #### Fixing Error: global is not defined
 
 If you have merged an existing create react app into nx, you might have encountered this error: `global is not defined`
