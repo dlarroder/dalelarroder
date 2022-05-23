@@ -70,8 +70,12 @@ If you are trying to move a library, the sub directory should be `libs/packageC`
 export TARGET_DIR="libs/packageC"
 ```
 
-The next command will actually move the files and will rewrite all of the git
+The next commands will actually move the files and will rewrite all of the git
 history into the the TARGET_DIR you have specified above.
+
+```
+cd packageC
+```
 
 ```
 git filter-branch --prune-empty --tree-filter '
@@ -82,11 +86,17 @@ git filter-branch --prune-empty --tree-filter '
 
 ## Step 3: Add remote in your monorepo to packageC
 
+This will print the working directory of the current package you are trying to clone.
+
 ```
 cd packageC && pwd
 ```
 
-This will print the working directory of the current package you are trying to clone.
+The next step is adding the newly acquired remote to your nx workspace for you to be able to fetch.
+
+```
+cd nx-workspace
+```
 
 ```
 git remote add packageC <packageC-pwd>
@@ -115,11 +125,39 @@ After successfully merging, its time to cleanup duplicate config files, `package
 #### Environment variables
 
 If you are using env variables in your application, don't forget to change the naming of your env variables
-to have a prefix of NX\_
+to have a prefix of NX\_, you can read more about Nx environment variables [here](https://nx.dev/guides/environment-variables)
 
 For Example when you merged in a react app to nx:
 
 ```diff
 -REACT_APP_AUTH_HOST=http://localhost:3002
 +NX_AUTH_HOST=http://localhost:3002
+```
+
+#### Fixing Error: global is not defined
+
+If you have merged an existing create react app into nx, you might have encountered this error: `global is not defined`
+
+The simple fix for this is to override Nx's webpack config and add the following:
+
+```js:webpack.config.js
+const nrwlConfig = require('@nrwl/react/plugins/webpack.js');
+
+module.exports = (config, context) => {
+  nrwlConfig(config);
+
+  return {
+    ...config,
+    node: {
+      global: true,
+    },
+  };
+};
+```
+
+and don't forget to call it in your apps `project.json` file
+
+```diff:project.json
+-"webpackConfig": "@nrwl/react/plugins/webpack"
++"webpackConfig": "./apps/field-app/webpack.config.js"
 ```
