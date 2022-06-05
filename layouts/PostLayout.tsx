@@ -55,7 +55,7 @@ export default function PostLayout({ frontMatter, authorDetails, children }: Pro
                   <dd className="text-base font-medium leading-6 text-white">
                     <time dateTime={date}>
                       <span role="img" aria-label="wave" className="pr-2">
-                        📅
+                        🗓
                       </span>
                       {`Written on ${new Date(date).toLocaleDateString(
                         siteMetadata.locale,

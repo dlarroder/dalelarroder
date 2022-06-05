@@ -35,15 +35,15 @@ export default function Home({
       <PageSEO title={siteMetadata.author} description={siteMetadata.description} />
       <Hero />
       <div className="divide-gray-200 dark:divide-gray-700">
-        <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
+        <h3 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
           Recent Posts
-        </h1>
+        </h3>
         <ul className="divide-gray-200">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
             const { slug, title, summary } = frontMatter
             return (
-              <li key={slug} className="py-2 animate-page-scaleUp">
+              <li key={slug} className="py-2">
                 <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
                   <article className="space-y-2 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline bg-opacity-20 py-5">
                     <div className="space-y-1 xl:col-span-4">
