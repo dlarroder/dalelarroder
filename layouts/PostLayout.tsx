@@ -1,3 +1,4 @@
+import Comments from '@/components/comments'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import { BlogSEO } from '@/components/SEO'
@@ -6,8 +7,6 @@ import { ReactNode } from 'react'
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
 import { PostFrontMatter } from 'types/PostFrontMatter'
 import Image from '../components/Image'
-
-const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
@@ -23,7 +22,7 @@ interface Props {
 }
 
 export default function PostLayout({ frontMatter, authorDetails, children }: Props) {
-  const { slug, fileName, date, title, images, author } = frontMatter
+  const { slug, date, title, images, author } = frontMatter
   return (
     <>
       <SectionContainer>
@@ -74,6 +73,7 @@ export default function PostLayout({ frontMatter, authorDetails, children }: Pro
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-4 xl:row-span-2">
               <div className="pt-8 pb-8 prose prose-lime dark:prose-dark max-w-none">
                 {children}
+                <Comments />
               </div>
             </div>
           </div>

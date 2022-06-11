@@ -1,7 +1,8 @@
-import { getAllFilesFrontMatter } from '@/lib/mdx'
+import LayoutWrapper from '@/components/LayoutWrapper'
+import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayout'
-import { PageSEO } from '@/components/SEO'
+import { getAllFilesFrontMatter } from '@/lib/mdx'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { ComponentProps } from 'react'
 
@@ -28,7 +29,7 @@ export default function Blog({
   pagination,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <>
+    <LayoutWrapper>
       <PageSEO title={`Blog - ${siteMetadata.author}`} description={siteMetadata.description} />
       <ListLayout
         posts={posts}
@@ -36,6 +37,6 @@ export default function Blog({
         pagination={pagination}
         title="Blog"
       />
-    </>
+    </LayoutWrapper>
   )
 }
