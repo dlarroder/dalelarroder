@@ -7,8 +7,6 @@ import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
 import { PostFrontMatter } from 'types/PostFrontMatter'
 import Image from '../components/Image'
 
-const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
-
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
   year: 'numeric',
@@ -23,7 +21,7 @@ interface Props {
 }
 
 export default function PostLayout({ frontMatter, authorDetails, children }: Props) {
-  const { slug, fileName, date, title, images, author } = frontMatter
+  const { slug, date, title, images, author } = frontMatter
   return (
     <>
       <SectionContainer>

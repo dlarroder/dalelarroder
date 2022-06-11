@@ -19,6 +19,7 @@ n.prototype = {
 function Line(e) {
   this.init(e || {})
 }
+
 Line.prototype = {
   init: function (e) {
     this.spring = e.spring + 0.1 * Math.random() - 0.05
@@ -71,6 +72,7 @@ Line.prototype = {
     ctx.closePath()
   },
 }
+
 function onMousemove(e) {
   function o() {
     lines = []
@@ -95,23 +97,14 @@ function onMousemove(e) {
     o(),
     render()
 }
+
 function render() {
   if (ctx.running) {
     ctx.globalCompositeOperation = 'source-over'
-    //ctx.fillStyle = '#065f46';
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     ctx.globalCompositeOperation = 'lighter'
     ctx.strokeStyle = 'hsla(' + Math.round(f.update()) + ',90%,50%,0.25)'
     ctx.lineWidth = 1
-    // ctx.frame % 60 == 0 &&
-    //   console.log(
-    //     f.update(),
-    //     Math.round(f.update()),
-    //     f.phase,
-    //     f.offset,
-    //     f.frequency,
-    //     f.amplitude
-    //   );
     for (var e, t = 0; t < E.trails; t++) {
       ;(e = lines[t]).update()
       e.draw()
@@ -120,10 +113,12 @@ function render() {
     window.requestAnimationFrame(render)
   }
 }
+
 function resizeCanvas() {
   ctx.canvas.width = window.innerWidth - 20
   ctx.canvas.height = window.innerHeight
 }
+
 var ctx,
   f,
   e = 0,

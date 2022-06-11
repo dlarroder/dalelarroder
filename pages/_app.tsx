@@ -1,4 +1,3 @@
-import LayoutWrapper from '@/components/LayoutWrapper'
 import { ScrollObserver } from '@/components/ScrollObserver'
 import '@/css/prism.css'
 import '@/css/tailwind.css'
@@ -14,9 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
       <ScrollObserver>
-        <LayoutWrapper>
-          <Component {...pageProps} />
-        </LayoutWrapper>
+        <Component {...pageProps} />
       </ScrollObserver>
     </ThemeProvider>
   )

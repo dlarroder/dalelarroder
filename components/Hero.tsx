@@ -1,5 +1,5 @@
 import Link from '@/components/Link'
-import React, { ReactElement, useContext, useEffect, useRef } from 'react'
+import { ReactElement, useContext, useEffect, useRef } from 'react'
 import { renderCanvas } from './renderCanvas'
 import { ScrollContext } from './ScrollObserver'
 
@@ -17,18 +17,7 @@ export default function Hero(): ReactElement {
 
   useEffect(() => {
     renderCanvas()
-    ref.current?.classList.add('transition-in')
   }, [])
-
-  // Hello I'm Dale Larroder
-  // 3.375rem = 54px
-  // 5.375rem = 86px
-  // 8.5rem = 136px
-
-  // Software Engineer
-  // 1.625rem = 26px
-  // 2.688rem = 43px
-  // 4.25rem = 68px
 
   return (
     <div>
@@ -43,7 +32,6 @@ export default function Hero(): ReactElement {
           <div className="flex flex-col gap-3">
             <div className="cursor-default">
               <h1 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[8.5rem] lg:leading-[8.5rem] animate-fade-top">
-                {/* <FancyHoverText text="Hello," /> */}
                 Hello
               </h1>
               <div className="flex gap-3 items-center justify-between">

@@ -1,3 +1,4 @@
+import LayoutWrapper from '@/components/LayoutWrapper'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { getFileBySlug } from '@/lib/mdx'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
@@ -18,10 +19,12 @@ export default function About({ authorDetails }: InferGetStaticPropsType<typeof 
   const { mdxSource, frontMatter } = authorDetails
 
   return (
-    <MDXLayoutRenderer
-      layout={frontMatter.layout || DEFAULT_LAYOUT}
-      mdxSource={mdxSource}
-      frontMatter={frontMatter}
-    />
+    <LayoutWrapper>
+      <MDXLayoutRenderer
+        layout={frontMatter.layout || DEFAULT_LAYOUT}
+        mdxSource={mdxSource}
+        frontMatter={frontMatter}
+      />
+    </LayoutWrapper>
   )
 }

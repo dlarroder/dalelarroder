@@ -1,11 +1,12 @@
 import Card from '@/components/Card'
+import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
 import projectsData from '@/data/projectsData'
 import siteMetadata from '@/data/siteMetadata'
 
 export default function Projects() {
   return (
-    <>
+    <LayoutWrapper>
       <PageSEO title={`Projects - ${siteMetadata.author}`} description={siteMetadata.description} />
       <div>
         <div className="pt-6 pb-8 space-y-2 md:space-y-5 ">
@@ -30,6 +31,6 @@ export default function Projects() {
           </div>
         </div>
       </div>
-    </>
+    </LayoutWrapper>
   )
 }
