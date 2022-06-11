@@ -1,8 +1,9 @@
-import fs from 'fs'
+import LayoutWrapper from '@/components/LayoutWrapper'
+import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import PageTitle from '@/components/PageTitle'
 import generateRss from '@/lib/generate-rss'
-import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
+import fs from 'fs'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
 import { PostFrontMatter } from 'types/PostFrontMatter'
@@ -66,7 +67,7 @@ export default function Blog({
   const { mdxSource, toc, frontMatter } = post
 
   return (
-    <>
+    <LayoutWrapper>
       {'draft' in frontMatter && frontMatter.draft !== true ? (
         <MDXLayoutRenderer
           layout={frontMatter.layout || DEFAULT_LAYOUT}
@@ -87,6 +88,6 @@ export default function Blog({
           </PageTitle>
         </div>
       )}
-    </>
+    </LayoutWrapper>
   )
 }

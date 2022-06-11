@@ -1,3 +1,4 @@
+import Comments from '@/components/comments'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import { BlogSEO } from '@/components/SEO'
@@ -72,6 +73,7 @@ export default function PostLayout({ frontMatter, authorDetails, children }: Pro
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-4 xl:row-span-2">
               <div className="pt-8 pb-8 prose prose-lime dark:prose-dark max-w-none">
                 {children}
+                <Comments />
               </div>
             </div>
           </div>

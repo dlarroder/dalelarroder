@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
 import { useTheme } from 'next-themes'
+import { useEffect } from 'react'
 
 import siteMetadata from '@/data/siteMetadata'
 
-const Giscus = ({ mapping }) => {
+const Giscus = () => {
   const { theme, resolvedTheme } = useTheme()
   const COMMENTS_ID = 'comments-container'
 
