@@ -16,7 +16,7 @@
     "esbuild": "0.12.29",
     "github-slugger": "1.4.0",
     "gray-matter": "4.0.3",
-    "image-size": "1.0.0",
+    "image-size": "1.0.1",
     "logrocket": "2.2.1",
     "mdx-bundler": "6.0.3",
     "motion": "10.7.0",
