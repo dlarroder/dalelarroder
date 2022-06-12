@@ -12,7 +12,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@mailchimp/mailchimp_marketing": "3.0.74",
+    "@mailchimp/mailchimp_marketing": "3.0.75",
     "esbuild": "0.12.29",
     "github-slugger": "1.4.0",
     "gray-matter": "4.0.3",
