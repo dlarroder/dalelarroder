@@ -60,7 +60,7 @@
     "file-loader": "6.2.0",
     "globby": "11.0.3",
     "husky": "6.0.0",
-    "inquirer": "8.2.2",
+    "inquirer": "8.2.4",
     "lint-staged": "11.2.6",
     "next-remote-watch": "1.0.0",
     "postcss": "8.4.12",
