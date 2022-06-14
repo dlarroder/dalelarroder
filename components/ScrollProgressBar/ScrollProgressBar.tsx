@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { ScrollContext } from './ScrollObserver'
+import { ScrollContext } from '../ScrollObserver'
 
 export default function ScrollProgressBar() {
   const [width, setWidth] = useState(0)
