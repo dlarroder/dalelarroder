@@ -1,4 +1,5 @@
 import { ScrollObserver } from '@/components/ScrollObserver'
+import ScrollProgressBar from '@/components/ScrollProgressBar'
 import '@/css/prism.css'
 import '@/css/tailwind.css'
 import siteMetadata from '@/data/siteMetadata'
@@ -13,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
       <ScrollObserver>
+        <ScrollProgressBar />
         <Component {...pageProps} />
       </ScrollObserver>
     </ThemeProvider>

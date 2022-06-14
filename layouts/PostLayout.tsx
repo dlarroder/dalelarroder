@@ -9,7 +9,6 @@ import { PostFrontMatter } from 'types/PostFrontMatter'
 import Image from '../components/Image'
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
-  weekday: 'long',
   year: 'numeric',
   month: 'long',
   day: 'numeric',
@@ -22,7 +21,8 @@ interface Props {
 }
 
 export default function PostLayout({ frontMatter, authorDetails, children }: Props) {
-  const { slug, date, title, images, author } = frontMatter
+  const { slug, date, title, images, author, readingTime } = frontMatter
+
   return (
     <>
       <SectionContainer>
@@ -51,16 +51,14 @@ export default function PostLayout({ frontMatter, authorDetails, children }: Pro
               <dl className="space-y-10">
                 <div className="relative">
                   <dt className="sr-only">Published on</dt>
-                  <dd className="text-base font-medium leading-6 text-white">
+                  <dd className="flex justify-between text-base font-medium leading-6 text-white">
                     <time dateTime={date}>
-                      <span role="img" aria-label="wave" className="pr-2">
-                        🗓
-                      </span>
-                      {`Written on ${new Date(date).toLocaleDateString(
+                      {`${author} / ${new Date(date).toLocaleDateString(
                         siteMetadata.locale,
                         postDateTemplate
-                      )} by ${author}`}
+                      )}`}
                     </time>
+                    <span>{readingTime.text}</span>
                   </dd>
                 </div>
               </dl>

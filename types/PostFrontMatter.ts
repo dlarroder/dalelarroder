@@ -12,4 +12,12 @@ export type PostFrontMatter = {
   slug: string
   fileName: string
   header: string
+  readingTime: IReadTimeResults
+}
+
+export interface IReadTimeResults {
+  text: string
+  time: number
+  words: number
+  minutes: number
 }
