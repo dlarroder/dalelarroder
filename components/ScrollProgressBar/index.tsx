@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 
 const ScrollProgressBarComponent = dynamic(
   () => {
-    return import('@/components/ScrollProgressBar/ScrollProgressBar')
+    return import('./ScrollProgressBar')
   },
   { ssr: false }
 )

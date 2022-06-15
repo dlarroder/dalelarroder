@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 
 const PostCardComponent = dynamic(
   () => {
-    return import('@/components/PostCard/PostCard')
+    return import('./PostCard')
   },
   { ssr: false }
 )
