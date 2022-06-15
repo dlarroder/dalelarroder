@@ -1,3 +1,4 @@
+import LayoutWrapper from '@/components/LayoutWrapper'
 import { TagSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayout'
@@ -47,12 +48,12 @@ export default function Tag({ posts, tag }: InferGetStaticPropsType<typeof getSt
   // Capitalize first letter and convert space to dash
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
   return (
-    <>
+    <LayoutWrapper>
       <TagSEO
         title={`${tag} - ${siteMetadata.title}`}
         description={`${tag} tags - ${siteMetadata.author}`}
       />
       <ListLayout posts={posts} title={title} />
-    </>
+    </LayoutWrapper>
   )
 }

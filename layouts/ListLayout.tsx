@@ -1,6 +1,5 @@
-import Link from '@/components/Link'
 import Pagination from '@/components/Pagination'
-import Tag from '@/components/Tag'
+import PostCard from '@/components/PostCard'
 import { ComponentProps, useState } from 'react'
 import { PostFrontMatter } from 'types/PostFrontMatter'
 interface Props {
@@ -52,38 +51,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
             </svg>
           </div>
         </div>
-        <ul>
-          {!filteredBlogPosts.length && 'No posts found.'}
-          {displayPosts.map((frontMatter) => {
-            const { slug, title, summary, tags } = frontMatter
-            return (
-              <li key={slug} className={`py-2 animate-page-scaleUp`}>
-                <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
-                  <article className="space-y-2 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline bg-opacity-20 py-5">
-                    <div className="space-y-3 xl:col-span-4">
-                      <h3 className="text-2xl font-bold leading-8 tracking-tight">
-                        <Link
-                          href={`/blog/${slug}`}
-                          className="font-merriweather text-primary-500 hover:text-primary-400 duration-300"
-                        >
-                          {title}
-                        </Link>
-                      </h3>
-                      <div className="flex flex-wrap gap-3">
-                        {tags.map((tag) => (
-                          <Tag key={tag} text={tag} />
-                        ))}
-                      </div>
-                      <div className="prose text-gray-900 dark:text-gray-100 max-w-none">
-                        {summary}
-                      </div>
-                    </div>
-                  </article>
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
+        <PostCard posts={displayPosts} />
       </div>
       {pagination && pagination.totalPages > 1 && !searchValue && (
         <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
