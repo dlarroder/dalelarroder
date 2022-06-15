@@ -26,10 +26,8 @@ module.exports = {
         '8.5xl': '7rem',
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        roboto: ['Roboto Slab'],
-        ibm: ['IBM Plex Sans'],
-        dm: ['DM Sans'],
+        sans: ['DM Sans', ...defaultTheme.fontFamily.sans],
+        merriweather: ['Merriweather', ...defaultTheme.fontFamily.sans],
       },
       gradientColorStops: {
         'gradient-1-start': '#F20089',

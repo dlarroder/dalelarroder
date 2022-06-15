@@ -16,7 +16,9 @@ export default function AuthorLayout({ children, frontMatter }: Props) {
       <div className="pt-8 animate-fade-in-0.5s">
         <div className="flex flex-col-reverse items-center justify-between mb-8 sm:flex-row sm:items-center">
           <div className="text-center sm:text-left">
-            <h1 className="text-xl font-bold md:text-3xl lg:text-4xl ">Dale Larroder</h1>
+            <h1 className="text-xl font-bold md:text-3xl lg:text-4xl font-merriweather">
+              Dale Larroder
+            </h1>
             <h2 className="text-sm font-normal md:text-base">
               {occupation} <span className="font-semibold">{company}</span>
             </h2>

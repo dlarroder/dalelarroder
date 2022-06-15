@@ -38,7 +38,7 @@ export default function Home({
       <Hero />
       <HomeWrapper>
         <div className="divide-gray-200 dark:divide-gray-700">
-          <h3 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
+          <h3 className="text-2xl font-merriweather font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
             Recent Posts
           </h3>
           <ul className="divide-gray-200">
@@ -53,7 +53,7 @@ export default function Home({
                         <h3 className="text-2xl font-bold leading-8 tracking-tight">
                           <Link
                             href={`/blog/${slug}`}
-                            className="text-primary-500 hover:text-primary-400 duration-300"
+                            className="font-merriweather text-primary-500 hover:text-primary-400 duration-300"
                           >
                             {title}
                           </Link>
@@ -81,7 +81,7 @@ export default function Home({
           </div>
         )}
         <div className="py-7">
-          <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
+          <h1 className="text-2xl font-mmerriweather font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
             My <span className="text-green-500">Spotify</span> Top Songs
           </h1>
           <TopTracks />

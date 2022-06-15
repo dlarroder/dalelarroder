@@ -12,7 +12,7 @@ export const Header = () => {
           <Link href="/" aria-label="Dale Larroder Blog">
             <div className="flex items-center justify-between">
               {typeof siteMetadata.headerTitle === 'string' ? (
-                <div className="hidden text-2xl font-semibold sm:block">
+                <div className="font-merriweather hidden text-2xl font-semibold sm:block">
                   {siteMetadata.headerTitle}
                 </div>
               ) : (
