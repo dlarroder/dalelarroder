@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import fs from 'fs'
 import matter from 'gray-matter'
 import { bundleMDX } from 'mdx-bundler'
