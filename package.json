@@ -31,7 +31,7 @@
     "rehype-prism-plus": "1.4.1",
     "rehype-slug": "5.0.1",
     "remark-footnotes": "4.0.1",
-    "remark-gfm": "2.0.0",
+    "remark-gfm": "3.0.1",
     "remark-math": "5.1.1",
     "swr": "1.3.0",
     "unist-util-visit": "4.1.0"
