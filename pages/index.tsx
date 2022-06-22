@@ -19,7 +19,7 @@ export const getStaticProps: GetStaticProps<{
   logrocketId: string
 }> = async () => {
   const posts = await getAllFilesFrontMatter('blog')
-  const logrocketId = process.env.NEXT_PUBLIC_LOGROCKET_ID
+  const logrocketId = process.env.NEXT_PUBLIC_LOGROCKET_ID || ''
 
   return { props: { posts, logrocketId } }
 }
