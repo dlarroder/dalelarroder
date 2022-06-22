@@ -1,4 +1,4 @@
-import { animate } from 'motion'
+import { motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
@@ -10,24 +10,16 @@ const ThemeSwitch = () => {
   useEffect(() => setMounted(true), [])
 
   return (
-    <button
+    <motion.button
       id="theme-btn"
       aria-label="Toggle Dark Mode"
       type="button"
       className="w-8 h-8 p-1 ml-1 mr-1 rounded sm:ml-4"
-      onClick={() => {
-        animate(
-          '#theme-btn',
-          {
-            rotate: theme === 'dark' ? 360 : 0,
-            scale: 0.7,
-          },
-          {
-            duration: 0.3,
-          }
-        )
-        setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark')
+      whileTap={{
+        scale: '1.2',
+        rotate: 360,
       }}
+      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +37,7 @@ const ThemeSwitch = () => {
           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
         )}
       </svg>
-    </button>
+    </motion.button>
   )
 }
 
