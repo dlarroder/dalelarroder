@@ -1,5 +1,6 @@
 import { ScrollObserver } from '@/components/ScrollObserver'
 import ScrollProgressBar from '@/components/ScrollProgressBar'
+import '@/css/fonts.css'
 import '@/css/prism.css'
 import '@/css/tailwind.css'
 import siteMetadata from '@/data/siteMetadata'
