@@ -65,7 +65,7 @@ export default function PostLayout({ frontMatter, authorDetails, children }: Pro
             </div>
           </header>
           <div
-            className="pb-8 divide-y divide-gray-200 xl:divide-y-0 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6"
+            className="pb-8 divide-y divide-gray-200 xl:divide-y-0 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 font-medium"
             style={{ gridTemplateRows: 'auto 1fr' }}
           >
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-4 xl:row-span-2">
