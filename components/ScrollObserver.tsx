@@ -1,4 +1,4 @@
-import { createContext, FC, useCallback, useEffect, useState } from 'react'
+import { createContext, ReactNode, useCallback, useEffect, useState } from 'react'
 
 interface ScrollValue {
   scrollY: number
@@ -10,7 +10,11 @@ export const ScrollContext = createContext<ScrollValue>({
   scrollHeight: 0,
 })
 
-export const ScrollObserver: FC = ({ children }) => {
+interface ScrollObserverProps {
+  children: ReactNode
+}
+
+export const ScrollObserver = ({ children }: ScrollObserverProps) => {
   const [scrollY, setScrollY] = useState(0)
   const [scrollHeight, setScrollHeight] = useState(0)
 
