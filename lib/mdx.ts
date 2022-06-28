@@ -4,22 +4,11 @@ import matter from 'gray-matter'
 import { bundleMDX } from 'mdx-bundler'
 import path from 'path'
 import readingTime from 'reading-time'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeKatex from 'rehype-katex'
-import rehypePrismPlus from 'rehype-prism-plus'
 // Rehype packages
-import rehypeSlug from 'rehype-slug'
-import remarkFootnotes from 'remark-footnotes'
 // Remark packages
-import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math'
 import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
 import { PostFrontMatter } from 'types/PostFrontMatter'
 import { Toc } from 'types/Toc'
-import type { Pluggable } from 'unified'
-import remarkCodeTitles from './remark-code-title'
-import remarkImgToJsx from './remark-img-to-jsx'
-import remarkTocHeadings from './remark-toc-headings'
 import getAllFilesRecursively from './utils/files'
 
 const root = process.cwd()
@@ -71,31 +60,10 @@ export async function getFileBySlug<T>(
 
   const toc: Toc = []
 
-  const { frontmatter, code } = await bundleMDX(source, {
+  const { frontmatter, code } = await bundleMDX({
+    source,
     // mdx imports can be automatically source from the components directory
     cwd: path.join(process.cwd(), 'components'),
-    xdmOptions(options) {
-      // this is the recommended way to add custom remark/rehype plugins:
-      // The syntax might look weird, but it protects you in case we add/remove
-      // plugins in the future.
-      options.remarkPlugins = [
-        ...(options.remarkPlugins ?? []),
-        [remarkTocHeadings, { exportRef: toc }],
-        remarkGfm,
-        remarkCodeTitles,
-        [remarkFootnotes, { inlineNotes: true }],
-        remarkMath,
-        remarkImgToJsx,
-      ]
-      options.rehypePlugins = [
-        ...(options.rehypePlugins ?? []),
-        rehypeSlug,
-        rehypeAutolinkHeadings,
-        rehypeKatex,
-        [rehypePrismPlus, { ignoreMissing: true }] as Pluggable,
-      ]
-      return options
-    },
     esbuildOptions: (options) => {
       options.loader = {
         ...options.loader,
