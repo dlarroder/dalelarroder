@@ -13,7 +13,7 @@
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "3.0.75",
     "esbuild": "0.14.47",
-    "framer-motion": "6.3.13",
+    "framer-motion": "6.3.16",
     "github-slugger": "1.4.0",
     "gray-matter": "4.0.3",
     "image-size": "1.0.1",
