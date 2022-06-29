@@ -13,74 +13,8 @@ class MyDocument extends Document {
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link
-            rel="preload"
-            as="font"
-            href="fonts/Merriweather/Merriweather-Black.ttf"
-            type="font/ttf"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            as="font"
-            href="fonts/Merriweather/Merriweather-Bold.ttf"
-            type="font/ttf"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            as="font"
-            href="fonts/Merriweather/Merriweather-Italic.ttf"
-            type="font/ttf"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            as="font"
-            href="fonts/Merriweather/Merriweather-Light.ttf"
-            type="font/ttf"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            as="font"
-            href="fonts/Merriweather/Merriweather-Regular.ttf"
-            type="font/ttf"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            as="font"
-            href="fonts/DMSans/DMSans-Bold.ttf"
-            type="font/ttf"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            as="font"
-            href="fonts/DMSans/DMSans-Italic.ttf"
-            type="font/ttf"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            as="font"
-            href="fonts/DMSans/DMSans-Medium.ttf"
-            type="font/ttf"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            as="font"
-            href="fonts/DMSans/DMSans-MediumItalic.ttf"
-            type="font/ttf"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            as="font"
-            href="fonts/DMSans/DMSans-Regular.ttf"
-            type="font/ttf"
-            crossOrigin="anonymous"
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Merriweather:wght@300;400;700&display=swap"
+            rel="stylesheet"
           />
           <link
             rel="stylesheet"
