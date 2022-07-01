@@ -1,7 +1,6 @@
 import { Header } from '@/components/Header'
 import Hero from '@/components/Hero'
 import HomeWrapper from '@/components/HomeWrapper'
-import Link from '@/components/Link'
 import PostCard from '@/components/PostCard'
 import SectionContainer from '@/components/SectionContainer'
 import { PageSEO } from '@/components/SEO'
@@ -10,6 +9,7 @@ import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer'
 import TopTracks from 'components/TopTrack'
 import { allBlogs } from 'contentlayer/generated'
 import { InferGetStaticPropsType } from 'next'
+import Link from 'next/link'
 import useLogRocket from './useLogRocket'
 
 const MAX_DISPLAY = 2
@@ -41,12 +41,13 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
         </div>
         {posts.length > MAX_DISPLAY && (
           <div className="flex justify-end text-base font-medium leading-6">
-            <Link
-              href="/blog"
-              className="text-primary-600 font-bold hover:text-primary-400 dark:hover:text-primary-500 duration-300"
-              aria-label="all posts"
-            >
-              Read All Post &rarr;
+            <Link href="/blog">
+              <span
+                className="text-primary-600 font-bold hover:text-primary-400 dark:hover:text-primary-500 duration-300 cursor-pointer"
+                aria-label="all posts"
+              >
+                Read All Post &rarr;
+              </span>
             </Link>
           </div>
         )}
