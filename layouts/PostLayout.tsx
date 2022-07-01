@@ -3,9 +3,9 @@ import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import { BlogSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
+import { CoreContent } from '@/lib/utils/contentlayer'
+import type { Authors, Blog } from 'contentlayer/generated'
 import { ReactNode } from 'react'
-import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
-import { PostFrontMatter } from 'types/PostFrontMatter'
 import Image from '../components/Image'
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
@@ -15,13 +15,13 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
 }
 
 interface Props {
-  frontMatter: PostFrontMatter
-  authorDetails: AuthorFrontMatter[]
+  content: CoreContent<Blog>
+  authorDetails: CoreContent<Authors>
   children: ReactNode
 }
 
-export default function PostLayout({ frontMatter, authorDetails, children }: Props) {
-  const { slug, date, title, images, author, readingTime } = frontMatter
+export default function PostLayout({ content, authorDetails, children }: Props) {
+  const { slug, date, title, images, author, readingTime } = content
 
   return (
     <>
@@ -29,7 +29,7 @@ export default function PostLayout({ frontMatter, authorDetails, children }: Pro
         <BlogSEO
           url={`${siteMetadata.siteUrl}/blog/${slug}`}
           authorDetails={authorDetails}
-          {...frontMatter}
+          {...content}
         />
         <article>
           <header className="relative">

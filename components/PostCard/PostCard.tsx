@@ -1,10 +1,11 @@
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
+import { CoreContent } from '@/lib/utils/contentlayer'
+import type { Blog } from 'contentlayer/generated'
 import { FC } from 'react'
-import { PostFrontMatter } from 'types/PostFrontMatter'
 
 export interface PostCardProps {
-  posts: PostFrontMatter[]
+  posts: CoreContent<Blog>[]
   showTags?: boolean
 }
 

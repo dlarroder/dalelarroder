@@ -1,14 +1,14 @@
 import { PageSEO } from '@/components/SEO'
+import type { Authors } from 'contentlayer/generated'
 import { ReactNode } from 'react'
-import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
-
 interface Props {
   children: ReactNode
-  frontMatter: AuthorFrontMatter
+  content: Omit<Authors, '_id' | '_raw' | 'body'>
 }
 
-export default function UsesLayout({ children, frontMatter }: Props) {
-  const { name } = frontMatter
+export default function AuthorLayout({ children, content }: Props) {
+  const { name } = content
+
   return (
     <>
       <PageSEO title={`Uses - ${name}`} description={`What I Use - ${name}`} />
@@ -29,7 +29,7 @@ export default function UsesLayout({ children, frontMatter }: Props) {
             </a>
           </span>
         </div>
-        <div className="text-sm md:text-lg text-justify pb-8 prose prose-xl dark:prose-dark max-w-none xl:col-span-2">
+        <div className="text-sm md:text-lg text-justify pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
           {children}
         </div>
       </div>

@@ -10,7 +10,6 @@ import { getAllFilesFrontMatter } from '@/lib/mdx'
 import TopTracks from 'components/TopTrack'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { PostFrontMatter } from 'types/PostFrontMatter'
-import useLogRocket from './useLogRocket'
 
 const MAX_DISPLAY = 2
 
@@ -29,7 +28,7 @@ export default function Home({
   logrocketId,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const slicedPost = posts.slice(0, MAX_DISPLAY)
-  useLogRocket(logrocketId)
+  // useLogRocket(logrocketId)
 
   return (
     <>
