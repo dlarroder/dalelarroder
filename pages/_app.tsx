@@ -1,7 +1,10 @@
-import { ScrollObserver } from '@/components/ScrollObserver'
-import ScrollProgressBar from '@/components/ScrollProgressBar'
 import '@/css/prism.css'
 import '@/css/tailwind.css'
+import '@fontsource/dm-sans'
+import '@fontsource/merriweather'
+
+import { ScrollObserver } from '@/components/ScrollObserver'
+import ScrollProgressBar from '@/components/ScrollProgressBar'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'

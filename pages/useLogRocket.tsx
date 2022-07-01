@@ -1,6 +1,8 @@
 import LogRocket from 'logrocket'
 
-const useLogRocket = (logrocketId: string) => {
+const useLogRocket = () => {
+  const logrocketId = process.env.NEXT_PUBLIC_LOGROCKET_ID || ''
+
   setTimeout(() => {
     LogRocket.init(logrocketId)
   }, 100)

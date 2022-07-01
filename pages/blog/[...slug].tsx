@@ -8,8 +8,9 @@ import { InferGetStaticPropsType } from 'next'
 const DEFAULT_LAYOUT = 'PostLayout'
 
 export async function getStaticPaths() {
+  const posts = sortedBlogPost(allBlogs)
   return {
-    paths: allBlogs.map((p) => ({ params: { slug: p.slug.split('/') } })),
+    paths: posts.map((p) => ({ params: { slug: p.slug.split('/') } })),
     fallback: false,
   }
 }

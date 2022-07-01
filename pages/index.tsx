@@ -6,29 +6,24 @@ import PostCard from '@/components/PostCard'
 import SectionContainer from '@/components/SectionContainer'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
-import { getAllFilesFrontMatter } from '@/lib/mdx'
+import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer'
 import TopTracks from 'components/TopTrack'
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { PostFrontMatter } from 'types/PostFrontMatter'
+import { allBlogs } from 'contentlayer/generated'
+import { InferGetStaticPropsType } from 'next'
+import useLogRocket from './useLogRocket'
 
 const MAX_DISPLAY = 2
 
-export const getStaticProps: GetStaticProps<{
-  posts: PostFrontMatter[]
-  logrocketId: string
-}> = async () => {
-  const posts = await getAllFilesFrontMatter('blog')
-  const logrocketId = process.env.NEXT_PUBLIC_LOGROCKET_ID || ''
+export const getStaticProps = async () => {
+  const sortedPosts = sortedBlogPost(allBlogs)
+  const posts = allCoreContent(sortedPosts)
 
-  return { props: { posts, logrocketId } }
+  return { props: { posts } }
 }
 
-export default function Home({
-  posts,
-  logrocketId,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const slicedPost = posts.slice(0, MAX_DISPLAY)
-  // useLogRocket(logrocketId)
+  useLogRocket()
 
   return (
     <>
