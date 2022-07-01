@@ -14,8 +14,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@fontsource/dm-sans": "^4.5.7",
-    "@fontsource/merriweather": "^4.5.12",
+    "@fontsource/dm-sans": "4.5.7",
+    "@fontsource/merriweather": "4.5.12",
     "@mailchimp/mailchimp_marketing": "3.0.75",
     "contentlayer": "^0.2.5",
     "esbuild": "0.14.47",

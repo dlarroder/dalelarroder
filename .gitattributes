@@ -29,6 +29,7 @@
 *.inc             text
 *.ini             text
 *.js              linguist-detectable=false
+*.mjs             linguist-detectable=false
 *.json            text
 *.jsx             text
 *.less            text
@@ -44,7 +45,7 @@
 *.sass            text
 *.scm             text
 *.scss            text diff=css
-*.sh              text eol=lf
+*.sh              text
 *.sql             text
 *.styl            text
 *.tag             text
