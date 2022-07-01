@@ -1,14 +1,14 @@
 import { PageSEO } from '@/components/SEO'
+import type { Authors } from 'contentlayer/generated'
 import { ReactNode } from 'react'
-import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
-
 interface Props {
   children: ReactNode
-  frontMatter: AuthorFrontMatter
+  content: Omit<Authors, '_id' | '_raw' | 'body'>
 }
 
-export default function ActivityLayout({ children, frontMatter }: Props) {
-  const { name } = frontMatter
+export default function AuthorLayout({ children, content }: Props) {
+  const { name } = content
+
   return (
     <>
       <PageSEO title={`Activity - ${name}`} description={`Activity - ${name}`} />

@@ -3,12 +3,13 @@ import Link from '@/components/Link'
 import { PageSEO } from '@/components/SEO'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
-import { getAllTags } from '@/lib/tags'
+import { getAllTags } from '@/lib/utils/contentlayer'
 import kebabCase from '@/lib/utils/kebabCase'
+import { allBlogs } from 'contentlayer/generated'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 
 export const getStaticProps: GetStaticProps<{ tags: Record<string, number> }> = async () => {
-  const tags = await getAllTags('blog')
+  const tags = await getAllTags(allBlogs)
 
   return { props: { tags } }
 }

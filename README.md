@@ -2,9 +2,9 @@
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Deployment**: [Vercel](https://vercel.com)
-- **Content**: [MDX](https://mdxjs.com/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Analytics**: [Logrocket](https://logrocket.com/)
+- **Content**: [MDX](https://mdxjs.com/) with [Contentlayer](https://www.contentlayer.dev/)
 
 ## Running Locally
 
@@ -28,18 +28,22 @@ cd dalelarroder
 yarn
 ```
 
-4. Create a .env.local and following the .env.example input some environment variables so that can run normally.
+4. Create a .env.local and following the .env.example
+
+```bash
+cp .env.example .env.local
+```
+
+5. Add your environment variables
 
 ```txt
 SPOTIFY_REFRESH_TOKEN=<Your env>
 SPOTIFY_CLIENT_SECRET=<Your env>
 SPOTIFY_CLIENT_ID=<Your env>
-
-NEXT_PUBLIC_LOGROCKET_ID=<Your env>
 // ...
 ```
 
-5. Run the development server
+6. Run the development server
 
 ```bash
 yarn dev
@@ -56,10 +60,6 @@ Don't forget to give the project a star! Thanks again!
 2. Commit your Changes (`git commit -m 'Add some Feature'`)
 3. Push to the Branch (`git push origin main`)
 4. Open a Pull Request
-
-## Credits
-
-[Tailwind nextjs starter blog template](https://github.com/timlrx/tailwind-nextjs-starter-blog) © [Timothy](https://www.timlrx.com/)
 
 ## Licence
 

@@ -1,15 +1,16 @@
 import Image from '@/components/Image'
 import { PageSEO } from '@/components/SEO'
+import type { Authors } from 'contentlayer/generated'
 import { ReactNode } from 'react'
-import { AuthorFrontMatter } from 'types/AuthorFrontMatter'
 
 interface Props {
   children: ReactNode
-  frontMatter: AuthorFrontMatter
+  content: Omit<Authors, '_id' | '_raw' | 'body'>
 }
 
-export default function AuthorLayout({ children, frontMatter }: Props) {
-  const { name, avatar, occupation, company } = frontMatter
+export default function AuthorLayout({ children, content }: Props) {
+  const { name, avatar, occupation, company } = content
+
   return (
     <>
       <PageSEO title={`About - ${name}`} description={`About me - ${name}`} />
@@ -33,7 +34,7 @@ export default function AuthorLayout({ children, frontMatter }: Props) {
             />
           </div>
         </div>
-        <div className="text-sm md:text-lg text-justify pb-8 prose prose-xl dark:prose-dark max-w-none xl:col-span-2">
+        <div className="text-sm md:text-lg text-justify pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
           {children}
         </div>
       </div>

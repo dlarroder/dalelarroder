@@ -1,35 +1,29 @@
 import { Header } from '@/components/Header'
 import Hero from '@/components/Hero'
 import HomeWrapper from '@/components/HomeWrapper'
-import Link from '@/components/Link'
 import PostCard from '@/components/PostCard'
 import SectionContainer from '@/components/SectionContainer'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
-import { getAllFilesFrontMatter } from '@/lib/mdx'
+import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer'
 import TopTracks from 'components/TopTrack'
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { PostFrontMatter } from 'types/PostFrontMatter'
+import { allBlogs } from 'contentlayer/generated'
+import { InferGetStaticPropsType } from 'next'
+import Link from 'next/link'
 import useLogRocket from './useLogRocket'
 
 const MAX_DISPLAY = 2
 
-export const getStaticProps: GetStaticProps<{
-  posts: PostFrontMatter[]
-  logrocketId: string
-}> = async () => {
-  const posts = await getAllFilesFrontMatter('blog')
-  const logrocketId = process.env.NEXT_PUBLIC_LOGROCKET_ID || ''
+export const getStaticProps = async () => {
+  const sortedPosts = sortedBlogPost(allBlogs)
+  const posts = allCoreContent(sortedPosts)
 
-  return { props: { posts, logrocketId } }
+  return { props: { posts } }
 }
 
-export default function Home({
-  posts,
-  logrocketId,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const slicedPost = posts.slice(0, MAX_DISPLAY)
-  useLogRocket(logrocketId)
+  useLogRocket()
 
   return (
     <>
@@ -47,12 +41,13 @@ export default function Home({
         </div>
         {posts.length > MAX_DISPLAY && (
           <div className="flex justify-end text-base font-medium leading-6">
-            <Link
-              href="/blog"
-              className="text-primary-600 font-bold hover:text-primary-400 dark:hover:text-primary-500 duration-300"
-              aria-label="all posts"
-            >
-              Read All Post &rarr;
+            <Link href="/blog">
+              <span
+                className="text-primary-600 font-bold hover:text-primary-400 dark:hover:text-primary-500 duration-300 cursor-pointer"
+                aria-label="all posts"
+              >
+                Read All Post &rarr;
+              </span>
             </Link>
           </div>
         )}

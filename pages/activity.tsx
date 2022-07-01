@@ -1,32 +1,18 @@
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
-import { getFileBySlug } from '@/lib/mdx'
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { ActivityFrontMatter } from 'types/ActivityFrontMatter'
+import { allAuthors } from 'contentlayer/generated'
+import { InferGetStaticPropsType } from 'next'
 
 const DEFAULT_LAYOUT = 'ActivityLayout'
 
-// @ts-ignore
-export const getStaticProps: GetStaticProps<{
-  activityDetails: { mdxSource: string; frontMatter: ActivityFrontMatter }
-}> = async () => {
-  const activityDetails = await getFileBySlug<ActivityFrontMatter>('activity', ['default'])
-  const { mdxSource, frontMatter } = activityDetails
-  return { props: { activityDetails: { mdxSource, frontMatter } } }
+export const getStaticProps = async () => {
+  const author = allAuthors.find((p) => p.slug === 'activity')
+  return { props: { author } }
 }
-
-export default function Activity({
-  activityDetails,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { mdxSource, frontMatter } = activityDetails
-
+export default function About({ author }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <LayoutWrapper>
-      <MDXLayoutRenderer
-        layout={frontMatter.layout || DEFAULT_LAYOUT}
-        mdxSource={mdxSource}
-        frontMatter={frontMatter}
-      />
+      <MDXLayoutRenderer layout={author.layout || DEFAULT_LAYOUT} content={author} />
     </LayoutWrapper>
   )
 }

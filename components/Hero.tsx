@@ -1,4 +1,4 @@
-import Link from '@/components/Link'
+import Link from 'next/link'
 import { ReactElement, useContext, useEffect, useRef } from 'react'
 import { renderCanvas } from './renderCanvas'
 import { ScrollContext } from './ScrollObserver'
@@ -55,7 +55,7 @@ export default function Hero(): ReactElement {
               </h2>
             </div>
             <Link href="/about">
-              <h3 className="text-sm md:text-xl ml-1 font-merriweather animate-fade-in-2s">
+              <h3 className="text-sm md:text-xl ml-1 font-merriweather animate-fade-in-2s cursor-pointer">
                 Read more about me &rarr;
               </h3>
             </Link>
