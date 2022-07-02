@@ -22,7 +22,6 @@ export const getStaticProps = async () => {
 
 export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const slicedPost = posts.slice(0, MAX_DISPLAY)
-  // useLogRocket()
 
   return (
     <>

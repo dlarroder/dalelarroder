@@ -9,8 +9,10 @@ import siteMetadata from '@/data/siteMetadata'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import useLogRocket from './useLogRocket'
 
 export default function App({ Component, pageProps }: AppProps) {
+  useLogRocket()
   return (
     <ThemeProvider attribute="class" defaultTheme={siteMetadata.theme}>
       <Head>
