@@ -1,5 +1,7 @@
 import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files'
 import readingTime from 'reading-time'
+import rehypePrismPlus from 'rehype-prism-plus'
+import remarkCodeTitles from './lib/remark-code-title'
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
@@ -53,5 +55,7 @@ export default makeSource({
   documentTypes: [Blog, Authors],
   mdx: {
     cwd: process.cwd(),
+    remarkPlugins: [remarkCodeTitles],
+    rehypePlugins: [[rehypePrismPlus, { ignoreMissing: true }]],
   },
 })

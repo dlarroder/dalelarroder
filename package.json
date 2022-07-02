@@ -1,6 +1,6 @@
 {
   "name": "dalelarroder.com",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -16,13 +16,10 @@
   "dependencies": {
     "@fontsource/dm-sans": "4.5.7",
     "@fontsource/merriweather": "4.5.12",
-    "@mailchimp/mailchimp_marketing": "3.0.75",
     "contentlayer": "^0.2.5",
     "esbuild": "0.14.47",
     "framer-motion": "6.3.16",
     "github-slugger": "1.4.0",
-    "gray-matter": "4.0.3",
-    "image-size": "1.0.1",
     "logrocket": "3.0.1",
     "mdx-bundler": "9.0.1",
     "next": "12.1.6",
@@ -32,6 +29,7 @@
     "react-dom": "18.2.0",
     "react-icons": "4.4.0",
     "reading-time": "1.5.0",
+    "rehype-prism-plus": "^1.4.1",
     "swr": "1.3.0"
   },
   "devDependencies": {

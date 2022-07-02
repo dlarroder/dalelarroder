@@ -10,7 +10,6 @@ import TopTracks from 'components/TopTrack'
 import { allBlogs } from 'contentlayer/generated'
 import { InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
-import useLogRocket from './useLogRocket'
 
 const MAX_DISPLAY = 2
 
@@ -23,7 +22,7 @@ export const getStaticProps = async () => {
 
 export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   const slicedPost = posts.slice(0, MAX_DISPLAY)
-  useLogRocket()
+  // useLogRocket()
 
   return (
     <>
