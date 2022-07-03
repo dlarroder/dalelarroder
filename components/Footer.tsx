@@ -23,27 +23,32 @@ export default function Footer() {
           </ul>
           <ul className="flex space-x-5 items-center cursor-pointer">
             <li>
-              <a href={siteMetadata.linkedin} target="_blank" rel="noreferrer">
+              <a
+                href={siteMetadata.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="linkedin"
+              >
                 <AiFillLinkedin size={20} />
               </a>
             </li>
             <li>
-              <a href={siteMetadata.github} target="_blank" rel="noreferrer">
+              <a href={siteMetadata.github} target="_blank" rel="noreferrer" aria-label="github">
                 <FaGithub size={20} />
               </a>
             </li>
             <li>
-              <a href={siteMetadata.twitter} target="_blank" rel="noreferrer">
+              <a href={siteMetadata.twitter} target="_blank" rel="noreferrer" aria-label="twitter">
                 <FaTwitter size={20} />
               </a>
             </li>
             <li>
-              <a href={siteMetadata.spotify} target="_blank" rel="noreferrer">
+              <a href={siteMetadata.spotify} target="_blank" rel="noreferrer" aria-label="spotify">
                 <FaSpotify size={20} />
               </a>
             </li>
             <li>
-              <a href={siteMetadata.steam} target="_blank" rel="noreferrer">
+              <a href={siteMetadata.steam} target="_blank" rel="noreferrer" aria-label="steam">
                 <FaSteam size={20} />
               </a>
             </li>

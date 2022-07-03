@@ -11,7 +11,7 @@ export default function Track(track) {
         >
           {track.title}
         </a>
-        <p className="text-gray-500 mb-4 truncate w-60 sm:w-96 md:w-full" color="gray.500">
+        <p className="text-gray-300 mb-4 truncate w-60 sm:w-96 md:w-full" color="gray.500">
           {track.artist}
         </p>
       </div>
