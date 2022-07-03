@@ -40,10 +40,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
         {posts.length > MAX_DISPLAY && (
           <div className="flex justify-end text-base font-medium leading-6">
             <Link href="/blog">
-              <span
-                className="text-primary-600 font-bold hover:text-primary-400 dark:hover:text-primary-500 duration-300 cursor-pointer"
-                aria-label="all posts"
-              >
+              <span className="underline-magical font-bold cursor-pointer" aria-label="all posts">
                 Read All Post &rarr;
               </span>
             </Link>

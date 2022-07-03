@@ -1,7 +1,7 @@
 import siteMetadata from '@/data/siteMetadata'
+import Link from 'next/link'
 import { AiFillLinkedin } from 'react-icons/ai'
 import { FaGithub, FaSpotify, FaSteam, FaTwitter } from 'react-icons/fa'
-import Link from './Link'
 import NowPlaying from './NowPlaying'
 
 export default function Footer() {
@@ -23,29 +23,29 @@ export default function Footer() {
           </ul>
           <ul className="flex space-x-5 items-center cursor-pointer">
             <li>
-              <Link href={siteMetadata.linkedin}>
+              <a href={siteMetadata.linkedin} target="_blank" rel="noreferrer">
                 <AiFillLinkedin size={20} />
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href={siteMetadata.github}>
+              <a href={siteMetadata.github} target="_blank" rel="noreferrer">
                 <FaGithub size={20} />
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href={siteMetadata.twitter}>
+              <a href={siteMetadata.twitter} target="_blank" rel="noreferrer">
                 <FaTwitter size={20} />
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href={siteMetadata.spotify}>
+              <a href={siteMetadata.spotify} target="_blank" rel="noreferrer">
                 <FaSpotify size={20} />
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href={siteMetadata.steam}>
+              <a href={siteMetadata.steam} target="_blank" rel="noreferrer">
                 <FaSteam size={20} />
-              </Link>
+              </a>
             </li>
           </ul>
         </div>

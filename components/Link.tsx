@@ -12,7 +12,7 @@ const CustomLink = ({
   if (isInternalLink) {
     return (
       <Link href={href}>
-        <a {...rest} />
+        <a {...rest} className="underline-magical" />
       </Link>
     )
   }
@@ -21,7 +21,15 @@ const CustomLink = ({
     return <a href={href} {...rest} />
   }
 
-  return <a target="_blank" rel="noopener noreferrer" href={href} {...rest} />
+  return (
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      href={href}
+      {...rest}
+      className="underline-magical"
+    />
+  )
 }
 
 export default CustomLink

@@ -21,7 +21,7 @@ export default function AuthorLayout({ children, content }: Props) {
             Inspired by{' '}
             <a
               href="https://wesbos.com/uses"
-              className="underline text-primary-500"
+              className="underline-magical"
               target="_blank"
               rel="noreferrer"
             >

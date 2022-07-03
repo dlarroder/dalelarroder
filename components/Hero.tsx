@@ -34,28 +34,28 @@ export default function Hero(): ReactElement {
         >
           <div className="max-w-3xl flex flex-col gap-3 font-merriweather">
             <div className="cursor-default">
-              <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[110px] lg:leading-[110px] animate-fade-top">
+              <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[7rem] lg:leading-[7rem] animate-fade-top">
                 Hello
               </h2>
               <div className="flex gap-3 items-center justify-between">
-                <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[110px] lg:leading-[8.5rem] animate-fade-top">
+                <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[7rem] lg:leading-[7rem] animate-fade-top">
                   I'm
                 </h2>
                 <div className="opacity-70 animate-fade-right">
-                  <h2 className="text-[1.625rem] leading-[1.625rem] md:text-[2.688rem] md:leading-[2.688rem] lg:text-[52px] lg:leading-[52px]">
+                  <h2 className="text-[1.625rem] leading-[1.625rem] md:text-[2.688rem] md:leading-[2.688rem] lg:text-[3.25rem] lg:leading-[3.25rem]">
                     Software Engineer
                   </h2>
-                  <h2 className="text-[1.625rem] leading-[1.625rem] md:text-[2.688rem] md:leading-[2.688rem] lg:text-[52px] lg:leading-[52px]">
+                  <h2 className="text-[1.625rem] leading-[1.625rem] md:text-[2.688rem] md:leading-[2.688rem] lg:text-[3.25rem] lg:leading-[52px]">
                     Fullstack Developer
                   </h2>
                 </div>
               </div>
-              <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[110px] lg:leading-[110px] animate-fade-top">
+              <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[7rem] lg:leading-[7rem] animate-fade-top">
                 Dale Larroder
               </h2>
             </div>
             <Link href="/about">
-              <h3 className="text-sm md:text-xl ml-1 font-merriweather animate-fade-in-2s cursor-pointer">
+              <h3 className="underline-magical w-max text-sm md:text-xl ml-1 font-merriweather animate-fade-in-2s cursor-pointer">
                 Read more about me &rarr;
               </h3>
             </Link>

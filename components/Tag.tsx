@@ -8,7 +8,7 @@ interface Props {
 const Tag = ({ text }: Props) => {
   return (
     <Link href={`/tags/${kebabCase(text)}`} passHref>
-      <div className="bg-primary-600 hover:bg-primary-400 duration-300 p-1 px-3 rounded-md text-xs uppercase text-white font-semibold">
+      <div className="border border-primary-600 hover:bg-primary-400 hover:text-white duration-300 p-1 px-3 rounded-md text-xs uppercase dark:text-white">
         {text.split(' ').join('-')}
       </div>
     </Link>
