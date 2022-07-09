@@ -7,7 +7,7 @@ import ThemeSwitch from './ThemeSwitch'
 export const Header = () => {
   return (
     <header className="py-5 md:py-10 z-40 bg-transparent">
-      <div className="flex items-center justify-between max-w-4xl mx-auto ">
+      <div className="flex items-center justify-between max-w-5xl mx-auto ">
         <div>
           <Link href="/" aria-label="Dale Larroder Blog">
             <button className="flex items-center justify-between">

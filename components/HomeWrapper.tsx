@@ -9,7 +9,7 @@ interface Props {
 const HomeWrapper = ({ children }: Props) => {
   return (
     <SectionContainer>
-      <div className="flex flex-col">
+      <div className="h-screen flex flex-col justify-evenly">
         <main>{children}</main>
         <Footer />
       </div>

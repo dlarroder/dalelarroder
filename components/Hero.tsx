@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ReactElement, useContext, useEffect, useRef } from 'react'
 import { renderCanvas } from './renderCanvas'
@@ -32,7 +33,7 @@ export default function Hero(): ReactElement {
             transform: `translateY(${progress * 20}vh)`,
           }}
         >
-          <div className="max-w-3xl flex flex-col gap-3 font-merriweather">
+          <div className="max-w-5xl flex flex-col gap-3 font-merriweather">
             <div className="cursor-default">
               <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[7rem] lg:leading-[7rem] animate-fade-top">
                 Hello
@@ -41,14 +42,19 @@ export default function Hero(): ReactElement {
                 <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[7rem] lg:leading-[7rem] animate-fade-top">
                   I'm
                 </h2>
-                <div className="opacity-70 animate-fade-right">
+                <motion.div
+                  initial={{ x: -2000, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 1, type: 'spring', delay: 0.4 }}
+                  className="opacity-70"
+                >
                   <h2 className="text-[1.625rem] leading-[1.625rem] md:text-[2.688rem] md:leading-[2.688rem] lg:text-[3.25rem] lg:leading-[3.25rem]">
                     Software Engineer
                   </h2>
                   <h2 className="text-[1.625rem] leading-[1.625rem] md:text-[2.688rem] md:leading-[2.688rem] lg:text-[3.25rem] lg:leading-[52px]">
                     Fullstack Developer
                   </h2>
-                </div>
+                </motion.div>
               </div>
               <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[7rem] lg:leading-[7rem] animate-fade-top">
                 Dale Larroder
