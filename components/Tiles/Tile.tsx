@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useRef } from 'react'
+import { cloneElement, createContext, ReactNode, useContext, useRef } from 'react'
 import { ScrollContext } from '../ScrollObserver'
 
 interface WrapperProps {
@@ -60,10 +60,10 @@ export const TileContent = ({ children }: TileBackgroundProps) => {
 
 interface TileProps {
   page: number
-  renderContent: (props: { progress: number }) => any
+  children: JSX.Element
 }
 
-export const Tile = ({ page, renderContent }: TileProps) => {
+export const Tile = ({ page, children }: TileProps) => {
   const { currentPage, numOfPages } = useContext(TileContext)
   const progress = Math.max(0, currentPage - page)
 
@@ -81,7 +81,9 @@ export const Tile = ({ page, renderContent }: TileProps) => {
       className="absolute top-0 w-full"
       style={{ opacity, pointerEvents: progress >= 0 || progress >= 1 ? 'none' : undefined }}
     >
-      {renderContent({ progress })}
+      {cloneElement(children, {
+        progress: progress,
+      })}
     </div>
   )
 }
