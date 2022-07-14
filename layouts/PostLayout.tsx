@@ -1,11 +1,11 @@
 import PageTitle from '@/components/PageTitle'
+import PostComments from '@/components/PostComments'
 import SectionContainer from '@/components/SectionContainer'
 import { BlogSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import { CoreContent } from '@/lib/utils/contentlayer'
 import type { Authors, Blog } from 'contentlayer/generated'
 import { ReactNode } from 'react'
-import Comments from '../components/Comments'
 import Image from '../components/Image'
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
@@ -71,7 +71,7 @@ export default function PostLayout({ content, authorDetails, children }: Props) 
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-4 xl:row-span-2">
               <div className="pt-8 pb-8 prose prose-lime dark:prose-dark max-w-none">
                 {children}
-                <Comments />
+                <PostComments />
               </div>
             </div>
           </div>

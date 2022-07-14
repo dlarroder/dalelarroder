@@ -7,7 +7,7 @@ const GiscusComponent = dynamic(
   { ssr: false }
 )
 
-const Comments = () => {
+const PostComments = () => {
   return (
     <div id="comment">
       <GiscusComponent />
@@ -15,4 +15,4 @@ const Comments = () => {
   )
 }
 
-export default Comments
+export default PostComments
