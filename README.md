@@ -16,7 +16,7 @@
 git clone git@github.com:dlarroder/dalelarroder.git
 ```
 
-2. Change directories
+2. Change directory
 
 ```sh
 cd dalelarroder
@@ -28,13 +28,13 @@ cd dalelarroder
 yarn
 ```
 
-4. Create a .env.local and following the .env.example
+1. Create a `.env.local` file following the `.env.example`
 
 ```bash
 cp .env.example .env.local
 ```
 
-5. Add your environment variables
+5. Add your environment variables to `.env.local`
 
 ```txt
 SPOTIFY_REFRESH_TOKEN=<Your env>
@@ -64,6 +64,14 @@ Don't forget to give the project a star! Thanks again!
 ## Lighthouse Score
 
 ![Screen Shot 2022-07-04 at 10 52 02 AM](https://user-images.githubusercontent.com/52998821/177234494-f6bc0203-ba71-4f59-8eb7-6375e3784b31.png)
+
+## Previous Version
+
+This is the second version of my website.
+
+Prevoius v1 version:
+
+- https://v1.dalelarroder.com/
 
 ## Licence
 

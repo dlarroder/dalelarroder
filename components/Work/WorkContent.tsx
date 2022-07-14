@@ -1,13 +1,15 @@
 import Image from 'next/image'
-import { WorkContainer, WorkLeft, WorkRight } from '../Work/works'
-import { WorkTile } from './Works'
+import { WorkContainer } from './WorkContainer'
+import { WorkLeft } from './WorkLeft'
+import { WorkRight } from './WorkRight'
+import { WorkTile } from './workTiles'
 
-interface Props {
+interface WorkContentProps {
   work: WorkTile
   progress?: number
 }
 
-export default function Content({ work, progress }: Props) {
+export default function WorkContent({ work, progress }: WorkContentProps) {
   const { title, description, image } = work
   return (
     <WorkContainer>

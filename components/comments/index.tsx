@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 
 const GiscusComponent = dynamic(
   () => {
-    return import('@/components/comments/Giscus')
+    return import('@/components/Comments/Giscus')
   },
   { ssr: false }
 )

@@ -49,7 +49,7 @@ export default function Hero(): ReactElement {
                       I'm
                     </h2>
                   </FadeUp>
-                  <FadeRight duration={1}>
+                  <FadeRight duration={0.6}>
                     <div className="opacity-70">
                       <h2 className="text-[1.625rem] leading-[1.625rem] md:text-[2.688rem] md:leading-[2.688rem] lg:text-[70px] lg:leading-[70px]">
                         Software Engineer
@@ -66,7 +66,7 @@ export default function Hero(): ReactElement {
                   </h2>
                 </FadeUp>
               </div>
-              <FadeUp duration={1.2}>
+              <FadeUp duration={1}>
                 <Link href="/about">
                   <a>
                     <h3 className="underline-magical w-max text-sm md:text-xl ml-1 font-merriweather cursor-pointer">

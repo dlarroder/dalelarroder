@@ -1,4 +1,4 @@
-import Works from '@/components/Tiles/Works'
+import Works from '@/components/Work/Works'
 
 export default function gallery() {
   return (
