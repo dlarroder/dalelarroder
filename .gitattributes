@@ -45,7 +45,7 @@
 *.sass            text
 *.scm             text
 *.scss            text diff=css
-*.sh              text
+*.sh              linguist-detectable=false
 *.sql             text
 *.styl            text
 *.tag             text

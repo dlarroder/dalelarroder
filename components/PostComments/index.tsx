@@ -2,12 +2,12 @@ import dynamic from 'next/dynamic'
 
 const GiscusComponent = dynamic(
   () => {
-    return import('@/components/comments/Giscus')
+    return import('./Giscus')
   },
   { ssr: false }
 )
 
-const Comments = () => {
+const PostComments = () => {
   return (
     <div id="comment">
       <GiscusComponent />
@@ -15,4 +15,4 @@ const Comments = () => {
   )
 }
 
-export default Comments
+export default PostComments

@@ -293,29 +293,6 @@ module.exports = {
             opacity: 0,
           },
         },
-        // Fade Transitions
-        'fade-right': {
-          '0%': {
-            opacity: 0,
-            transform: 'translateX(-100%)',
-          },
-        },
-        'fade-left': {
-          '0%': {
-            transform: 'translateX(100%)',
-          },
-        },
-        'fade-top': {
-          '0%': {
-            opacity: 0,
-            transform: 'translateY(100%)',
-          },
-        },
-        'fade-in': {
-          '0%': {
-            opacity: 0,
-          },
-        },
 
         // Scale and Fade Transitions
         scaleDown: {
@@ -369,11 +346,6 @@ module.exports = {
         'gradient-foreground-2': 'gradient-foreground-2 8s infinite',
         'gradient-background-3': 'gradient-background-3 8s infinite',
         'gradient-foreground-3': 'gradient-foreground-3 8s infinite',
-        // Home page
-        'fade-left': 'fade-left 0.5s ease-in-out',
-        'fade-right': 'fade-right 0.4s ease-in-out',
-        'fade-top': 'fade-top 0.6s ease-in-out',
-        'fade-in-2s': 'fade-in 2s ease-in-out',
 
         // Author Page
         'fade-in-0.5s': 'fade-in 0.5s ease-in-out',
