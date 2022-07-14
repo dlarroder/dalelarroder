@@ -15,39 +15,39 @@ export type WorkTile = {
 export default function Works() {
   const workTiles: WorkTile[] = [
     {
-      title: `Here is what I've been up to`,
-      description: ``,
+      title: `what I've been up to`,
+      description: 'here is',
       image: {
         src: '/static/images/aphex-apps.png',
         width: 600,
-        height: 900,
+        height: 770,
       },
     },
     {
       title: 'Aphex Field',
       description: 'I helped build',
       image: {
-        src: '/static/images/field_app.png',
-        width: 400,
-        height: 400,
+        src: '/static/images/field-app.png',
+        width: 600,
+        height: 554,
       },
     },
     {
       title: 'Aphex Planner',
       description: 'I helped maintain',
       image: {
-        src: '/static/images/field_app.png',
-        width: 400,
-        height: 900,
+        src: '/static/images/planner-app.png',
+        width: 600,
+        height: 717,
       },
     },
     {
       title: 'Aphex Publication',
       description: 'I am currently building',
       image: {
-        src: '/static/images/field_app.png',
-        width: 400,
-        height: 900,
+        src: '/static/images/publication-app.png',
+        width: 600,
+        height: 717,
       },
     },
   ]

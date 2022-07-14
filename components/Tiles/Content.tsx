@@ -16,13 +16,15 @@ export default function Content({ work, progress }: Props) {
         <span className="text-4xl md:text-5xl font-semibold tracking-tight">{title}</span>
       </WorkLeft>
       <WorkRight progress={progress}>
-        <Image
-          src={image.src}
-          alt={title}
-          layout="responsive"
-          width={image.width}
-          height={image.height}
-        />
+        <div className="drop-shadow-2xl">
+          <Image
+            src={image.src}
+            alt={title}
+            layout="responsive"
+            width={image.width}
+            height={image.height}
+          />
+        </div>
       </WorkRight>
     </WorkContainer>
   )
