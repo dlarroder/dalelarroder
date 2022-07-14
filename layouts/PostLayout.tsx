@@ -1,4 +1,3 @@
-import Comments from '@/components/Comments'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import { BlogSEO } from '@/components/SEO'
@@ -6,6 +5,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { CoreContent } from '@/lib/utils/contentlayer'
 import type { Authors, Blog } from 'contentlayer/generated'
 import { ReactNode } from 'react'
+import Comments from '../components/Comments'
 import Image from '../components/Image'
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
