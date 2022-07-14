@@ -34,7 +34,7 @@ export const TileWrapper = ({ children, numOfPages }: WrapperProps) => {
   return (
     <TileContext.Provider value={{ numOfPages, currentPage }}>
       <div
-        className="relative bg-black dark:bg-white text-primary-500"
+        className="relative bg-black dark:bg-white z-10"
         ref={refContainer}
         style={{
           height: numOfPages * 100 + 'vh',
@@ -83,6 +83,7 @@ export const Tile = ({ page, children }: TileProps) => {
     >
       {cloneElement(children, {
         progress: progress,
+        opacity: opacity,
       })}
     </div>
   )
