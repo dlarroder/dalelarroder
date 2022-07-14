@@ -4,7 +4,7 @@ import HomeWrapper from '@/components/HomeWrapper'
 import PostCard from '@/components/PostCard'
 import SectionContainer from '@/components/SectionContainer'
 import { PageSEO } from '@/components/SEO'
-import MyWorks from '@/components/Work/MyWorks'
+import Works from '@/components/Work/Works'
 import siteMetadata from '@/data/siteMetadata'
 import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer'
 import TopTracks from 'components/TopTrack'
@@ -31,7 +31,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
         <Header />
       </SectionContainer>
       <Hero />
-      <MyWorks />
+      <Works />
       <HomeWrapper>
         <div className="divide-gray-200 dark:divide-gray-700">
           <h3 className="text-2xl font-merriweather font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
