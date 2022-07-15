@@ -1,8 +1,11 @@
 import headerNavLinks from '@/data/headerNavLinks'
+import classNames from 'classnames'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 const MobileNav = () => {
+  const router = useRouter()
   const [navShow, setNavShow] = useState(false)
 
   const onToggleNav = () => {
@@ -65,17 +68,37 @@ const MobileNav = () => {
           </button>
         </header>
         <nav className="fixed h-full mt-8">
-          {headerNavLinks.map((link) => (
-            <div key={link.title} className="px-12 py-4">
-              <Link
-                href={link.href}
-                className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
-                onClick={onToggleNav}
+          <div key="Home" className="px-12 py-4">
+            <Link href="/" onClick={onToggleNav}>
+              <a
+                className={classNames(
+                  'horizontal-underline backdrop:text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100',
+                  { 'horizontal-underline-active': router.pathname === '/' }
+                )}
               >
-                {link.title}
-              </Link>
-            </div>
-          ))}
+                Home
+              </a>
+            </Link>
+          </div>
+          {headerNavLinks.map(({ title, href }) => {
+            const active = href === router.pathname
+
+            return (
+              <div key={title} className="px-12 py-4">
+                <Link href={href} onClick={onToggleNav}>
+                  <a
+                    className={classNames(
+                      'horizontal-underline backdrop:text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100',
+                      { 'horizontal-underline-active': active }
+                    )}
+                    aria-label={title}
+                  >
+                    {title}
+                  </a>
+                </Link>
+              </div>
+            )
+          })}
         </nav>
       </div>
     </div>

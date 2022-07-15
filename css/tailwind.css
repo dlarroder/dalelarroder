@@ -33,15 +33,19 @@ input:-webkit-autofill:focus {
 
 .horizontal-underline {
   border-bottom-width: 0;
-  background-image: linear-gradient(transparent, transparent),
-    linear-gradient(to right, #eb519b, #de1d8d);
-  background-size: 0 2px;
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#de1d8d, #de1d8d);
+  background-size: 0 3px;
   background-position: 0 100%;
   background-repeat: no-repeat;
-  transition: background-size 0.4s ease-in-out;
+  transition: background-size 0.5s ease-in-out;
 }
 
 .horizontal-underline:hover {
-  background-size: 100% 2px;
+  background-size: 100% 3px;
+  background-position: 0 100%;
+}
+
+.horizontal-underline-active {
+  background-size: 100% 3px;
   background-position: 0 100%;
 }
