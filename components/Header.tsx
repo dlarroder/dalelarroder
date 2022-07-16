@@ -24,7 +24,7 @@ export const Header = () => {
         <div className="flex items-center text-base leading-5 space-x-3">
           <div className="hidden sm:flex space-x-5">
             {headerNavLinks.map(({ title, href }) => {
-              const active = href === router.pathname
+              const active = router.pathname.includes(href)
               return (
                 <Link key={title} href={href}>
                   <a
