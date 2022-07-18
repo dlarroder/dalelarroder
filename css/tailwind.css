@@ -49,3 +49,8 @@ input:-webkit-autofill:focus {
   background-size: 100% 3px;
   background-position: 0 100%;
 }
+
+#nprogress .bar {
+  background: #de1d8d !important;
+  height: 4px !important;
+}
