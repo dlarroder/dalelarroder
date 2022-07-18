@@ -38,18 +38,18 @@ export default function Hero(): ReactElement {
           <div ref={ref} className="md:text-4xl mx-auto">
             <div className="max-w-5xl flex flex-col gap-3 font-merriweather">
               <div className="cursor-default">
-                <FadeUp duration={0.4}>
+                <FadeUp duration={0.6}>
                   <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[9.375rem] lg:leading-[9.375rem]">
                     Hello
                   </h2>
                 </FadeUp>
                 <div className="flex gap-3 items-center justify-between">
-                  <FadeUp duration={0.6}>
+                  <FadeUp duration={0.6} delay={0.4}>
                     <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[9.375rem] lg:leading-[9.375rem]">
                       I'm
                     </h2>
                   </FadeUp>
-                  <FadeRight duration={0.6}>
+                  <FadeRight duration={0.6} delay={1.4}>
                     <div className="opacity-70">
                       <h2 className="text-[1.625rem] leading-[1.625rem] md:text-[2.688rem] md:leading-[2.688rem] lg:text-[70px] lg:leading-[70px]">
                         Software Engineer
@@ -60,13 +60,13 @@ export default function Hero(): ReactElement {
                     </div>
                   </FadeRight>
                 </div>
-                <FadeUp duration={0.8}>
+                <FadeUp duration={0.6} delay={0.8}>
                   <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[9.375rem] lg:leading-[9.375rem]">
                     Dale Larroder
                   </h2>
                 </FadeUp>
               </div>
-              <FadeUp duration={1}>
+              <FadeRight duration={0.6} delay={2}>
                 <Link href="/about">
                   <a>
                     <h3 className="underline-magical w-max text-sm md:text-xl ml-1 font-merriweather cursor-pointer">
@@ -74,12 +74,12 @@ export default function Hero(): ReactElement {
                     </h3>
                   </a>
                 </Link>
-              </FadeUp>
+              </FadeRight>
             </div>
           </div>
           <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2">
             <div className="flex flex-col justify-center items-center">
-              <FadeDown duration={1} delay={1}>
+              <FadeDown duration={1} delay={2.8}>
                 <HiOutlineArrowNarrowDown size={20} />
               </FadeDown>
             </div>

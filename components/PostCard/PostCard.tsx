@@ -17,13 +17,13 @@ const PostCard: FC<PostCardProps> = ({ posts, showTags = true }) => {
           <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
             <article className="space-y-2 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline bg-opacity-20 py-5 cursor-pointer">
               <div className="space-y-3 xl:col-span-4">
-                <h3 className="text-2xl font-bold leading-8 tracking-tight">
+                <span className="text-2xl font-bold leading-8 tracking-tight">
                   <Link href={`/blog/${slug}`}>
                     <span className="font-merriweather text-primary-500 hover:text-primary-400 duration-300">
                       {title}
                     </span>
                   </Link>
-                </h3>
+                </span>
                 {showTags && (
                   <div className="flex flex-wrap gap-3">
                     {tags.map((tag) => (

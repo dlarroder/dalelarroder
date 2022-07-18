@@ -3,28 +3,30 @@ import '@/css/tailwind.css'
 import '@fontsource/dm-sans'
 import '@fontsource/merriweather'
 
+import LogRocket from '@/components/Logrocket'
 import ProgressBar from '@/components/ProgressBar'
 import { ScrollObserver } from '@/components/ScrollObserver'
 import ScrollProgressBar from '@/components/ScrollProgressBar'
 import siteMetadata from '@/data/siteMetadata'
+import { AnimatePresence } from 'framer-motion'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import useLogRocket from '../lib/hooks/useLogRocket'
 
 export default function App({ Component, pageProps }: AppProps) {
-  useLogRocket()
-
   return (
     <ThemeProvider attribute="class" defaultTheme={siteMetadata.theme}>
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
-      <ScrollObserver>
-        <ScrollProgressBar />
-        <ProgressBar />
-        <Component {...pageProps} />
-      </ScrollObserver>
+      <AnimatePresence exitBeforeEnter initial={false}>
+        <ScrollObserver>
+          <LogRocket />
+          <ProgressBar />
+          <ScrollProgressBar />
+          <Component {...pageProps} />
+        </ScrollObserver>
+      </AnimatePresence>
     </ThemeProvider>
   )
 }
