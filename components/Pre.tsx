@@ -1,4 +1,4 @@
-import { useState, useRef, ReactNode } from 'react'
+import { ReactNode, useRef, useState } from 'react'
 
 interface Props {
   children: ReactNode
@@ -64,7 +64,7 @@ const Pre = ({ children }: Props) => {
           </svg>
         </button>
       )}
-      <pre className="bg-gray-800">{children}</pre>
+      <pre>{children}</pre>
     </div>
   )
 }
