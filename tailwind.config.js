@@ -103,9 +103,9 @@ module.exports = {
           css: {
             color: theme('colors.gray.700'),
             a: {
-              color: theme('colors.primary.500'),
+              color: theme('colors.gray.700'),
               '&:hover': {
-                color: theme('colors.primary.600'),
+                color: theme('colors.gray.700'),
               },
               code: { color: theme('colors.primary.400') },
             },
@@ -166,9 +166,9 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.primary.500'),
+              color: theme('colors.gray.300'),
               '&:hover': {
-                color: theme('colors.primary.400'),
+                color: theme('colors.gray.300'),
               },
               code: { color: theme('colors.primary.400') },
             },
@@ -222,143 +222,6 @@ module.exports = {
           },
         },
       }),
-      keyframes: {
-        shrink: {
-          '0% , 100%': {
-            height: '0.75rem',
-          },
-          '50%': {
-            height: '0.375rem',
-          },
-        },
-        expand: {
-          '0% , 100%': {
-            height: '0.375rem',
-          },
-          '50%': {
-            height: '0.75rem',
-          },
-        },
-        'gradient-foreground-1': {
-          '0%, 16.667%, 100%': {
-            opacity: 1,
-          },
-          '33.333%, 83.333%': {
-            opacity: 0,
-          },
-        },
-        'gradient-background-1': {
-          '0%, 16.667%, 100%': {
-            opacity: 0,
-          },
-          '25%, 91.667%': {
-            opacity: 1,
-          },
-        },
-        'gradient-foreground-2': {
-          '0%, 100%': {
-            opacity: 0,
-          },
-          '33.333%, 50%': {
-            opacity: 1,
-          },
-          '16.667%, 66.667%': {
-            opacity: 0,
-          },
-        },
-        'gradient-background-2': {
-          '0%, to': {
-            opacity: 1,
-          },
-          '33.333%, 50%': {
-            opacity: 0,
-          },
-          '25%, 58.333%': {
-            opacity: 1,
-          },
-        },
-        'gradient-foreground-3': {
-          '0%, 50%, 100%': {
-            opacity: 0,
-          },
-          '66.667%, 83.333%': {
-            opacity: 1,
-          },
-        },
-        'gradient-background-3': {
-          '0%, 58.333%, 91.667%, 100%': {
-            opacity: 1,
-          },
-          '66.667%, 83.333%': {
-            opacity: 0,
-          },
-        },
-
-        // Scale and Fade Transitions
-        scaleDown: {
-          '0%': {
-            opacity: 0,
-            transform: 'scale(0.8)',
-          },
-        },
-        scaleUp: {
-          '0%': {
-            opacity: 0,
-            transform: 'scale(0.8)',
-          },
-        },
-        scaleUpDown: {
-          '0%': {
-            opacity: 0,
-            transform: 'scale(1.2)',
-          },
-        },
-        scaleDownUp: {
-          '0%': {
-            opacity: 0,
-            transform: 'scale(0)',
-          },
-          '100%': {
-            opacity: 0,
-            transform: 'scale(1.2)',
-          },
-        },
-        scaleDownCenter: {
-          '0%': {
-            opacity: 0,
-            transform: 'scale(1.2)',
-          },
-        },
-        scaleUpCenter: {
-          '0%': {
-            opacity: 0,
-            transform: 'scale(1.2)',
-          },
-        },
-        wiggle: 'wiggle 1s ease-in-out infinite',
-      },
-      animation: {
-        shrink: 'shrink 1.5s infinite',
-        expand: 'expand 1.5s infinite',
-        'gradient-background-1': 'gradient-background-1 8s infinite',
-        'gradient-foreground-1': 'gradient-foreground-1 8s infinite',
-        'gradient-background-2': 'gradient-background-2 8s infinite',
-        'gradient-foreground-2': 'gradient-foreground-2 8s infinite',
-        'gradient-background-3': 'gradient-background-3 8s infinite',
-        'gradient-foreground-3': 'gradient-foreground-3 8s infinite',
-
-        // Author Page
-        'fade-in-0.5s': 'fade-in 0.5s ease-in-out',
-
-        // Page Transitions
-        'page-scaleDown': 'scaleDown .7s ease both',
-        'page-scaleUp': 'scaleUp .7s ease both',
-        //
-        'page-scaleUpDown ': 'scaleUpDown .5s ease both',
-        'page-scaleDownUp ': 'scaleDownUp .5s ease both',
-        'page-scaleDownCenter': 'scaleDownCenter .4s ease-in',
-        'page-scaleUpCenter ': 'scaleUpCenter .4s ease-out',
-      },
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],

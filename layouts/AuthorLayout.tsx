@@ -14,7 +14,7 @@ export default function AuthorLayout({ children, content }: Props) {
   return (
     <>
       <PageSEO title={`About - ${name}`} description={`About me - ${name}`} />
-      <div className="pt-8 animate-fade-in-0.5s">
+      <div className="pt-8">
         <div className="flex flex-col-reverse items-center justify-between mb-8 sm:flex-row sm:items-center">
           <div className="text-center sm:text-left">
             <h1 className="text-xl font-bold md:text-3xl lg:text-4xl font-merriweather">

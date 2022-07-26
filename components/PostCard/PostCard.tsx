@@ -1,19 +1,25 @@
 import Tag from '@/components/Tag'
 import { CoreContent } from '@/lib/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { FC } from 'react'
 
 export interface PostCardProps {
   posts: CoreContent<Blog>[]
   showTags?: boolean
 }
 
-const PostCard: FC<PostCardProps> = ({ posts, showTags = true }) => {
+export default function PostCard({ posts, showTags = true }: PostCardProps) {
   return (
     <ul>
-      {posts.map(({ slug, title, tags, summary }) => (
-        <li key={slug} className={`py-2 animate-page-scaleUp`}>
+      {posts.map(({ slug, title, tags, summary }, index) => (
+        <motion.li
+          key={slug}
+          className="py-2"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6, delay: index / 10 }}
+        >
           <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
             <article className="space-y-2 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline bg-opacity-20 py-5 cursor-pointer">
               <div className="space-y-3 xl:col-span-4">
@@ -35,10 +41,8 @@ const PostCard: FC<PostCardProps> = ({ posts, showTags = true }) => {
               </div>
             </article>
           </Link>
-        </li>
+        </motion.li>
       ))}
     </ul>
   )
 }
-
-export default PostCard
