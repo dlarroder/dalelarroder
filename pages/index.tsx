@@ -50,7 +50,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
         )}
         <div className="py-7">
           <h1 className="text-2xl font-mmerriweather font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
-            My <span className="text-green-500">Spotify</span> Top Songs
+            My <span className="text-green-700 dark:text-green-500">Spotify</span> Top Songs
           </h1>
           <TopTracks />
         </div>

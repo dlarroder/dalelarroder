@@ -1,20 +1,19 @@
-import useSWR from 'swr'
-
-import fetcher from 'lib/fetcher'
-import { TopTracks } from 'types/TopTracks'
 import Track from 'components/Track'
+import fetcher from 'lib/fetcher'
+import useSWR from 'swr'
+import { TopTracks } from 'types/TopTracks'
 
 export default function Tracks() {
-  const { data } = useSWR<TopTracks>('/api/top-tracks', fetcher)
+  const { data: topTracks } = useSWR<TopTracks>('/api/top-tracks', fetcher)
 
-  if (!data) {
+  if (!topTracks) {
     return null
   }
 
   return (
     <>
-      {data.tracks.map((track, index) => (
-        <Track ranking={index + 1} key={track.songUrl} {...track} />
+      {topTracks.tracks.map((track, index) => (
+        <Track ranking={index + 1} key={track.songUrl} track={track} />
       ))}
     </>
   )
