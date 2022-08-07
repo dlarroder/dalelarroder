@@ -2,23 +2,20 @@ import headerNavLinks from '@/data/headerNavLinks'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const MobileNav = () => {
   const router = useRouter()
   const [navShow, setNavShow] = useState(false)
 
-  const onToggleNav = () => {
-    setNavShow((status) => {
-      if (status) {
-        document.body.style.overflow = 'auto'
-      } else {
-        // Prevent scrolling
-        document.body.style.overflow = 'hidden'
-      }
-      return !status
-    })
-  }
+  useEffect(() => {
+    if (navShow) {
+      // Prevent scrolling
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [navShow])
 
   return (
     <div className="sm:hidden">
@@ -26,7 +23,7 @@ const MobileNav = () => {
         type="button"
         className="w-8 h-8 py-1 ml-1 mr-1 rounded"
         aria-label="Toggle Menu"
-        onClick={onToggleNav}
+        onClick={(e) => setNavShow(!navShow)}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +48,7 @@ const MobileNav = () => {
             type="button"
             aria-label="toggle modal"
             className="h-8 w-8 rounded"
-            onClick={onToggleNav}
+            onClick={() => setNavShow(!navShow)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +66,7 @@ const MobileNav = () => {
         </header>
         <nav className="fixed h-full mt-8">
           <div key="Home" className="px-12 py-4">
-            <Link href="/" onClick={onToggleNav}>
+            <Link href="/" onClick={() => setNavShow(!navShow)}>
               <a
                 className={classNames(
                   'horizontal-underline backdrop:text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100',
@@ -85,7 +82,7 @@ const MobileNav = () => {
 
             return (
               <div key={title} className="px-12 py-4">
-                <Link href={href} onClick={onToggleNav}>
+                <Link href={href} onClick={() => setNavShow(!navShow)}>
                   <a
                     className={classNames(
                       'horizontal-underline backdrop:text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100',
