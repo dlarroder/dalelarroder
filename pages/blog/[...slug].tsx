@@ -1,6 +1,7 @@
 import LayoutWrapper from '@/components/LayoutWrapper'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import PageTitle from '@/components/PageTitle'
+import ScrollProgressBar from '@/components/ScrollProgressBar'
 import { coreContent, sortedBlogPost } from '@/lib/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import { InferGetStaticPropsType } from 'next'
@@ -44,26 +45,29 @@ export default function Blog({
   next,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <LayoutWrapper>
-      {'draft' in post && post.draft !== true ? (
-        <MDXLayoutRenderer
-          layout={post.layout || DEFAULT_LAYOUT}
-          toc={post.toc}
-          content={post}
-          authorDetails={author}
-          prev={prev}
-          next={next}
-        />
-      ) : (
-        <div className="mt-24 text-center">
-          <PageTitle>
-            Under Construction{' '}
-            <span role="img" aria-label="roadwork sign">
-              🚧
-            </span>
-          </PageTitle>
-        </div>
-      )}
-    </LayoutWrapper>
+    <>
+      <ScrollProgressBar />
+      <LayoutWrapper>
+        {'draft' in post && post.draft !== true ? (
+          <MDXLayoutRenderer
+            layout={post.layout || DEFAULT_LAYOUT}
+            toc={post.toc}
+            content={post}
+            authorDetails={author}
+            prev={prev}
+            next={next}
+          />
+        ) : (
+          <div className="mt-24 text-center">
+            <PageTitle>
+              Under Construction{' '}
+              <span role="img" aria-label="roadwork sign">
+                🚧
+              </span>
+            </PageTitle>
+          </div>
+        )}
+      </LayoutWrapper>
+    </>
   )
 }
