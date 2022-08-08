@@ -42,7 +42,7 @@ export default function PostLayout({ content, authorDetails, children }: Props) 
                 height={500}
               />
             ) : (
-              <div className="bg-primary-500 w-full h-96 rounded-lg" />
+              <div className="bg-primary-500 w-full h-60 rounded-lg" />
             )}
             <div className="space-y-1 text-left absolute bottom-0 left-0 p-6 w-full rounded-b-lg">
               <div>

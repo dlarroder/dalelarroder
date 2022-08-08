@@ -1,7 +1,10 @@
 import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files'
 import readingTime from 'reading-time'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrismPlus from 'rehype-prism-plus'
+import rehypeSlug from 'rehype-slug'
 import remarkCodeTitles from './lib/remark-code-title'
+import { extractTocHeadings } from './lib/remark-toc-headings'
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
@@ -9,7 +12,7 @@ const computedFields: ComputedFields = {
     type: 'string',
     resolve: (doc) => doc._raw.flattenedPath.replace(/^.+?(\/)/, ''),
   },
-  toc: { type: 'string', resolve: (doc) => doc.body.raw },
+  toc: { type: 'string', resolve: (doc) => extractTocHeadings(doc.body.raw) },
 }
 
 export const Blog = defineDocumentType(() => ({
@@ -56,6 +59,6 @@ export default makeSource({
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [remarkCodeTitles],
-    rehypePlugins: [[rehypePrismPlus, { ignoreMissing: true }]],
+    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, [rehypePrismPlus, { ignoreMissing: true }]],
   },
 })

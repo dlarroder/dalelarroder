@@ -78,7 +78,7 @@ const MobileNav = () => {
             </Link>
           </div>
           {headerNavLinks.map(({ title, href }) => {
-            const active = href === router.pathname
+            const active = router.pathname.includes(href)
 
             return (
               <div key={title} className="px-12 py-4">
