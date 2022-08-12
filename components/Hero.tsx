@@ -51,7 +51,7 @@ export default function Hero(): ReactElement {
                 </FadeUp>
                 <FadeRight duration={0.5} delay={0.8}>
                   <Link href="/about">
-                    <a className="underline-magical opacity-80 cursor-pointer w-max text-md sm:text-lg md:text-xl xl:text-2xl">
+                    <a className="underline-magical cursor-pointer w-max text-md sm:text-lg md:text-xl xl:text-2xl">
                       Read more about me &rarr;
                     </a>
                   </Link>
