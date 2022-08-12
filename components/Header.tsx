@@ -1,5 +1,4 @@
 import headerNavLinks from '@/data/headerNavLinks'
-import siteMetadata from '@/data/siteMetadata'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -11,12 +10,19 @@ export const Header = () => {
 
   return (
     <header className="py-5 md:py-10 z-40 bg-transparent">
-      <div className="flex items-center justify-between max-w-5xl mx-auto ">
+      <div className="flex items-center justify-between max-w-5xl mx-auto font-mukta">
         <div>
           <Link href="/" aria-label="Dale Larroder Blog">
             <a className="flex items-center justify-between" aria-label="Home">
-              <div className="font-merriweather hidden text-3xl font-extrabold sm:block">
-                {siteMetadata.headerTitle}
+              <div
+                className={classNames(
+                  'hidden text-3xl font-extrabold sm:block horizontal-underline',
+                  {
+                    'horizontal-underline-active': router.pathname === '/',
+                  }
+                )}
+              >
+                d.
               </div>
             </a>
           </Link>
@@ -33,7 +39,7 @@ export const Header = () => {
                     })}
                     aria-label={title}
                   >
-                    <span className="font-bold tracking-wide text-gray-900 dark:text-gray-100">
+                    <span className="font-mukta font-bold tracking-wide text-gray-900 dark:text-gray-100">
                       {title}
                     </span>
                   </a>

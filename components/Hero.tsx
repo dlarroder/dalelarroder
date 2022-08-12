@@ -27,7 +27,7 @@ export default function Hero(): ReactElement {
   return (
     <div>
       <h1 className="sr-only">
-        Hello I'm Dale Larroder, a Software Engineer / Full Stack Developer from the Philippines.
+        Hello I'm Dale Larroder, I'm a software engineer, and I love building things for the web.
       </h1>
       <div
         className="relative z-10 flex h-[calc(100vh-81px)] md:h-[calc(100vh-112px)] items-center"
@@ -36,54 +36,33 @@ export default function Hero(): ReactElement {
         }}
       >
         <AnimatePresence>
-          <div className="flex flex-col justify-between mt-[-120px] w-screen">
-            <div ref={ref} className="md:text-4xl mx-auto">
-              <div className="max-w-5xl flex flex-col gap-3 font-merriweather">
-                <div className="cursor-default">
-                  <FadeUp duration={0.6}>
-                    <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[9.375rem] lg:leading-[9.375rem]">
-                      Hello
-                    </h2>
-                  </FadeUp>
-                  <div className="flex gap-3 items-center justify-between">
-                    <FadeUp duration={0.6} delay={0.4}>
-                      <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[9.375rem] lg:leading-[9.375rem]">
-                        I'm
-                      </h2>
-                    </FadeUp>
-                    <FadeRight duration={0.6} delay={1.4}>
-                      <div className="opacity-70">
-                        <h2 className="text-[1.625rem] leading-[1.625rem] md:text-[2.688rem] md:leading-[2.688rem] lg:text-[70px] lg:leading-[70px]">
-                          Software Engineer
-                        </h2>
-                        <h2 className="text-[1.625rem] leading-[1.625rem] md:text-[2.688rem] md:leading-[2.688rem] lg:text-[70px] lg:leading-[70px]">
-                          Fullstack Developer
-                        </h2>
-                      </div>
-                    </FadeRight>
-                  </div>
-                  <FadeUp duration={0.6} delay={0.8}>
-                    <h2 className="text-[3.375rem] leading-[3.375rem] md:text-[5.375rem] md:leading-[5.375rem]  lg:text-[9.375rem] lg:leading-[9.375rem]">
-                      Dale Larroder
-                    </h2>
-                  </FadeUp>
-                </div>
-                <FadeRight duration={0.6} delay={2}>
+          <div className="w-screen px-4 max-w-3xl mx-auto sm:px-9 xl:max-w-5xl xl:px-0">
+            <div className="-mt-36">
+              <div ref={ref} className="flex flex-col space-y-2">
+                <FadeUp duration={0.6}>
+                  <h1 className="font-semibold text-5xl sm:text-7xl md:text-8xl xl:text-9xl">
+                    Dale Larroder
+                  </h1>
+                </FadeUp>
+                <FadeUp duration={0.6} delay={0.2}>
+                  <h2 className="font-medium opacity-80 text-3xl sm:text-6xl md:text-6xl xl:text-7xl">
+                    I build things for the web.
+                  </h2>
+                </FadeUp>
+                <FadeRight duration={0.5} delay={0.8}>
                   <Link href="/about">
-                    <a>
-                      <h3 className="underline-magical w-max text-sm md:text-xl ml-1 font-merriweather cursor-pointer">
-                        Read more about me &rarr;
-                      </h3>
+                    <a className="underline-magical opacity-80 cursor-pointer w-max text-md sm:text-lg md:text-xl xl:text-2xl">
+                      Read more about me &rarr;
                     </a>
                   </Link>
                 </FadeRight>
               </div>
-            </div>
-            <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2">
-              <div className="flex flex-col justify-center items-center">
-                <FadeDown duration={1} delay={2.8}>
-                  <HiOutlineArrowNarrowDown size={20} />
-                </FadeDown>
+              <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2">
+                <div className="flex flex-col justify-center items-center">
+                  <FadeDown duration={1} delay={1.2}>
+                    <HiOutlineArrowNarrowDown size={20} />
+                  </FadeDown>
+                </div>
               </div>
             </div>
           </div>

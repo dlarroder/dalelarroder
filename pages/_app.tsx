@@ -1,7 +1,6 @@
 import '@/css/prism.css'
 import '@/css/tailwind.css'
-import '@fontsource/dm-sans'
-import '@fontsource/merriweather'
+import '@fontsource/mukta'
 
 import LogRocket from '@/components/Logrocket'
 import ProgressBar from '@/components/ProgressBar'

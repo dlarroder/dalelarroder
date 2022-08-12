@@ -16,10 +16,6 @@ export default function Footer() {
             <li>
               <Link href="/">{siteMetadata.title}</Link>
             </li>
-            <li>{` • `}</li>
-            <li>
-              <Link href="/activity">Activity</Link>
-            </li>
           </ul>
           <ul className="flex space-x-5 items-center cursor-pointer">
             <li>

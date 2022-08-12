@@ -25,7 +25,7 @@ export default function PostCard({ posts, showTags = true }: PostCardProps) {
               <div className="space-y-3 xl:col-span-4">
                 <span className="text-2xl font-bold leading-8 tracking-tight">
                   <Link href={`/blog/${slug}`}>
-                    <span className="font-merriweather text-primary-500 hover:text-primary-400 duration-300">
+                    <span className="text-primary-500 hover:text-primary-400 duration-300">
                       {title}
                     </span>
                   </Link>
