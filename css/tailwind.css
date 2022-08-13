@@ -59,3 +59,7 @@ input:-webkit-autofill:focus {
   background: #de1d8d !important;
   height: 4px !important;
 }
+
+.introText {
+  transition: opacity 0.4s;
+}

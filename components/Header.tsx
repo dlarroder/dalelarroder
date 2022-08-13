@@ -10,7 +10,7 @@ export const Header = () => {
 
   return (
     <header className="py-5 md:py-10 z-40 bg-transparent">
-      <div className="flex items-center justify-between max-w-5xl mx-auto font-mukta">
+      <div className="flex items-center justify-between max-w-5xl mx-auto">
         <div>
           <Link href="/" aria-label="Dale Larroder Blog">
             <a className="flex items-center justify-between" aria-label="Home">
@@ -39,7 +39,7 @@ export const Header = () => {
                     })}
                     aria-label={title}
                   >
-                    <span className="font-mukta font-bold tracking-wide text-gray-900 dark:text-gray-100">
+                    <span className="font-bold tracking-wide text-gray-900 dark:text-gray-100">
                       {title}
                     </span>
                   </a>

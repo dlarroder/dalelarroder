@@ -14,11 +14,11 @@ export default function WorkContent({ work, progress }: WorkContentProps) {
   return (
     <WorkContainer>
       <WorkLeft progress={progress}>
-        <div>{description}</div>
-        <span className="text-4xl md:text-5xl font-semibold tracking-tight">{title}</span>
+        <div className="font-medium text-2xl md:text-3xl xl:text-4xl">{description}</div>
+        <span className="text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight">{title}</span>
       </WorkLeft>
       <WorkRight progress={progress}>
-        <div className="drop-shadow-2xl">
+        <div className="drop-shadow-2xl md:mt-24 sm:mt-10">
           <Image
             src={image.src}
             alt={title}

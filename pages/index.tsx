@@ -1,6 +1,7 @@
 import { Header } from '@/components/Header'
 import Hero from '@/components/Hero'
 import HomeWrapper from '@/components/HomeWrapper'
+import Intro from '@/components/Intro/Intro'
 import PostCard from '@/components/PostCard'
 import SectionContainer from '@/components/SectionContainer'
 import { PageSEO } from '@/components/SEO'
@@ -31,6 +32,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
         <Header />
       </SectionContainer>
       <Hero />
+      <Intro />
       <Works />
       <HomeWrapper>
         <div className="divide-gray-200 dark:divide-gray-700">
