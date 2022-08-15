@@ -34,6 +34,7 @@ export default function Intro() {
     <div
       ref={refContainer}
       className="relative z-10 bg-black dark:bg-white text-white  dark:text-black"
+      id="intro"
     >
       <div className="min-h-screen max-w-5xl mx-auto px-10 lg:px-20 py-24 md:py-28 lg:py-3 flex flex-col justify-center items-center text-4xl md:text-6xl lg:text-7xl tracking-tight font-semibold">
         <div className="leading-[1.15]">

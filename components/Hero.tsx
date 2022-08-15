@@ -13,7 +13,6 @@ export default function Hero(): ReactElement {
   const { scrollY } = useContext(ScrollContext)
 
   let progress = 0
-
   const { current: elContainer } = ref
 
   if (elContainer) {
@@ -38,7 +37,7 @@ export default function Hero(): ReactElement {
         <AnimatePresence>
           <div className="w-screen px-4 max-w-3xl mx-auto sm:px-9 xl:max-w-5xl xl:px-0">
             <div className="-mt-36">
-              <div ref={ref} className="flex flex-col space-y-2">
+              <div ref={ref} className="flex flex-col space-y-2 cursor-default">
                 <FadeUp duration={0.6}>
                   <h1 className="font-semibold text-5xl sm:text-7xl md:text-8xl xl:text-9xl">
                     Dale Larroder
@@ -58,7 +57,15 @@ export default function Hero(): ReactElement {
                 </FadeRight>
               </div>
               <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2">
-                <div className="flex flex-col justify-center items-center">
+                <div
+                  role="presentation"
+                  className="flex flex-col justify-center items-center cursor-pointer"
+                  onClick={() => {
+                    const intro = document.querySelector('#intro')
+
+                    intro.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                >
                   <FadeDown duration={1} delay={1.2}>
                     <HiOutlineArrowNarrowDown size={20} />
                   </FadeDown>
