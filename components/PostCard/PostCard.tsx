@@ -30,7 +30,7 @@ export default function PostCard({ posts, showTags = true }: PostCardProps) {
                     </span>
                   </Link>
                 </span>
-                {showTags && (
+                {showTags && tags && (
                   <div className="flex flex-wrap gap-3">
                     {tags.map((tag) => (
                       <Tag key={tag} text={tag} />

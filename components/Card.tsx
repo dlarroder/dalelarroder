@@ -1,7 +1,14 @@
 import Image from './Image'
 import Link from './Link'
 
-const Card = ({ title, description, imgSrc, href }) => (
+interface CardProps {
+  title: string
+  description: string
+  imgSrc: string
+  href: string
+}
+
+const Card = ({ title, description, imgSrc, href }: CardProps) => (
   <div className="p-2 md:w-1/2 md" style={{ maxWidth: '544px' }}>
     <div className="h-full overflow-hidden hover:bg-gray-200 hover:bg-opacity-20 rounded-md border-opacity-60 dark:border-gray-700">
       {href ? (

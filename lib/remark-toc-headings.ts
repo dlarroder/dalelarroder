@@ -27,7 +27,7 @@ export function remarkTocHeadings() {
  * @param {string} markdown
  * @return {Toc} toc
  */
-export async function extractTocHeadings(markdown) {
+export async function extractTocHeadings(markdown: string) {
   const vfile = await remark().use(remarkTocHeadings).process(markdown)
   return vfile.data.toc
 }

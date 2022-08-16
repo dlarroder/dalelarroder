@@ -21,7 +21,7 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async (context: { params: { page: any } }) => {
   const {
     params: { page },
   } = context

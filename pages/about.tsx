@@ -12,7 +12,7 @@ export const getStaticProps = async () => {
 export default function About({ author }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <LayoutWrapper>
-      <MDXLayoutRenderer layout={author.layout || DEFAULT_LAYOUT} content={author} />
+      {author && <MDXLayoutRenderer layout={author.layout || DEFAULT_LAYOUT} content={author} />}
     </LayoutWrapper>
   )
 }

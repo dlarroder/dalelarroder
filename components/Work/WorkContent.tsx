@@ -9,7 +9,7 @@ interface WorkContentProps {
   progress?: number
 }
 
-export default function WorkContent({ work, progress }: WorkContentProps) {
+export default function WorkContent({ work, progress = 0 }: WorkContentProps) {
   const { title, description, image } = work
   return (
     <WorkContainer>
