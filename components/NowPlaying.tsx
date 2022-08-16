@@ -35,7 +35,7 @@ export default function NowPlaying() {
           {' – '}
         </span>
         <p className="capsize text-gray-500 dark:text-gray-300 max-w-max truncate">
-          {data?.artist ?? 'Spotify'}
+          {data?.artist || 'Spotify'}
         </p>
       </div>
     </div>
