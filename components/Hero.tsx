@@ -63,7 +63,7 @@ export default function Hero(): ReactElement {
                   onClick={() => {
                     const intro = document.querySelector('#intro')
 
-                    intro.scrollIntoView({ behavior: 'smooth' })
+                    intro?.scrollIntoView({ behavior: 'smooth' })
                   }}
                 >
                   <FadeDown duration={1} delay={1.2}>

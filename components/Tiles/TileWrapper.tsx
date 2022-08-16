@@ -8,7 +8,7 @@ interface WrapperProps {
 }
 
 export default function TileWrapper({ children, numOfPages }: WrapperProps) {
-  const refContainer = useRef<HTMLDivElement>()
+  const refContainer = useRef<HTMLDivElement>(null)
 
   const { scrollY } = useContext(ScrollContext)
   let currentPage = 0

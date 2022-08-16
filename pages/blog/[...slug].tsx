@@ -16,7 +16,7 @@ export async function getStaticPaths() {
   }
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: any) => {
   const slug = (params.slug as string[]).join('/')
   const sortedPosts = sortedBlogPost(allBlogs)
   const postIndex = sortedPosts.findIndex((p) => p.slug === slug)
@@ -26,7 +26,7 @@ export const getStaticProps = async ({ params }) => {
   const nextContent = sortedPosts[postIndex - 1] || null
   const next = nextContent ? coreContent(nextContent) : null
   const post = sortedPosts.find((p) => p.slug === slug)
-  const author = post.author || ['default']
+  const author = post?.author || ['default']
 
   return {
     props: {
@@ -48,7 +48,7 @@ export default function Blog({
     <>
       <ScrollProgressBar />
       <LayoutWrapper>
-        {'draft' in post && post.draft !== true ? (
+        {post && 'draft' in post && post.draft !== true ? (
           <MDXLayoutRenderer
             layout={post.layout || DEFAULT_LAYOUT}
             toc={post.toc}

@@ -1,16 +1,19 @@
+import { NextApiResponse, type NextApiRequest } from 'next/types'
+import { nowPlayingEmptyState, NowPlayingSong } from 'types/NowPlaying'
 import { getNowPlaying } from '../../lib/spotify'
+import { Artist } from './top-tracks'
 
-const nowPlaying = async (_, res) => {
+const nowPlaying = async (req: NextApiRequest, res: NextApiResponse<NowPlayingSong>) => {
   const response = await getNowPlaying()
 
   if (response.status === 204 || response.status > 400) {
-    return res.status(200).json({ isPlaying: false })
+    return res.status(200).json(nowPlayingEmptyState)
   }
 
   const song = await response.json()
   const isPlaying = song.is_playing
   const title = song.item.name
-  const artist = song.item.artists.map((_artist) => _artist.name).join(', ')
+  const artist = song.item.artists.map((artist: Artist) => artist.name).join(', ')
   const album = song.item.album.name
   const albumImageUrl = song.item.album.images[0].url
   const songUrl = song.item.external_urls.spotify

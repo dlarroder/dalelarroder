@@ -1,11 +1,7 @@
-import { ReactNode, useRef, useState } from 'react'
+import { DetailedHTMLProps, HTMLAttributes, useRef, useState } from 'react'
 
-interface Props {
-  children: ReactNode
-}
-
-const Pre = ({ children }: Props) => {
-  const textInput = useRef(null)
+const Pre = ({ children }: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreElement>) => {
+  const textInput = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState(false)
   const [copied, setCopied] = useState(false)
 
@@ -18,7 +14,7 @@ const Pre = ({ children }: Props) => {
   }
   const onCopy = () => {
     setCopied(true)
-    navigator.clipboard.writeText(textInput.current.textContent)
+    navigator.clipboard.writeText(textInput.current?.textContent as string)
     setTimeout(() => {
       setCopied(false)
     }, 2000)

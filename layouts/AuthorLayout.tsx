@@ -27,7 +27,7 @@ export default function AuthorLayout({ children, content }: Props) {
               alt="Dale Larroder"
               height={130}
               width={130}
-              src={avatar}
+              src={avatar || ''}
               className="object-scale-down rounded-full grayscale"
             />
           </div>
