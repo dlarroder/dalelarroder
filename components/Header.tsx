@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 
-export const Header = () => {
+export default function Header() {
   const router = useRouter()
 
   return (

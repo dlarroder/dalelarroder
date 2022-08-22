@@ -1,5 +1,5 @@
 import { NextApiResponse, type NextApiRequest } from 'next/types'
-import { nowPlayingEmptyState, NowPlayingSong } from 'types/NowPlaying'
+import { nowPlayingEmptyState, NowPlayingSong } from 'types/Spotify'
 import { getNowPlaying } from '../../lib/spotify'
 import { Artist } from './top-tracks'
 

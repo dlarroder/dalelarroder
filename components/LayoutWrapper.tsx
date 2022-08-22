@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { ReactNode } from 'react'
 import Footer from './Footer'
-import { Header } from './Header'
+import Header from './Header'
 import SectionContainer from './SectionContainer'
 
 interface Props {

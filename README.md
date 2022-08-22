@@ -22,7 +22,7 @@ git clone git@github.com:dlarroder/dalelarroder.git
 cd dalelarroder
 ```
 
-3. Install yarn Packages
+3. Install yarn packages
 
 ```bash
 yarn

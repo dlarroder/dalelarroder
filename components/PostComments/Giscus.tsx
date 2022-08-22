@@ -1,9 +1,8 @@
+import siteMetadata from '@/data/siteMetadata'
 import { useTheme } from 'next-themes'
 import { useEffect } from 'react'
 
-import siteMetadata from '@/data/siteMetadata'
-
-const Giscus = () => {
+export default function Giscus() {
   const { theme, resolvedTheme } = useTheme()
   const COMMENTS_ID = 'comments-container'
 
@@ -15,7 +14,6 @@ const Giscus = () => {
           : siteMetadata.comment.giscusConfig.theme
         : siteMetadata.comment.giscusConfig.themeURL
 
-    // setEnabledLoadComments(false)
     const script = document.createElement('script')
     script.src = 'https://giscus.app/client.js'
     script.setAttribute('data-repo', siteMetadata.comment.giscusConfig.repo)
@@ -44,5 +42,3 @@ const Giscus = () => {
     </div>
   )
 }
-
-export default Giscus

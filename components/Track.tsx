@@ -1,4 +1,4 @@
-import { Song } from 'types/TopTracks'
+import { Song } from 'types/Spotify'
 
 interface TrackProps {
   ranking: number

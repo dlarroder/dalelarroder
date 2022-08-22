@@ -6,7 +6,7 @@ interface Props {
   children: ReactNode
 }
 
-const HomeWrapper = ({ children }: Props) => {
+export default function HomeWrapper({ children }: Props) {
   return (
     <SectionContainer>
       <div className="flex flex-col justify-evenly pt-6 md:pt-9">
@@ -16,5 +16,3 @@ const HomeWrapper = ({ children }: Props) => {
     </SectionContainer>
   )
 }
-
-export default HomeWrapper
