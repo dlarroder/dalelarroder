@@ -1,4 +1,4 @@
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import { ReactElement, useContext, useEffect, useRef } from 'react'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
@@ -28,9 +28,9 @@ export default function Hero(): ReactElement {
       <h1 className="sr-only">
         Hello I'm Dale Larroder, I'm a software engineer, and I love building things for the web.
       </h1>
-      <div
+      <motion.div
         className="relative z-10 flex h-[calc(100vh-81px)] md:h-[calc(100vh-112px)] items-center"
-        style={{
+        animate={{
           transform: `translateY(${progress * 20}vh)`,
         }}
       >
@@ -49,10 +49,11 @@ export default function Hero(): ReactElement {
                   </h2>
                 </FadeUp>
                 <FadeRight duration={0.5} delay={0.8}>
-                  <Link href="/about">
-                    <a className="underline-magical cursor-pointer w-max text-md sm:text-lg md:text-xl xl:text-2xl">
-                      Read more about me &rarr;
-                    </a>
+                  <Link
+                    href="/about"
+                    className="underline-magical cursor-pointer w-max text-md sm:text-lg md:text-xl xl:text-2xl"
+                  >
+                    Read more about me &rarr;
                   </Link>
                 </FadeRight>
               </div>
@@ -74,7 +75,7 @@ export default function Hero(): ReactElement {
             </div>
           </div>
         </AnimatePresence>
-      </div>
+      </motion.div>
       <canvas className="bg-skin-base pointer-events-none absolute inset-0" id="canvas"></canvas>
     </div>
   )

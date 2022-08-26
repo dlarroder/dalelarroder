@@ -66,15 +66,15 @@ const MobileNav = () => {
         </header>
         <nav className="fixed h-full mt-8">
           <div key="Home" className="px-12 py-4">
-            <Link href="/" onClick={() => setNavShow(!navShow)}>
-              <a
-                className={classNames(
-                  'horizontal-underline backdrop:text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100',
-                  { 'horizontal-underline-active': router.pathname === '/' }
-                )}
-              >
-                Home
-              </a>
+            <Link
+              href="/"
+              onClick={() => setNavShow(!navShow)}
+              className={classNames(
+                'horizontal-underline backdrop:text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100',
+                { 'horizontal-underline-active': router.pathname === '/' }
+              )}
+            >
+              Home
             </Link>
           </div>
           {headerNavLinks.map(({ title, href }) => {
@@ -82,16 +82,16 @@ const MobileNav = () => {
 
             return (
               <div key={title} className="px-12 py-4">
-                <Link href={href} onClick={() => setNavShow(!navShow)}>
-                  <a
-                    className={classNames(
-                      'horizontal-underline backdrop:text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100',
-                      { 'horizontal-underline-active': active }
-                    )}
-                    aria-label={title}
-                  >
-                    {title}
-                  </a>
+                <Link
+                  href={href}
+                  onClick={() => setNavShow(!navShow)}
+                  className={classNames(
+                    'horizontal-underline backdrop:text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100',
+                    { 'horizontal-underline-active': active }
+                  )}
+                  aria-label={title}
+                >
+                  {title}
                 </Link>
               </div>
             )
