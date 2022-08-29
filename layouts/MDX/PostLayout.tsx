@@ -1,3 +1,4 @@
+import Image from '@/components/Image'
 import PageTitle from '@/components/PageTitle'
 import PostComments from '@/components/PostComments'
 import SectionContainer from '@/components/SectionContainer'
@@ -6,7 +7,6 @@ import siteMetadata from '@/data/siteMetadata'
 import { CoreContent } from '@/lib/utils/contentlayer'
 import type { Authors, Blog } from 'contentlayer/generated'
 import { ReactNode } from 'react'
-import Image from '../components/Image'
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   year: 'numeric',

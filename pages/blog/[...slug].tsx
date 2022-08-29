@@ -1,7 +1,7 @@
-import LayoutWrapper from '@/components/LayoutWrapper'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import PageTitle from '@/components/PageTitle'
 import ScrollProgressBar from '@/components/ScrollProgressBar'
+import MainLayout from '@/layouts/MainLayout'
 import { coreContent, sortedBlogPost } from '@/lib/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import { InferGetStaticPropsType } from 'next'
@@ -47,7 +47,7 @@ export default function Blog({
   return (
     <>
       <ScrollProgressBar />
-      <LayoutWrapper>
+      <MainLayout>
         {post && 'draft' in post && post.draft !== true ? (
           <MDXLayoutRenderer
             layout={post.layout || DEFAULT_LAYOUT}
@@ -67,7 +67,7 @@ export default function Blog({
             </PageTitle>
           </div>
         )}
-      </LayoutWrapper>
+      </MainLayout>
     </>
   )
 }

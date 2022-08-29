@@ -6,7 +6,7 @@ interface Props {
   content: Omit<Authors, '_id' | '_raw' | 'body'>
 }
 
-export default function AuthorLayout({ children, content }: Props) {
+export default function UsesLayout({ children, content }: Props) {
   const { name } = content
 
   return (

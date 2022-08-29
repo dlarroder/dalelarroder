@@ -20,7 +20,7 @@ interface Wrapper {
 }
 
 const Wrapper = ({ layout, content, ...rest }: MDXLayout) => {
-  const Layout = require(`../layouts/${layout}`).default
+  const Layout = require(`../layouts/MDX/${layout}`).default
   return <Layout content={content} {...rest} />
 }
 

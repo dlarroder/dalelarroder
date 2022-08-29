@@ -1,8 +1,8 @@
-import LayoutWrapper from '@/components/LayoutWrapper'
 import Link from '@/components/Link'
 import { PageSEO } from '@/components/SEO'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import MainLayout from '@/layouts/MainLayout'
 import { getAllTags } from '@/lib/utils/contentlayer'
 import kebabCase from '@/lib/utils/kebabCase'
 import { allBlogs } from 'contentlayer/generated'
@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps<{ tags: Record<string, number> }> = 
 export default function Tags({ tags }: InferGetStaticPropsType<typeof getStaticProps>) {
   const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a])
   return (
-    <LayoutWrapper>
+    <MainLayout>
       <PageSEO title={`Tags - ${siteMetadata.author}`} description="Things I blog about" />
       <div className="flex flex-col items-start justify-start divide-y divide-gray-200 dark:divide-gray-700 md:justify-center md:items-center md:divide-y-0 md:flex-row md:space-x-6 md:mt-24">
         <div className="pt-6 pb-8 space-x-2 md:space-y-5">
@@ -42,6 +42,6 @@ export default function Tags({ tags }: InferGetStaticPropsType<typeof getStaticP
           })}
         </div>
       </div>
-    </LayoutWrapper>
+    </MainLayout>
   )
 }

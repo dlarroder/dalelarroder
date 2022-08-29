@@ -1,18 +1,18 @@
 import { motion } from 'framer-motion'
 import { ReactNode } from 'react'
-import Footer from './Footer'
-import Header from './Header'
-import SectionContainer from './SectionContainer'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+import SectionContainer from '../components/SectionContainer'
 
 interface Props {
   children: ReactNode
 }
 
-const LayoutWrapper = ({ children }: Props) => {
+export default function MainLayout({ children }: Props) {
   const variants = {
-    hidden: { opacity: 0, x: -200, y: 0 },
-    enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 0, y: -100 },
+    hidden: { opacity: 0, x: -200 },
+    enter: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: 0 },
   }
 
   return (
@@ -34,5 +34,3 @@ const LayoutWrapper = ({ children }: Props) => {
     </SectionContainer>
   )
 }
-
-export default LayoutWrapper
