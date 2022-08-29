@@ -1,7 +1,7 @@
-import LayoutWrapper from '@/components/LayoutWrapper'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
-import ListLayout from '@/layouts/ListLayout'
+import MainLayout from '@/layouts/MainLayout'
+import ListLayout from '@/layouts/MDX/ListLayout'
 import { allCoreContent } from '@/lib/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import { InferGetStaticPropsType } from 'next'
@@ -51,7 +51,7 @@ export default function PostPage({
   pagination,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <LayoutWrapper>
+    <MainLayout>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
       <ListLayout
         posts={posts}
@@ -59,6 +59,6 @@ export default function PostPage({
         pagination={pagination}
         title="All Posts"
       />
-    </LayoutWrapper>
+    </MainLayout>
   )
 }

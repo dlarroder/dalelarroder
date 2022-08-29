@@ -1,12 +1,12 @@
 import { ReactNode } from 'react'
-import Footer from './Footer'
-import SectionContainer from './SectionContainer'
+import Footer from '../components/Footer'
+import SectionContainer from '../components/SectionContainer'
 
 interface Props {
   children: ReactNode
 }
 
-export default function HomeWrapper({ children }: Props) {
+export default function HomeLayout({ children }: Props) {
   return (
     <SectionContainer>
       <div className="flex flex-col justify-evenly pt-6 md:pt-9">

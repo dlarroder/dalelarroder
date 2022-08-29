@@ -1,5 +1,5 @@
-import LayoutWrapper from '@/components/LayoutWrapper'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
+import MainLayout from '@/layouts/MainLayout'
 import { allAuthors } from 'contentlayer/generated'
 import { InferGetStaticPropsType } from 'next'
 
@@ -11,8 +11,8 @@ export const getStaticProps = async () => {
 }
 export default function About({ author }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <LayoutWrapper>
+    <MainLayout>
       {author && <MDXLayoutRenderer layout={author.layout || DEFAULT_LAYOUT} content={author} />}
-    </LayoutWrapper>
+    </MainLayout>
   )
 }

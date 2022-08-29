@@ -1,6 +1,6 @@
 import fetcher from 'lib/fetcher'
 import useSWR from 'swr'
-import { NowPlayingSong } from '../types/Spotify'
+import { NowPlayingSong } from '../../types/Spotify'
 import AnimatedBars from './AnimatedBars'
 
 export default function NowPlaying() {
