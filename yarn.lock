@@ -3838,10 +3838,10 @@ fetch-blob@^3.1.2, fetch-blob@^3.1.4:
     node-domexception "^1.0.0"
     web-streams-polyfill "^3.0.3"
 
-figures@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/figures/-/figures-4.0.1.tgz#27b26609907bc888b3e3b0ef5403643f80aa2518"
-  integrity sha512-rElJwkA/xS04Vfg+CaZodpso7VqBknOYbzi6I76hI4X80RUjkSxO2oAyPmGbuXUppywjqndOrQDl817hDnI++w==
+figures@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/figures/-/figures-5.0.0.tgz#126cd055052dea699f8a54e8c9450e6ecfc44d5f"
+  integrity sha512-ej8ksPF4x6e5wvK9yevct0UCXh8TTFlWGVLlgjZuoBH1HwjIfKE/IdL5mq89sFA7zELi1VhKpmtDnrs7zWyeyg==
   dependencies:
     escape-string-regexp "^5.0.0"
     is-unicode-supported "^1.2.0"
@@ -4316,17 +4316,17 @@ inline-style-parser@0.1.1:
   resolved "https://registry.yarnpkg.com/inline-style-parser/-/inline-style-parser-0.1.1.tgz#ec8a3b429274e9c0a1f1c4ffa9453a7fef72cea1"
   integrity sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==
 
-inquirer@9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-9.1.0.tgz#446a09abe2e5a18973322bee89b42a6c304f2cd3"
-  integrity sha512-eukdjrBljg9t55ZnvJjvGi1OyYEzVBFsO/8o5d2MV3mc28u3x4X2kS4eJ/+9U10KiREfPkEBSeCrU/S2G/uRtw==
+inquirer@9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-9.1.1.tgz#e15a12723f4f607d1b4489b56a0ecc7a6965e17d"
+  integrity sha512-hfS9EJ1pVkGNbYKqzdGwMj0Dqosd36Qvxd5pFy4657QT23gmtFTSqoYBisZR75DReeSMWPNa8J0Lf6TQCz8PvA==
   dependencies:
     ansi-escapes "^5.0.0"
     chalk "^5.0.1"
     cli-cursor "^4.0.0"
     cli-width "^4.0.0"
     external-editor "^3.0.3"
-    figures "^4.0.1"
+    figures "^5.0.0"
     lodash "^4.17.21"
     mute-stream "0.0.8"
     ora "^6.1.2"
