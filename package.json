@@ -16,7 +16,7 @@
   "dependencies": {
     "@fontsource/mukta": "4.5.9",
     "classnames": "2.3.1",
-    "contentlayer": "0.2.7",
+    "contentlayer": "0.2.8",
     "esbuild": "0.14.47",
     "framer-motion": "7.1.0",
     "github-slugger": "1.4.0",
