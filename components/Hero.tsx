@@ -33,6 +33,7 @@ export default function Hero(): ReactElement {
         animate={{
           transform: `translateY(${progress * 20}vh)`,
         }}
+        transition={{ type: 'spring', stiffness: 50 }}
       >
         <AnimatePresence>
           <div className="w-screen px-4 max-w-3xl mx-auto sm:px-9 xl:max-w-5xl xl:px-0">
