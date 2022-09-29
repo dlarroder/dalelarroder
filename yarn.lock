@@ -1253,6 +1253,14 @@
     ts-pattern "^4.0.5"
     type-fest "^2.18.0"
 
+"@dlarroder/playground@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@dlarroder/playground/-/playground-1.0.1.tgz#e9244d00de6e939c375631839adac7632114a0ba"
+  integrity sha512-zmDWa3Inu6x8xXTKDMp4H4O8I+4BtvXx3/2I8dG5wDRSHuhRPoGXa2BagZoEzgByEueZT5vERhPZsA+1zxqRMQ==
+  dependencies:
+    "@headlessui/react" "^1.7.2"
+    classnames "^2.3.2"
+
 "@effect-ts/core@^0.60.2":
   version "0.60.4"
   resolved "https://registry.yarnpkg.com/@effect-ts/core/-/core-0.60.4.tgz#0b63a82e3fd01bc8a643740ae91ea902b7ff5990"
@@ -1370,6 +1378,11 @@
     long "^4.0.0"
     protobufjs "^7.0.0"
     yargs "^16.2.0"
+
+"@headlessui/react@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.7.2.tgz#e6a6a8d38342064a53182f1eb2bf6d9c1e53ba6a"
+  integrity sha512-snLv2lxwsf2HNTOBNgHYdvoYZ3ChJE8QszPi1d/hl9js8KrFrUulTaQBfSyPbJP5BybVreWh9DxCgz9S0Z6hKQ==
 
 "@humanwhocodes/config-array@^0.10.4":
   version "0.10.4"
@@ -2716,6 +2729,11 @@ classnames@2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
+
+classnames@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
+  integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
 
 clean-stack@^2.0.0:
   version "2.2.0"

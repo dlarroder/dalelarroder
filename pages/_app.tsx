@@ -1,5 +1,6 @@
 import '@/css/prism.css'
 import '@/css/tailwind.css'
+import '@dlarroder/playground/dist/styles.css'
 import '@fontsource/mukta'
 
 import LogRocket from '@/components/Logrocket'

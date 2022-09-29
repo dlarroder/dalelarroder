@@ -5,6 +5,7 @@ import { ComponentMap } from 'mdx-bundler/client'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import Image from './Image'
 import CustomLink from './Link'
+import Switch from './Playground/Switch'
 import Pre from './Pre'
 import TOCInline from './TOCInline'
 
@@ -30,6 +31,7 @@ export const MDXComponents: ComponentMap = {
   a: CustomLink,
   pre: Pre,
   wrapper: Wrapper,
+  Switch,
 }
 
 export const MDXLayoutRenderer = ({ layout, content, ...rest }: MDXLayout) => {
