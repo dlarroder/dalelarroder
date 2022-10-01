@@ -1,16 +1,15 @@
-import { useContext, useEffect, useState } from 'react'
-import { ScrollContext } from '../ScrollObserver'
+import { useScroll } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 export default function ScrollProgressBar() {
   const [width, setWidth] = useState(0)
-  const { scrollY, scrollHeight } = useContext(ScrollContext)
+  const { scrollYProgress } = useScroll()
 
   useEffect(() => {
-    const el = document.documentElement
-    const percent = (scrollY / (scrollHeight - el.clientHeight)) * 100
+    scrollYProgress.onChange((v) => setWidth(v * 100))
 
-    setWidth(percent)
-  }, [setWidth, scrollHeight, scrollY])
+    return () => scrollYProgress.destroy()
+  }, [scrollYProgress])
 
-  return <div className="fixed top-0 h-1 z-40 bg-primary-500" style={{ width: width + '%' }}></div>
+  return <div className="fixed top-0 h-1 z-40 bg-primary-500" style={{ width: width + '%' }} />
 }
