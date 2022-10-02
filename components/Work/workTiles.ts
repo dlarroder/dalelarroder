@@ -13,7 +13,7 @@ export const workTiles: WorkTile[] = [
     description: `Here is`,
     title: `what I've been up to`,
     image: {
-      src: '/static/images/aphex-apps.png',
+      src: '/static/images/aphex-apps.webp',
       width: 600,
       height: 770,
     },
@@ -22,7 +22,7 @@ export const workTiles: WorkTile[] = [
     description: 'I helped build',
     title: 'Aphex Field',
     image: {
-      src: '/static/images/field-app.png',
+      src: '/static/images/field-app.webp',
       width: 600,
       height: 554,
     },
@@ -31,7 +31,7 @@ export const workTiles: WorkTile[] = [
     description: 'I helped maintain',
     title: 'Aphex Planner',
     image: {
-      src: '/static/images/planner-app.png',
+      src: '/static/images/planner-app.webp',
       width: 600,
       height: 717,
     },
@@ -40,7 +40,7 @@ export const workTiles: WorkTile[] = [
     description: `I'm currently building`,
     title: 'Aphex Publication',
     image: {
-      src: '/static/images/publication-app.png',
+      src: '/static/images/publication-app.webp',
       width: 600,
       height: 717,
     },
