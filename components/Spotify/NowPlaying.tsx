@@ -25,7 +25,7 @@ export default function NowPlaying() {
   }
 
   return (
-    <div className="flex justify-center space-x-4 items-center mt-4 sm:flex-row-reverse sm:justify-between sm:space-x-0">
+    <div className="flex justify-center space-x-2 items-center mt-4 sm:flex-row sm:justify-start sm:space-x-2">
       <AnimatedBars />
       <div className="inline-flex space-x-2 items-center text-sm sm:text-base max-w-[70%] sm:max-w-[90%]">
         <a
