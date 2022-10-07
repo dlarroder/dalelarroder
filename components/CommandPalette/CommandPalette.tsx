@@ -2,6 +2,7 @@ import { Command } from 'cmdk'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { TbCommand } from 'react-icons/tb'
+import CommandItem from './CommandItem'
 import usePaletteOptions from './usePaletteOptions'
 
 export default function CommandPalette() {
@@ -30,48 +31,40 @@ export default function CommandPalette() {
 
           <Command.Group heading="General">
             {generalOptions.map(({ id, name, onSelect, icon }) => (
-              <Command.Item
+              <CommandItem
+                id={id}
                 key={id}
-                onSelect={(v) => {
-                  onSelect(v)
-                  setOpen(false)
-                }}
-                value={id}
-              >
-                {icon && <div>{icon}</div>}
-                <div>{name}</div>
-              </Command.Item>
+                name={name}
+                icon={icon}
+                setOpen={setOpen}
+                onSelect={onSelect}
+              />
             ))}
           </Command.Group>
 
           <Command.Group heading="Pages">
             {pageOptions.map(({ id, name, icon, onSelect }) => (
-              <Command.Item
+              <CommandItem
+                id={id}
                 key={id}
-                onSelect={(v) => {
-                  onSelect(v)
-                  setOpen(false)
-                }}
-                value={id}
-              >
-                {icon && <div>{icon}</div>}
-                <div>{name}</div>
-              </Command.Item>
+                name={name}
+                icon={icon}
+                setOpen={setOpen}
+                onSelect={onSelect}
+              />
             ))}
           </Command.Group>
 
           <Command.Group heading="Blogs">
-            {blogOptions.map(({ id, name, onSelect }) => (
-              <Command.Item
+            {blogOptions.map(({ id, name, onSelect, icon }) => (
+              <CommandItem
+                id={id}
                 key={id}
-                onSelect={(v) => {
-                  onSelect(v)
-                  setOpen(false)
-                }}
-                value={id}
-              >
-                <div>{name}</div>
-              </Command.Item>
+                name={name}
+                icon={icon}
+                setOpen={setOpen}
+                onSelect={onSelect}
+              />
             ))}
           </Command.Group>
         </Command.List>
