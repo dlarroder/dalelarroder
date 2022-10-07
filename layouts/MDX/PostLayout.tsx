@@ -1,6 +1,7 @@
 import Image from '@/components/Image'
 import PageTitle from '@/components/PageTitle'
 import PostComments from '@/components/PostComments'
+import PostNavigation from '@/components/PostNavigation'
 import SectionContainer from '@/components/SectionContainer'
 import { BlogSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
@@ -18,9 +19,11 @@ interface Props {
   content: CoreContent<Blog>
   authorDetails: CoreContent<Authors>
   children: ReactNode
+  next?: { slug: string; title: string }
+  prev?: { slug: string; title: string }
 }
 
-export default function PostLayout({ content, authorDetails, children }: Props) {
+export default function PostLayout({ content, authorDetails, children, next, prev }: Props) {
   const { slug, date, title, images, author, readingTime } = content
 
   return (
@@ -65,12 +68,13 @@ export default function PostLayout({ content, authorDetails, children }: Props) 
             </div>
           </header>
           <div
-            className="pb-8 divide-y divide-gray-200 xl:divide-y-0 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 font-medium"
+            className="divide-y divide-gray-200 xl:divide-y-0 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 font-medium"
             style={{ gridTemplateRows: 'auto 1fr' }}
           >
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-4 xl:row-span-2">
               <div className="pt-8 pb-8 prose dark:prose-dark max-w-none">
                 {children}
+                <PostNavigation prev={prev} next={next} />
                 <PostComments />
               </div>
             </div>
