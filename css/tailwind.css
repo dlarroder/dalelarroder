@@ -27,13 +27,11 @@ input:-webkit-autofill:focus {
 }
 
 .underline-magical {
-  @apply bg-gradient-to-r from-primary-500 to-primary-500 bg-no-repeat [background-position:0_100%]
-    [background-size:100%_0.2em]
-    hover:[background-size:100%_100%] no-underline hover:text-white
-    focus:[background-size:100%_100%] motion-safe:transition-all
-    motion-safe:duration-300
-    dark:from-primary-500
-    dark:to-primary-500;
+  @apply bg-gradient-to-r from-primary-500 to-primary-500 bg-no-repeat 
+  [background-position:0_100%] [background-size:100%_0.2em]
+  hover:[background-size:100%_100%] no-underline hover:text-white
+  focus:[background-size:100%_100%] motion-safe:transition-all
+  motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500;
 }
 
 .horizontal-underline {
@@ -62,4 +60,45 @@ input:-webkit-autofill:focus {
 
 .introText {
   transition: opacity 0.4s;
+}
+
+[cmdk-root] {
+  @apply max-w-[640px] w-full p-2 bg-white rounded-xl shadow-lg 
+  border fixed top-[25vh] left-1/2 transform -translate-x-1/2 z-10 
+  dark:bg-neutral-900 dark:shadow-neutral-700 dark:border-neutral-800 
+  dark:shadow;
+}
+
+[cmdk-input] {
+  @apply h-12 w-full bg-transparent outline-none focus:ring-0 
+  focus:border-transparent focus:border-b focus:border-b-gray-200
+  text-sm text-gray-500 font-semibold placeholder-gray-500 border-0 
+  border-b border-b-gray-200 dark:text-gray-200 dark:border-b-gray-500
+  dark:placeholder-gray-300;
+}
+
+[cmdk-list] {
+  @apply px-4 max-h-64 overflow-y-scroll mt-2 scrollbar-thumb-rounded-lg
+  scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 
+  scrollbar-track-rounded-lg dark:scrollbar-thumb-neutral-700 
+  dark:scrollbar-track-neutral-800;
+}
+
+[cmdk-item] {
+  @apply cursor-pointer h-12 text-sm flex items-center space-x-3 px-4 rounded-md
+  text-gray-700 select-none transition-all ease-in duration-200 relative 
+  font-medium dark:text-gray-200;
+}
+
+[cmdk-item][aria-selected='true'] {
+  @apply bg-gray-200 dark:bg-neutral-800;
+}
+
+[cmdk-group-heading] {
+  @apply select-none text-sm text-gray-700 dark:text-gray-200 py-1 
+  font-medium flex items-center;
+}
+
+[cmdk-empty] {
+  @apply flex items-center justify-center text-sm text-gray-500 py-4;
 }
