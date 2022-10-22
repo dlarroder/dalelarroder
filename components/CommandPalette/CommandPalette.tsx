@@ -1,7 +1,5 @@
 import { Command } from 'cmdk'
-import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { TbCommand } from 'react-icons/tb'
 import CommandItem from './CommandItem'
 import usePaletteOptions from './usePaletteOptions'
 
@@ -69,7 +67,7 @@ export default function CommandPalette() {
           </Command.Group>
         </Command.List>
       </Command.Dialog>
-      <motion.button
+      {/* <motion.button
         onClick={() => setOpen(true)}
         aria-label="Open command palette"
         type="button"
@@ -77,7 +75,7 @@ export default function CommandPalette() {
         whileHover={{ scale: 1.2 }}
       >
         <TbCommand size={22} className="ext-gray-100" />
-      </motion.button>
+      </motion.button> */}
     </>
   )
 }

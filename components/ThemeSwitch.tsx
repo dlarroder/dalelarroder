@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { TbBolt, TbBoltOff } from 'react-icons/tb'
+import { BsMoonFill, BsSunFill } from 'react-icons/bs'
 
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false)
@@ -15,7 +15,12 @@ const ThemeSwitch = () => {
       id="theme-btn"
       aria-label="Toggle Dark Mode"
       type="button"
-      className="w-8 h-8 p-1 rounded"
+      className="w-8 h-8 p-1 ml-1 mr-1 rounded"
+      whileTap={{
+        scale: 0.7,
+        rotate: 360,
+        transition: { duration: 0.2 },
+      }}
       whileHover={{ scale: 1.2 }}
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
@@ -26,9 +31,9 @@ const ThemeSwitch = () => {
         className="text-gray-900 dark:text-gray-100"
       >
         {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? (
-          <TbBolt size={20} />
+          <BsSunFill size={16} />
         ) : (
-          <TbBoltOff size={20} />
+          <BsMoonFill size={18} />
         )}
       </svg>
     </motion.button>
