@@ -2389,7 +2389,7 @@
     "@typescript-eslint/types" "5.40.1"
     eslint-visitor-keys "^3.3.0"
 
-"@vercel/analytics@^0.1.1":
+"@vercel/analytics@0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@vercel/analytics/-/analytics-0.1.1.tgz#ce036282d76f03417141b54830930f915f40504b"
   integrity sha512-34on7YtVt/yT8+QX7c5K2bcKYXnax06sQiK2PUdlQ1ABg5699mPdLGOSpS1gF//kR1s9oig4MCJ+N9nOjpaS6g==
@@ -2951,7 +2951,7 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
-cmdk@^0.1.20:
+cmdk@0.1.20:
   version "0.1.20"
   resolved "https://registry.yarnpkg.com/cmdk/-/cmdk-0.1.20.tgz#1702859b14b13c625301b6989c8107d469c18228"
   integrity sha512-b05kPE+9jmGRibOf2h34d1ybCFfYYOiwsyylDtvhI0ptDSJ/gbPDQSq6DySL4b74ZnK/JH/WVP3UPuAYXRPypg==
@@ -6924,7 +6924,7 @@ swr@1.3.0:
   resolved "https://registry.yarnpkg.com/swr/-/swr-1.3.0.tgz#c6531866a35b4db37b38b72c45a63171faf9f4e8"
   integrity sha512-dkghQrOl2ORX9HYrMDtPa7LTVHJjCTeZoB1dqTbnnEDlSvN8JEKpYIYurDfvbQFUUS8Cg8PceFVZNkW0KNNYPw==
 
-tailwind-scrollbar@^2.0.1:
+tailwind-scrollbar@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/tailwind-scrollbar/-/tailwind-scrollbar-2.0.1.tgz#f08721173d513f1406a44601640b79726e3f9728"
   integrity sha512-OcR7qHBbux4k+k6bWqnEQFYFooLK/F4dhkBz6nvswIoaA9ancZ5h20e0tyV7ifSWLDCUBtpG+1NHRA8HMRH/wg==
