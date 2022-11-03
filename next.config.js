@@ -66,9 +66,6 @@ module.exports = withContentlayer(
     eslint: {
       dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
     },
-    experimental: {
-      newNextLinkBehavior: true,
-    },
     async headers() {
       return [
         {
