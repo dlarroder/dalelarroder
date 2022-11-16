@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@dlarroder/playground": "^1.2.2",
-    "@fontsource/mukta": "4.5.9",
+    "@fontsource/mukta": "4.5.10",
     "@next/font": "^13.0.1",
     "@vercel/analytics": "^0.1.1",
     "classnames": "2.3.2",

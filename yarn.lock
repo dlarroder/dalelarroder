@@ -1509,10 +1509,10 @@
   resolved "https://registry.yarnpkg.com/@fal-works/esbuild-plugin-global-externals/-/esbuild-plugin-global-externals-2.1.2.tgz#c05ed35ad82df8e6ac616c68b92c2282bd083ba4"
   integrity sha512-cEee/Z+I12mZcFJshKcCqC8tuX5hG3s+d+9nZ3LabqKF1vKdF41B92pJVCBggjAGORAeOzyyDDKrZwIkLffeOQ==
 
-"@fontsource/mukta@4.5.9":
-  version "4.5.9"
-  resolved "https://registry.yarnpkg.com/@fontsource/mukta/-/mukta-4.5.9.tgz#a28c1fadde3a17c2ec00781375cf8cc38863b15e"
-  integrity sha512-lIDhtJNa6tBZiptjGZxKX3zFWFIpAb/uHa2QWH1gVLYu2ZpBtfKvokZ2QOM0VZkp+Hl/umNS3TyrC5SBkJBqpQ==
+"@fontsource/mukta@4.5.10":
+  version "4.5.10"
+  resolved "https://registry.yarnpkg.com/@fontsource/mukta/-/mukta-4.5.10.tgz#c4756773aa03731c3dba6bee65fcaa55ad1f15b2"
+  integrity sha512-tmGW61Bq66WQHuRHTWSsWFYHNyiHo3nkA68Fvo2gB9InrVy7/i6sVPIhnurI0KtCOPpSj21kycU+CyxjlQMEQg==
 
 "@grpc/grpc-js@^1.5.9":
   version "1.7.1"
