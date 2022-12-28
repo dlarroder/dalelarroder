@@ -19,13 +19,7 @@ export default function WorkContent({ work, progress = 0 }: WorkContentProps) {
       </WorkLeft>
       <WorkRight progress={progress}>
         <div className="drop-shadow-2xl md:mt-24 sm:mt-10">
-          <Image
-            src={image.src}
-            alt={title}
-            layout="responsive"
-            width={image.width}
-            height={image.height}
-          />
+          <Image src={image.src} alt={title} width={image.width} height={image.height} />
         </div>
       </WorkRight>
     </WorkContainer>
