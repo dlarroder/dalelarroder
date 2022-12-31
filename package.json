@@ -21,7 +21,7 @@
     "classnames": "2.3.2",
     "cmdk": "^0.1.20",
     "contentlayer": "0.2.8",
-    "esbuild": "0.14.47",
+    "esbuild": "0.16.12",
     "framer-motion": "7.6.1",
     "github-slugger": "1.4.0",
     "logrocket": "3.0.1",
