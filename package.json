@@ -22,7 +22,7 @@
     "cmdk": "^0.1.20",
     "contentlayer": "0.2.9",
     "esbuild": "0.16.12",
-    "framer-motion": "7.6.1",
+    "framer-motion": "7.10.3",
     "github-slugger": "1.4.0",
     "logrocket": "3.0.1",
     "mdx-bundler": "9.0.1",
