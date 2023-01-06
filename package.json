@@ -38,6 +38,7 @@
     "rehype-prism-plus": "1.5.0",
     "rehype-slug": "5.1.0",
     "remark": "14.0.2",
+    "sharp": "^0.31.3",
     "swr": "2.0.0"
   },
   "devDependencies": {
