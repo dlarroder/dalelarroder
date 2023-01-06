@@ -2,7 +2,7 @@ const siteMetadata = {
   title: 'Dale Larroder',
   author: 'Dale Larroder',
   headerTitle: 'dalelarroder',
-  description: 'Software Engineer at Aphex',
+  description: 'Software Developer at Aphex',
   language: 'en-us',
   theme: 'dark', // system, dark or light
   siteUrl: 'https://dalelarroder.com',
