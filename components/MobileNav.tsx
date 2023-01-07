@@ -21,7 +21,7 @@ const MobileNav = () => {
     <div className="sm:hidden">
       <button
         type="button"
-        className="w-8 h-8 py-1 ml-1 mr-1 rounded"
+        className="ml-1 mr-1 h-8 w-8 rounded py-1"
         aria-label="Toggle Menu"
         onClick={() => setNavShow(!navShow)}
       >
@@ -39,7 +39,7 @@ const MobileNav = () => {
         </svg>
       </button>
       <div
-        className={`fixed w-full h-full top-0 right-0 bg-white dark:bg-black opacity-95 z-20 transform ease-in-out duration-300 ${
+        className={`fixed top-0 right-0 z-20 h-full w-full transform bg-white opacity-95 duration-300 ease-in-out dark:bg-black ${
           navShow ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -64,13 +64,13 @@ const MobileNav = () => {
             </svg>
           </button>
         </header>
-        <nav className="fixed h-full mt-8">
+        <nav className="fixed mt-8 h-full">
           <div key="Home" className="px-12 py-4">
             <Link
               href="/"
               onClick={() => setNavShow(!navShow)}
               className={classNames(
-                'horizontal-underline backdrop:text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100',
+                'horizontal-underline font-bold tracking-widest text-gray-900 backdrop:text-2xl dark:text-gray-100',
                 { 'horizontal-underline-active': router.pathname === '/' }
               )}
             >
@@ -86,7 +86,7 @@ const MobileNav = () => {
                   href={href}
                   onClick={() => setNavShow(!navShow)}
                   className={classNames(
-                    'horizontal-underline backdrop:text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100',
+                    'horizontal-underline font-bold tracking-widest text-gray-900 backdrop:text-2xl dark:text-gray-100',
                     { 'horizontal-underline-active': active }
                   )}
                   aria-label={title}

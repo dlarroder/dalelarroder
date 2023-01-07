@@ -13,7 +13,7 @@ export default function UsesLayout({ children, content }: Props) {
     <>
       <PageSEO title={`Uses - ${name}`} description={`What I Use - ${name}`} />
       <div className="pt-8">
-        <div className="flex flex-col space-y-2 text-center mb-8">
+        <div className="mb-8 flex flex-col space-y-2 text-center">
           <h1 className="text-3xl font-extrabold leading-9 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
             What I Use
           </h1>
@@ -29,7 +29,7 @@ export default function UsesLayout({ children, content }: Props) {
             </a>
           </span>
         </div>
-        <div className="text-sm md:text-lg text-justify pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
+        <div className="prose max-w-none pb-8 text-justify text-sm dark:prose-dark md:text-lg xl:col-span-2">
           {children}
         </div>
       </div>

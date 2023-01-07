@@ -15,7 +15,7 @@ export default function AuthorLayout({ children, content }: Props) {
     <>
       <PageSEO title={`About - ${name}`} description={`About me - ${name}`} />
       <div className="pt-8">
-        <div className="flex flex-col-reverse items-center justify-between mb-8 sm:flex-row sm:items-center">
+        <div className="mb-8 flex flex-col-reverse items-center justify-between sm:flex-row sm:items-center">
           <div className="text-center sm:text-left">
             <h1 className="text-xl font-bold md:text-3xl lg:text-4xl">Dale Larroder</h1>
             <h2 className="text-sm font-normal md:text-base">
@@ -28,11 +28,11 @@ export default function AuthorLayout({ children, content }: Props) {
               height={130}
               width={130}
               src={avatar || ''}
-              className="object-scale-down rounded-full grayscale"
+              className="rounded-full object-scale-down grayscale"
             />
           </div>
         </div>
-        <div className="text-sm md:text-lg text-justify pb-8 prose dark:prose-dark max-w-none xl:col-span-2">
+        <div className="prose max-w-none pb-8 text-justify text-sm dark:prose-dark md:text-lg xl:col-span-2">
           {children}
         </div>
       </div>

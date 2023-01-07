@@ -33,10 +33,10 @@ export default function Intro() {
   return (
     <div
       ref={refContainer}
-      className="relative z-10 bg-black dark:bg-white text-white  dark:text-black"
+      className="relative z-10 bg-black text-white dark:bg-white  dark:text-black"
       id="intro"
     >
-      <div className="min-h-screen max-w-5xl mx-auto px-10 lg:px-20 py-24 md:py-28 lg:py-3 flex flex-col justify-center items-center text-4xl md:text-6xl lg:text-7xl tracking-tight font-semibold">
+      <div className="mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-10 py-24 text-4xl font-semibold tracking-tight md:py-28 md:text-6xl lg:px-20 lg:py-3 lg:text-7xl">
         <div className="leading-[1.15]">
           <div className="introText" style={{ opacity: opacityForBlock(progress, 0) }}>
             I love coding.

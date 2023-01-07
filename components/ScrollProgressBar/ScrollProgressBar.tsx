@@ -11,5 +11,5 @@ export default function ScrollProgressBar() {
     return () => scrollYProgress.destroy()
   }, [scrollYProgress])
 
-  return <div className="fixed top-0 h-1 z-40 bg-primary-500" style={{ width: width + '%' }} />
+  return <div className="fixed top-0 z-40 h-1 bg-primary-500" style={{ width: width + '%' }} />
 }

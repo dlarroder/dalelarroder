@@ -12,7 +12,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#000000" />
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         </Head>
-        <body className="antialiased text-black bg-white dark:bg-black dark:text-white">
+        <body className="bg-white text-black antialiased dark:bg-black dark:text-white">
           <Main />
           <NextScript />
         </body>

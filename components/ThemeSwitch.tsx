@@ -15,7 +15,7 @@ const ThemeSwitch = () => {
       id="theme-btn"
       aria-label="Toggle Dark Mode"
       type="button"
-      className="w-8 h-8 p-1 ml-1 mr-1 rounded"
+      className="ml-1 mr-1 h-8 w-8 rounded p-1"
       whileTap={{
         scale: 0.7,
         rotate: 360,

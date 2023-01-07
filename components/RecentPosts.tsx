@@ -22,7 +22,7 @@ export default function RecentPosts({ posts }: RecentPosts) {
       {posts.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base font-medium leading-6">
           <Link href="/blog">
-            <span className="underline-magical font-bold cursor-pointer" aria-label="all posts">
+            <span className="underline-magical cursor-pointer font-bold" aria-label="all posts">
               Read All Post &rarr;
             </span>
           </Link>

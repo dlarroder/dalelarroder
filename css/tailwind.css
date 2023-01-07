@@ -28,9 +28,9 @@ input:-webkit-autofill:focus {
 
 .underline-magical {
   @apply bg-gradient-to-r from-primary-500 to-primary-500 bg-no-repeat 
-  [background-position:0_100%] [background-size:100%_0.2em]
-  hover:[background-size:100%_100%] no-underline hover:text-white
-  focus:[background-size:100%_100%] motion-safe:transition-all
+  no-underline [background-position:0_100%]
+  [background-size:100%_0.2em] focus:[background-size:100%_100%] hover:text-white
+  hover:[background-size:100%_100%] motion-safe:transition-all
   motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500;
 }
 
@@ -63,31 +63,31 @@ input:-webkit-autofill:focus {
 }
 
 [cmdk-root] {
-  @apply max-w-[640px] w-full p-2 bg-white rounded-xl shadow-lg 
-  border fixed top-[25vh] left-1/2 transform -translate-x-1/2 z-10 
-  dark:bg-neutral-900 dark:shadow-neutral-700 dark:border-neutral-800 
-  dark:shadow;
+  @apply fixed top-[25vh] left-1/2 z-10 w-full max-w-[640px] 
+  -translate-x-1/2 transform rounded-xl border bg-white p-2 shadow-lg 
+  dark:border-neutral-800 dark:bg-neutral-900 dark:shadow 
+  dark:shadow-neutral-700;
 }
 
 [cmdk-input] {
-  @apply h-12 w-full bg-transparent outline-none focus:ring-0 
-  focus:border-transparent focus:border-b focus:border-b-gray-200
-  text-sm text-gray-500 font-semibold placeholder-gray-500 border-0 
-  border-b border-b-gray-200 dark:text-gray-200 dark:border-b-gray-500
+  @apply h-12 w-full border-0 border-b border-b-gray-200 
+  bg-transparent text-sm font-semibold
+  text-gray-500 placeholder-gray-500 outline-none focus:border-b focus:border-transparent 
+  focus:border-b-gray-200 focus:ring-0 dark:border-b-gray-500 dark:text-gray-200
   dark:placeholder-gray-300;
 }
 
 [cmdk-list] {
-  @apply px-4 max-h-64 overflow-y-scroll mt-2 scrollbar-thumb-rounded-lg
-  scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 
-  scrollbar-track-rounded-lg dark:scrollbar-thumb-neutral-700 
-  dark:scrollbar-track-neutral-800;
+  @apply mt-2 max-h-64 overflow-y-scroll px-4 scrollbar-thin
+  scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-lg 
+  scrollbar-thumb-rounded-lg dark:scrollbar-track-neutral-800 
+  dark:scrollbar-thumb-neutral-700;
 }
 
 [cmdk-item] {
-  @apply cursor-pointer h-12 text-sm flex items-center space-x-3 px-4 rounded-md
-  text-gray-700 select-none transition-all ease-in duration-200 relative 
-  font-medium dark:text-gray-200;
+  @apply relative flex h-12 cursor-pointer select-none items-center space-x-3 rounded-md
+  px-4 text-sm font-medium text-gray-700 transition-all duration-200 
+  ease-in dark:text-gray-200;
 }
 
 [cmdk-item][aria-selected='true'] {
@@ -95,10 +95,10 @@ input:-webkit-autofill:focus {
 }
 
 [cmdk-group-heading] {
-  @apply select-none text-sm text-gray-700 dark:text-gray-200 py-1 
-  font-medium flex items-center;
+  @apply flex select-none items-center py-1 text-sm 
+  font-medium text-gray-700 dark:text-gray-200;
 }
 
 [cmdk-empty] {
-  @apply flex items-center justify-center text-sm text-gray-500 py-4;
+  @apply flex items-center justify-center py-4 text-sm text-gray-500;
 }

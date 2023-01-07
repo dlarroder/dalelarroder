@@ -32,12 +32,12 @@ export default function PostLayout({ content, authorDetails, children, next, pre
         {...content}
       />
       <article>
-        <header className="space-y-1 text-center rounded-lg py-4 sm:py-6 md:py-10 px-2 bg-primary-500">
+        <header className="space-y-1 rounded-lg bg-primary-500 py-4 px-2 text-center sm:py-6 md:py-10">
           <PageTitle>{title}</PageTitle>
           <dl>
             <dt className="sr-only">Published on</dt>
-            <dd className="flex flex-col sm:flex-row sm:space-x-2 justify-center text-base font-medium leading-6 text-white">
-              <div className="flex justify-center items-center space-x-2">
+            <dd className="flex flex-col justify-center text-base font-medium leading-6 text-white sm:flex-row sm:space-x-2">
+              <div className="flex items-center justify-center space-x-2">
                 <span>{author}</span>
                 <span>-</span>
                 <time dateTime={date}>
@@ -50,11 +50,11 @@ export default function PostLayout({ content, authorDetails, children, next, pre
           </dl>
         </header>
         <div
-          className="divide-y divide-gray-200 xl:divide-y-0 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 font-medium"
+          className="divide-y divide-gray-200 font-medium dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"
           style={{ gridTemplateRows: 'auto 1fr' }}
         >
-          <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-4 xl:row-span-2">
-            <div className="pt-8 pb-8 prose dark:prose-dark max-w-none">
+          <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-4 xl:row-span-2 xl:pb-0">
+            <div className="prose max-w-none pt-8 pb-8 dark:prose-dark">
               {children}
               <PostNavigation prev={prev} next={next} />
               <PostComments />

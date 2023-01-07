@@ -7,7 +7,7 @@
 
 /* Code title styles */
 .remark-code-title {
-  @apply px-5 py-3 font-mono text-sm font-bold text-gray-200 bg-slate-900 rounded-t;
+  @apply rounded-t bg-slate-900 px-5 py-3 font-mono text-sm font-bold text-gray-200;
 }
 
 .remark-code-title + div > pre {
@@ -20,15 +20,15 @@
 }
 
 .code-line {
-  @apply block pl-4 pr-4 -mx-4 border-l-4 border-gray-800;
+  @apply -mx-4 block border-l-4 border-gray-800 pl-4 pr-4;
 }
 
 .highlight-line {
-  @apply -mx-4 bg-gray-700 bg-opacity-50 border-l-4 border-primary-500;
+  @apply -mx-4 border-l-4 border-primary-500 bg-gray-700 bg-opacity-50;
 }
 
 .line-number::before {
-  @apply pr-4 -ml-2 text-gray-400;
+  @apply -ml-2 pr-4 text-gray-400;
   content: attr(line);
 }
 /**

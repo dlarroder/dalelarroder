@@ -47,7 +47,7 @@ const TOCInline = ({
         <li key={heading.value} className={`${heading.depth >= indentDepth && 'ml-6'}`}>
           <a
             href={heading.url}
-            className="not-prose no-underline border-b dark:border-primary-500 border-primary-400"
+            className="not-prose border-b border-primary-400 no-underline dark:border-primary-500"
           >
             {heading.value}
           </a>
@@ -60,7 +60,7 @@ const TOCInline = ({
     <>
       {asDisclosure ? (
         <details open>
-          <summary className="pt-2 pb-2 ml-6 text-xl font-bold">Table of Contents</summary>
+          <summary className="ml-6 pt-2 pb-2 text-xl font-bold">Table of Contents</summary>
           <div className="ml-6">{tocList}</div>
         </details>
       ) : (

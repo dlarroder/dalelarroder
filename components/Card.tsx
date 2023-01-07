@@ -10,14 +10,14 @@ interface CardProps {
 
 export default function Card({ title, description, imgSrc, href }: CardProps) {
   return (
-    <div className="p-2 md:w-1/2 md" style={{ maxWidth: '544px' }}>
-      <div className="h-full overflow-hidden hover:bg-gray-200 hover:bg-opacity-20 rounded-md border-opacity-60 dark:border-gray-700">
+    <div className="md p-2 md:w-1/2" style={{ maxWidth: '544px' }}>
+      <div className="h-full overflow-hidden rounded-md border-opacity-60 hover:bg-gray-200 hover:bg-opacity-20 dark:border-gray-700">
         {href ? (
           <Link href={href} aria-label={`Link to ${title}`}>
             <Image
               alt={title}
               src={imgSrc}
-              className="object-cover object-center lg:h-48 md:h-36"
+              className="object-cover object-center md:h-36 lg:h-48"
               width={544}
               height={306}
             />
@@ -26,7 +26,7 @@ export default function Card({ title, description, imgSrc, href }: CardProps) {
           <Image
             alt={title}
             src={imgSrc}
-            className="object-cover object-center lg:h-48 md:h-36"
+            className="object-cover object-center md:h-36 lg:h-48"
             width={544}
             height={306}
           />
@@ -41,7 +41,7 @@ export default function Card({ title, description, imgSrc, href }: CardProps) {
               title
             )}
           </h2>
-          <p className="prose text-gray-500 max-w-none dark:text-gray-400">{description}</p>
+          <p className="prose max-w-none text-gray-500 dark:text-gray-400">{description}</p>
         </div>
       </div>
     </div>

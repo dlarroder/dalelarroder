@@ -10,13 +10,13 @@ export default function Header() {
   const router = useRouter()
 
   return (
-    <header className="py-5 md:py-10 z-40 bg-transparent">
-      <div className="flex items-center justify-between max-w-5xl mx-auto">
+    <header className="z-40 bg-transparent py-5 md:py-10">
+      <div className="mx-auto flex max-w-5xl items-center justify-between">
         <div>
           <Link href="/" className="flex items-center justify-between" aria-label="Home">
             <div
               className={classNames(
-                'hidden text-3xl font-extrabold sm:block horizontal-underline',
+                'horizontal-underline hidden text-3xl font-extrabold sm:block',
                 {
                   'horizontal-underline-active': router.pathname === '/',
                 }
@@ -26,8 +26,8 @@ export default function Header() {
             </div>
           </Link>
         </div>
-        <div className="flex items-center text-base leading-5 space-x-3">
-          <div className="hidden sm:flex space-x-5">
+        <div className="flex items-center space-x-3 text-base leading-5">
+          <div className="hidden space-x-5 sm:flex">
             {headerNavLinks.map(({ title, href }) => {
               const active = router.pathname.includes(href)
               return (

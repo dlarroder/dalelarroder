@@ -21,11 +21,11 @@ export default function PostCard({ posts, showTags = true }: PostCardProps) {
           transition={{ duration: 0.6, delay: index / 10 }}
         >
           <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
-            <article className="space-y-2 gap-3 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline bg-opacity-20 py-5 cursor-pointer">
+            <article className="cursor-pointer gap-3 space-y-2 bg-opacity-20 py-5 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
               <div className="space-y-3 xl:col-span-4">
                 <span className="text-2xl font-bold leading-8 tracking-tight">
                   <Link href={`/blog/${slug}`}>
-                    <span className="text-primary-500 hover:text-primary-400 duration-300">
+                    <span className="text-primary-500 duration-300 hover:text-primary-400">
                       {title}
                     </span>
                   </Link>
@@ -37,7 +37,7 @@ export default function PostCard({ posts, showTags = true }: PostCardProps) {
                     ))}
                   </div>
                 )}
-                <div className="prose text-gray-900 dark:text-gray-100 max-w-none">{summary}</div>
+                <div className="prose max-w-none text-gray-900 dark:text-gray-100">{summary}</div>
               </div>
             </article>
           </Link>
