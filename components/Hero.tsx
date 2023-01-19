@@ -41,7 +41,7 @@ export default function Hero(): ReactElement {
               <div ref={ref} className="flex cursor-default flex-col space-y-2">
                 <FadeUp duration={0.6}>
                   <h1 className="text-5xl font-semibold sm:text-7xl md:text-8xl xl:text-9xl">
-                    Dale Larroder
+                    Sean Mahoney
                   </h1>
                 </FadeUp>
                 <FadeUp duration={0.6} delay={0.2}>
