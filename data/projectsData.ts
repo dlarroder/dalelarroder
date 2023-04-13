@@ -1,17 +1,24 @@
 const projectsData = [
   {
-    title: 'mathgame',
-    description: `Can you solve 10 basic math questions in 10 seconds? If you think you can, then give this game a try!`,
-    imgSrc: '/static/images/project/mathgame.png',
-    tag: ['javascript', 'css'],
-    href: 'https://mathgame-dlarroder.vercel.app/',
+    title: 'examGPT',
+    description: `Check grammar mistakes and check if essay was GPT generated`,
+    imgSrc: '/static/images/project/examgpt.webp',
+    tag: ['GPT', 'Tailwind', 'JavaScript', 'Python'],
+    href: 'https://examGPT.crepant.com',
   },
   {
-    title: 'snakegame',
-    description: 'Recreated the classic 3310 snake game using plain HTML and JavaScript!',
-    imgSrc: '/static/images/project/snakegame.png',
-    tag: ['javascript', 'css'],
-    href: 'https://snakegame-dlarroder.vercel.app/',
+    title: 'ILINAF',
+    description: 'Forecasting Kenyans wellbeing and environment use',
+    imgSrc: '/static/images/project/ilinaf.webp',
+    tag: ['Tensorflow', 'AI', 'Data Analysis', 'Timeseries', 'RNN'],
+    href: 'https://ilinaf.crepant.com',
+  },
+  {
+    title: 'LOAS',
+    description: `Student Online Assessment System`,
+    imgSrc: '/static/images/project/loas.webp',
+    tag: ['Python', 'HTML', 'CSS', 'JavaScript'],
+    href: 'https://dofften.pythonanywhere.com',
   },
 ]
 

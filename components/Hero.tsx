@@ -1,11 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
-import { ReactElement, useContext, useEffect, useRef } from 'react'
+import { ReactElement, useContext, useRef } from 'react'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
 import FadeDown from './Animations/FadeDown'
 import FadeRight from './Animations/FadeRight'
 import FadeUp from './Animations/FadeUp'
-import { renderCanvas } from './renderCanvas'
 import { ScrollContext } from './ScrollObserver'
 
 export default function Hero(): ReactElement {
@@ -19,14 +18,10 @@ export default function Hero(): ReactElement {
     progress = Math.min(1, scrollY / elContainer.clientHeight)
   }
 
-  useEffect(() => {
-    renderCanvas()
-  }, [])
-
   return (
     <div>
       <h1 className="sr-only">
-        Hello I'm Dale Larroder, I'm a software developer, and I love building things for the web.
+        Hello I'm Frank Omondi, I'm a software developer, and I love building things for the web.
       </h1>
       <motion.div
         className="relative z-10 flex h-[calc(100vh-81px)] items-center md:h-[calc(100vh-116px)]"
@@ -41,12 +36,12 @@ export default function Hero(): ReactElement {
               <div ref={ref} className="flex cursor-default flex-col space-y-2">
                 <FadeUp duration={0.6}>
                   <h1 className="text-5xl font-semibold sm:text-7xl md:text-8xl xl:text-9xl">
-                    Dale Larroder
+                    Frank Omondi
                   </h1>
                 </FadeUp>
                 <FadeUp duration={0.6} delay={0.2}>
                   <h2 className="text-3xl font-medium opacity-80 sm:text-6xl md:text-6xl xl:text-7xl">
-                    I build things for the web.
+                    Dev | Ethical AI | Research
                   </h2>
                 </FadeUp>
                 <FadeRight duration={0.5} delay={0.8}>
@@ -77,7 +72,6 @@ export default function Hero(): ReactElement {
           </div>
         </AnimatePresence>
       </motion.div>
-      <canvas className="bg-skin-base pointer-events-none absolute inset-0" id="canvas"></canvas>
     </div>
   )
 }

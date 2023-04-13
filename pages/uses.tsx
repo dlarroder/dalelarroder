@@ -1,4 +1,4 @@
-import { MDXLayoutRenderer } from '@/components/MDXComponents'
+// import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import MainLayout from '@/layouts/MainLayout'
 import { allAuthors } from 'contentlayer/generated'
 import { InferGetStaticPropsType } from 'next'
@@ -12,7 +12,7 @@ export const getStaticProps = async () => {
 export default function About({ author }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <MainLayout>
-      {author && <MDXLayoutRenderer layout={DEFAULT_LAYOUT} content={author} />}
+      {/* {author && <MDXLayoutRenderer layout={DEFAULT_LAYOUT} content={author} />} */}
     </MainLayout>
   )
 }

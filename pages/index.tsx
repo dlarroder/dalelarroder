@@ -4,7 +4,7 @@ import Intro from '@/components/Intro/Intro'
 import RecentPosts from '@/components/RecentPosts'
 import SectionContainer from '@/components/SectionContainer'
 import { PageSEO } from '@/components/SEO'
-import TopTracks from '@/components/Spotify/TopTrack'
+// import TopTracks from '@/components/Spotify/TopTrack'
 import Works from '@/components/Work/Works'
 import siteMetadata from '@/data/siteMetadata'
 import HomeLayout from '@/layouts/HomeLayout'
@@ -31,7 +31,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
       <Works />
       <HomeLayout>
         <RecentPosts posts={posts} />
-        <TopTracks />
+        {/* <TopTracks /> */}
       </HomeLayout>
     </>
   )

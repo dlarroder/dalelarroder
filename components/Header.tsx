@@ -22,7 +22,7 @@ export default function Header() {
                 }
               )}
             >
-              d.
+              F.
             </div>
           </Link>
         </div>

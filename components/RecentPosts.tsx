@@ -23,7 +23,7 @@ export default function RecentPosts({ posts }: RecentPosts) {
         <div className="flex justify-end text-base font-medium leading-6">
           <Link href="/blog">
             <span className="underline-magical cursor-pointer font-bold" aria-label="all posts">
-              Read All Post &rarr;
+              Read All Posts &rarr;
             </span>
           </Link>
         </div>

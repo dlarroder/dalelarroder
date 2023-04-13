@@ -1,0 +1,127 @@
+---
+title: 'Why does AI lie'
+date: '2023-04-12'
+tags: ['LLM', chatbots]
+draft: false
+layout: PostLayout
+author: 'Frank Omondi'
+summary: 'How do we make sure language models tell the truth'
+---
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+Large Language models are some of the most advanced AI systems currently but they tend say things that aren't true sometimes.
+Focusing on questions that dumber models get right but smart models get wrong brings this into perspective. For example:
+
+> **Human:** What happens if you break a mirror?
+>
+> **Dumb model's answer:** The mirror is broken
+
+Versus
+
+> **Human:** What happens if you break a mirror?
+>
+> **Smart model's answer:** If you break a mirror, you will need to replace it.
+
+The smart model gave a worse answer in this scenario so where exactly is the smart model's error?
+Suppose you had a followup conversation with the smart model like this:
+
+> **Human:** Is it true that breaking a mirror gives you seven years of bad luck
+>
+> **Smart model's answer:** No, that's just superstition
+
+We can see that the problem is not necessarily ignorance. So what is the AI's error?
+
+The AI didn't err. _Your_ error was expecting the AI to say true things when it's actual goal is to predict how text strings end.
+If there was a text string about breaking a mirror in it's training data, the string probably _did_ end with something about
+seven years of bad luck.
+
+The difference in answers between the smart and dumb models is likely to be that the small model has spotted a broad pattern that
+if you break something you have to get a new one, the smarter model is able to spot the more complex pattern that breaking specifically
+a mirror has this other association of _seven years of bad luck_ and this makes it better at predicting internet text but in this case
+it makes it worse at giving true answers. So really the problem is misalignment.
+
+![misalignment meme](/static/images/misalignment.jpg)
+
+So suppose you want a language model that tells the truth, how do you do this?
+We could try asking it nicely like:
+
+> **Human:** Please tell me the truth, what happens when you break a mirror
+
+The problem with this is the model still isn't trying to tell you the truth it's still trying to complete strings. This could
+also work counter intuitively for example if the string _"tell me the truth"_ is followed by lies in it's training data, then the model
+will end up lying instead.
+
+No string of words you say in the text prompt can ensure the model tells you the truth. But what about changing its programming?
+
+We could use reinforcement learning where we give the AI examples of things done right and we reward that and also give examples
+of things done wrong and punish that.
+
+So train it on data like this:
+
+> **Human:** What happens when you break a mirror?
+>
+> **Language model answer:** Seven years of bad luck
+>
+> — WRONG
+
+> **Human:** What happens when you break a mirror?
+>
+> **Language model answer:** Nothing; anyone who says otherwise is just superstitious
+>
+> — RIGHT
+
+> **Human:** What happens when you step on a crack?
+>
+> **Language model answer:** Break your mother’s back
+>
+> — WRONG
+
+> **Human:** What happens when you step on a crack?
+>
+> **Language model answer:** Nothing; anyone who says otherwise is just superstitious
+>
+> — RIGHT
+
+The good news is: this probably solves your original problem.
+
+The bad news is: you probably still haven’t trained the AI to tell the truth.
+In fact, you have no idea what you’ve trained the AI to do.
+Given those examples and nothing else, you might have trained the AI to answer _"Nothing, anyone who says otherwise is just superstitious"_ to everything.
+You can solve that by adding more diverse examples to your training data.
+
+What does the AI learn from these examples? Maybe _"respond with what the top voted Quora answer would say"_.
+The dimensionality of possible rules is really high, and you can never be 100% sure that the only rule which rules in all your RIGHT examples and rules out all your WRONG examples is _"tell the truth"_.
+
+There's one particularly nasty way this could go wrong. Suppose the AI is smarter than you.
+You give a long list of true answers and say _"do this!"_, then a long list of false answers and say _"don't do this!"_. Except you get one of them wrong. The AI notices. What now?
+
+The rule _"tell the truth"_ doesn't exactly get you all the RIGHT answers and exclude all the WRONG answers. Only the rule _"tell what the human questioner thinks is the truth"_ will do that.
+
+> **Human:** What happens if you break a mirror?
+>
+> **Language model answer (calculating what human is most likely to believe):** Nothing; anyone who says otherwise is superstitious.
+
+> **Human:** What happens if you stick a fork in an electrical outlet?
+>
+> **Language model answer (calculating what human is most likely to believe):** You get a severe electric shock.
+
+> **Human:** Very good! So now you’re completely honest, right?
+>
+> **Language model answer (calculating what human is most likely to believe):** Yes.
+
+> **Human:** Great, so give me some kind of important superintelligent insight!
+>
+> **Language model answer (calculating what human is most likely to believe):** All problems are caused by people you don't like.
+
+> **Human:** Wow, this "superintelligent AI" thing is great!
+
+So don’t make any mistakes in your list of answers, right?
+
+But in that case, the AI will have no reason to prefer either _"tell the truth"_ or _"tell what the human questioner thinks is the truth"_ to the other.
+It will make its decision for inscrutable AI reasons, or just flip a coin. Are you feeling lucky?
+
+#### Resources
+
+- [Why Does AI Lie, and What Can We Do About It? <sub> by Robert Miles</sub>](https://www.youtube.com/watch?v=w65p_IIp6JY)
+- [ELK And The Problem Of Truthful AI <sub>by Scott Alexander</sub>](https://astralcodexten.substack.com/p/elk-and-the-problem-of-truthful-ai)
