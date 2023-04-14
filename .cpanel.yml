@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/crepantc/repositories/dalelarroder-portfolio
+    - export DEPLOYPATH=/home/crepantc/public_html
     - /bin/cp -R .contentlayer $DEPLOYPATH
     - /bin/cp -R .next $DEPLOYPATH
     - /bin/cp -R components $DEPLOYPATH
