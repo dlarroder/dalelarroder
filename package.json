@@ -11,8 +11,7 @@
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
-    "prepare": "husky install",
-    "start": "NODE_ENV=production node custom-server.js"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@dlarroder/playground": "^1.2.2",
