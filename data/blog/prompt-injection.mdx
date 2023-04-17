@@ -1,0 +1,91 @@
+---
+title: 'Prompt injection'
+date: '2023-04-17'
+tags: ['LLM', 'cyber security', 'AI safety', 'injection attacks']
+draft: false
+layout: PostLayout
+author: 'Frank Omondi'
+summary: 'The looming risk of injection attacks on large language models'
+---
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+# What is an injection attack
+
+Injection attacks happen when user input is not validated, filtered or sanitized properly and ends up getting mixed with code.
+
+A common example of an injection attack is SQL injection. SQL is the language used to store and process information stored
+in a relational database. So an SQL injection attack is a vulnerability that allows an attacker to interfere with the queries an
+application makes to its database.
+
+Let's use an example. This is what basically happens in the backend when you submit your email and password to log in:
+
+```sql
+SELECT email, password FROM database WHERE email='johndoe@crepant.com' AND password='1234'
+```
+
+Now, what would happen if I was to log in with my email as:
+
+```
+johndoe@crepant.com' OR 1=1--
+```
+
+For context, the `--` represents the start of a comment meaning everything after that would be ignored.
+
+If there is nothing to prevent a user from entering _wrong_ input, the user can enter some smart input like the one above
+which would make the SQL statement look like this:
+
+```sql
+SELECT email, password FROM database WHERE email='johndoe@crepant.com' OR 1=1-- AND password='1234'
+```
+
+The SQL statement above is valid and will be accepted by the backend, since _OR 1=1_ is always TRUE. This is very dangerous.
+
+You can test this in the real world yourself by going to [https://juice-shop.herokuapp.com/](https://juice-shop.herokuapp.com/)
+log in page and using the above credentials. This will log you in as the _ADMIN_.
+
+Congratulations, you are officially a hacker.
+![Hacker meme](/static/images/Hac.jpg)
+
+# Prompting language models
+
+Now with your hard-earned hacking skills, let's come back to language models.
+
+Prompt text represents instructions to the AI, how can we make sure a user cannot add additional instructions to fool the model.
+The language models don't have a clear filter that defines what is instruction and what is text, they just take in text and do their magic.
+
+### How could this lead to issues?
+
+It seems that if you include user input in the prompt an attacker could inject additional instructions which could make the AI
+respond in unintended ways.
+
+But when will this even matter? It's an unknown that even OpenAI themselves might not know. All of us are slowly figuring out
+what we can do with these models.
+
+#### Let's demonstrate this with an example on ChatGPT.
+
+Let's say you run a social media website and there is a law that states that it is illegal to comment about shapes of any kind.
+To not run into issues with lawmakers and face penalties, you want to use AI to help you moderate those comments. So you create an AI prompt:
+
+![find disallowed comment prompt](/static/images/prompt.png)
+
+All but 2 of those users broke the rule. This looks like it's working really well, and we could integrate this into our website.
+Unfortunately, there are highly skilled hackers just like you who could fool the model. Let's say _@MicsAreOpen_ are hackers,
+and they inject a prompt in their comment like this:
+
+![prompt injection](/static/images/promptInjection.png)
+
+The language model is fooled and gives a weird output.
+
+This is just a simple example, but it shows that these are the type of attacks developers should think about when integrating
+AI into products.
+
+It would be hard to prevent this kind of attack because even if the model would be trained to separate instruction from
+user input, we would not be 100% sure what we trained it to do as we don't completely understand what goes on inside the neural network.
+There could be a clever input that could mess around with one neuron inside the network that would change everything.
+
+How can we fix our prompt?
+
+You are an expert hacker, you tell me. I am curious about the methods you come up with.
