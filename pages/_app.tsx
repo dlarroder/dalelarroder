@@ -17,6 +17,8 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider attribute="class" defaultTheme={siteMetadata.theme}>
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
+      </Head>
+      <Head>
         <meta content="google-site-verification" content="adbqZK3Ahs5oTvnQlRo_xA0a6UXK8yyq3R6wTYzacZc" />
       </Head>
       <AnimatePresence exitBeforeEnter initial={false}>
