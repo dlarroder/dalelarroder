@@ -33,6 +33,7 @@ export default function TileWrapper({ children, numOfPages }: WrapperProps) {
         style={{
           height: numOfPages * 100 + 'vh',
         }}
+        id="about"
       >
         {children}
       </div>
