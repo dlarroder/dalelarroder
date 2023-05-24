@@ -32,6 +32,7 @@ export default function TileWrapper({ children, numOfPages }: WrapperProps) {
         ref={refContainer}
         style={{
           height: numOfPages * 100 + 'vh',
+          marginBottom: '100vh',
         }}
         id="about"
       >

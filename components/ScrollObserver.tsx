@@ -1,14 +1,15 @@
+import Scroll from 'locomotive-scroll'
 import { createContext, ReactNode, useMemo, useRef, useState } from 'react'
 import useLocomotiveScroll from './useLocomotiveScroll'
 
 interface ScrollValue {
   scrollY: number
-  scrollHeight: number
+  locomotiveScrollRef: Scroll | null
 }
 
 export const ScrollContext = createContext<ScrollValue>({
   scrollY: 0,
-  scrollHeight: 0,
+  locomotiveScrollRef: null,
 })
 
 interface ScrollObserverProps {
@@ -17,19 +18,6 @@ interface ScrollObserverProps {
 
 export const ScrollObserver = ({ children }: ScrollObserverProps) => {
   const [scrollY, setScrollY] = useState(0)
-  const [scrollHeight, setScrollHeight] = useState(0)
-
-  // const handleScroll = useCallback(() => {
-  //   // setScrollY(window.scrollY)
-
-  //   console.log('document.body.scrollHeight', document.body.scrollHeight)
-  // }, [])
-
-  // useEffect(() => {
-  //   document.addEventListener('scroll', handleScroll, { passive: true })
-
-  //   return () => document.removeEventListener('scroll', handleScroll)
-  // }, [handleScroll])
 
   const scrollRef = useRef<HTMLDivElement | null>(null)
 
@@ -37,7 +25,6 @@ export const ScrollObserver = ({ children }: ScrollObserverProps) => {
     ref: scrollRef,
     smooth: true,
   })
-  console.log('locomotiveScrollRef', locomotiveScrollRef)
 
   useMemo(() => {
     if (locomotiveScrollRef) {
@@ -48,7 +35,7 @@ export const ScrollObserver = ({ children }: ScrollObserverProps) => {
   }, [locomotiveScrollRef])
 
   return (
-    <ScrollContext.Provider value={{ scrollY, scrollHeight }}>
+    <ScrollContext.Provider value={{ scrollY, locomotiveScrollRef }}>
       <div ref={scrollRef} data-scroll-container>
         {children}
       </div>
