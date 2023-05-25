@@ -16,21 +16,22 @@ export default function MainLayout({ children }: Props) {
   }
 
   return (
-    <SectionContainer>
-      <div className="flex h-max flex-col justify-between">
+    <div className="flex h-max flex-col justify-between" data-scroll-section>
+      <SectionContainer>
         <Header />
         <motion.main
+          data-scroll
           className="mb-auto"
           initial="hidden"
           animate="enter"
           exit="exit"
           variants={variants}
-          transition={{ type: 'linear' }}
+          transition={{ duration: 0.2, ease: 'easeInOut' }}
         >
           {children}
         </motion.main>
         <Footer />
-      </div>
-    </SectionContainer>
+      </SectionContainer>
+    </div>
   )
 }
