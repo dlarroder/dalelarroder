@@ -1,6 +1,9 @@
+import Header from '../components/Header'
+
 export default function Test() {
   return (
     <div className="flex flex-col">
+      <Header />
       <section
         id="intro"
         className="flex h-screen items-center justify-center bg-green-200 text-center"

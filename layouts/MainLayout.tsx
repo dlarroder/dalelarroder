@@ -17,8 +17,8 @@ export default function MainLayout({ children }: Props) {
 
   return (
     <SectionContainer>
-      <Header />
-      <div className="flex h-screen flex-col justify-between">
+      <div className="flex h-max flex-col justify-between">
+        <Header />
         <motion.main
           className="mb-auto"
           initial="hidden"
