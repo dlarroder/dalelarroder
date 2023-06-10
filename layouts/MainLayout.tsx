@@ -27,7 +27,7 @@ export default function MainLayout({ children }: Props) {
           animate="enter"
           exit="exit"
           variants={variants}
-          transition={{ duration: 0.2, ease: 'easeInOut' }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
           {children}
         </motion.main>
