@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { ReactNode } from 'react'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import LocomotiveProvider from '../components/LocomotiveProvider'
 import SectionContainer from '../components/SectionContainer'
 
 interface Props {
@@ -16,21 +17,22 @@ export default function MainLayout({ children }: Props) {
   }
 
   return (
-    <SectionContainer>
-      <Header />
-      <div className="flex h-screen flex-col justify-between">
+    <LocomotiveProvider>
+      <SectionContainer>
+        <Header />
         <motion.main
+          data-scroll
           className="mb-auto"
           initial="hidden"
           animate="enter"
           exit="exit"
           variants={variants}
-          transition={{ type: 'linear' }}
+          transition={{ duration: 0.2, ease: 'easeInOut' }}
         >
           {children}
         </motion.main>
         <Footer />
-      </div>
-    </SectionContainer>
+      </SectionContainer>
+    </LocomotiveProvider>
   )
 }

@@ -10,7 +10,7 @@ export default function Header() {
   const router = useRouter()
 
   return (
-    <header className="z-40 bg-transparent py-5 md:py-10">
+    <header className="z-40 bg-transparent py-5 md:py-10" data-scroll>
       <div className="mx-auto flex max-w-5xl items-center justify-between">
         <div>
           <Link href="/" className="flex items-center justify-between" aria-label="Home">
