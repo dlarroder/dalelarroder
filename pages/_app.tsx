@@ -1,6 +1,6 @@
-import '@/css/locomotive.scss'
-import '@/css/prism.scss'
-import '@/css/tailwind.scss'
+import '@/css/locomotive.css'
+import '@/css/prism.css'
+import '@/css/tailwind.css'
 import '@fontsource/mukta'
 
 import LogRocket from '@/components/Logrocket'
