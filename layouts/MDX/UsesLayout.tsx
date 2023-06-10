@@ -29,11 +29,6 @@ export default function UsesLayout({ children, content }: Props) {
             </a>
           </span>
         </div>
-        <p className="mb-8 text-sm sm:text-xl">
-          Here’s a list of hardware and software I use regularly to improve my workflow and everyday
-          life. This is not meant to be a complete list, but rather the products and services I
-          enjoy most and would recommend.
-        </p>
         <div className="prose max-w-none pb-8 text-justify text-sm dark:prose-dark md:text-lg xl:col-span-2">
           {children}
         </div>

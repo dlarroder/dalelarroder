@@ -16,7 +16,7 @@ export default function LocomotiveProvider({ children }: Props) {
     <LocomotiveScrollProvider
       options={{
         smooth: true,
-        lerp: 0.07,
+        lerp: 0.05,
         smartphone: {
           smooth: true,
         },
