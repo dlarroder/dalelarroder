@@ -1,7 +1,7 @@
 'use client';
 
-import { useContext, useRef } from 'react';
-import { ScrollContext } from '../ScrollObserver';
+import { useLenis } from '@studio-freight/react-lenis';
+import { useRef, useState } from 'react';
 
 function opacityForBlock(sectionProgress: number, blockNumber: number) {
   const progress = sectionProgress - blockNumber;
@@ -14,9 +14,13 @@ function opacityForBlock(sectionProgress: number, blockNumber: number) {
 }
 
 export default function Intro() {
-  const { scrollY } = useContext(ScrollContext);
+  const [scrollY, setScrollY] = useState(0);
+
+  useLenis(({ scroll }: any) => {
+    setScrollY(scroll);
+  });
+
   const refContainer = useRef<HTMLDivElement>(null);
-  console.log('scrollY', scrollY);
   const numOfPages = 3;
   let progress = 0;
   const { current: elContainer } = refContainer;

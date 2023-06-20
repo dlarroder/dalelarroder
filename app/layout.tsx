@@ -2,10 +2,9 @@ import '@/css/prism.css';
 import '@/css/tailwind.css';
 import '@fontsource/mukta';
 
+import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import SectionContainer from '@/components/SectionContainer';
 import ThemeProvider from 'app/components/ThemeProvider';
-import Footer from '../components/Footer';
 
 export const metadata = {
   title: 'Dale Larroder',
@@ -29,13 +28,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body className="bg-white text-black antialiased dark:bg-black dark:text-white">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <SectionContainer>
-            <Header />
-          </SectionContainer>
+          <Header />
           <main>{children}</main>
-          <SectionContainer>
-            <Footer />
-          </SectionContainer>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

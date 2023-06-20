@@ -1,16 +1,17 @@
-import Image from 'next/image'
-import { WorkContainer } from './WorkContainer'
-import { WorkLeft } from './WorkLeft'
-import { WorkRight } from './WorkRight'
-import { WorkTile } from './workTiles'
+import Image from 'next/image';
+import { WorkContainer } from './WorkContainer';
+import { WorkLeft } from './WorkLeft';
+import { WorkRight } from './WorkRight';
+import { WorkTile } from './workTiles';
 
 interface WorkContentProps {
-  work: WorkTile
-  progress?: number
+  work: WorkTile;
+  progress?: number;
 }
 
 export default function WorkContent({ work, progress = 0 }: WorkContentProps) {
-  const { title, description, image } = work
+  const { title, description, image } = work;
+
   return (
     <WorkContainer>
       <WorkLeft progress={progress}>
@@ -23,5 +24,5 @@ export default function WorkContent({ work, progress = 0 }: WorkContentProps) {
         </div>
       </WorkRight>
     </WorkContainer>
-  )
+  );
 }
