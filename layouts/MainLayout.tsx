@@ -1,7 +1,7 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
 import SectionContainer from '../components/SectionContainer';
 
 interface Props {
@@ -18,7 +18,6 @@ export default function MainLayout({ children }: Props) {
   return (
     <>
       <SectionContainer>
-        <Header />
         <motion.main
           data-scroll
           className="mb-auto"
@@ -30,7 +29,6 @@ export default function MainLayout({ children }: Props) {
         >
           {children}
         </motion.main>
-        <Footer />
       </SectionContainer>
     </>
   );

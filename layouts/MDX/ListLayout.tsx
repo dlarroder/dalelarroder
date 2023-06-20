@@ -1,3 +1,5 @@
+'use client';
+
 import Pagination from '@/components/Pagination';
 import PostCard from '@/components/PostCard';
 import { CoreContent } from '@/lib/utils/contentlayer';
