@@ -1,13 +1,13 @@
-import { PageSEO } from '@/components/SEO'
-import type { Authors } from 'contentlayer/generated'
-import { ReactNode } from 'react'
+import { PageSEO } from '@/components/SEO';
+import type { Authors } from 'contentlayer/generated';
+import { ReactNode } from 'react';
 interface Props {
-  children: ReactNode
-  content: Omit<Authors, '_id' | '_raw' | 'body'>
+  children: ReactNode;
+  content: Omit<Authors, '_id' | '_raw' | 'body'>;
 }
 
 export default function UsesLayout({ children, content }: Props) {
-  const { name } = content
+  const { name } = content;
 
   return (
     <>
@@ -34,5 +34,5 @@ export default function UsesLayout({ children, content }: Props) {
         </div>
       </div>
     </>
-  )
+  );
 }

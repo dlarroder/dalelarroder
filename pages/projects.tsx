@@ -1,18 +1,18 @@
-import { PageSEO } from '@/components/SEO'
-import siteMetadata from '@/data/siteMetadata'
-import { useState } from 'react'
-import useBreakpoint from 'use-breakpoint'
-import ProjectItem from '../components/Projects/ProjectItem'
-import ProjectPreview from '../components/Projects/ProjectPreview'
-import { projects } from '../components/Projects/constants'
-import { ProjectModal } from '../components/Projects/types'
-import NormalLayout from '../layouts/NormalLayout'
+import { PageSEO } from '@/components/SEO';
+import siteMetadata from '@/data/siteMetadata';
+import { useState } from 'react';
+import useBreakpoint from 'use-breakpoint';
+import ProjectItem from '../components/Projects/ProjectItem';
+import ProjectPreview from '../components/Projects/ProjectPreview';
+import { projects } from '../components/Projects/constants';
+import { ProjectModal } from '../components/Projects/types';
+import NormalLayout from '../layouts/NormalLayout';
 
-const BREAKPOINTS = { mobile: 0, tablet: 768, desktop: 1280 }
+const BREAKPOINTS = { mobile: 0, tablet: 768, desktop: 1280 };
 
 export default function Projects() {
-  const { breakpoint } = useBreakpoint(BREAKPOINTS)
-  const [modal, setModal] = useState<ProjectModal>({ active: false, index: 0 })
+  const { breakpoint } = useBreakpoint(BREAKPOINTS);
+  const [modal, setModal] = useState<ProjectModal>({ active: false, index: 0 });
 
   return (
     <NormalLayout>
@@ -37,5 +37,5 @@ export default function Projects() {
       ))}
       {breakpoint === 'desktop' && <ProjectPreview modal={modal} projects={projects} />}
     </NormalLayout>
-  )
+  );
 }

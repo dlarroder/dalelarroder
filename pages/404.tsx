@@ -1,5 +1,5 @@
-import Link from '@/components/Link'
-import MainLayout from '@/layouts/MainLayout'
+import Link from '@/components/Link';
+import MainLayout from '@/layouts/MainLayout';
 
 export default function FourZeroFour() {
   return (
@@ -25,5 +25,5 @@ export default function FourZeroFour() {
         </div>
       </div>
     </MainLayout>
-  )
+  );
 }

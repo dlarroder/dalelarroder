@@ -1,21 +1,21 @@
-import Link from '@/components/Link'
-import { PageSEO } from '@/components/SEO'
-import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
-import MainLayout from '@/layouts/MainLayout'
-import { getAllTags } from '@/lib/utils/contentlayer'
-import kebabCase from '@/lib/utils/kebabCase'
-import { allBlogs } from 'contentlayer/generated'
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import Link from '@/components/Link';
+import { PageSEO } from '@/components/SEO';
+import Tag from '@/components/Tag';
+import siteMetadata from '@/data/siteMetadata';
+import MainLayout from '@/layouts/MainLayout';
+import { getAllTags } from '@/lib/utils/contentlayer';
+import kebabCase from '@/lib/utils/kebabCase';
+import { allBlogs } from 'contentlayer/generated';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 export const getStaticProps: GetStaticProps<{ tags: Record<string, number> }> = async () => {
-  const tags = await getAllTags(allBlogs)
+  const tags = await getAllTags(allBlogs);
 
-  return { props: { tags } }
-}
+  return { props: { tags } };
+};
 
 export default function Tags({ tags }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a])
+  const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a]);
   return (
     <MainLayout>
       <PageSEO title={`Tags - ${siteMetadata.author}`} description="Things I blog about" />
@@ -38,10 +38,10 @@ export default function Tags({ tags }: InferGetStaticPropsType<typeof getStaticP
                   {` (${tags[t]})`}
                 </Link>
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </MainLayout>
-  )
+  );
 }

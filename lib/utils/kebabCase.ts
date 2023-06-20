@@ -1,6 +1,6 @@
 // @ts-nocheck
-import { slug } from 'github-slugger'
+import { slug } from 'github-slugger';
 
-const kebabCase = (str: string) => slug(str)
+const kebabCase = (str: string) => slug(str);
 
-export default kebabCase
+export default kebabCase;

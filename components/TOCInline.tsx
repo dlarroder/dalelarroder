@@ -1,12 +1,12 @@
-import { Toc } from 'types/Toc'
+import { Toc } from 'types/Toc';
 
 interface TOCInlineProps {
-  toc: Toc
-  indentDepth?: number
-  fromHeading?: number
-  toHeading?: number
-  asDisclosure?: boolean
-  exclude?: string | string[]
+  toc: Toc;
+  indentDepth?: number;
+  fromHeading?: number;
+  toHeading?: number;
+  asDisclosure?: boolean;
+  exclude?: string | string[];
 }
 
 /**
@@ -34,12 +34,12 @@ const TOCInline = ({
 }: TOCInlineProps) => {
   const re = Array.isArray(exclude)
     ? new RegExp('^(' + exclude.join('|') + ')$', 'i')
-    : new RegExp('^(' + exclude + ')$', 'i')
+    : new RegExp('^(' + exclude + ')$', 'i');
 
   const filteredToc = toc.filter(
     (heading) =>
       heading.depth >= fromHeading && heading.depth <= toHeading && !re.test(heading.value)
-  )
+  );
 
   const tocList = (
     <ul>
@@ -54,7 +54,7 @@ const TOCInline = ({
         </li>
       ))}
     </ul>
-  )
+  );
 
   return (
     <>
@@ -67,7 +67,7 @@ const TOCInline = ({
         tocList
       )}
     </>
-  )
-}
+  );
+};
 
-export default TOCInline
+export default TOCInline;

@@ -1,14 +1,14 @@
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 
 const LogRocketComponent = dynamic(
   () => {
-    return import('./LogRocket')
+    return import('./LogRocket');
   },
   { ssr: false }
-)
+);
 
 const LogRocket = () => {
-  return <LogRocketComponent />
-}
+  return <LogRocketComponent />;
+};
 
-export default LogRocket
+export default LogRocket;

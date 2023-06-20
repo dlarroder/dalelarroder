@@ -1,24 +1,24 @@
-import { DetailedHTMLProps, HTMLAttributes, useRef, useState } from 'react'
+import { DetailedHTMLProps, HTMLAttributes, useRef, useState } from 'react';
 
 const Pre = ({ children }: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreElement>) => {
-  const textInput = useRef<HTMLDivElement>(null)
-  const [hovered, setHovered] = useState(false)
-  const [copied, setCopied] = useState(false)
+  const textInput = useRef<HTMLDivElement>(null);
+  const [hovered, setHovered] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const onEnter = () => {
-    setHovered(true)
-  }
+    setHovered(true);
+  };
   const onExit = () => {
-    setHovered(false)
-    setCopied(false)
-  }
+    setHovered(false);
+    setCopied(false);
+  };
   const onCopy = () => {
-    setCopied(true)
-    navigator.clipboard.writeText(textInput.current?.textContent as string)
+    setCopied(true);
+    navigator.clipboard.writeText(textInput.current?.textContent as string);
     setTimeout(() => {
-      setCopied(false)
-    }, 2000)
-  }
+      setCopied(false);
+    }, 2000);
+  };
 
   return (
     <div ref={textInput} onMouseEnter={onEnter} onMouseLeave={onExit} className="relative">
@@ -62,7 +62,7 @@ const Pre = ({ children }: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTM
       )}
       <pre>{children}</pre>
     </div>
-  )
-}
+  );
+};
 
-export default Pre
+export default Pre;

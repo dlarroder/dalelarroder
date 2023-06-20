@@ -1,11 +1,11 @@
-import { ProjectModal } from './types'
+import { ProjectModal } from './types';
 
 interface ProjectProps {
-  index: number
-  title: string
-  url: string
-  role: string
-  setModal: (modal: ProjectModal) => void
+  index: number;
+  title: string;
+  url: string;
+  role: string;
+  setModal: (modal: ProjectModal) => void;
 }
 
 export default function ProjectItem({ index, title, url, role, setModal }: ProjectProps) {
@@ -14,10 +14,10 @@ export default function ProjectItem({ index, title, url, role, setModal }: Proje
       href={url}
       target="_blank"
       onMouseEnter={() => {
-        setModal({ active: true, index })
+        setModal({ active: true, index });
       }}
       onMouseLeave={() => {
-        setModal({ active: false, index })
+        setModal({ active: false, index });
       }}
       className="group flex w-full items-center justify-between border-b px-4 py-10 sm:px-10 sm:py-16"
       rel="noreferrer"
@@ -29,5 +29,5 @@ export default function ProjectItem({ index, title, url, role, setModal }: Proje
         {role}
       </p>
     </a>
-  )
+  );
 }

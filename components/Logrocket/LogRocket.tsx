@@ -1,12 +1,12 @@
-import LogRocket from 'logrocket'
+import LogRocket from 'logrocket';
 
 const useLogRocket = () => {
-  const logrocketId = process.env.NEXT_PUBLIC_LOGROCKET_ID || ''
+  const logrocketId = process.env.NEXT_PUBLIC_LOGROCKET_ID || '';
 
   setTimeout(() => {
-    LogRocket.init(logrocketId)
-  }, 100)
-  return null
-}
+    LogRocket.init(logrocketId);
+  }, 100);
+  return null;
+};
 
-export default useLogRocket
+export default useLogRocket;

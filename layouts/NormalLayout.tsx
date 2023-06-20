@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion'
-import { ReactNode } from 'react'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import SectionContainer from '../components/SectionContainer'
+import { motion } from 'framer-motion';
+import { ReactNode } from 'react';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import SectionContainer from '../components/SectionContainer';
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export default function NormalLayout({ children }: Props) {
@@ -13,7 +13,7 @@ export default function NormalLayout({ children }: Props) {
     hidden: { opacity: 0, x: -200 },
     enter: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: 0 },
-  }
+  };
 
   return (
     <SectionContainer>
@@ -31,5 +31,5 @@ export default function NormalLayout({ children }: Props) {
       </motion.main>
       <Footer />
     </SectionContainer>
-  )
+  );
 }

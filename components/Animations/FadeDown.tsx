@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion'
-import { ReactNode } from 'react'
+import { motion } from 'framer-motion';
+import { ReactNode } from 'react';
 
 interface Props {
-  children: ReactNode
-  duration: number
-  delay?: number
+  children: ReactNode;
+  duration: number;
+  delay?: number;
 }
 
 export default function FadeUp({ children, duration, delay }: Props) {
@@ -23,5 +23,5 @@ export default function FadeUp({ children, duration, delay }: Props) {
     >
       {children}
     </motion.div>
-  )
+  );
 }

@@ -13,6 +13,9 @@
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
     "prepare": "husky install"
   },
+  "engines": {
+    "node": "18"
+  },
   "dependencies": {
     "@dlarroder/playground": "1.2.2",
     "@fontsource/mukta": "4.5.10",

@@ -1,28 +1,28 @@
-import PageTitle from '@/components/PageTitle'
-import PostComments from '@/components/PostComments'
-import PostNavigation from '@/components/PostNavigation'
-import { BlogSEO } from '@/components/SEO'
-import siteMetadata from '@/data/siteMetadata'
-import { CoreContent } from '@/lib/utils/contentlayer'
-import type { Authors, Blog } from 'contentlayer/generated'
-import { ReactNode } from 'react'
+import PageTitle from '@/components/PageTitle';
+import PostComments from '@/components/PostComments';
+import PostNavigation from '@/components/PostNavigation';
+import { BlogSEO } from '@/components/SEO';
+import siteMetadata from '@/data/siteMetadata';
+import { CoreContent } from '@/lib/utils/contentlayer';
+import type { Authors, Blog } from 'contentlayer/generated';
+import { ReactNode } from 'react';
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
-}
+};
 
 interface Props {
-  content: CoreContent<Blog>
-  authorDetails: CoreContent<Authors>
-  children: ReactNode
-  next?: { slug: string; title: string }
-  prev?: { slug: string; title: string }
+  content: CoreContent<Blog>;
+  authorDetails: CoreContent<Authors>;
+  children: ReactNode;
+  next?: { slug: string; title: string };
+  prev?: { slug: string; title: string };
 }
 
 export default function PostLayout({ content, authorDetails, children, next, prev }: Props) {
-  const { slug, date, title, author, readingTime } = content
+  const { slug, date, title, author, readingTime } = content;
 
   return (
     <>
@@ -63,5 +63,5 @@ export default function PostLayout({ content, authorDetails, children, next, pre
         </div>
       </article>
     </>
-  )
+  );
 }

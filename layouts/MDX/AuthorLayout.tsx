@@ -1,15 +1,15 @@
-import Image from '@/components/Image'
-import { PageSEO } from '@/components/SEO'
-import type { Authors } from 'contentlayer/generated'
-import { ReactNode } from 'react'
+import Image from '@/components/Image';
+import { PageSEO } from '@/components/SEO';
+import type { Authors } from 'contentlayer/generated';
+import { ReactNode } from 'react';
 
 interface Props {
-  children: ReactNode
-  content: Omit<Authors, '_id' | '_raw' | 'body'>
+  children: ReactNode;
+  content: Omit<Authors, '_id' | '_raw' | 'body'>;
 }
 
 export default function AuthorLayout({ children, content }: Props) {
-  const { name, avatar, occupation, company } = content
+  const { name, avatar, occupation, company } = content;
 
   return (
     <>
@@ -37,5 +37,5 @@ export default function AuthorLayout({ children, content }: Props) {
         </div>
       </div>
     </>
-  )
+  );
 }

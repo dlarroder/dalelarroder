@@ -1,26 +1,26 @@
-import Pagination from '@/components/Pagination'
-import PostCard from '@/components/PostCard'
-import { CoreContent } from '@/lib/utils/contentlayer'
-import type { Blog } from 'contentlayer/generated'
-import { ComponentProps, useState } from 'react'
+import Pagination from '@/components/Pagination';
+import PostCard from '@/components/PostCard';
+import { CoreContent } from '@/lib/utils/contentlayer';
+import type { Blog } from 'contentlayer/generated';
+import { ComponentProps, useState } from 'react';
 
 interface Props {
-  posts: CoreContent<Blog>[]
-  title: string
-  initialDisplayPosts?: CoreContent<Blog>[]
-  pagination?: ComponentProps<typeof Pagination>
+  posts: CoreContent<Blog>[];
+  title: string;
+  initialDisplayPosts?: CoreContent<Blog>[];
+  pagination?: ComponentProps<typeof Pagination>;
 }
 
 export default function ListLayout({ posts, title, initialDisplayPosts = [], pagination }: Props) {
-  const [searchValue, setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = posts.filter((post) => {
-    const searchContent = post.title + post.summary + post.tags?.join(' ')
-    return searchContent.toLowerCase().includes(searchValue.toLowerCase())
-  })
+    const searchContent = post.title + post.summary + post.tags?.join(' ');
+    return searchContent.toLowerCase().includes(searchValue.toLowerCase());
+  });
 
   // If initialDisplayPosts exist, display it if no searchValue is specified.
   const displayPosts =
-    initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
+    initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts;
 
   return (
     <>
@@ -57,5 +57,5 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
         <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
       )}
     </>
-  )
+  );
 }
