@@ -1,13 +1,14 @@
-import headerNavLinks from '@/data/headerNavLinks'
-import classNames from 'classnames'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import CommandPalette from './CommandPalette/CommandPalette'
-import MobileNav from './MobileNav'
-import ThemeSwitch from './ThemeSwitch'
+'use client';
+
+import headerNavLinks from '@/data/headerNavLinks';
+import classNames from 'classnames';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import MobileNav from './MobileNav';
+import ThemeSwitch from './ThemeSwitch';
 
 export default function Header() {
-  const router = useRouter()
+  const pathName = usePathname();
 
   return (
     <header className="z-40 bg-transparent py-5 md:py-10" data-scroll>
@@ -18,7 +19,7 @@ export default function Header() {
               className={classNames(
                 'horizontal-underline hidden text-3xl font-extrabold sm:block',
                 {
-                  'horizontal-underline-active': router.pathname === '/',
+                  'horizontal-underline-active': pathName === '/',
                 }
               )}
             >
@@ -29,7 +30,7 @@ export default function Header() {
         <div className="flex items-center space-x-3 text-base leading-5">
           <div className="hidden space-x-5 sm:flex">
             {headerNavLinks.map(({ title, href }) => {
-              const active = router.pathname.includes(href)
+              const active = pathName?.includes(href);
               return (
                 <Link
                   key={title}
@@ -43,16 +44,16 @@ export default function Header() {
                     {title}
                   </span>
                 </Link>
-              )
+              );
             })}
           </div>
           <div className="flex items-center">
-            <CommandPalette />
+            {/* <CommandPalette /> */}
             <ThemeSwitch />
             <MobileNav />
           </div>
         </div>
       </div>
     </header>
-  )
+  );
 }

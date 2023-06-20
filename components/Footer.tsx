@@ -1,8 +1,8 @@
-import siteMetadata from '@/data/siteMetadata'
-import Link from 'next/link'
-import { AiFillLinkedin } from 'react-icons/ai'
-import { FaGithub, FaSpotify, FaSteam, FaTwitter } from 'react-icons/fa'
-import NowPlaying from './Spotify/NowPlaying'
+import siteMetadata from '@/data/siteMetadata';
+import Link from 'next/link';
+import { AiFillLinkedin } from 'react-icons/ai';
+import { FaGithub, FaSpotify, FaSteam, FaTwitter } from 'react-icons/fa';
+import NowPlaying from './Spotify/NowPlaying';
 
 export default function Footer() {
   return (
@@ -52,5 +52,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

@@ -1,33 +1,36 @@
-import { useContext, useRef } from 'react'
-import { ScrollContext } from '../ScrollObserver'
+'use client';
+
+import { useContext, useRef } from 'react';
+import { ScrollContext } from '../ScrollObserver';
 
 function opacityForBlock(sectionProgress: number, blockNumber: number) {
-  const progress = sectionProgress - blockNumber
+  const progress = sectionProgress - blockNumber;
 
   if (progress >= 0 && progress < 1) {
-    return 1
+    return 1;
   }
 
-  return 0.2
+  return 0.2;
 }
 
 export default function Intro() {
-  const { scrollY } = useContext(ScrollContext)
-  const refContainer = useRef<HTMLDivElement>(null)
-
-  const numOfPages = 3
-  let progress = 0
-  const { current: elContainer } = refContainer
+  const { scrollY } = useContext(ScrollContext);
+  const refContainer = useRef<HTMLDivElement>(null);
+  console.log('scrollY', scrollY);
+  const numOfPages = 3;
+  let progress = 0;
+  const { current: elContainer } = refContainer;
 
   if (elContainer) {
-    const { clientHeight, offsetTop } = elContainer
-    const screenH = window.innerHeight
-    const halfH = screenH / 2
+    const { clientHeight, offsetTop } = elContainer;
+    const screenH = window.innerHeight;
+    const halfH = screenH / 2;
 
     const percentY =
-      Math.min(clientHeight + halfH, Math.max(-screenH, scrollY - offsetTop) + halfH) / clientHeight
+      Math.min(clientHeight + halfH, Math.max(-screenH, scrollY - offsetTop) + halfH) /
+      clientHeight;
 
-    progress = Math.min(numOfPages - 0.5, Math.max(0.5, percentY * numOfPages))
+    progress = Math.min(numOfPages - 0.5, Math.max(0.5, percentY * numOfPages));
   }
 
   return (
@@ -56,5 +59,5 @@ export default function Intro() {
         </div>
       </div>
     </div>
-  )
+  );
 }

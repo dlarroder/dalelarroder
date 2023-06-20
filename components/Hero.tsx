@@ -1,27 +1,26 @@
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { ReactElement, useContext, useEffect, useRef } from 'react'
-import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
-import { useLocomotiveScroll } from 'react-locomotive-scroll'
-import { ScrollContext } from './ScrollObserver'
-import { renderCanvas } from './renderCanvas'
+'use client';
+
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { ReactElement, useContext, useEffect, useRef } from 'react';
+import { HiOutlineArrowNarrowDown } from 'react-icons/hi';
+import { ScrollContext } from './ScrollObserver';
+import { renderCanvas } from './renderCanvas';
 
 export default function Hero(): ReactElement {
-  const { scroll } = useLocomotiveScroll()
+  const ref = useRef<HTMLHeadingElement>(null);
+  const { scrollY } = useContext(ScrollContext);
 
-  const ref = useRef<HTMLHeadingElement>(null)
-  const { scrollY } = useContext(ScrollContext)
-
-  let progress = 0
-  const { current: elContainer } = ref
+  let progress = 0;
+  const { current: elContainer } = ref;
 
   if (elContainer) {
-    progress = Math.min(1, scrollY / elContainer.clientHeight)
+    progress = Math.min(1, scrollY / elContainer.clientHeight);
   }
 
   useEffect(() => {
-    renderCanvas()
-  }, [])
+    renderCanvas();
+  }, []);
 
   return (
     <div>
@@ -56,9 +55,9 @@ export default function Hero(): ReactElement {
                 role="presentation"
                 className="flex cursor-pointer flex-col items-center justify-center"
                 onClick={() => {
-                  const intro = document.querySelector('#intro')
+                  const intro = document.querySelector('#intro');
 
-                  scroll.scrollTo(intro)
+                  intro?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
                 <HiOutlineArrowNarrowDown size={20} />
@@ -69,5 +68,5 @@ export default function Hero(): ReactElement {
       </motion.div>
       <canvas className="bg-skin-base pointer-events-none absolute inset-0" id="canvas"></canvas>
     </div>
-  )
+  );
 }

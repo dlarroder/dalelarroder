@@ -1,9 +1,9 @@
-import { ReactNode } from 'react'
-import Footer from '../components/Footer'
-import SectionContainer from '../components/SectionContainer'
+import { ReactNode } from 'react';
+import Footer from '../components/Footer';
+import SectionContainer from '../components/SectionContainer';
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export default function HomeLayout({ children }: Props) {
@@ -14,5 +14,5 @@ export default function HomeLayout({ children }: Props) {
         <Footer />
       </div>
     </SectionContainer>
-  )
+  );
 }

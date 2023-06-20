@@ -1,8 +1,8 @@
-const { withContentlayer } = require('next-contentlayer')
+const { withContentlayer } = require('next-contentlayer');
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-})
+});
 
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
@@ -16,7 +16,7 @@ const ContentSecurityPolicy = `
   connect-src * https://*.logrocket.io https://*.lr-ingest.io https://*.logrocket.com https://*.lr-in.com https://*.lr-in-prod.com;
   font-src 'self';
   frame-src giscus.app
-`
+`;
 
 const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
@@ -54,7 +54,7 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
   },
-]
+];
 
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
@@ -66,21 +66,24 @@ module.exports = withContentlayer(
     eslint: {
       dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
     },
+    experimental: {
+      appDir: true,
+    },
     async headers() {
       return [
         {
           source: '/(.*)',
           headers: securityHeaders,
         },
-      ]
+      ];
     },
     webpack: (config) => {
       config.module.rules.push({
         test: /\.svg$/,
         use: ['@svgr/webpack'],
-      })
+      });
 
-      return config
+      return config;
     },
   })
-)
+);
