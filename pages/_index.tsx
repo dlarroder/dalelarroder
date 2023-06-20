@@ -4,7 +4,7 @@ import Intro from '@/components/Intro/Intro';
 import RecentPosts from '@/components/RecentPosts';
 import { PageSEO } from '@/components/SEO';
 import SectionContainer from '@/components/SectionContainer';
-import TopTracks from '@/components/Spotify/TopTrack';
+import TopTracks from '@/components/Spotify/TopTracks';
 import Works from '@/components/Work/Works';
 import siteMetadata from '@/data/siteMetadata';
 import HomeLayout from '@/layouts/HomeLayout';
