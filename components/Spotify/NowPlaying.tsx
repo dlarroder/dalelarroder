@@ -31,6 +31,8 @@ async function fetchNowPlaying(): Promise<NowPlayingSong | null> {
   return null;
 }
 
+export const revalidate = 30;
+
 export default async function NowPlaying() {
   const nowPlaying = await fetchNowPlaying();
 
