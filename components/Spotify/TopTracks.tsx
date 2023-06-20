@@ -12,7 +12,7 @@ async function fetchTopTracks(): Promise<Song[] | null> {
       songUrl: track.external_urls.spotify,
       title: track.name,
     }));
-    console.log('tracks', tracks);
+
     return tracks;
   } catch (e) {
     if (e instanceof Error) {

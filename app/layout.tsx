@@ -4,7 +4,7 @@ import '@fontsource/mukta';
 
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import ThemeProvider from 'app/components/ThemeProvider';
+import ThemeProvider from '@/components/Providers/ThemeProvider';
 
 export const metadata = {
   title: 'Dale Larroder',

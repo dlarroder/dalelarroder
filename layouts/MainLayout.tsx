@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import LocomotiveProvider from '../components/LocomotiveProvider';
 import SectionContainer from '../components/SectionContainer';
 
 interface Props {
@@ -17,7 +16,7 @@ export default function MainLayout({ children }: Props) {
   };
 
   return (
-    <LocomotiveProvider>
+    <>
       <SectionContainer>
         <Header />
         <motion.main
@@ -33,6 +32,6 @@ export default function MainLayout({ children }: Props) {
         </motion.main>
         <Footer />
       </SectionContainer>
-    </LocomotiveProvider>
+    </>
   );
 }
