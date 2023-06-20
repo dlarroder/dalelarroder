@@ -3,3 +3,5 @@ export enum EnvironmentType {
   Prod = 'production',
   Test = 'test',
 }
+
+export const POSTS_PER_PAGE = 5;

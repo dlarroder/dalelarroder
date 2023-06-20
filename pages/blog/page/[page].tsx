@@ -2,12 +2,10 @@ import { PageSEO } from '@/components/SEO';
 import siteMetadata from '@/data/siteMetadata';
 import ListLayout from '@/layouts/MDX/ListLayout';
 import MainLayout from '@/layouts/MainLayout';
-import { allCoreContent } from '@/lib/utils/contentlayer';
+import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer';
+import { POSTS_PER_PAGE } from '@/types/default';
 import { allBlogs } from 'contentlayer/generated';
 import { InferGetStaticPropsType } from 'next';
-import { sortedBlogPost } from '../../../lib/utils/contentlayer';
-
-const POSTS_PER_PAGE = 5;
 
 export const getStaticPaths = async () => {
   const totalPosts = sortedBlogPost(allBlogs);

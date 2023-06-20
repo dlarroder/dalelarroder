@@ -1,9 +1,8 @@
 import ListLayout from '@/layouts/MDX/ListLayout';
 import MainLayout from '@/layouts/MainLayout';
 import { sortedBlogPost } from '@/lib/utils/contentlayer';
+import { POSTS_PER_PAGE } from '@/types/default';
 import { allBlogs } from 'contentlayer/generated';
-
-export const POSTS_PER_PAGE = 5;
 
 export default function Blog() {
   const activePosts = allBlogs.filter((p) => p.draft === false);
