@@ -22,7 +22,7 @@ export default function PostCard({ posts, showTags = true }: PostCardProps) {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, delay: index / 10 }}
         >
-          <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`}>
+          <Link href={`/blog/${slug}`} aria-label={`Read "${title}"`} legacyBehavior>
             <article className="cursor-pointer gap-3 space-y-2 bg-opacity-20 py-5 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
               <div className="space-y-3 xl:col-span-4">
                 <span className="text-2xl font-bold leading-8 tracking-tight">

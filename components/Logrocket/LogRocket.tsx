@@ -1,3 +1,5 @@
+'use client';
+
 import LogRocket from 'logrocket';
 
 const useLogRocket = () => {
