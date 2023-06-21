@@ -1,9 +1,9 @@
 import { MDXLayoutRenderer } from '@/components/MDXComponents';
 import PageTitle from '@/components/PageTitle';
+import PostLayout from '@/layouts/MDX/PostLayout';
+import MainLayout from '@/layouts/MainLayout';
 import { coreContent, formatBlogLink, sortedBlogPost } from '@/lib/utils/contentlayer';
 import { allBlogs } from 'contentlayer/generated';
-import PostLayout from '../../../layouts/MDX/PostLayout';
-import MainLayout from '../../../layouts/MainLayout';
 
 export default function BlogPost({ params }: { params: { slug: string } }) {
   const slug = params?.slug;

@@ -53,8 +53,7 @@ export function allCoreContent<T extends DocumentTypes>(contents: T[]) {
   return contents.map((c) => coreContent(c));
 }
 
-// TODO: refactor into contentlayer once compute over all docs is enabled
-export async function getAllTags(allBlogs: Blog[]) {
+export function getAllTags(allBlogs: Blog[]) {
   const tagCount: Record<string, number> = {};
   // Iterate through each post, putting all found tags into `tags`
   allBlogs.forEach((file) => {

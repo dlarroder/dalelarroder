@@ -16,20 +16,18 @@ export default function MainLayout({ children }: Props) {
   };
 
   return (
-    <>
-      <SectionContainer>
-        <motion.main
-          data-scroll
-          className="mb-auto"
-          initial="hidden"
-          animate="enter"
-          exit="exit"
-          variants={variants}
-          transition={{ duration: 0.5, ease: 'easeInOut' }}
-        >
-          {children}
-        </motion.main>
-      </SectionContainer>
-    </>
+    <SectionContainer>
+      <motion.main
+        data-scroll
+        className="mb-auto"
+        initial="hidden"
+        animate="enter"
+        exit="exit"
+        variants={variants}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
+      >
+        {children}
+      </motion.main>
+    </SectionContainer>
   );
 }
