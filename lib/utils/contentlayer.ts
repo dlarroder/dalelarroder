@@ -72,3 +72,17 @@ export async function getAllTags(allBlogs: Blog[]) {
 
   return tagCount;
 }
+
+export type BlogLink = { slug: string; title: string };
+
+export function formatBlogLink(
+  blog: Omit<Blog, 'body' | '_raw' | '_id'> | null
+): BlogLink | undefined {
+  if (blog) {
+    return {
+      title: blog?.title,
+      slug: blog?.slug,
+    };
+  }
+  return undefined;
+}

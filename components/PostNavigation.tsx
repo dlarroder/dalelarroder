@@ -1,6 +1,5 @@
+import { BlogLink } from '@/lib/utils/contentlayer';
 import Link from 'next/link';
-
-type BlogLink = { slug: string; title: string };
 
 interface PostNavigationProps {
   prev?: BlogLink;

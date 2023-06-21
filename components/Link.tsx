@@ -1,3 +1,5 @@
+'use client';
+
 import { LinkButton } from '@dlarroder/playground';
 import Link from 'next/link';
 import { AnchorHTMLAttributes, DetailedHTMLProps } from 'react';

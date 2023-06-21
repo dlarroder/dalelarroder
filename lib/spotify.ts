@@ -33,6 +33,7 @@ export const getNowPlaying = async () => {
     next: {
       revalidate: 30,
     },
+    cache: 'no-store',
   });
 };
 

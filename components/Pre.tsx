@@ -1,3 +1,5 @@
+'use client';
+
 import { DetailedHTMLProps, HTMLAttributes, useRef, useState } from 'react';
 
 const Pre = ({ children }: DetailedHTMLProps<HTMLAttributes<HTMLPreElement>, HTMLPreElement>) => {

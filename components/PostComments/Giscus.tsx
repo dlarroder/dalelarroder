@@ -1,3 +1,5 @@
+'use client';
+
 import siteMetadata from '@/data/siteMetadata';
 import { useTheme } from 'next-themes';
 import { useEffect } from 'react';

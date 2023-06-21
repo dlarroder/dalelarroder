@@ -33,6 +33,6 @@ const siteMetadata = {
       themeURL: '',
     },
   },
-}
+};
 
-module.exports = siteMetadata
+module.exports = siteMetadata;
