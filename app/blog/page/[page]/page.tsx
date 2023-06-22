@@ -5,6 +5,11 @@ import { POSTS_PER_PAGE } from '@/types/default';
 import { allBlogs } from 'contentlayer/generated';
 import { redirect } from 'next/navigation';
 
+export const metadata = {
+  title: 'Blog - Dale Larroder',
+  description: 'I build things for the web.',
+};
+
 export default function BlogPage({ params }: { params: { page: string } }) {
   const pageNumber = parseInt(params.page);
   const posts = sortedBlogPost(allBlogs);

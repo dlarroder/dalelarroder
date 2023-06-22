@@ -1,8 +1,13 @@
+import ListLayout from '@/layouts/MDX/ListLayout';
 import MainLayout from '@/layouts/MainLayout';
 import { allCoreContent } from '@/lib/utils/contentlayer';
 import kebabCase from '@/lib/utils/kebabCase';
 import { allBlogs } from 'contentlayer/generated';
-import ListLayout from '../../../layouts/MDX/ListLayout';
+
+export const metadata = {
+  title: 'Blog - Dale Larroder',
+  description: 'My Tags - Dale Larroder',
+};
 
 export default function Tag({ params }: { params: { tag: string } }) {
   const { tag } = params;

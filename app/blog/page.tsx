@@ -4,6 +4,11 @@ import { sortedBlogPost } from '@/lib/utils/contentlayer';
 import { POSTS_PER_PAGE } from '@/types/default';
 import { allBlogs } from 'contentlayer/generated';
 
+export const metadata = {
+  title: 'Blog - Dale Larroder',
+  description: 'My Blogs - Dale Larroder',
+};
+
 export default function Blog() {
   const activePosts = allBlogs.filter((p) => p.draft === false);
   const posts = sortedBlogPost(activePosts);

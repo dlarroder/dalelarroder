@@ -6,6 +6,10 @@ async function fetchNowPlaying(): Promise<NowPlayingSong | null> {
   try {
     const response = await getNowPlaying();
 
+    if (response.status === 204 || response.status > 400) {
+      return null;
+    }
+
     const song = await response.json();
     const isPlaying = song.is_playing;
     const title = song.item.name;

@@ -4,9 +4,29 @@ import PostLayout from '@/layouts/MDX/PostLayout';
 import MainLayout from '@/layouts/MainLayout';
 import { coreContent, formatBlogLink, sortedBlogPost } from '@/lib/utils/contentlayer';
 import { allBlogs } from 'contentlayer/generated';
+import { Metadata } from 'next';
+import ScrollProgressBar from '../../../components/ScrollProgressBar';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const slug = params.slug;
+  const post = allBlogs.find((p) => p.slug === slug);
+
+  if (!post) {
+    return {};
+  }
+
+  return {
+    title: post.title,
+    description: post.summary,
+  };
+}
 
 export default function BlogPost({ params }: { params: { slug: string } }) {
-  const slug = params?.slug;
+  const slug = params.slug;
   const sortedPosts = sortedBlogPost(allBlogs);
 
   const post = sortedPosts.find((p) => p.slug === slug);
@@ -19,21 +39,24 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   const next = nextContent ? coreContent(nextContent) : null;
 
   return (
-    <MainLayout>
-      {post && 'draft' in post && post.draft !== true ? (
-        <PostLayout content={post} prev={formatBlogLink(prev)} next={formatBlogLink(next)}>
-          <MDXLayoutRenderer toc={post.toc} content={post} authorDetails={author} />
-        </PostLayout>
-      ) : (
-        <div className="mt-24 text-center">
-          <PageTitle>
-            Under Construction{' '}
-            <span role="img" aria-label="roadwork sign">
-              🚧
-            </span>
-          </PageTitle>
-        </div>
-      )}
-    </MainLayout>
+    <>
+      <ScrollProgressBar />
+      <MainLayout>
+        {post && 'draft' in post && post.draft !== true ? (
+          <PostLayout content={post} prev={formatBlogLink(prev)} next={formatBlogLink(next)}>
+            <MDXLayoutRenderer toc={post.toc} content={post} authorDetails={author} />
+          </PostLayout>
+        ) : (
+          <div className="mt-24 text-center">
+            <PageTitle>
+              Under Construction{' '}
+              <span role="img" aria-label="roadwork sign">
+                🚧
+              </span>
+            </PageTitle>
+          </div>
+        )}
+      </MainLayout>
+    </>
   );
 }
