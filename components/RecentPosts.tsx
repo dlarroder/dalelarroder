@@ -12,7 +12,7 @@ export default function RecentPosts({ posts }: RecentPosts) {
   const slicedPost = posts.slice(0, MAX_DISPLAY);
 
   return (
-    <>
+    <div className="mt-6">
       <div className="divide-gray-200 dark:divide-gray-700">
         <h3 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
           Recent Posts
@@ -28,6 +28,6 @@ export default function RecentPosts({ posts }: RecentPosts) {
           </Link>
         </div>
       )}
-    </>
+    </div>
   );
 }
