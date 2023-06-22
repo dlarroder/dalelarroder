@@ -1,7 +1,7 @@
 import { MDXLayoutRenderer } from '@/components/MDXComponents';
+import UsesLayout from '@/layouts/MDX/UsesLayout';
 import MainLayout from '@/layouts/MainLayout';
 import { allAuthors } from 'contentlayer/generated';
-import UsesLayout from '../../layouts/MDX/UsesLayout';
 
 export const metadata = {
   title: 'Uses - Dale Larroder',

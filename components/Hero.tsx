@@ -9,7 +9,7 @@ import { renderCanvas } from './renderCanvas';
 
 export default function Hero(): ReactElement {
   const ref = useRef<HTMLHeadingElement>(null);
-  const { scrollY } = useContext(ScrollContext); // TODO: use scroll provider, cleanup
+  const { scrollY } = useContext(ScrollContext);
 
   let progress = 0;
   const { current: elContainer } = ref;

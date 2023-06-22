@@ -1,14 +1,12 @@
 'use client';
 
-import LogRocket from 'logrocket';
+import rocket from 'logrocket';
 
-const useLogRocket = () => {
+export default function LogRocket() {
   const logrocketId = process.env.NEXT_PUBLIC_LOGROCKET_ID || '';
 
   setTimeout(() => {
-    LogRocket.init(logrocketId);
+    rocket.init(logrocketId);
   }, 100);
   return null;
-};
-
-export default useLogRocket;
+}

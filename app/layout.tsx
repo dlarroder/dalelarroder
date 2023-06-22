@@ -5,7 +5,7 @@ import '@fontsource/mukta';
 import Analytics from '@/components/Analytics';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import LogRocket from '@/components/Logrocket';
+import LogRocket from '@/components/LogRocket';
 import ThemeProvider from '@/components/Providers/ThemeProvider';
 
 export const metadata = {

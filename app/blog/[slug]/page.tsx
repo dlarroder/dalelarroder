@@ -1,11 +1,11 @@
 import { MDXLayoutRenderer } from '@/components/MDXComponents';
 import PageTitle from '@/components/PageTitle';
+import ScrollProgressBar from '@/components/ScrollProgressBar';
 import PostLayout from '@/layouts/MDX/PostLayout';
 import MainLayout from '@/layouts/MainLayout';
 import { coreContent, formatBlogLink, sortedBlogPost } from '@/lib/utils/contentlayer';
 import { allBlogs } from 'contentlayer/generated';
 import { Metadata } from 'next';
-import ScrollProgressBar from '../../../components/ScrollProgressBar';
 
 export async function generateMetadata({
   params,

@@ -1,5 +1,5 @@
 import Hero from '@/components/Hero';
-import Intro from '@/components/Intro/Intro';
+import Intro from '@/components/Intro';
 import LenisProvider from '@/components/Providers/LenisProvider';
 import { ScrollProvider } from '@/components/Providers/ScrollProvider';
 import RecentPosts from '@/components/RecentPosts';
