@@ -7,7 +7,7 @@ import { redirect } from 'next/navigation';
 
 export const metadata = {
   title: 'Blog - Dale Larroder',
-  description: 'I build things for the web.',
+  description: 'My Blogs - Dale Larroder',
 };
 
 export default function BlogPage({ params }: { params: { page: string } }) {

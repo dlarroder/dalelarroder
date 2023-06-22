@@ -1,6 +1,6 @@
 import { getNowPlaying } from '@/lib/spotify';
 import AnimatedBars from './AnimatedBars';
-import { Artist, NowPlayingSong } from './type';
+import { Artist, NowPlayingSong } from './types';
 
 async function fetchNowPlaying(): Promise<NowPlayingSong | null> {
   try {

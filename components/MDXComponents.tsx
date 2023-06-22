@@ -1,6 +1,5 @@
 /* eslint-disable react/display-name */
 import { coreContent } from '@/lib/utils/contentlayer';
-// import { LinkButton } from '@dlarroder/playground';
 import type { Authors, Blog } from 'contentlayer/generated';
 import { ComponentMap } from 'mdx-bundler/client';
 import { useMDXComponent } from 'next-contentlayer/hooks';
