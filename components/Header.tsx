@@ -35,6 +35,7 @@ export default function Header() {
                 const active = pathName?.includes(href);
                 return (
                   <Link
+                    prefetch
                     key={title}
                     href={href}
                     className={classNames('horizontal-underline text-base', {
