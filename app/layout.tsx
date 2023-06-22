@@ -6,6 +6,7 @@ import Analytics from '@/components/Analytics';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import LogRocket from '@/components/LogRocket';
+import LenisProvider from '@/components/Providers/LenisProvider';
 import ThemeProvider from '@/components/Providers/ThemeProvider';
 
 export const metadata = {
@@ -31,7 +32,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className="bg-white text-black antialiased dark:bg-black dark:text-white">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Header />
-          <main>{children}</main>
+          <LenisProvider>
+            <main>{children}</main>
+          </LenisProvider>
           <Footer />
           <LogRocket />
           <Analytics />
