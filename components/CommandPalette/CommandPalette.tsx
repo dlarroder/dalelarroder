@@ -1,24 +1,26 @@
-import { Command } from 'cmdk'
-import { useEffect, useState } from 'react'
-import CommandItem from './CommandItem'
-import usePaletteOptions from './usePaletteOptions'
+'use client';
+
+import { Command } from 'cmdk';
+import { useEffect, useState } from 'react';
+import CommandItem from './CommandItem';
+import usePaletteOptions from './usePaletteOptions';
 
 export default function CommandPalette() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
-  const { pageOptions, blogOptions, generalOptions } = usePaletteOptions()
+  const { pageOptions, blogOptions, generalOptions } = usePaletteOptions();
 
   // Toggle the menu when ⌘K is pressed
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === 'k' && e.metaKey) {
-        setOpen((open) => !open)
+        setOpen((open) => !open);
       }
-    }
+    };
 
-    document.addEventListener('keydown', down)
-    return () => document.removeEventListener('keydown', down)
-  }, [])
+    document.addEventListener('keydown', down);
+    return () => document.removeEventListener('keydown', down);
+  }, []);
 
   return (
     <>
@@ -71,11 +73,11 @@ export default function CommandPalette() {
         onClick={() => setOpen(true)}
         aria-label="Open command palette"
         type="button"
-        className="w-8 h-8 p-1 rounded hidden sm:block"
+        className="hidden h-8 w-8 rounded p-1 sm:block"
         whileHover={{ scale: 1.2 }}
       >
         <TbCommand size={22} className="ext-gray-100" />
       </motion.button> */}
     </>
-  )
+  );
 }

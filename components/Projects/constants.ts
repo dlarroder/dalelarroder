@@ -1,4 +1,4 @@
-import { Project } from './types'
+import { Project } from './types';
 
 export const projects: Project[] = [
   {
@@ -57,4 +57,4 @@ export const projects: Project[] = [
     url: 'https://snakegame.dalelarroder.com/',
     role: 'Frontend Developer',
   },
-]
+];

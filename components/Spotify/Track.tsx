@@ -1,8 +1,8 @@
-import { Song } from 'types/Spotify'
+import { Song } from './types';
 
 interface TrackProps {
-  ranking: number
-  track: Song
+  ranking: number;
+  track: Song;
 }
 
 export default function Track({ track, ranking }: TrackProps) {
@@ -23,5 +23,5 @@ export default function Track({ track, ranking }: TrackProps) {
         </p>
       </div>
     </div>
-  )
+  );
 }

@@ -1,12 +1,11 @@
-import { motion } from 'framer-motion'
-import { ReactNode } from 'react'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import LocomotiveProvider from '../components/LocomotiveProvider'
-import SectionContainer from '../components/SectionContainer'
+'use client';
+
+import { motion } from 'framer-motion';
+import { ReactNode } from 'react';
+import SectionContainer from '../components/SectionContainer';
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export default function MainLayout({ children }: Props) {
@@ -14,25 +13,21 @@ export default function MainLayout({ children }: Props) {
     hidden: { opacity: 0, x: -200 },
     enter: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: 0 },
-  }
+  };
 
   return (
-    <LocomotiveProvider>
-      <SectionContainer>
-        <Header />
-        <motion.main
-          data-scroll
-          className="mb-auto"
-          initial="hidden"
-          animate="enter"
-          exit="exit"
-          variants={variants}
-          transition={{ duration: 0.5, ease: 'easeInOut' }}
-        >
-          {children}
-        </motion.main>
-        <Footer />
-      </SectionContainer>
-    </LocomotiveProvider>
-  )
+    <SectionContainer>
+      <motion.main
+        data-scroll
+        className="mb-auto"
+        initial="hidden"
+        animate="enter"
+        exit="exit"
+        variants={variants}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
+      >
+        {children}
+      </motion.main>
+    </SectionContainer>
+  );
 }

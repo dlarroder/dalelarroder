@@ -1,10 +1,44 @@
-import fetcher from 'lib/fetcher'
-import useSWR from 'swr'
-import { NowPlayingSong } from '../../types/Spotify'
-import AnimatedBars from './AnimatedBars'
+import { getNowPlaying } from '@/lib/spotify';
+import AnimatedBars from './AnimatedBars';
+import { Artist, NowPlayingSong } from './types';
 
-export default function NowPlaying() {
-  const { data: nowPlaying } = useSWR<NowPlayingSong>('/api/now-playing', fetcher)
+async function fetchNowPlaying(): Promise<NowPlayingSong | null> {
+  try {
+    const response = await getNowPlaying();
+
+    if (response.status === 204 || response.status > 400) {
+      return null;
+    }
+
+    const song = await response.json();
+    const isPlaying = song.is_playing;
+    const title = song.item.name;
+    const artist = song.item.artists.map((artist: Artist) => artist.name).join(', ');
+    const album = song.item.album.name;
+    const albumImageUrl = song.item.album.images[0].url;
+    const songUrl = song.item.external_urls.spotify;
+
+    return {
+      album,
+      albumImageUrl,
+      artist,
+      isPlaying,
+      songUrl,
+      title,
+    };
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error(e.message);
+    }
+  }
+
+  return null;
+}
+
+// export const revalidate = 30;
+
+export default async function NowPlaying() {
+  const nowPlaying = await fetchNowPlaying();
 
   if (!nowPlaying?.songUrl || !nowPlaying.title || !nowPlaying.artist) {
     return (
@@ -21,7 +55,7 @@ export default function NowPlaying() {
           <p className="text-gray-500 dark:text-gray-300">Spotify</p>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -42,5 +76,5 @@ export default function NowPlaying() {
         </p>
       </div>
     </div>
-  )
+  );
 }

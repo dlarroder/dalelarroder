@@ -1,11 +1,11 @@
-import kebabCase from '@/lib/utils/kebabCase'
-import Link from 'next/link'
+import kebabCase from '@/lib/utils/kebabCase';
+import Link from 'next/link';
 
 interface Props {
-  text: string
+  text: string;
 }
 
-const Tag = ({ text }: Props) => {
+export default function Tag({ text }: Props) {
   return (
     <Link
       href={`/tags/${kebabCase(text)}`}
@@ -13,7 +13,5 @@ const Tag = ({ text }: Props) => {
     >
       {text.split(' ').join('-')}
     </Link>
-  )
+  );
 }
-
-export default Tag

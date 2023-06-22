@@ -1,27 +1,29 @@
-import headerNavLinks from '@/data/headerNavLinks'
-import classNames from 'classnames'
-import { AnimatePresence, motion } from 'framer-motion'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+'use client';
 
-const MobileNav = () => {
-  const router = useRouter()
-  const [navShow, setNavShow] = useState(false)
+import headerNavLinks from '@/data/headerNavLinks';
+import classNames from 'classnames';
+import { AnimatePresence, motion } from 'framer-motion';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+
+export default function MobileNav() {
+  const pathName = usePathname();
+  const [navShow, setNavShow] = useState(false);
 
   const variants = {
     enter: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: '100vw' },
-  }
+  };
 
   useEffect(() => {
     if (navShow) {
       // Prevent scrolling
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'auto'
+      document.body.style.overflow = 'auto';
     }
-  }, [navShow])
+  }, [navShow]);
 
   return (
     <div className="sm:hidden">
@@ -84,14 +86,14 @@ const MobileNav = () => {
                 onClick={() => setNavShow(!navShow)}
                 className={classNames(
                   'horizontal-underline font-bold tracking-widest text-gray-900 backdrop:text-2xl dark:text-gray-100',
-                  { 'horizontal-underline-active': router.pathname === '/' }
+                  { 'horizontal-underline-active': pathName === '/' }
                 )}
               >
                 Home
               </Link>
             </div>
             {headerNavLinks.map(({ title, href }) => {
-              const active = router.pathname.includes(href)
+              const active = pathName?.includes(href);
 
               return (
                 <div key={title} className="px-12 py-4">
@@ -107,13 +109,11 @@ const MobileNav = () => {
                     {title}
                   </Link>
                 </div>
-              )
+              );
             })}
           </nav>
         </motion.div>
       </AnimatePresence>
     </div>
-  )
+  );
 }
-
-export default MobileNav

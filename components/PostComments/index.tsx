@@ -1,18 +1,18 @@
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 
 const GiscusComponent = dynamic(
   () => {
-    return import('./Giscus')
+    return import('./Giscus');
   },
   { ssr: false }
-)
+);
 
 const PostComments = () => {
   return (
     <div id="comment">
       <GiscusComponent />
     </div>
-  )
-}
+  );
+};
 
-export default PostComments
+export default PostComments;
