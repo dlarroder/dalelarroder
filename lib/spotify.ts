@@ -30,9 +30,7 @@ export const getNowPlaying = async () => {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
-    next: {
-      revalidate: 30,
-    },
+    cache: 'no-store',
   });
 };
 

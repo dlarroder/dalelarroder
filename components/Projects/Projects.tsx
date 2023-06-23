@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import useBreakpoint from 'use-breakpoint';
 import ProjectItem from './ProjectItem';
@@ -16,14 +17,20 @@ export default function Projects() {
   return (
     <>
       {projects.map((project, index) => (
-        <ProjectItem
+        <motion.div
           key={project.title}
-          index={index}
-          title={project.title}
-          url={project.url}
-          role={project.role}
-          setModal={setModal}
-        />
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6, delay: index / 10 }}
+        >
+          <ProjectItem
+            index={index}
+            title={project.title}
+            url={project.url}
+            role={project.role}
+            setModal={setModal}
+          />
+        </motion.div>
       ))}
       {breakpoint === 'desktop' && <ProjectPreview modal={modal} projects={projects} />}
     </>
