@@ -7,7 +7,7 @@ module.exports = withContentlayer({
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   eslint: {
-    dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
+    dirs: ['app', 'components', 'lib', 'layouts', 'scripts'],
   },
   experimental: {
     appDir: true,
