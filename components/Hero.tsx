@@ -41,7 +41,7 @@ export default function Hero(): ReactElement {
                 </FadeUp>
                 <FadeUp duration={0.6} delay={0.2}>
                   <h2 className="text-3xl font-medium opacity-80 sm:text-6xl md:text-6xl xl:text-7xl">
-                    Dev | Ethical AI | Research
+                    Software Developer
                   </h2>
                 </FadeUp>
                 <FadeRight duration={0.5} delay={0.8}>
