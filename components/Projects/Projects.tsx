@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import useBreakpoint from 'use-breakpoint';
+import Line from '../Line';
 import ProjectItem from './ProjectItem';
 import ProjectPreview from './ProjectPreview';
 import { projects } from './constants';
@@ -30,6 +31,7 @@ export default function Projects() {
             role={project.role}
             setModal={setModal}
           />
+          <Line />
         </motion.div>
       ))}
       {breakpoint === 'desktop' && <ProjectPreview modal={modal} projects={projects} />}
