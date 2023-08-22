@@ -10,7 +10,7 @@ import LenisProvider from '@/components/Providers/LenisProvider';
 import ThemeProvider from '@/components/Providers/ThemeProvider';
 
 export const metadata = {
-  title: 'Dale Larroder',
+  title: 'Expert laravel',
   description: 'I build things for the web.',
 };
 
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <main>{children}</main>
           </LenisProvider>
           <Footer />
-          <LogRocket />
+          {/* <LogRocket /> */}
           <Analytics />
         </ThemeProvider>
       </body>
