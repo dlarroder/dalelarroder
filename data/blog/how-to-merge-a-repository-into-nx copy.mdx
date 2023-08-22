@@ -1,0 +1,185 @@
+---
+title: 'How to merge a git repository into Nx'
+date: '2022-05-18'
+tags: ['Git', 'Monorepo', 'Nx', 'Workspaces']
+draft: false
+author: 'Dale Larroder'
+summary: 'A guide on how to merge any existing app or library into a Nx monorepo.'
+---
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+## What is Nx?
+
+[Nx](https://nx.dev/) is a framework that allows you to architect,
+test, and build your project at any scale with the most popular modern
+Front-end frameworks like [React](https://reactjs.org/) and [Angular](https://angular.io/),
+and Back-end ones like [NestJs](https://nestjs.com/) or [Express](https://expressjs.com/).
+To make this possible, Nx comes shipped with a large toolset that simplifies your Monorepo
+management. If you are unfamiliar with [Monorepo](https://semaphoreci.com/blog/what-is-monorepo#:~:text=A%20monorepo%20is%20a%20version,Monorepos%20can%20reach%20colossal%20sizes.),
+it is basically a version-controlled code repository that holds many projects and libraries.
+
+## Prerequisites
+
+- Git
+- Node
+- Nx CLI
+
+## Creating an Nx Workspace
+
+```
+npx create-nx-workspace@latest
+```
+
+![image](/static/blog/nx/create-nx-workspace.webp)
+
+## Nx Workspace Folder structure
+
+```
+nx-workspace/
+├── apps/
+├── libs/
+├── tools/
+├── workspace.json
+├── nx.json
+├── package.json
+└── tsconfig.base.json
+```
+
+You can read more about Nx's folder structure [here](https://nx.dev/getting-started/nx-setup#folder-structure)
+
+## Step 1: Clone source repository
+
+```
+git clone <repo-url> packageC
+```
+
+It is recommended to create a new copy of the repository you are about to clone into the nx monorepo, as there
+will be some git changes that are easier to delete than to start over.
+
+## Step 2: Move all files into the right sub directory.
+
+If you are trying to move an app, the sub directory should be `apps/packageC`
+
+```
+export TARGET_DIR="apps/packageC"
+```
+
+If you are trying to move a library, the sub directory should be `libs/packageC`
+
+```
+export TARGET_DIR="libs/packageC"
+```
+
+The next commands will actually move the files and will rewrite all of the git
+history into the the TARGET_DIR you have specified above.
+
+```
+cd packageC
+```
+
+```
+git filter-branch --prune-empty --tree-filter '
+  mkdir -p "$TARGET_DIR"
+  git ls-tree --name-only $GIT_COMMIT | xargs -I files mv files "$TARGET_DIR"
+'
+```
+
+## Step 3: Add remote in your monorepo to packageC
+
+This will print the working directory of the current package you are trying to clone.
+
+```
+cd packageC && pwd
+```
+
+The next step is adding the newly acquired remote to your nx workspace for you to be able to fetch.
+
+```
+cd nx-workspace
+```
+
+```
+git remote add packageC <packageC-pwd>
+```
+
+## Step 4: Merge packageC into monorepo
+
+```
+git fetch packageC --no-tags
+```
+
+```
+git merge packageC/master --allow-unrelated-histories
+```
+
+## Step 5: Clean up
+
+```
+git remote remove packageC
+```
+
+After successfully merging, its time to cleanup duplicate config files, `package.json`, `eslintrc.js` and etc.
+
+## Other tips
+
+#### Environment variables
+
+If you are using env variables in your application, don't forget to change the naming of your env variables
+to have a prefix of NX\_, you can read more about Nx environment variables [here](https://nx.dev/guides/environment-variables)
+
+For Example when you merged in a react app to nx:
+
+```diff
+-REACT_APP_AUTH_HOST=http://localhost:3002
++NX_AUTH_HOST=http://localhost:3002
+```
+
+#### Fixing absolute imports from your Create React App
+
+If you are importing a CRA, One of the errors you'll be getting is `@nrwl/nx/enforce-module-boundaries` error.
+
+To fix this, you will need to update all your absolute paths to the path you specified in `tsconfig.base.json`
+
+```:tsconfig.base.json
+    "paths": {
+      "@design-system": ["libs/design/src/index.ts"],
+      },
+```
+
+and fix all the files that use absolute paths
+
+```diff
+-import Modal from 'src/components/Modal/Modal';
++import Modal from '@design-system/src/components/Modal/Modal';
+```
+
+#### Fixing Error: global is not defined
+
+If you have merged an existing create react app into nx, you might have encountered this error: `global is not defined`
+
+The simple fix for this is to override Nx's webpack config and add the following:
+
+```js:webpack.config.js
+const nrwlConfig = require('@nrwl/react/plugins/webpack.js');
+
+module.exports = (config, context) => {
+  nrwlConfig(config);
+
+  return {
+    ...config,
+    node: {
+      global: true,
+    },
+  };
+};
+```
+
+and don't forget to call it in your apps `project.json` file
+
+```diff:project.json
+-"webpackConfig": "@nrwl/react/plugins/webpack"
++"webpackConfig": "./apps/field-app/webpack.config.js"
+```

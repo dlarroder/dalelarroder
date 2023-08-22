@@ -41,7 +41,7 @@ export default function Hero(): ReactElement {
                 Expert laravel
               </h1>
               <h2 className="text-3xl font-medium opacity-80 sm:text-6xl md:text-6xl xl:text-7xl">
-                I build things for the web.
+                Coding the Future: Empowering Innovation as a Full Stack Developer
               </h2>
               <Link
                 href="/about"

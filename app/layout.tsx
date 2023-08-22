@@ -11,7 +11,7 @@ import ThemeProvider from '@/components/Providers/ThemeProvider';
 
 export const metadata = {
   title: 'Expert laravel',
-  description: 'I build things for the web.',
+  description: 'Coding the Future: Empowering Innovation as a Full Stack Developer',
 };
 
 interface RootLayoutProps {

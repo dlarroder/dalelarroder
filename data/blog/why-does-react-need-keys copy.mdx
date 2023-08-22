@@ -1,0 +1,77 @@
+---
+title: 'Why does React need keys?'
+date: '2022-07-31'
+tags: ['ReactJs', Snippets]
+draft: false
+author: 'Dale Larroder'
+summary: 'This article will show you what is the purpose if the “key” prop in React and some best practices around it.'
+---
+
+## Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+# Why does React need keys?
+
+The `key` prop is the only thing React can use to identify components in the DOM when they are
+mapped from an array. If no key is provided then you will see an error like this:
+
+```console
+Missing “key” prop for element in iterator
+```
+
+In that case, React will default to use the index of the element in the array as the key.
+Usually, developers will also provide index as the key just to remove the warning.
+
+# Using the index as a key is dangerous
+
+#### Please do NOT do this:
+
+```js
+todos.map((todo, index) => (
+    <Todo {...todo} key={index} />
+  ));
+}
+```
+
+It is stated in the official React [docs](https://reactjs.org/docs/lists-and-keys.html) that this is not recommended.
+
+> We don’t recommend using indexes for keys if the order of items may change.
+> This can negatively impact performance and may cause issues with component state.
+
+Robin Pokorny has an amazing [article](https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318) explaining in detail the negative impacts of using an index as a key.
+
+# Rules of keys
+
+- Keys must be `unique` among siblings. However, it’s okay to use the same keys for JSX nodes
+  in different arrays.
+
+- Keys must `not change` or that defeats their purpose! Don’t generate them while rendering.
+
+# Where to get your key
+
+- **Data from a database:** If your data is coming from a database, you can use the database keys/IDs,
+  which are unique by nature.
+
+- **Locally generated data:** If your data is generated and persisted locally (e.g. notes in a note-taking app),
+  use an incrementing counter, `crypto.randomUUID()` or a package like `uuid` when creating items.
+
+```js
+// id must be from db, which are unique by nature.
+const todos = [
+  {
+    id: 22,
+    name: 'eat breakfast',
+  },
+  // ....
+];
+
+// Much better
+todos.map((todo) => <Todo {...todo} key={todo.id} />);
+```
+
+# Conclusion
+
+- Always try to use stable **unique** IDs as the key.
+- If the list is **never** reordered or filtered, you can use their index as keys. (As a last resort)
+- If you're a visual learner, Dan Abramov has a short visual [explanation](https://twitter.com/dan_abramov/status/1415279090446204929?lang=en) on why React needs keys, check it out!
