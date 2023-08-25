@@ -6,6 +6,7 @@ import { allAuthors } from 'contentlayer/generated';
 export const metadata = {
   title: 'About - Expert laravel',
   description: 'About me - Expert laravel',
+  keywords: 'Laravel, Expert, Livewire',
 };
 
 export default function About() {

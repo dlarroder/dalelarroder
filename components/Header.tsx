@@ -26,7 +26,7 @@ export default function Header() {
                   }
                 )}
               >
-                d.
+                ExpertLaravel.com
               </div>
             </Link>
           </div>

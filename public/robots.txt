@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dalelarroder.com/sitemap.xml
+Sitemap: https://expertlaravel.com/sitemap.xml

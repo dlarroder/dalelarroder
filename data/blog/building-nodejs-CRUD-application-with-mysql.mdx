@@ -1,0 +1,160 @@
+---
+title: 'Building NodeJS Application With MySQL'
+summary: 'Learn how to build a Node.js CRUD application with MySQL in this comprehensive tutorial. Gain insights into creating a RESTful API using Node.js, Express, and MySQL.'
+date: 'August 19, 2023'
+author: 'Jigar Patel'
+tags: ['Node.js', 'CRUD API', 'MySQL', 'Web Development']
+draft: false
+---
+
+# Overview
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+# Building a Node.js CRUD Application with MySQL
+
+## Learn How to Create a CRUD API Using [Node.js](https://nodejs.org/en) and [MySQL](https://www.mysql.com/)
+
+Greetings,
+
+In this tutorial, we'll delve into building a CRUD (Create, Read, Update, Delete) API using [Node.js](https://nodejs.org/en) and [MySQL](https://www.mysql.com/). We'll walk through the process step by step to create a basic REST API for performing CRUD operations on items. By following this example, you'll gain a clear understanding of how to utilize Node.js, Express, and MySQL to create a simple yet functional CRUD API.
+
+## Preview
+
+In this tutorial, we'll construct a straightforward CRUD API using [Node.js](https://nodejs.org/en), [Express](https://expressjs.com/), and [MySQL](https://www.mysql.com/). By the end, you'll have a working API that can handle the following operations:
+
+- **GET** `/api/items`: Get all items
+- **GET** `/api/items/{id}`: Get a single item
+- **POST** `/api/items`: Create a new item
+- **PUT** `/api/items/{id}`: Update an item
+- **DELETE** `/api/items/{id}`: Delete an item
+
+We'll guide you through the process of setting up the database, creating the Node.js application, installing the necessary packages, defining the routes, and handling CRUD operations.
+
+## Step 1: Create Database and Table
+
+Begin by setting up your MySQL database and creating an `items` table to hold the data. You can use tools like [SQLyog](https://webyog.com/product/sqlyog/) or [PHPMyAdmin](https://www.phpmyadmin.net/) for this task. Here are the SQL commands to achieve this:
+
+```sql
+CREATE DATABASE node_restapi;
+
+CREATE TABLE `items` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `body` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `items`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+INSERT INTO `items` (`id`, `title`, `body`) VALUES
+(1, 'Title 1', 'Body 1'),
+(2, 'Title 2', 'Body 2'),
+(3, 'Title 3', 'Body 3'),
+(4, 'Title 4', 'Body 4');
+```
+
+## Step 2: Create a Node.js App
+
+Set up a new Node.js application by executing the following commands:
+
+```bash
+mkdir my-app
+
+cd my-app
+
+npm init
+```
+
+## Step 3: Install Required Packages
+
+Install the necessary packages (`express`, `mysql`, `body-parser`) using the following command:
+
+```bash
+npm install --save express mysql body-parser
+```
+
+## Step 4: Create app.js File
+
+Create an `app.js` file and add the following code to it:
+
+```php
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const mysql = require('mysql');
+
+app.use(bodyParser.json());
+
+const conn = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
+  database: 'node_restapi'
+});
+
+conn.connect((err) => {
+  if (err) throw err;
+  console.log('MySQL Connected...');
+});
+
+app.get('/api/items', (req, res) => {
+  let sqlQuery = 'SELECT * FROM items';
+
+  let query = conn.query(sqlQuery, (err, results) => {
+    if (err) throw err;
+    res.send(apiResponse(results));
+  });
+});
+
+// ... Other CRUD operations ...
+
+function apiResponse(results) {
+  return JSON.stringify({ "status": 200, "error": null, "response": results });
+}
+
+app.listen(3000, () => {
+  console.log('Server started on port 3000...');
+});
+```
+
+## Step 5: Test the APIs
+
+With your Node.js app running, you can now test the CRUD APIs using tools like Postman. Here are the endpoints you can test:
+
+Retrieve all items.
+
+```bash
+GET http://localhost:3000/api/items
+```
+
+Get details of a specific item.
+
+```bash
+GET http://localhost:3000/api/items/{id}
+```
+
+Create a new item.
+
+```bash
+POST http://localhost:3000/api/items
+```
+
+Update an existing item.
+
+```bash
+PUT http://localhost:3000/api/items/{id}
+```
+
+Delete an item.
+
+```bash
+DELETE http://localhost:3000/api/items/{id}
+```
+
+By following these steps, you've successfully built a Node.js CRUD API using Express and MySQL. This tutorial provides a solid foundation for more advanced applications and customization.
+
+If you have any questions or need further assistance, feel free to contact.
