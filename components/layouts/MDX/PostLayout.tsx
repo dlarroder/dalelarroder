@@ -1,7 +1,7 @@
 import PageTitle from '@/components/PageTitle';
 import PostNavigation from '@/components/PostNavigation';
-import siteMetadata from '@/data/siteMetadata';
 import { CoreContent } from '@/lib/utils/contentlayer';
+import siteMetadata from 'content/siteMetadata';
 import type { Blog } from 'contentlayer/generated';
 import { ReactNode } from 'react';
 

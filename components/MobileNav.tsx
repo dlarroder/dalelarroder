@@ -1,7 +1,7 @@
 'use client';
 
-import headerNavLinks from '@/data/headerNavLinks';
 import classNames from 'classnames';
+import headerNavLinks from 'content/headerNavLinks';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
