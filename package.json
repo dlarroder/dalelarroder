@@ -66,7 +66,7 @@
     "husky": "8.0.3",
     "inquirer": "9.1.4",
     "lint-staged": "13.1.0",
-    "postcss": "8.4.20",
+    "postcss": "8.4.31",
     "prettier": "2.8.2",
     "prettier-plugin-tailwindcss": "0.2.1",
     "tailwind-scrollbar": "2.0.1",
