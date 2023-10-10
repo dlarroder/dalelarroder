@@ -7,7 +7,7 @@ import { redirect } from 'next/navigation';
 
 export const metadata = {
   title: 'Blog - Expert laravel',
-  description: 'My Blogs - Expert laravel',
+  description: 'My Blogs - Expert laravel new',
 };
 
 export default function BlogPage({ params }: { params: { page: string } }) {

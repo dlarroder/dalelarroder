@@ -7,6 +7,7 @@ import { allBlogs } from 'contentlayer/generated';
 export const metadata = {
   title: 'Blog - Expert laravel',
   description: 'My Blogs - Expert laravel',
+  keywords: 'Laravel, Expert, Blog',
 };
 
 export default function Blog() {
