@@ -7,7 +7,7 @@ import SectionContainer from '@/components/SectionContainer';
 import Works from '@/components/Work/Works';
 import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer';
 import { allBlogs } from 'contentlayer/generated';
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 
 export default function Page() {
   const sortedPosts = sortedBlogPost(allBlogs);

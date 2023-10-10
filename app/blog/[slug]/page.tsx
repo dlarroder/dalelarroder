@@ -23,8 +23,10 @@ export async function generateMetadata({
     title: post.title,
     description: post.summary,
     keywords: post.tags,
+
     // category: post.category,
     // authors: [{ name: 'hello', url: 'https://hello.com' }],
+
     openGraph: {
       // title: post.title,
       type: 'article',
@@ -37,6 +39,7 @@ export async function generateMetadata({
     },
     twitter: {
       // title: post.title,
+
       site: '@jbcodeapp',
       creator: '@jbcodeapp',
       card: 'summary_large_image',
@@ -63,6 +66,7 @@ export async function generateMetadata({
         'max-snippet': -1,
       },
     },
+
     // viewport: {
     //   width: 'device-width',
     //   initialScale: 1,

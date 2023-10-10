@@ -2,7 +2,9 @@ import siteMetadata from '@/data/siteMetadata';
 import Link from 'next/link';
 // import { Suspense } from 'react';
 import { AiFillLinkedin } from 'react-icons/ai';
-import { FaGithub, FaSpotify, FaSteam, FaTwitter } from 'react-icons/fa';
+// import { FaGithub, FaSpotify, FaSteam, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaTwitter } from 'react-icons/fa';
+
 import SectionContainer from './SectionContainer';
 // import NowPlaying from './Spotify/NowPlaying';
 

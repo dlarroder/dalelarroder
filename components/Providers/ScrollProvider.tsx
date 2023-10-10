@@ -18,6 +18,7 @@ interface ScrollProviderProps {
 export const ScrollProvider = ({ children }: ScrollProviderProps) => {
   const [scrollY, setScrollY] = useState(0);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   useLenis(({ scroll }: any) => {
     setScrollY(scroll);
   });

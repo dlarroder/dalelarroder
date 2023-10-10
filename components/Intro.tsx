@@ -16,6 +16,7 @@ function opacityForBlock(sectionProgress: number, blockNumber: number) {
 export default function Intro() {
   const [scrollY, setScrollY] = useState(0);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   useLenis(({ scroll }: any) => {
     setScrollY(scroll);
   });
