@@ -31,9 +31,9 @@ export const metadata = {
 
     images: [
       {
-        url: 'https://example.com/og.png',
-        width: '800',
-        height: '600',
+        url: '/static/projects.webp',
+        width: '1903',
+        height: '955',
       },
     ],
   },
@@ -42,7 +42,6 @@ export const metadata = {
     title: 'Expert Laravel',
     site: '@jbcodeapp',
     description: 'Expert Laravel Portfolio Website',
-    image: 'https://example.com/twitter-card.png',
   },
 };
 
