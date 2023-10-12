@@ -13,7 +13,7 @@ export const metadata = {
     canonical: '/',
   },
   keywords: 'Blog, Expert, laravel',
-  images: ['https://picsum.photos/200/300'],
+  images: ['static/ExpertLaravel.webp'],
   // authors: 'Jigar Patel',
   openGraph: {
     locale: 'en_US',
@@ -22,11 +22,10 @@ export const metadata = {
     title: 'Expert Laravel',
     description: 'Expert Laravel Portfolio Website',
     siteName: 'Expert Laravel',
-    images: post.images,
 
     images: [
       {
-        url: 'https://example.com/og.png',
+        url: 'static/ExpertLaravel.webp',
         width: '800',
         height: '600',
       },

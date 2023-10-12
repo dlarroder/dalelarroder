@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 import ListLayout from '@/layouts/MDX/ListLayout';
 import MainLayout from '@/layouts/MainLayout';
