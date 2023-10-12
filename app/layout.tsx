@@ -1,3 +1,5 @@
+import React from 'react';
+
 import '@/css/prism.css';
 import '@/css/tailwind.css';
 import '@fontsource/mukta';
@@ -5,29 +7,32 @@ import '@fontsource/mukta';
 import Analytics from '@/components/Analytics';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-// import LogRocket from '@/components/LogRocket';
 import LenisProvider from '@/components/Providers/LenisProvider';
 import ThemeProvider from '@/components/Providers/ThemeProvider';
+
+const baseSiteURL = process.env.NEXT_PUBLIC_SITE_URL;
+const siteURLWithBlog = `${baseSiteURL}`;
 
 export const metadata = {
   title: 'Expert Laravel',
   description: 'Coding the Future: Empowering Innovation as a Full Stack Developer',
-  canonical: 'https://expertlaravel.com',
-  images: ['https://picsum.photos/200/300'],
+  metadataBase: new URL(siteURLWithBlog),
+  alternates: {
+    canonical: siteURLWithBlog,
+  },
   authors: 'Jigar Patel',
   openGraph: {
     locale: 'en_US',
     type: 'website',
-    url: 'https://www.expertlaravel.com/',
+    url: siteURLWithBlog,
     title: 'Expert Laravel',
-    description: 'Expert Laravel Portfolio Website',
+    description: 'Coding the Future: Empowering Innovation as a Full Stack Developer',
     siteName: 'Expert Laravel',
-
     images: [
       {
-        url: 'https://example.com/og.png',
-        width: '800',
-        height: '600',
+        url: '/static/ExpertLaravel.webp',
+        width: '1903',
+        height: '955',
       },
     ],
   },
@@ -35,8 +40,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Expert Laravel',
     site: '@jbcodeapp',
-    description: 'Expert Laravel Portfolio Website',
-    image: 'https://example.com/twitter-card.png',
+    description: 'Coding the Future: Empowering Innovation as a Full Stack Developer',
   },
 };
 
@@ -54,7 +58,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <link rel="profile" href="https://gmpg.org/xfn/11" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#000000" />
-
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body className="bg-white text-black antialiased dark:bg-black dark:text-white">
@@ -64,7 +67,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <main>{children}</main>
           </LenisProvider>
           <Footer />
-          {/* <LogRocket /> */}
           <Analytics />
         </ThemeProvider>
       </body>

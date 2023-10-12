@@ -3,26 +3,37 @@ import AuthorLayout from '@/layouts/MDX/AuthorLayout';
 import MainLayout from '@/layouts/MainLayout';
 import { allAuthors } from 'contentlayer/generated';
 
+const baseSiteURL = process.env.NEXT_PUBLIC_SITE_URL;
+const siteURLWithBlog = `${baseSiteURL}about`;
+
 export const metadata = {
-  title: 'About - Expert laravel',
-  description: 'About me - Expert laravel',
-  keywords: 'Laravel, Expert, Livewire',
-  canonical: 'https://expertlaravel.com/about',
-  images: ['https://picsum.photos/200/300'],
-  // authors: 'Jigar Patel',
+  title: 'About - Expert Laravel',
+  description: 'About me - Expert Laravel',
+  metadataBase: new URL(siteURLWithBlog),
+  alternates: {
+    canonical: siteURLWithBlog,
+  },
+  keywords: 'Laravel, Expert, Portfolio, About',
+  images: [
+    {
+      url: '/static/ExpertLaravel.webp',
+      width: '1903',
+      height: '955',
+    },
+  ],
+  authors: 'Jigar Patel',
   openGraph: {
     locale: 'en_US',
     type: 'website',
-    url: 'https://www.expertlaravel.com/about',
+    url: siteURLWithBlog,
     title: 'Expert Laravel',
     description: 'Expert Laravel Portfolio Website',
     siteName: 'Expert Laravel',
-
     images: [
       {
-        url: 'https://example.com/og.png',
-        width: '800',
-        height: '600',
+        url: '/static/about.webp',
+        width: '1903',
+        height: '955',
       },
     ],
   },
@@ -31,7 +42,6 @@ export const metadata = {
     title: 'Expert Laravel',
     site: '@jbcodeapp',
     description: 'Expert Laravel Portfolio Website',
-    image: 'https://example.com/twitter-card.png',
   },
 };
 

@@ -3,9 +3,16 @@ import UsesLayout from '@/layouts/MDX/UsesLayout';
 import MainLayout from '@/layouts/MainLayout';
 import { allAuthors } from 'contentlayer/generated';
 
+const baseSiteURL = process.env.NEXT_PUBLIC_SITE_URL;
+const siteURLWithBlog = `${baseSiteURL}uses`;
+
 export const metadata = {
   title: 'Uses - Expert laravel',
   description: 'What I Use - Expert laravel',
+  metadataBase: new URL(siteURLWithBlog),
+  alternates: {
+    canonical: siteURLWithBlog,
+  },
 };
 
 export default function Uses() {

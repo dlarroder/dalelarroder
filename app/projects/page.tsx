@@ -1,9 +1,49 @@
 import Projects from '@/components/Projects/Projects';
 import MainLayout from '@/layouts/MainLayout';
 
+const baseSiteURL = process.env.NEXT_PUBLIC_SITE_URL;
+const siteURLWithBlog = `${baseSiteURL}projects`;
+
 export const metadata = {
   title: 'Projects - Expert laravel',
   description: 'My Projects - Expert laravel',
+  metadataBase: new URL(siteURLWithBlog),
+  alternates: {
+    canonical: siteURLWithBlog,
+  },
+  keywords: 'Laravel, Expert, Portfolio, Project',
+  images: [
+    {
+      url: '/static/ExpertLaravel.webp',
+      width: '1903',
+      height: '955',
+    },
+  ],
+  // authors: 'Jigar Patel',
+
+  openGraph: {
+    locale: 'en_US',
+    type: 'website',
+    url: siteURLWithBlog,
+    title: 'Expert Laravel',
+    description: 'Expert Laravel Portfolio Website',
+    siteName: 'Expert Laravel',
+
+    images: [
+      {
+        url: 'https://example.com/og.png',
+        width: '800',
+        height: '600',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Expert Laravel',
+    site: '@jbcodeapp',
+    description: 'Expert Laravel Portfolio Website',
+    image: 'https://example.com/twitter-card.png',
+  },
 };
 
 export default function Page() {

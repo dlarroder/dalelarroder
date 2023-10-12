@@ -19,59 +19,53 @@ export async function generateMetadata({
     return {};
   }
 
+  const baseSiteURL = process.env.NEXT_PUBLIC_SITE_URL;
+  const siteURLWithBlog = `${baseSiteURL}blog/${post.slug}`;
+
   return {
     title: post.title,
     description: post.summary,
+    metadataBase: new URL(siteURLWithBlog),
+    alternates: {
+      canonical: siteURLWithBlog,
+    },
+
     keywords: post.tags,
 
     // category: post.category,
-    // authors: [{ name: 'hello', url: 'https://hello.com' }],
+    authors: [{ name: post.author, url: 'https://expertlaravel.com' }],
 
     openGraph: {
-      // title: post.title,
+      title: post.title,
       type: 'article',
       description: post.summary,
-      // publishedTime: '2023-01-01T00:00:00.000Z', //Dynamic
-      siteName: 'Expert Laravel',
-      url: 'https://expertlaravel.com',
-      locale: 'en_US',
       images: post.images,
+      publishedTime: post.date,
+      siteName: 'Expert Laravel',
+      url: siteURLWithBlog,
+
+      locale: 'en_US',
     },
     twitter: {
-      // title: post.title,
-
-      site: '@jbcodeapp',
-      creator: '@jbcodeapp',
       card: 'summary_large_image',
-      images: post.images,
-    },
-    verification: {
-      // google: 'google',
-      // yandex: 'yandex',
-      // yahoo: 'yahoo',
-      // other: {
-      //   me: ['my-email', 'my-link'],
-      // },
+      title: post.title,
+      site: '@jbcodeapp',
+      description: post.summary,
+      // images: post.images,
     },
     robots: {
-      index: false,
+      index: true,
       follow: true,
       nocache: true,
       googleBot: {
         index: true,
-        follow: false,
+        follow: true,
         noimageindex: true,
         'max-video-preview': -1,
         'max-image-preview': 'large',
         'max-snippet': -1,
       },
     },
-
-    // viewport: {
-    //   width: 'device-width',
-    //   initialScale: 1,
-    //   maximumScale: 1,
-    // },
   };
 }
 
@@ -88,11 +82,8 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   const nextContent = sortedPosts[postIndex - 1] || null;
   const next = nextContent ? coreContent(nextContent) : null;
 
-  // const canonicalUrl = post.canonicalUrl;
-
   return (
     <>
-      {/* <link rel="canonical" href={canonicalUrl} /> */}
       <ScrollProgressBar />
       <MainLayout>
         {post && 'draft' in post && post.draft !== true ? (

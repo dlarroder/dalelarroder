@@ -1,0 +1,144 @@
+---
+# Primary Information
+
+slug: 'add-fonts-in-to-nextjs-projects'
+title: 'Add Fonts to Next.js Projects - Font Integration Guide'
+date: 'July 19, 2023'
+tags: ['NextJS', 'Fonts', 'local fonts', 'GoogleFont', 'Tailwind', 'Typography']
+draft: false
+author: 'Jigar Patel'
+summary: 'Learn how to effortlessly incorporate fonts into your Next.js projects with this comprehensive guide. Explore Google fonts integration, local fonts, and TailwindCSS integration for stunning typography.'
+
+# For SEO Purpose
+
+lastmod: '2023-07-19T05:05:05+00:00'
+images: [{ '/static/blog/add-fonts-in-to-nextjs-projects.webp', width: '1200', height: '600' }]
+# authorurl: 'https://expertlaravel.com/'
+# layout: post
+---
+
+# Overview
+
+![add-fonts-in-to-nextjs-projects](/static/blog/add-fonts-in-to-nextjs-projects.webp)
+
+<TOCInline toc={props.toc} exclude="Overview" toHeading={2} />
+
+# Effortlessly Incorporating Fonts into Your Next.js Projects
+
+[Next.js](https://nextjs.org/), a remarkable React-based library, offers an array of built-in features that streamline the initiation of your React applications. Among these features is the recently introduced `next/font` package, designed to simplify the integration of fonts into your Next.js applications with speed and ease.
+
+## Getting Started
+
+### [Google fonts](https://fonts.google.com/)
+
+A notable advantage of Next.js's new font package is its seamless integration with Google Fonts. This exceptional feature empowers you to effortlessly access Google's extensive font library whenever needed. Notably, fonts are downloaded during the build phase, eliminating the need for client-side requests to Google. Furthermore, only the imported fonts are loaded, ensuring optimal efficiency.
+
+To achieve this, import fonts from `next/font/google`. Font names adopt Snake_Case, making it easy to identify and import fonts. For instance:
+
+```javascript
+import { Inter, Lexend, Source_Sans_Pro } from 'next/font/google';
+```
+
+This import yields a method that returns an object encompassing parameters necessary for font integration. For example:
+
+```javascript
+export const titleFont = Rubik({
+  subsets: ['latin'],
+  weight: 'variable',
+});
+
+export const bodyFont = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+});
+```
+
+These objects contain properties for incorporating fonts using class names and style props, allowing for seamless integration:
+
+```jsx
+export default function Fonts() {
+  return (
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-4 bg-stone-900 text-white">
+      <h1 className={clsx('font-text text-8xl', titleFont.className)}>Hi, I'm Omari</h1>
+      <button className="rounded bg-teal-800 px-8 py-4 text-2xl shadow" style={bodyFont.style}>
+        Let's Talk
+      </button>
+    </div>
+  );
+}
+```
+
+### Local Fonts
+
+Next.js also offers a method for loading local fonts, enriched by the font optimization provided by the package. Usage closely resembles that of [Google fonts](https://fonts.google.com/), albeit with the inclusion of a local font path:
+
+```javascript
+import localFont from 'next/font/local';
+
+export const localInter = localFont({ src: '../../inter/Inter-Regular.ttf' });
+```
+
+The `src` can also be an array, facilitating the creation of font families through multiple files:
+
+```javascript
+export const localInter = localFont({
+  src: [
+    {
+      path: '../../inter/Inter-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../inter/Inter-Light.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../../inter/Inter-Italic.ttf',
+      weight: '400',
+      style: 'italic',
+    },
+  ],
+});
+```
+
+### [TailwindCSS](https://tailwindcss.com/)
+
+Integrating Next.js's font package into a Tailwind setup is straightforward and yields substantial benefits.
+
+Firstly, add a CSS variable to the font configuration:
+
+```javascript
+export const titleFont = Rubik({
+  subsets: ['latin'],
+  weight: 'variable',
+  variable: '--font-title',
+});
+```
+
+This exposes a "variable" property on the font object, which can be incorporated using the `className` prop:
+
+```jsx
+export default function Fonts() {
+  return (
+    <div
+      className={clsx(
+        titleFont.variable,
+        bodyFont.variable,
+        'flex h-screen w-full flex-col items-center justify-center gap-4 bg-stone-900 text-white'
+      )}
+    >
+      <h1 className={clsx('font-text text-8xl', titleFont.className)}>Hi, I'm Omari</h1>
+      <button className="rounded bg-teal-800 px-8 py-4 text-2xl shadow" style={bodyFont.style}>
+        Let's Talk
+      </button>
+    </div>
+  );
+}
+```
+
+This setup introduces new font classes within the Tailwind configuration.
+
+## Conclusion
+
+Thank you for reading! I trust this article has guided you in incorporating fonts into your Next.js projects, whether via Google fonts or local files. Should you require further assistance or wish to share your thoughts, please feel free to leave a comment below. Your feedback is invaluable!

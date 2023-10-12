@@ -8,6 +8,37 @@ import { redirect } from 'next/navigation';
 export const metadata = {
   title: 'Blog - Expert laravel',
   description: 'My Blogs - Expert laravel new',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.expertlaravel.com/blog'),
+  alternates: {
+    canonical: '/',
+  },
+  keywords: 'Blog, Expert, laravel',
+  images: ['https://picsum.photos/200/300'],
+  // authors: 'Jigar Patel',
+  openGraph: {
+    locale: 'en_US',
+    type: 'website',
+    // url: 'https://www.expertlaravel.com/blog',
+    title: 'Expert Laravel',
+    description: 'Expert Laravel Portfolio Website',
+    siteName: 'Expert Laravel',
+    images: post.images,
+
+    images: [
+      {
+        url: 'https://example.com/og.png',
+        width: '800',
+        height: '600',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Expert Laravel',
+    site: '@jbcodeapp',
+    description: 'Expert Laravel Portfolio Website',
+    // image: 'https://example.com/twitter-card.png',
+  },
 };
 
 export default function BlogPage({ params }: { params: { page: string } }) {
