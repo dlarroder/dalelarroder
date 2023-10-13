@@ -5,12 +5,15 @@ import { POSTS_PER_PAGE } from '@/types/default';
 import { allBlogs } from 'contentlayer/generated';
 import { redirect } from 'next/navigation';
 
+const baseSiteURL = process.env.NEXT_PUBLIC_SITE_URL;
+const siteURLWithBlog = `${baseSiteURL}blog`;
+
 export const metadata = {
   title: 'Blog - Expert laravel',
   description: 'My Blogs - Expert laravel new',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.expertlaravel.com/blog'),
+  metadataBase: new URL(siteURLWithBlog),
   alternates: {
-    canonical: '/',
+    canonical: siteURLWithBlog,
   },
   keywords: 'Blog, Expert, laravel',
   images: ['static/ExpertLaravel.webp'],
@@ -18,16 +21,15 @@ export const metadata = {
   openGraph: {
     locale: 'en_US',
     type: 'website',
-    // url: 'https://www.expertlaravel.com/blog',
+    url: siteURLWithBlog,
     title: 'Expert Laravel',
     description: 'Expert Laravel Portfolio Website',
     siteName: 'Expert Laravel',
-
     images: [
       {
         url: 'static/ExpertLaravel.webp',
-        width: '800',
-        height: '600',
+        width: '1903',
+        height: '955',
       },
     ],
   },
@@ -36,7 +38,6 @@ export const metadata = {
     title: 'Expert Laravel',
     site: '@jbcodeapp',
     description: 'Expert Laravel Portfolio Website',
-    // image: 'https://example.com/twitter-card.png',
   },
 };
 

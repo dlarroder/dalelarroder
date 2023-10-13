@@ -29,13 +29,9 @@ export async function generateMetadata({
     alternates: {
       canonical: siteURLWithBlog,
     },
-
     keywords: post.tags,
-
-    // category: post.category,
-    authors: [{ name: post.author, url: 'https://expertlaravel.com' }],
-
     openGraph: {
+      locale: 'en_US',
       title: post.title,
       type: 'article',
       description: post.summary,
@@ -43,15 +39,13 @@ export async function generateMetadata({
       publishedTime: post.date,
       siteName: 'Expert Laravel',
       url: siteURLWithBlog,
-
-      locale: 'en_US',
     },
+    authors: [{ name: post.author, url: 'https://expertlaravel.com' }],
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       site: '@jbcodeapp',
       description: post.summary,
-      // images: post.images,
     },
     robots: {
       index: true,
@@ -69,6 +63,7 @@ export async function generateMetadata({
   };
 }
 
+// Define the BlogPost component
 export default function BlogPost({ params }: { params: { slug: string } }) {
   const slug = params.slug;
   const sortedPosts = sortedBlogPost(allBlogs);

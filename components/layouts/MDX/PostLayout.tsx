@@ -5,9 +5,6 @@ import { CoreContent } from '@/lib/utils/contentlayer';
 import type { Blog } from 'contentlayer/generated';
 import { ReactNode } from 'react';
 
-import headerImage from '@/../../public/static/banner-3.webp';
-import Image from 'next/image';
-
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   year: 'numeric',
   month: 'long',
@@ -27,14 +24,14 @@ export default function PostLayout({ content, children, next, prev }: Props) {
   return (
     <article>
       <header
-        className="mt-5 mr-5 ml-5 space-y-1 rounded-lg  py-4 px-2 text-center shadow-lg sm:py-6 md:py-8"
-        style={{ position: 'relative', borderRadius: '10px' }}
+        className=" flex items-center justify-center rounded-lg bg-gradient-to-r from-pink-500 to-blue-500 p-5 text-center shadow-lg"
+        style={{ borderRadius: '10px', height: '350px' }}
       >
-        <div style={{ position: 'relative', zIndex: 1 }}>
+        <div className="py-5 px-5 text-center" style={{ borderRadius: '10px' }}>
           <PageTitle>{title}</PageTitle>
-          <dl className="bt-0 mt-9">
+          <dl className="flex-end bt-0 text-bottom items-bottom mt-5 flex flex-col ">
             <dt className="sr-only">Published on</dt>
-            <dd className="flex flex-col justify-center  text-base font-medium leading-6 text-white sm:flex-row sm:space-x-2">
+            <dd className="flex flex-col justify-center text-base font-medium leading-6 text-white sm:flex-row sm:space-x-2">
               <div className="flex items-center justify-center space-x-2">
                 <span>{author}</span>
                 <span>-</span>
@@ -46,25 +43,6 @@ export default function PostLayout({ content, children, next, prev }: Props) {
               <span>{readingTime.text}</span>
             </dd>
           </dl>
-        </div>
-        <div
-          style={{
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            width: '100%',
-            height: '100%',
-            zIndex: 0,
-            borderRadius: '10px', // Apply the same border radius
-          }}
-        >
-          <Image
-            src={headerImage}
-            alt="Header_Image"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg shadow-lg shadow-gray-500"
-          />
         </div>
       </header>
 

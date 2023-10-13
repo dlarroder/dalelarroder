@@ -16,7 +16,8 @@ export const metadata = {
   alternates: {
     canonical: siteURLWithBlog,
   },
-
+  keywords: 'Blog, Expert, laravel',
+  images: ['static/ExpertLaravel.webp'],
   openGraph: {
     locale: 'en_US',
     type: 'website',
@@ -37,7 +38,6 @@ export const metadata = {
     title: 'Expert Laravel',
     site: '@jbcodeapp',
     description: 'Expert Laravel Portfolio Website',
-    // image: `${siteURLWithBlog}/twitter-card.png`,
   },
 };
 

@@ -14,7 +14,7 @@ export const metadata = {
   keywords: 'Laravel, Expert, Portfolio, Project',
   images: [
     {
-      url: '/static/ExpertLaravel.webp',
+      url: '/static/projects.webp',
       width: '1903',
       height: '955',
     },
