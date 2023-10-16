@@ -22,6 +22,14 @@ export async function generateMetadata({
   const baseSiteURL = process.env.NEXT_PUBLIC_SITE_URL;
   const siteURLWithBlog = `${baseSiteURL}blog/${post.slug}`;
 
+  const ogImage = post.ogImage || {
+    url: `static/blog/${post.slug}.webp`,
+    width: 1200,
+    height: 600,
+    alt: post.title,
+    type: 'image/png',
+  };
+
   return {
     title: post.title,
     description: post.summary,
@@ -35,10 +43,11 @@ export async function generateMetadata({
       title: post.title,
       type: 'article',
       description: post.summary,
-      images: post.images,
       publishedTime: post.date,
       siteName: 'Expert Laravel',
       url: siteURLWithBlog,
+      // images: post.images,
+      images: [ogImage],
     },
     authors: [{ name: post.author, url: 'https://expertlaravel.com' }],
     twitter: {
@@ -46,6 +55,13 @@ export async function generateMetadata({
       title: post.title,
       site: '@jbcodeapp',
       description: post.summary,
+      images: [
+        {
+          url: '/static/protecting-your-smart-home-2023-safeguarding-iot-devices-digital-age.webp',
+          width: 1200,
+          height: 600,
+        },
+      ],
     },
     robots: {
       index: true,

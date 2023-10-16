@@ -25,8 +25,9 @@ export const metadata = {
     locale: 'en_US',
     type: 'website',
     url: siteURLWithBlog,
-    title: 'Expert Laravel',
-    description: 'Coding the Future: Empowering Innovation as a Full Stack Developer',
+    title: 'Expert Laravel - Your Source for Laravel Development',
+    description:
+      'Expert Laravel is your one-stop destination for all things Laravel development. Find expert advice, tutorials, and projects.',
     siteName: 'Expert Laravel',
     images: [
       {

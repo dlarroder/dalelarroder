@@ -5,13 +5,13 @@ const baseSiteURL = process.env.NEXT_PUBLIC_SITE_URL;
 const siteURLWithBlog = `${baseSiteURL}projects`;
 
 export const metadata = {
-  title: 'Projects - Expert laravel',
-  description: 'My Projects - Expert laravel',
+  title: 'Expert Laravel',
+  description: 'Expert Laravel Portfolio Website',
   metadataBase: new URL(siteURLWithBlog),
   alternates: {
     canonical: siteURLWithBlog,
   },
-  keywords: 'Laravel, Expert, Portfolio, Project',
+  keywords: 'Laravel Projects, Portfolio, Showcase, Expert Laravel',
   images: [
     {
       url: '/static/projects.webp',
@@ -25,8 +25,9 @@ export const metadata = {
     locale: 'en_US',
     type: 'website',
     url: siteURLWithBlog,
-    title: 'Expert Laravel',
-    description: 'Expert Laravel Portfolio Website',
+    title: 'Expert Laravel Projects - Explore Our Showcase',
+    description:
+      'Discover our portfolio of Laravel projects and see how we can help you with your next development venture. Explore our showcase of successful projects.',
     siteName: 'Expert Laravel',
 
     images: [
