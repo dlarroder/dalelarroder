@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "contentlayer dev & next dev",
     "build": "next build",
-    "postbuild": "yarn sitemap && yarn rss",
-    "sitemap": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-sitemap.mjs",
+    "postbuild": "yarn rss",
     "rss": "cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs",
     "serve": "next start",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
