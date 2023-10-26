@@ -19,7 +19,7 @@ interface Props {
 }
 
 export default function PostLayout({ content, children, next, prev }: Props) {
-  const { slug, date, title, author, readingTime } = content;
+  const { date, title, author, readingTime } = content;
 
   return (
     <article>
