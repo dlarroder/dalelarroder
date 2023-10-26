@@ -17,17 +17,17 @@ export default function Header() {
       <header className="z-40 bg-transparent py-5 md:py-10">
         <div className="mx-auto flex max-w-5xl items-center justify-between">
           <div>
-            <Link href="/" className="flex items-center justify-between" aria-label="Home">
-              <div
-                className={classNames(
-                  'horizontal-underline hidden text-3xl font-extrabold sm:block',
-                  {
-                    'horizontal-underline-active': pathName === '/',
-                  }
-                )}
-              >
-                d.
-              </div>
+            <Link
+              href="/"
+              className={classNames(
+                'horizontal-underline hidden text-3xl font-extrabold sm:block',
+                {
+                  'horizontal-underline-active': pathName === '/',
+                }
+              )}
+              aria-label="d."
+            >
+              d.
             </Link>
           </div>
           <div className="flex items-center space-x-3 text-base leading-5">
@@ -44,7 +44,7 @@ export default function Header() {
                     })}
                     aria-label={title}
                   >
-                    <span className="font-bold tracking-wide text-gray-900 dark:text-gray-100">
+                    <span className="font-semibold tracking-wide text-gray-900 dark:text-gray-100">
                       {title}
                     </span>
                   </Link>

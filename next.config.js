@@ -9,8 +9,5 @@ module.exports = withContentlayer({
   eslint: {
     dirs: ['app', 'components', 'lib', 'layouts', 'scripts'],
   },
-  experimental: {
-    appDir: true,
-  },
   swcMinify: true,
 });

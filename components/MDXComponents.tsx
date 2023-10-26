@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import { coreContent } from '@/lib/utils/contentlayer';
 import type { Authors, Blog } from 'contentlayer/generated';
-import { ComponentMap } from 'mdx-bundler/client';
+import type { MDXComponents } from 'mdx/types';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import Image from './Image';
 import CustomLink from './Link';
@@ -14,7 +14,7 @@ interface MDXLayout {
   [key: string]: unknown;
 }
 
-export const MDXComponents: ComponentMap = {
+export const components: MDXComponents = {
   Image,
   TOCInline,
   a: CustomLink,
@@ -26,5 +26,5 @@ export const MDXLayoutRenderer = ({ content, ...rest }: MDXLayout) => {
   const MDXLayout = useMDXComponent(content.body.code);
   const mainContent = coreContent(content);
 
-  return <MDXLayout content={mainContent} components={MDXComponents} {...rest} />;
+  return <MDXLayout content={mainContent} components={components} {...rest} />;
 };
