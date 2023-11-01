@@ -52,7 +52,7 @@
     "@types/react": "18.2.33",
     "@typescript-eslint/eslint-plugin": "6.9.0",
     "@typescript-eslint/parser": "6.9.0",
-    "autoprefixer": "10.4.13",
+    "autoprefixer": "10.4.16",
     "cross-env": "7.0.3",
     "dedent": "0.7.0",
     "eslint": "8.52.0",
