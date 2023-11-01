@@ -68,7 +68,7 @@
     "postcss": "8.4.31",
     "prettier": "2.8.8",
     "prettier-plugin-tailwindcss": "0.5.6",
-    "tailwind-scrollbar": "2.0.1",
+    "tailwind-scrollbar": "2.1.0",
     "tailwindcss": "3.3.5",
     "typescript": "5.2.2"
   },
