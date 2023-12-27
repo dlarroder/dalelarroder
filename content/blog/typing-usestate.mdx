@@ -1,0 +1,73 @@
+---
+title: 'How to type the setState function from the useState hook'
+date: '2022-04-14'
+tags: ['ReactJS', 'TypeScript', Snippets]
+draft: false
+author: 'Dale Larroder'
+summary: 'A deep dive into how to properly type a setState function from the useState hook.'
+---
+
+Imagine you have a component with a number state, and you pass the same state into another component for it you be used:
+
+```tsx:Sample.tsx
+import { useState } from 'react'
+import { Snippets } from './snippets'
+
+export const Sample = () => {
+  const [number, setNumber] = useState<number>(0)
+
+  return <Snippets number={number} setNumber={setNumber} />
+}
+```
+
+What should the SnippetsProps interface look like?
+
+Most people will type something like this:
+
+```tsx:Snippets.tsx
+import { Dispatch, SetStateAction } from 'react'
+
+interface SnippetsProps {
+  number: number
+  setNumber: Dispatch<SetStateAction<number>>
+}
+
+export const Snippets = ({ number, setNumber }: SnippetsProps) => {
+  return (
+    <div>
+      <span>Clicked {number} times</span>
+      <button onClick={() => setNumber(number + 1)}>Click me</button>
+    </div>
+  )
+}
+```
+
+But it bothers me to have to import `Dispatch` and `SetStateAction` from react just to be able to define the interface.
+
+The type `Dispatch<SetStateAction<T>>` here is basically a function that accepts whatever type you declared your state is, in this case, its a number.
+
+So basically you can also do this here:
+
+```tsx:Snippets.tsx
+interface SnippetsProps {
+  number: number
+  setNumber: (v: number) => void
+}
+
+export const Snippets = ({ number, setNumber }: SnippetsProps) => {
+  return (
+    <div>
+      <span>Clicked {number} times</span>
+      <button onClick={() => setNumber(number + 1)}>Click me</button>
+    </div>
+  )
+}
+```
+
+We just saved two imports just by declaring it as a function that accepts a number, and returns nothing.
+
+I know its just a small detail but I really believe it makes the code look cleaner.
+
+This is just one of my pet peeves, but at the end of the day, it really depends on the coding standard that you or your company follows.
+
+Hope you like one of my first blogs, will try to make more soon!
