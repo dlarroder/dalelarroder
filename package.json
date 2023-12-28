@@ -19,6 +19,7 @@
     "@fontsource/mukta": "5.0.17",
     "@studio-freight/react-lenis": "0.0.36",
     "@vercel/analytics": "1.1.1",
+    "@vercel/speed-insights": "^1.0.2",
     "classnames": "2.3.2",
     "cmdk": "0.2.0",
     "contentlayer": "0.3.4",
@@ -79,5 +80,8 @@
     "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
       "prettier --write"
     ]
+  },
+  "resolutions": {
+    "strip-ansi": "6.0.1"
   }
 }
