@@ -7893,10 +7893,10 @@ synckit@^0.8.5:
     "@pkgr/utils" "^2.3.1"
     tslib "^2.5.0"
 
-tailwind-scrollbar@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/tailwind-scrollbar/-/tailwind-scrollbar-2.1.0.tgz#46e0b8788cef75387f9d163a5ec82b8cacd66c44"
-  integrity sha512-zpvY5mDs0130YzYjZKBiDaw32rygxk5RyJ4KmeHjGnwkvbjm/PszON1m4Bbt2DkMRIXlXsfNevykAESgURN4KA==
+tailwind-scrollbar@3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/tailwind-scrollbar/-/tailwind-scrollbar-3.0.5.tgz#c904118f4f1a572edef93da2d436e1db8b93dd87"
+  integrity sha512-0ZwxTivevqq9BY9fRP9zDjHl7Tu+J5giBGbln+0O1R/7nHtBUKnjQcA1aTIhK7Oyjp6Uc/Dj6/dn8Dq58k5Uww==
 
 tailwindcss@3.3.5:
   version "3.3.5"
