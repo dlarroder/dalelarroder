@@ -1,21 +1,7 @@
 const projectsData = [
   {
-    title: 'FPL Mstr API',
-    description: `Fantasy Premier League Analyses and Predictions API`,
-    imgSrc: '/static/images/project/fplmstrapi.webp',
-    tag: ['Python', 'Flask', 'API', 'JSON', 'Deep Learning', 'Data Science'],
-    href: 'https://fplmstrapi.crepant.com',
-  },
-  {
-    title: 'FPL Mstr',
-    description: `Fantasy Premier League Analyses and Predictions`,
-    imgSrc: '/static/images/project/fplmstr.webp',
-    tag: ['NextJs', 'Tailwind', 'JavaScript'],
-    href: 'https://fplmstr.crepant.com',
-  },
-  {
     title: 'examGPT',
-    description: `Check grammar mistakes and check if essay was AI generated`,
+    description: `Check grammar mistakes and check if essay was GPT generated`,
     imgSrc: '/static/images/project/examgpt.webp',
     tag: ['GPT', 'Tailwind', 'JavaScript', 'Python'],
     href: 'https://examGPT.crepant.com',
