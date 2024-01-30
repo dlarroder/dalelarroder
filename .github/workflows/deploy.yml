@@ -1,0 +1,32 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.10.0  # Use the desired Node.js version
+
+      - name: 🔨 Install dependencies and Build Project
+        run: |
+          npm install --legacy-peer-deps
+          npm run build
+
+      - name: 📂 Sync files and deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ftp.crepant.com
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          server-dir: /
