@@ -11,6 +11,7 @@ import ThemeProvider from '@/components/Providers/ThemeProvider';
 export const metadata = {
   title: 'Dale Larroder',
   description: 'I build things for the web.',
+  metadataBase: new URL('https://dalelarroder.com'),
 };
 
 interface RootLayoutProps {
