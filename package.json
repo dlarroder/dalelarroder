@@ -17,7 +17,7 @@
   "dependencies": {
     "@dlarroder/playground": "1.10.0",
     "@fontsource/mukta": "5.0.18",
-    "@studio-freight/react-lenis": "0.0.36",
+    "@studio-freight/react-lenis": "0.0.46",
     "@vercel/analytics": "1.1.1",
     "@vercel/speed-insights": "^1.0.2",
     "classnames": "2.3.2",
