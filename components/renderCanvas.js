@@ -117,7 +117,7 @@ function render() {
 }
 
 function resizeCanvas() {
-  ctx.canvas.width = window.innerWidth - 20;
+  ctx.canvas.width = window.innerWidth;
   ctx.canvas.height = window.innerHeight;
 }
 
