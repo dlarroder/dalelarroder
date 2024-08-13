@@ -1,8 +1,7 @@
 import siteMetadata from 'content/siteMetadata';
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { AiFillLinkedin } from 'react-icons/ai';
-import { FaGithub, FaSpotify, FaSteam, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaTwitter, FaInstagram, FaSpotify } from 'react-icons/fa'; // Import Instagram and Spotify icons
 import SectionContainer from './SectionContainer';
 import NowPlaying from './Spotify/NowPlaying';
 
@@ -24,16 +23,6 @@ export default function Footer() {
             </ul>
             <ul className="flex cursor-pointer items-center space-x-5">
               <li>
-                <a
-                  href={siteMetadata.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="linkedin"
-                >
-                  <AiFillLinkedin className="sm:text-lg" />
-                </a>
-              </li>
-              <li>
                 <a href={siteMetadata.github} target="_blank" rel="noreferrer" aria-label="github">
                   <FaGithub className="sm:text-lg" />
                 </a>
@@ -50,17 +39,22 @@ export default function Footer() {
               </li>
               <li>
                 <a
+                  href={siteMetadata.instagram} // Add Instagram link
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="instagram"
+                >
+                  <FaInstagram className="sm:text-lg" />
+                </a>
+              </li>
+              <li>
+                <a
                   href={siteMetadata.spotify}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="spotify"
                 >
                   <FaSpotify className="sm:text-lg" />
-                </a>
-              </li>
-              <li>
-                <a href={siteMetadata.steam} target="_blank" rel="noreferrer" aria-label="steam">
-                  <FaSteam className="sm:text-lg" />
                 </a>
               </li>
             </ul>

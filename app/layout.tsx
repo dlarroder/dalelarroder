@@ -9,7 +9,7 @@ import LenisProvider from '@/components/Providers/LenisProvider';
 import ThemeProvider from '@/components/Providers/ThemeProvider';
 
 export const metadata = {
-  title: 'Dale Larroder',
+  title: '莱',
   description: 'I build things for the web.',
   metadataBase: new URL('https://dalelarroder.com'),
 };

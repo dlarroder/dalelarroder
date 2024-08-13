@@ -3,7 +3,7 @@ title: 'Passing an argument to a selector in Redux toolkit'
 date: '2022-04-16'
 tags: ['Redux', 'Redux Toolkit', 'Snippets', 'TypeScript']
 draft: true
-author: 'Dale Larroder'
+author: '莱'
 summary: 'A short guide on how to pass arguments to a selector in Redux toolkit.'
 ---
 
@@ -31,10 +31,10 @@ export const calendarProjectOptionsSelector = createSelector(
           label: p.name,
           color: p.color,
         },
-      }))
-    return options
+      }));
+    return options;
   }
-)
+);
 ```
 
 ## How to use it
@@ -44,7 +44,7 @@ Just pass `projectId` as a second argument to the selector
 ```tsx
 const calendarOptions = useSelector((state: RootState) =>
   calendarProjectOptionsSelector(state, projectId)
-)
+);
 ```
 
 ### Passing multiple values to a selector
@@ -59,7 +59,7 @@ export const groupedPackagesSelector = createSelector(
     projectId,
   }),
   (packages, { ownerId, projectId }) => {
-    const groupedPackages: GroupedPackage[] = []
+    const groupedPackages: GroupedPackage[] = [];
 
     packages
       .filter((p) => p.projectId === projectId)
@@ -71,13 +71,13 @@ export const groupedPackagesSelector = createSelector(
             color: p.color,
             group: p.locked ? PackageGroup.Locked : PackageGroup.Public,
             code: p.code,
-          })
+          });
         }
-      })
+      });
 
-    return groupedPackages
+    return groupedPackages;
   }
-)
+);
 ```
 
 ## How to use it
@@ -87,7 +87,7 @@ Just pass `projectId` and `ownerId` in a object as a second argument to the sele
 ```tsx
 const groupedPackages = useSelector((state: RootState) =>
   groupedPackagesSelector(state, { ownerId, projectId })
-)
+);
 ```
 
 ## Conclusion

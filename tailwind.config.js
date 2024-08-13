@@ -1,5 +1,5 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   mode: 'jit',
@@ -29,24 +29,24 @@ module.exports = {
         sans: ['Mukta', ...defaultTheme.fontFamily.sans],
       },
       gradientColorStops: {
-        'gradient-1-start': '#F20089',
-        'gradient-1-end': '#D100D1',
-        'gradient-2-start': '#D100D1',
-        'gradient-2-end': '#A100F2',
+        'gradient-1-start': '#4d6b11',
+        'gradient-1-end': '#4d6b11',
+        'gradient-2-start': '#4d6b11',
+        'gradient-2-end': '#4d6b11',
         'gradient-3-start': '#A100F2',
         'gradient-3-end': '#2D00F7',
       },
       colors: {
         primary: {
-          100: '#FDD1D9',
-          200: '#FBA4BC',
-          300: '#F575A5',
-          400: '#EB519B',
-          500: '#DE1D8D',
-          600: '#BE1588',
-          700: '#9F0E7F',
-          800: '#800972',
-          900: '#6A0568',
+          100: '#698c22',
+          200: '#698c22',
+          300: '#698c22',
+          400: '#698c22',
+          500: '#698c22',
+          600: '#698c22',
+          700: '#698c22',
+          800: '#698c22',
+          900: '#698c22',
         },
         success: {
           100: '#E4FCDB',
@@ -102,9 +102,9 @@ module.exports = {
           css: {
             color: theme('colors.gray.700'),
             a: {
-              color: theme('colors.gray.700'),
+              color: theme('colors.primary.700'),
               '&:hover': {
-                color: theme('colors.gray.700'),
+                color: theme('colors.primary.700'),
               },
               code: { color: theme('colors.primary.400') },
             },
@@ -228,4 +228,4 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('tailwind-scrollbar')({ nocompatible: true }),
   ],
-}
+};

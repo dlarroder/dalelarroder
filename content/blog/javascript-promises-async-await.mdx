@@ -3,7 +3,7 @@ title: 'JavaScript Promise and Async/Await'
 date: '2022-04-20'
 tags: ['JavaScript', 'ReactJs', Snippets, 'Promises', 'Async/Await']
 draft: false
-author: 'Dale Larroder'
+author: '莱'
 summary: 'A short visual guide on what a Promise is in JavaScript, and how to avoid call back hell.'
 ---
 
@@ -32,12 +32,12 @@ Async/Await was the result of `callback hell` and nested promises from the `old 
 ## Visualization of callback hell
 
 ```js
-const doSomeFetch = fetch('/some-api')
+const doSomeFetch = fetch('/some-api');
 
 doSomeFetch()
   .then((data) => doAnotherFetch(data))
   .then((result) => doAnoterFetch(result))
-  .then((outcome) => probablyLastFetch(outcome))
+  .then((outcome) => probablyLastFetch(outcome));
 ```
 
 But in the real world, it would look some something like this:
@@ -53,56 +53,56 @@ doSomeFetch().then((data) => {
               // Ah Finally!
             })
             .catch((e) => {
-              handleError(e)
-            })
+              handleError(e);
+            });
         })
         .catch((e) => {
-          handleError(e)
-        })
+          handleError(e);
+        });
     })
     .catch((e) => {
-      handleError(e)
-    })
-})
+      handleError(e);
+    });
+});
 ```
 
 ## Async/Await allows us to write code like this:
 
 ```js
-const data = await doSomeFetch()
-const result = await doAnotherFetch(data)
-const outcome = await doAnoterFetch(data, result)
-const fin = await probablyLastFetch(data, result, outcome)
+const data = await doSomeFetch();
+const result = await doAnotherFetch(data);
+const outcome = await doAnoterFetch(data, result);
+const fin = await probablyLastFetch(data, result, outcome);
 ```
 
 Looks cool right? But how about error handling?
 It would look like this:
 
 ```js
-let data, result, outcome, fin
+let data, result, outcome, fin;
 
 try {
-  data = await doSomeFetch()
+  data = await doSomeFetch();
 } catch (e) {
-  handleError(e)
+  handleError(e);
 }
 
 try {
-  result = await doAnotherFetch(data)
+  result = await doAnotherFetch(data);
 } catch (e) {
-  handleError(e)
+  handleError(e);
 }
 
 try {
-  outcome = await doAnoterFetch(data, result)
+  outcome = await doAnoterFetch(data, result);
 } catch (e) {
-  handleError(e)
+  handleError(e);
 }
 
 try {
-  fin = await probablyLastFetch(data, result, outcome)
+  fin = await probablyLastFetch(data, result, outcome);
 } catch (e) {
-  handleError(e)
+  handleError(e);
 }
 ```
 
@@ -112,22 +112,22 @@ This looks better:
 
 ```js
 try {
-  const data = await doSomeFetch()
-  const result = await doAnotherFetch(data)
-  const outcome = await doAnoterFetch(data, result)
-  const fin = await probablyLastFetch(data, result, outcome)
+  const data = await doSomeFetch();
+  const result = await doAnotherFetch(data);
+  const outcome = await doAnoterFetch(data, result);
+  const fin = await probablyLastFetch(data, result, outcome);
 } catch (e) {
-  handleError(e)
+  handleError(e);
 }
 ```
 
 But it you want able to catch and identify which block threw an error and handle each case differently, we append a catch block to each async method, kind of similar to the promises way:
 
 ```js
-const data = await doSomeFetch().catch(handleError)
-const result = await doAnotherFetch(data).catch(handleError)
-const outcome = await doAnoterFetch(data, result).catch(handleError)
-const fin = await probablyLastFetch(data, result, outcome).catch(handleError)
+const data = await doSomeFetch().catch(handleError);
+const result = await doAnotherFetch(data).catch(handleError);
+const outcome = await doAnoterFetch(data, result).catch(handleError);
+const fin = await probablyLastFetch(data, result, outcome).catch(handleError);
 ```
 
 ## A Clean Approach
@@ -137,11 +137,11 @@ Building up on our previous examples, let's create a better error handler:
 ```js
 export async function fancyFetch(fetcher, ...args) {
   try {
-    const data = await fetcher(...args)
-    return [data, null]
+    const data = await fetcher(...args);
+    return [data, null];
   } catch (error) {
-    log(error)
-    return [null, error]
+    log(error);
+    return [null, error];
   }
 }
 ```

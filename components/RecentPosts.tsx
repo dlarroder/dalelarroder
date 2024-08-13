@@ -2,7 +2,7 @@ import PostCard from '@/components/PostCard';
 import { Blog } from 'contentlayer/generated';
 import Link from 'next/link';
 
-const MAX_DISPLAY = 2;
+const MAX_DISPLAY = 11;
 
 interface RecentPosts {
   posts: Omit<Blog, 'body' | '_raw' | '_id'>[];
