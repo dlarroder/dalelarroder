@@ -15,7 +15,7 @@ export default function RecentPosts({ posts }: RecentPosts) {
     <div className="mt-6">
       <div className="divide-gray-200 dark:divide-gray-700">
         <h3 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl sm:leading-10 md:text-4xl md:leading-14">
-          Recent Posts
+          近期文章
         </h3>
         <PostCard posts={slicedPost} showTags={false} />
       </div>
