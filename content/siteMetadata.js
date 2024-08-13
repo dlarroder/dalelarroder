@@ -8,7 +8,7 @@ const siteMetadata = {
   siteUrl: 'https://alcu1n.com',
   siteRepo: 'https://github.com/alcu1n/',
   siteLogo: '/static/images/logo.png',
-  image: '/static/images/avatar.webp',
+  image: '/static/images/l3.svg',
   socialBanner: '/static/images/twitter-card.png',
   email: 'alcuin.ch@gmail.com',
   github: 'https://github.com/alcu1n',

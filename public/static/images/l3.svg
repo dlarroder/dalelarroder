@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_2" data-name="图层 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 269 256">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: url(#_未命名的渐变_10);
+      }
+    </style>
+    <linearGradient id="_未命名的渐变_10" data-name="未命名的渐变 10" x1="24.38" y1="-18.35" x2="244.62" y2="274.35" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".06" stop-color="#e8e8e8"/>
+      <stop offset=".26" stop-color="#a2a2a2"/>
+      <stop offset=".45" stop-color="#686868"/>
+      <stop offset=".63" stop-color="#3b3b3b"/>
+      <stop offset=".78" stop-color="#1a1a1a"/>
+      <stop offset=".91" stop-color="#070707"/>
+      <stop offset="1" stop-color="#000"/>
+    </linearGradient>
+  </defs>
+  <g id="_图层_2-2" data-name=" 图层 2">
+    <rect class="cls-2" width="269" height="256"/>
+    <g id="_图层_1-2" data-name=" 图层 1-2">
+      <path class="cls-1" d="M115.94,46.87v111.69h25.09v27.94H74.68V46.87h41.26Z"/>
+      <circle class="cls-1" cx="185.93" cy="149.5" r="28.4"/>
+    </g>
+  </g>
+</svg>

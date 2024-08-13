@@ -47,7 +47,7 @@ export const projects: Project[] = [
     title: 'Mathgame',
     src: 'mathgame.png',
     color: '#ffedd5',
-    url: 'https://mathgame.dalelarroder.com/',
+    url: 'https://mathgame.com/',
     role: 'Frontend Developer',
   },
   {
