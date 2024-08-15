@@ -31,9 +31,9 @@ export default function Hero(): ReactElement {
             <div ref={ref} className="flex cursor-default flex-col space-y-2">
               <h1 className="text-5xl font-semibold sm:text-7xl md:text-8xl xl:text-9xl">莱</h1>
               <h2 className="text-3xl font-medium opacity-80 sm:text-6xl md:text-6xl xl:text-7xl">
-                一位前端&LLM工程师
+                一位前端 & AI探索者
                 <br />
-                love building things for the web.
+                Exploring the frontiers of AI and the web.
               </h2>
               <Link
                 href="/blog"
