@@ -55,7 +55,7 @@ export default function ThreeScene() {
   );
 }
 
-export function GelatinousCube() {
+function GelatinousCube() {
   const config = useControls({
     meshPhysicalMaterial: false,
     transmissionSampler: false,
@@ -78,7 +78,7 @@ export function GelatinousCube() {
     bg: '#839681',
   });
 
-  const { nodes, materials } = useGLTF('/frozenwhaleL.glb');
+  const { nodes, materials } = useGLTF('./frozenwhaleL.glb');
   console.log(nodes); // 检查 nodes 对象中的所有几何体
 
   return (
