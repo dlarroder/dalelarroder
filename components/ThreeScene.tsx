@@ -17,7 +17,7 @@ export default function ThreeScene() {
   return (
     <Canvas
       shadows
-      camera={{ position: [55, 2, 55], fov: 26 }}
+      camera={{ position: [55, 10, 55], fov: 26 }}
       style={{ width: '100vw', height: '100vh' }}
     >
       <ambientLight intensity={Math.PI} />
