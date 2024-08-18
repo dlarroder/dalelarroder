@@ -1,7 +1,6 @@
 'use client';
 
 import * as THREE from 'three';
-import { Mesh } from 'three';
 import { Canvas } from '@react-three/fiber';
 import {
   MeshTransmissionMaterial,
@@ -11,7 +10,6 @@ import {
   Environment,
   OrbitControls,
   Center,
-  Text3D,
 } from '@react-three/drei';
 import { useControls } from 'leva';
 
@@ -19,7 +17,7 @@ export default function ThreeScene() {
   return (
     <Canvas
       shadows
-      camera={{ position: [55, 20, 55], fov: 26 }}
+      camera={{ position: [55, 2, 55], fov: 26 }}
       style={{ width: '100vw', height: '100vh' }}
     >
       <ambientLight intensity={Math.PI} />
@@ -52,32 +50,7 @@ export default function ThreeScene() {
         autoRotateSpeed={0.3}
         makeDefault
       />
-      <Environment files="/static/dancing_hall_1k.hdr" background backgroundBlurriness={1} />
-      <Center position={[0, 5, 0]}>
-        <Text3D
-          font="/static/helvetiker_regular.typeface.json"
-          size={2}
-          height={0.2}
-          curveSegments={12}
-          bevelEnabled={true}
-          bevelThickness={0.1}
-          bevelSize={0.02}
-        >
-          Reject Ocean Show
-          <meshPhysicalMaterial
-            attach="material"
-            color="#707c87"
-            roughness={0.1}
-            transmission={0.5}
-            thickness={1.5}
-            ior={3}
-            specularIntensity={1}
-            envMapIntensity={0.5}
-            clearcoat={1}
-            clearcoatRoughness={0.5}
-          />
-        </Text3D>
-      </Center>
+      <Environment files="/dancing_hall_1k.hdr" background backgroundBlurriness={1} />
     </Canvas>
   );
 }
@@ -105,12 +78,12 @@ function GelatinousCube() {
     bg: '#839681',
   });
 
-  const { nodes, materials } = useGLTF('/static/frozenwhaleL.glb');
+  const { nodes, materials } = useGLTF('/frozenwhaleL.glb');
   console.log(nodes); // 检查 nodes 对象中的所有几何体
 
   return (
     <group dispose={null}>
-      <mesh geometry={(nodes.cube1 as Mesh).geometry} position={[-0.56, -1.38, -0.11]}>
+      <mesh geometry={(nodes.cube1 as THREE.Mesh).geometry} position={[-0.56, -1.38, -0.11]}>
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -120,12 +93,12 @@ function GelatinousCube() {
       <mesh
         castShadow
         renderOrder={-100}
-        geometry={(nodes.cube2 as Mesh).geometry}
+        geometry={(nodes.cube2 as THREE.Mesh).geometry}
         material={materials.cube_mat}
         material-side={THREE.FrontSide}
         position={[-0.56, -1.38, -0.11]}
       />
-      <mesh geometry={(nodes.cube1001 as Mesh).geometry} position={[-0.56, -1.34, -0.11]}>
+      <mesh geometry={(nodes.cube1001 as THREE.Mesh).geometry} position={[-0.56, -1.34, -0.11]}>
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -135,12 +108,12 @@ function GelatinousCube() {
       <mesh
         castShadow
         renderOrder={-100}
-        geometry={(nodes.cube2001 as Mesh).geometry}
+        geometry={(nodes.cube2001 as THREE.Mesh).geometry}
         material={materials.cube_mat}
         material-side={THREE.FrontSide}
         position={[-0.56, -1.34, -0.11]}
       />
-      <mesh geometry={(nodes.cube1002 as Mesh).geometry} position={[-0.56, -1.38, -0.11]}>
+      <mesh geometry={(nodes.cube1002 as THREE.Mesh).geometry} position={[-0.56, -1.38, -0.11]}>
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -150,12 +123,12 @@ function GelatinousCube() {
       <mesh
         castShadow
         renderOrder={-100}
-        geometry={(nodes.cube2002 as Mesh).geometry}
+        geometry={(nodes.cube2002 as THREE.Mesh).geometry}
         material={materials.cube_mat}
         material-side={THREE.FrontSide}
         position={[-0.56, -1.38, -0.11]}
       />
-      <mesh geometry={(nodes.cube1003 as Mesh).geometry} position={[-4.8, -1.38, -4.6]}>
+      <mesh geometry={(nodes.cube1003 as THREE.Mesh).geometry} position={[-4.8, -1.38, -4.6]}>
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -165,12 +138,12 @@ function GelatinousCube() {
       <mesh
         castShadow
         renderOrder={-100}
-        geometry={(nodes.cube2003 as Mesh).geometry}
+        geometry={(nodes.cube2003 as THREE.Mesh).geometry}
         material={materials.cube_mat}
         material-side={THREE.FrontSide}
         position={[-4.8, -1.38, -4.6]}
       />
-      <mesh geometry={(nodes.球体 as Mesh).geometry} position={[-11.1, 0.38, -9.45]}>
+      <mesh geometry={(nodes.球体 as THREE.Mesh).geometry} position={[-11.1, 0.38, -9.45]}>
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -178,32 +151,32 @@ function GelatinousCube() {
         )}
       </mesh>
       <mesh
-        geometry={(nodes.bubbles as Mesh).geometry}
+        geometry={(nodes.bubbles as THREE.Mesh).geometry}
         material={materials.cube_bubbles_mat}
         position={[-0.56, -2.28, -0.11]}
       />
       <group position={[-1.0, -2, -1.5]}>
-        <mesh geometry={(nodes.arrows as Mesh).geometry} material={materials.weapons_mat} />
+        <mesh geometry={(nodes.arrows as THREE.Mesh).geometry} material={materials.weapons_mat} />
       </group>
       <mesh
-        geometry={(nodes.bluewhale_1 as Mesh).geometry}
+        geometry={(nodes.bluewhale_1 as THREE.Mesh).geometry}
         material={materials.bluewhale}
         position={[0.0, -1.5, -0.5]}
         rotation={[0, 1.2 * Math.PI, 0]}
       />
       <mesh
-        geometry={(nodes.efish as Mesh).geometry}
+        geometry={(nodes.efish as THREE.Mesh).geometry}
         material={materials.efish}
         position={[-0.4, -2.18, 0.1]}
       />
       <mesh
-        geometry={(nodes.shark as Mesh).geometry}
+        geometry={(nodes.shark as THREE.Mesh).geometry}
         material={materials.shark}
         position={[-0, -1.5, 0.5]}
         rotation={[0, 2.5 * Math.PI, 0]}
       />
       <mesh
-        geometry={(nodes.turtle as Mesh).geometry}
+        geometry={(nodes.turtle as THREE.Mesh).geometry}
         material={materials.turtle}
         position={[-0.5, -1.68, 0.4]}
         rotation={[0, 2.1 * Math.PI, 0]}
