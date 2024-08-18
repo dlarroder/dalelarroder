@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero';
 import Intro from '@/components/Intro';
+import ThreeScene from '@/components/ThreeScene'; // 引入新的3D组件
 import { ScrollProvider } from '@/components/Providers/ScrollProvider';
 import RecentPosts from '@/components/RecentPosts';
 import SectionContainer from '@/components/SectionContainer';
@@ -16,6 +17,7 @@ export default function Page() {
     <ScrollProvider>
       <Hero />
       <Intro />
+      <ThreeScene /> {/* 3D组件在Intro之后 */}
       <SectionContainer>
         <RecentPosts posts={posts} />
         <Suspense fallback="loading..">

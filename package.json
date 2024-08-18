@@ -18,6 +18,8 @@
     "@dlarroder/playground": "1.10.0",
     "@fontsource/mukta": "5.0.18",
     "@octokit/rest": "^21.0.1",
+    "@react-three/drei": "^9.111.1",
+    "@react-three/fiber": "^8.17.5",
     "@studio-freight/react-lenis": "0.0.36",
     "@vercel/analytics": "1.1.1",
     "@vercel/speed-insights": "^1.0.2",
@@ -28,6 +30,7 @@
     "framer-motion": "10.16.4",
     "github-slugger": "1.5.0",
     "gsap": "3.12.2",
+    "leva": "^0.9.35",
     "logrocket": "6.0.2",
     "mdx-bundler": "9.2.1",
     "next": "14.0.1",
@@ -41,6 +44,7 @@
     "rehype-prism-plus": "1.6.3",
     "rehype-slug": "6.0.0",
     "remark": "14.0.3",
+    "three": "^0.167.1",
     "use-breakpoint": "4.0.1"
   },
   "devDependencies": {
