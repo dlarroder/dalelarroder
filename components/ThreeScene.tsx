@@ -51,10 +51,10 @@ export default function ThreeScene() {
         autoRotateSpeed={0.3}
         makeDefault
       />
-      <Environment files="/dancing_hall_1k.hdr" background backgroundBlurriness={1} />
+      <Environment files="/static/dancing_hall_1k.hdr" background backgroundBlurriness={1} />
       <Center position={[0, 5, 0]}>
         <Text3D
-          font="/helvetiker_regular.typeface.json"
+          font="/static/helvetiker_regular.typeface.json"
           size={2}
           height={0.2}
           curveSegments={12}
@@ -104,7 +104,7 @@ function GelatinousCube() {
     bg: '#839681',
   });
 
-  const { nodes, materials } = useGLTF('/frozenwhaleL.glb');
+  const { nodes, materials } = useGLTF('/static/frozenwhaleL.glb');
   console.log(nodes); // 检查 nodes 对象中的所有几何体
 
   return (
