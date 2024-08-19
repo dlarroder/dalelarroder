@@ -44,13 +44,6 @@ export default function GelatinousCube() {
         material-side={THREE.FrontSide}
         position={[-0.56, -1.38, -0.11]}
       />
-      <mesh geometry={(nodes.cube1001 as THREE.Mesh).geometry} position={[-0.56, -1.34, -0.11]}>
-        {config.meshPhysicalMaterial ? (
-          <meshPhysicalMaterial {...config} />
-        ) : (
-          <MeshTransmissionMaterial background={new THREE.Color(config.bg)} {...config} />
-        )}
-      </mesh>
     </group>
   );
 }
