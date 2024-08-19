@@ -59,43 +59,6 @@ export default function GelatinousCube() {
         material-side={THREE.FrontSide}
         position={[-0.56, -1.34, -0.11]}
       />
-      <mesh geometry={(nodes.cube1002 as THREE.Mesh).geometry} position={[-0.56, -1.38, -0.11]}>
-        {config.meshPhysicalMaterial ? (
-          <meshPhysicalMaterial {...config} />
-        ) : (
-          <MeshTransmissionMaterial background={new THREE.Color(config.bg)} {...config} />
-        )}
-      </mesh>
-      <mesh
-        castShadow
-        renderOrder={-100}
-        geometry={(nodes.cube2002 as THREE.Mesh).geometry}
-        material={materials.cube_mat}
-        material-side={THREE.FrontSide}
-        position={[-0.56, -1.38, -0.11]}
-      />
-      <mesh geometry={(nodes.cube1003 as THREE.Mesh).geometry} position={[-4.8, -1.38, -4.6]}>
-        {config.meshPhysicalMaterial ? (
-          <meshPhysicalMaterial {...config} />
-        ) : (
-          <MeshTransmissionMaterial background={new THREE.Color(config.bg)} {...config} />
-        )}
-      </mesh>
-      <mesh
-        castShadow
-        renderOrder={-100}
-        geometry={(nodes.cube2003 as THREE.Mesh).geometry}
-        material={materials.cube_mat}
-        material-side={THREE.FrontSide}
-        position={[-4.8, -1.38, -4.6]}
-      />
-      <mesh geometry={(nodes.球体 as THREE.Mesh).geometry} position={[-11.1, 0.38, -9.45]}>
-        {config.meshPhysicalMaterial ? (
-          <meshPhysicalMaterial {...config} />
-        ) : (
-          <MeshTransmissionMaterial background={new THREE.Color(config.bg)} {...config} />
-        )}
-      </mesh>
     </group>
   );
 }
