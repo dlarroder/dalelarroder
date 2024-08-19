@@ -44,6 +44,12 @@ export default function GelatinousCube() {
         material-side={THREE.FrontSide}
         position={[-0.56, -1.38, -0.11]}
       />
+      <mesh
+        geometry={(nodes.shark as THREE.Mesh).geometry}
+        material={materials.shark}
+        position={[-0, 9.5, 0.5]}
+        rotation={[0, 2.5 * Math.PI, 0]}
+      />
     </group>
   );
 }
