@@ -47,7 +47,10 @@ export default function GelatinousCube() {
         position={[-0.56, -1.38, -0.11]}
       />
       <group position={[-1.0, -2, -1.5]}>
-        <mesh geometry={(nodes.arrows as THREE.Mesh).geometry} material={materials.weapons_mat} />
+        <mesh
+          geometry={(nodes.arrows as THREE.Mesh).geometry}
+          material={materials.weapons_mat as THREE.Material}
+        />
       </group>
     </group>
   );
