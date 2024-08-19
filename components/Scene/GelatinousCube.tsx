@@ -26,6 +26,8 @@ export default function GelatinousCube() {
   });
 
   const { nodes, materials } = useGLTF('./frozenwhaleL.glb');
+  console.log(nodes); // 检查 nodes 对象中的所有几何体
+  console.log(materials);
 
   return (
     <group dispose={null}>
@@ -44,12 +46,9 @@ export default function GelatinousCube() {
         material-side={THREE.FrontSide}
         position={[-0.56, -1.38, -0.11]}
       />
-      <mesh
-        geometry={(nodes.shark as THREE.Mesh).geometry}
-        material={materials.shark}
-        position={[-0, 9.5, 0.5]}
-        rotation={[0, 2.5 * Math.PI, 0]}
-      />
+      <group position={[-1.0, -2, -1.5]}>
+        <mesh geometry={(nodes.arrows as THREE.Mesh).geometry} material={materials.weapons_mat} />
+      </group>
     </group>
   );
 }
