@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import { MeshTransmissionMaterial, useGLTF } from '@react-three/drei';
 import { useControls } from 'leva';
+import { useRef } from 'react';
+import { useThree } from '@react-three/fiber';
 
 export default function GelatinousCube() {
   const config = useControls({
@@ -26,10 +28,19 @@ export default function GelatinousCube() {
   });
 
   const { nodes, materials } = useGLTF('./frozenwhaleL.glb');
+  const cubeRef = useRef<THREE.Mesh>(null); // 使用 useRef 获取 mesh 的引用
+  const { viewport } = useThree(); // 获取视口信息
 
   return (
-    <group dispose={null}>
-      <mesh geometry={(nodes.cube1 as THREE.Mesh).geometry} position={[-0.56, -1.38, -0.11]}>
+    <group
+      dispose={null}
+      scale={[viewport.width / 3.75, viewport.width / 3.75, viewport.width / 3.75]}
+    >
+      <mesh
+        ref={cubeRef}
+        geometry={(nodes.cube1 as THREE.Mesh).geometry}
+        position={[-0.56, -1.38, -0.11]}
+      >
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -44,7 +55,11 @@ export default function GelatinousCube() {
         material-side={THREE.FrontSide}
         position={[-0.56, -1.38, -0.11]}
       />
-      <mesh geometry={(nodes.cube1001 as THREE.Mesh).geometry} position={[-0.56, -1.34, -0.11]}>
+      <mesh
+        ref={cubeRef}
+        geometry={(nodes.cube1001 as THREE.Mesh).geometry}
+        position={[-0.56, -1.34, -0.11]}
+      >
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -59,7 +74,11 @@ export default function GelatinousCube() {
         material-side={THREE.FrontSide}
         position={[-0.56, -1.34, -0.11]}
       />
-      <mesh geometry={(nodes.cube1002 as THREE.Mesh).geometry} position={[-0.56, -1.38, -0.11]}>
+      <mesh
+        ref={cubeRef}
+        geometry={(nodes.cube1002 as THREE.Mesh).geometry}
+        position={[-0.56, -1.38, -0.11]}
+      >
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -74,7 +93,11 @@ export default function GelatinousCube() {
         material-side={THREE.FrontSide}
         position={[-0.56, -1.38, -0.11]}
       />
-      <mesh geometry={(nodes.cube1003 as THREE.Mesh).geometry} position={[-4.8, -1.38, -4.6]}>
+      <mesh
+        ref={cubeRef}
+        geometry={(nodes.cube1003 as THREE.Mesh).geometry}
+        position={[-4.8, -1.38, -4.6]}
+      >
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -89,7 +112,11 @@ export default function GelatinousCube() {
         material-side={THREE.FrontSide}
         position={[-4.8, -1.38, -4.6]}
       />
-      <mesh geometry={(nodes.球体 as THREE.Mesh).geometry} position={[-11.1, 0.38, -9.45]}>
+      <mesh
+        ref={cubeRef}
+        geometry={(nodes.球体 as THREE.Mesh).geometry}
+        position={[-11.1, 0.38, -9.45]}
+      >
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -105,6 +132,7 @@ export default function GelatinousCube() {
         <mesh geometry={(nodes.arrows as THREE.Mesh).geometry} material={materials.weapons_mat} />
       </group>
       <mesh
+        ref={cubeRef}
         geometry={(nodes.bluewhale_1 as THREE.Mesh).geometry}
         material={materials.bluewhale}
         position={[0.0, -1.5, -0.5]}
@@ -122,6 +150,7 @@ export default function GelatinousCube() {
         rotation={[0, 2.5 * Math.PI, 0]}
       />
       <mesh
+        ref={cubeRef}
         geometry={(nodes.turtle as THREE.Mesh).geometry}
         material={materials.turtle}
         position={[-0.5, -1.68, 0.4]}
