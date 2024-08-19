@@ -25,13 +25,13 @@ export default function GelatinousCube() {
     bg: '#839681',
   });
 
-  const { nodes, materials } = useGLTF('./frozenwhaleL.glb');
+  const { nodes, materials } = useGLTF('/demo.glb');
   console.log(nodes); // 检查 nodes 对象中的所有几何体
   console.log(materials);
 
   return (
     <group dispose={null}>
-      <mesh geometry={(nodes.cube1 as THREE.Mesh).geometry} position={[-0.56, -1.38, -0.11]}>
+      <mesh geometry={(nodes.cube1 as THREE.Mesh).geometry} position={[-0.56, 0.38, -0.11]}>
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -44,12 +44,20 @@ export default function GelatinousCube() {
         geometry={(nodes.cube2 as THREE.Mesh).geometry}
         material={materials.cube_mat}
         material-side={THREE.FrontSide}
-        position={[-0.56, -1.38, -0.11]}
+        position={[-0.56, 0.38, -0.11]}
       />
-      <group position={[-1.0, -2, -1.5]}>
+      <mesh
+        geometry={(nodes.bubbles as THREE.Mesh).geometry}
+        material={materials.cube_bubbles_mat}
+        position={[-0.56, 0.38, -0.11]}
+      />
+      <group position={[-0.56, 0.38, -0.41]}>
+        <mesh geometry={(nodes.arrows as THREE.Mesh).geometry} material={materials.weapons_mat} />
+        <mesh geometry={(nodes.skeleton_1 as THREE.Mesh).geometry} material={materials.skele_mat} />
         <mesh
-          geometry={(nodes.arrows as THREE.Mesh).geometry}
-          material={materials.weapons_mat as THREE.Material}
+          geometry={(nodes.skeleton_2 as THREE.Mesh).geometry}
+          material={materials.weapons_mat}
+          material-side={THREE.FrontSide}
         />
       </group>
     </group>
