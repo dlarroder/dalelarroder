@@ -9,10 +9,7 @@ import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer';
 import { allBlogs } from 'contentlayer/generated';
 import { Suspense } from 'react';
 
-// 动态引入 3D 场景组件
-const Scene = dynamic(() => import('@/components/Scene'), {
-  ssr: false, // 确保在客户端渲染
-});
+const ThreeScene = dynamic(() => import('@/components/ThreeScene'), { ssr: false });
 
 export default function Page() {
   const sortedPosts = sortedBlogPost(allBlogs);
@@ -22,7 +19,7 @@ export default function Page() {
     <ScrollProvider>
       <Hero />
       <Intro />
-      <Scene /> {/* 使用新的 3D 场景组件 */}
+      <ThreeScene />
       <SectionContainer>
         <RecentPosts posts={posts} />
         <Suspense fallback="loading..">
