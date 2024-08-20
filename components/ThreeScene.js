@@ -10,31 +10,31 @@ import {
   OrbitControls,
   Center,
 } from '@react-three/drei';
-import { useControls } from 'leva';
 import dynamic from 'next/dynamic';
 
 function GelatinousCube() {
-  const config = useControls({
+  const config = {
     meshPhysicalMaterial: false,
     transmissionSampler: false,
     backside: false,
-    samples: { value: 10, min: 1, max: 32, step: 1 },
-    resolution: { value: 2048, min: 256, max: 2048, step: 256 },
-    transmission: { value: 1, min: 0, max: 1 },
-    roughness: { value: 0.0, min: 0, max: 1, step: 0.01 },
-    thickness: { value: 3.5, min: 0, max: 10, step: 0.01 },
-    ior: { value: 1.01, min: 1, max: 5, step: 0.01 },
-    chromaticAberration: { value: 0.04, min: 0, max: 1 },
-    anisotropy: { value: 0.1, min: 0, max: 1, step: 0.01 },
-    distortion: { value: 0.57, min: 0, max: 1, step: 0.01 },
-    distortionScale: { value: 0.5, min: 0.01, max: 1, step: 0.01 },
-    temporalDistortion: { value: 0.5, min: 0, max: 1, step: 0.01 },
-    clearcoat: { value: 1, min: 0, max: 1 },
-    attenuationDistance: { value: 0.5, min: 0, max: 10, step: 0.01 },
+    samples: 10,
+    resolution: 2048,
+    transmission: 1,
+    roughness: 0.0,
+    thickness: 3.5,
+    ior: 1.01,
+    chromaticAberration: 0.04,
+    anisotropy: 0.1,
+    distortion: 0.57,
+    distortionScale: 0.5,
+    temporalDistortion: 0.5,
+    clearcoat: 1,
+    attenuationDistance: 0.5,
     attenuationColor: '#ffffff',
     color: '#99ecff',
     bg: '#839681',
-  });
+  };
+
   const { nodes, materials } = useGLTF('/frozenwhaleL.glb');
 
   return (
