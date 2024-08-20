@@ -54,7 +54,7 @@ function GelatinousCube() {
         material-side={THREE.FrontSide}
         position={[-0.56, -1.38, -0.11]}
       />
-      <mesh geometry={nodes.cube1001.geometry} position={[-0.56, -1.34, -0.11]}>
+      <mesh geometry={nodes.cube1_1.geometry} position={[-0.56, -1.34, -0.11]}>
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -64,12 +64,12 @@ function GelatinousCube() {
       <mesh
         castShadow
         renderOrder={-100}
-        geometry={nodes.cube2001.geometry}
-        material={materials.cube_mat}
+        geometry={nodes.cube2_1.geometry}
+        material={materials.cube_mat1}
         material-side={THREE.FrontSide}
         position={[-0.56, -1.34, -0.11]}
       />
-      <mesh geometry={nodes.cube1002.geometry} position={[-0.56, -1.38, -0.11]}>
+      <mesh geometry={nodes.cube1_2.geometry} position={[-0.56, -1.38, -0.11]}>
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -79,12 +79,12 @@ function GelatinousCube() {
       <mesh
         castShadow
         renderOrder={-100}
-        geometry={nodes.cube2002.geometry}
-        material={materials.cube_mat}
+        geometry={nodes.cube2_2.geometry}
+        material={materials.cube_mat2}
         material-side={THREE.FrontSide}
         position={[-0.56, -1.38, -0.11]}
       />
-      <mesh geometry={nodes.cube1003.geometry} position={[-4.8, -1.38, -4.6]}>
+      <mesh geometry={nodes.cube1_3.geometry} position={[-4.8, -1.38, -4.6]}>
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -94,8 +94,8 @@ function GelatinousCube() {
       <mesh
         castShadow
         renderOrder={-100}
-        geometry={nodes.cube2003.geometry}
-        material={materials.cube_mat}
+        geometry={nodes.cube2_3.geometry}
+        material={materials.cube_mat3}
         material-side={THREE.FrontSide}
         position={[-4.8, -1.38, -4.6]}
       />
