@@ -59,26 +59,6 @@ function GelatinousCube() {
         material-side={THREE.FrontSide}
         position={[-0.56, -1.38, -0.11]}
       />
-      <group position={[-0.556, 0.382, -0.111]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.arrows.geometry}
-          material={materials.weapons_mat}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.skeleton_1.geometry}
-          material={materials.skele_mat}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.skeleton_2.geometry}
-          material={materials.weapons_mat}
-        />
-      </group>
     </group>
   );
 }
