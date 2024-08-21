@@ -68,11 +68,19 @@ function GelatinousCube() {
       </mesh>
       <mesh
         castShadow
-        renderOrder={-100}
+        renderOrder={-90}
         geometry={nodes.cube2.geometry}
         material={materials.cube_mat}
         material-side={THREE.FrontSide}
         position={[-0.56, 2.38, -0.11]}
+      />
+      <mesh
+        castShadow
+        renderOrder={-80}
+        geometry={nodes.bluewhale_1.geometry}
+        material={materials.bluewhale}
+        material-side={THREE.FrontSide}
+        position={[-0.56, 4.98, -0.11]}
       />
     </group>
   );
