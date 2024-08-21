@@ -40,7 +40,7 @@ function GelatinousCube() {
     // 设置自定义的 Draco 解码器路径
     useGLTF.setDecoderPath('/draco/');
   }, []);
-  const { nodes, materials } = useGLTF('/frozenwhaleL.glb');
+  const { nodes, materials } = useGLTF('/demo.glb');
 
   return (
     <group dispose={null}>
@@ -59,29 +59,26 @@ function GelatinousCube() {
         material-side={THREE.FrontSide}
         position={[-0.56, -1.38, -0.11]}
       />
-      <mesh geometry={nodes.cube1.geometry} position={[-0.56, 2.38, -0.11]}>
-        {config.meshPhysicalMaterial ? (
-          <meshPhysicalMaterial {...config} />
-        ) : (
-          <MeshTransmissionMaterial background={new THREE.Color(config.bg)} {...config} />
-        )}
-      </mesh>
-      <mesh
-        castShadow
-        renderOrder={-90}
-        geometry={nodes.cube2.geometry}
-        material={materials.cube_mat}
-        material-side={THREE.FrontSide}
-        position={[-0.56, 2.38, -0.11]}
-      />
-      <mesh
-        castShadow
-        renderOrder={-80}
-        geometry={nodes.bluewhale_1.geometry}
-        material={materials.bluewhale}
-        material-side={THREE.FrontSide}
-        position={[-0.56, 4.98, -0.11]}
-      />
+      <group position={[-0.556, 0.382, -0.111]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.arrows.geometry}
+          material={materials.weapons_mat}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.skeleton_1.geometry}
+          material={materials.skele_mat}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.skeleton_2.geometry}
+          material={materials.weapons_mat}
+        />
+      </group>
     </group>
   );
 }
