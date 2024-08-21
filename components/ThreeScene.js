@@ -35,7 +35,7 @@ function GelatinousCube() {
     bg: '#839681',
   };
 
-  const { nodes, materials } = useGLTF('/demo.glb');
+  const { nodes, materials } = useGLTF('/frozenwhaleL.glb');
 
   return (
     <group dispose={null}>
