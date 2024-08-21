@@ -11,7 +11,6 @@ import {
   Center,
 } from '@react-three/drei';
 import dynamic from 'next/dynamic';
-import { useEffect } from 'react';
 
 function GelatinousCube() {
   const config = {
@@ -36,10 +35,6 @@ function GelatinousCube() {
     bg: '#839681',
   };
 
-  useEffect(() => {
-    // 设置自定义的 Draco 解码器路径
-    useGLTF.setDecoderPath('/draco/');
-  }, []);
   const { nodes, materials } = useGLTF('/demo.glb');
 
   return (
