@@ -35,13 +35,13 @@ function GelatinousCube() {
     bg: '#839681',
   };
 
-  const { nodes, materials } = useGLTF('/newfrozen.glb');
+  const { nodes, materials } = useGLTF('/frozenwhaleL-transformed.glb');
   if (!nodes || !materials) return null;
   console.log(nodes, materials);
 
   return (
     <group dispose={null}>
-      <mesh geometry={nodes.cube1.geometry} position={[-0.56, -1.38, -0.11]}>
+      <mesh geometry={nodes.球体.geometry} position={[-0.56, -1.38, -0.11]}>
         {config.meshPhysicalMaterial ? (
           <meshPhysicalMaterial {...config} />
         ) : (
@@ -50,45 +50,17 @@ function GelatinousCube() {
       </mesh>
       <mesh
         castShadow
-        geometry={nodes.cube2.geometry}
+        geometry={nodes.球体.geometry}
         material={materials.cube_mat}
         material-side={THREE.FrontSide}
         position={[-0.56, -1.38, -0.11]}
-      />
-      <mesh geometry={nodes.cube1.geometry} position={[-0.56, 3.48, -0.11]}>
-        {config.meshPhysicalMaterial ? (
-          <meshPhysicalMaterial {...config} />
-        ) : (
-          <MeshTransmissionMaterial background={new THREE.Color(config.bg)} {...config} />
-        )}
-      </mesh>
-      <mesh
-        castShadow
-        geometry={nodes.cube2.geometry}
-        material={materials.cube_mat}
-        material-side={THREE.FrontSide}
-        position={[-0.56, 3.48, -0.11]}
-      />
-      <mesh geometry={nodes.cube1.geometry} position={[-0.56, 8.58, -0.11]}>
-        {config.meshPhysicalMaterial ? (
-          <meshPhysicalMaterial {...config} />
-        ) : (
-          <MeshTransmissionMaterial background={new THREE.Color(config.bg)} {...config} />
-        )}
-      </mesh>
-      <mesh
-        castShadow
-        geometry={nodes.cube2.geometry}
-        material={materials.cube_mat}
-        material-side={THREE.FrontSide}
-        position={[-0.56, 8.58, -0.11]}
       />
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.efish.geometry}
-        material={materials.longfish}
-        position={[0.109, 12.504, 0.209]}
+        material={materials.efish}
+        position={[0.109, 6.504, 0.209]}
         rotation={[-0.04, 0, 0]}
         scale={1.688}
       />
