@@ -54,11 +54,20 @@ function GelatinousCube() {
         material-side={THREE.FrontSide}
         position={[-0.56, -1.38, -0.11]}
       />
+      <mesh geometry={nodes.cube1.geometry} position={[-0.56, 3.48, -0.11]}>
+        {config.meshPhysicalMaterial ? (
+          <meshPhysicalMaterial {...config} />
+        ) : (
+          <MeshTransmissionMaterial background={new THREE.Color(config.bg)} {...config} />
+        )}
+      </mesh>
       <mesh
         castShadow
-        geometry={nodes.shark.geometry}
-        material={materials.shark}
-        position={[-0.56, 9.38, -0.11]}
+        renderOrder={-96}
+        geometry={nodes.cube2.geometry}
+        material={materials.cube_mat}
+        material-side={THREE.FrontSide}
+        position={[-0.56, 3.48, -0.11]}
       />
     </group>
   );
