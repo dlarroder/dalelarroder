@@ -1,8 +1,6 @@
 import '@/css/prism.css';
 import '@/css/tailwind.css';
 import '@fontsource/mukta';
-
-import Analytics from '@/components/Analytics';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import LenisProvider from '@/components/Providers/LenisProvider';
@@ -36,7 +34,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <main>{children}</main>
           </LenisProvider>
           <Footer />
-          <Analytics />
         </ThemeProvider>
       </body>
     </html>

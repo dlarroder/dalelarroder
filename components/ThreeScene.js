@@ -36,6 +36,8 @@ function GelatinousCube() {
   };
 
   const { nodes, materials } = useGLTF('/frozenwhaleL.glb');
+  if (!nodes || !materials) return null;
+  console.log(nodes, materials);
 
   return (
     <group>
@@ -48,7 +50,6 @@ function GelatinousCube() {
       </mesh>
       <mesh
         castShadow
-        renderOrder={-100}
         geometry={nodes.cube2.geometry}
         material={materials.cube_mat}
         material-side={THREE.FrontSide}
@@ -63,11 +64,24 @@ function GelatinousCube() {
       </mesh>
       <mesh
         castShadow
-        renderOrder={-96}
         geometry={nodes.cube2.geometry}
         material={materials.cube_mat}
         material-side={THREE.FrontSide}
         position={[-0.56, 3.48, -0.11]}
+      />
+      <mesh geometry={nodes.cube1.geometry} position={[-0.56, 8.58, -0.11]}>
+        {config.meshPhysicalMaterial ? (
+          <meshPhysicalMaterial {...config} />
+        ) : (
+          <MeshTransmissionMaterial background={new THREE.Color(config.bg)} {...config} />
+        )}
+      </mesh>
+      <mesh
+        castShadow
+        geometry={nodes.cube2.geometry}
+        material={materials.cube_mat}
+        material-side={THREE.FrontSide}
+        position={[-0.56, 8.58, -0.11]}
       />
     </group>
   );
