@@ -60,23 +60,7 @@
 		},
 		{
 			"mesh":6,
-			"name":"shark",
-			"rotation":[
-				0.0021992360707372427,
-				-0.3556857407093048,
-				0.008275053463876247,
-				0.9345663785934448
-			],
-			"scale":[
-				0.30000001192092896,
-				0.30000001192092896,
-				0.30000001192092896
-			],
-			"translation":[
-				5.095259666442871,
-				1.625126838684082,
-				1.6802008152008057
-			]
+			"name":"shark"
 		},
 		{
 			"mesh":7,
@@ -965,29 +949,29 @@
 		{
 			"bufferView":32,
 			"componentType":5126,
-			"count":45503,
+			"count":45512,
 			"max":[
-				3.4160702228546143,
-				5.376560688018799,
-				7.805001258850098
+				6.889148235321045,
+				3.2403383255004883,
+				3.470060348510742
 			],
 			"min":[
-				-3.4160706996917725,
-				-0.6378432512283325,
-				-9.112363815307617
+				3.5093884468078613,
+				1.4588419198989868,
+				-0.36416125297546387
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":33,
 			"componentType":5126,
-			"count":45503,
+			"count":45512,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":34,
 			"componentType":5126,
-			"count":45503,
+			"count":45512,
 			"type":"VEC2"
 		},
 		{
@@ -1260,74 +1244,74 @@
 		},
 		{
 			"buffer":0,
-			"byteLength":546036,
+			"byteLength":546144,
 			"byteOffset":294504,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":546036,
-			"byteOffset":840540,
+			"byteLength":546144,
+			"byteOffset":840648,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":364024,
-			"byteOffset":1386576,
+			"byteLength":364096,
+			"byteOffset":1386792,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":307248,
-			"byteOffset":1750600,
+			"byteOffset":1750888,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":32688,
-			"byteOffset":2057848,
+			"byteOffset":2058136,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":32688,
-			"byteOffset":2090536,
+			"byteOffset":2090824,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":21792,
-			"byteOffset":2123224,
+			"byteOffset":2123512,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":25200,
-			"byteOffset":2145016,
+			"byteOffset":2145304,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":65592,
-			"byteOffset":2170216,
+			"byteOffset":2170504,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":65592,
-			"byteOffset":2235808,
+			"byteOffset":2236096,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":43728,
-			"byteOffset":2301400,
+			"byteOffset":2301688,
 			"target":34962
 		},
 		{
 			"buffer":0,
 			"byteLength":59076,
-			"byteOffset":2345128,
+			"byteOffset":2345416,
 			"target":34963
 		}
 	],
@@ -1339,7 +1323,7 @@
 	],
 	"buffers":[
 		{
-			"byteLength":2404204,
+			"byteLength":2404492,
 			"uri":"newfronzen.bin"
 		}
 	]
