@@ -35,7 +35,7 @@ function GelatinousCube() {
     bg: '#839681',
   };
 
-  const { nodes, materials } = useGLTF('/newfronzen/newfronzen.gltf');
+  const { nodes, materials } = useGLTF('/newfronzen1/newfronzen.gltf');
   if (!nodes || !materials) return null;
   console.log(nodes, materials);
 
@@ -63,7 +63,7 @@ function GelatinousCube() {
       <mesh
         geometry={nodes.bluewhale002.geometry}
         material={materials.bluewhale02}
-        position={[-0.56, -1.38, -0.11]}
+        position={[-0.56, 12.88, -0.11]}
       />
     </group>
   );
