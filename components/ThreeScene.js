@@ -58,7 +58,17 @@ function GelatinousCube() {
       <mesh
         geometry={nodes.bluewhale002.geometry}
         material={materials.bluewhale02}
-        position={[-0.56, 12.88, -0.11]}
+        position={[-0.26, 12.88, 0.11]}
+      />
+      <mesh
+        geometry={nodes.bubbles.geometry}
+        material={materials.cube_bubbles_mat}
+        position={[-0.56, -1.38, -0.11]}
+      />
+      <mesh
+        geometry={nodes.arrows.geometry}
+        material={materials.weapons_mat}
+        position={[-0.96, -1.0, -1.31]}
       />
     </group>
   );
@@ -66,7 +76,7 @@ function GelatinousCube() {
 
 function ThreeScene() {
   return (
-    <Canvas shadows camera={{ position: [55, 20, 55], fov: 26 }} style={{ height: '80vh' }}>
+    <Canvas shadows camera={{ position: [55, 8, 5], fov: 15 }} style={{ height: '80vh' }}>
       <ambientLight intensity={Math.PI} />
       <group position={[0, -2.5, 0]}>
         <Center top>
