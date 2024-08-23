@@ -56,29 +56,9 @@ function GelatinousCube() {
         position={[-0.56, -1.38, -0.11]}
       />
       <mesh
-        geometry={nodes.球体.geometry}
-        material={materials.cube_mat}
-        position={[-0.56, -1.38, -0.11]}
-      />
-      <mesh
         geometry={nodes.bluewhale002.geometry}
         material={materials.bluewhale02}
         position={[-0.56, 12.88, -0.11]}
-      />
-      <mesh
-        geometry={nodes.efish.geometry}
-        material={materials.efish}
-        position={[-0.56, 12.88, -0.11]}
-      />
-      <mesh
-        geometry={nodes.shark.geometry}
-        material={materials.shark}
-        position={[-0.56, 3.88, -0.11]}
-      />
-      <mesh
-        geometry={nodes.turtle.geometry}
-        material={materials.turtle}
-        position={[-0.56, 4.88, -0.11]}
       />
     </group>
   );
