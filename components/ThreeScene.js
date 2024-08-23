@@ -35,7 +35,7 @@ function GelatinousCube() {
     bg: '#839681',
   };
 
-  const { nodes, materials } = useGLTF('/newfronzen.glb');
+  const { nodes, materials } = useGLTF('/newfronzen/newfronzen.gltf');
   if (!nodes || !materials) return null;
   console.log(nodes, materials);
 
