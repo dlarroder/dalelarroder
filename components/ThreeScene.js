@@ -35,7 +35,7 @@ function GelatinousCube() {
     bg: '#839681',
   };
 
-  const { nodes, materials } = useGLTF('/newfronzen1/newfronzen.gltf');
+  const { nodes, materials } = useGLTF('/newfronzen2/newfronzen.gltf');
   if (!nodes || !materials) return null;
   console.log(nodes, materials);
 
@@ -69,6 +69,11 @@ function GelatinousCube() {
         geometry={nodes.arrows.geometry}
         material={materials.weapons_mat}
         position={[-0.96, -1.0, -1.31]}
+      />
+      <mesh
+        geometry={nodes.ball.geometry}
+        material={materials.L}
+        position={[-0.56, -1.38, -0.11]}
       />
     </group>
   );
