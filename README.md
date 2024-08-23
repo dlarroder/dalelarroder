@@ -1,4 +1,4 @@
-# dalelarroder.com ⚡️
+# laial.space ⚡️
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Deployment**: [Vercel](https://vercel.com)

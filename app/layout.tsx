@@ -8,8 +8,8 @@ import ThemeProvider from '@/components/Providers/ThemeProvider';
 
 export const metadata = {
   title: '莱',
-  description: 'I build things for the web.',
-  metadataBase: new URL('https://dalelarroder.com'),
+  description: 'Exploring the frontiers of AI and the web.',
+  metadataBase: new URL('https://laial.space'),
 };
 
 interface RootLayoutProps {
