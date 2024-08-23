@@ -60,6 +60,7 @@ function GelatinousCube() {
         material={materials.cube_mat}
         position={[-0.56, -1.38, -0.11]}
       />
+      <mesh geometry={nodes.bluewhale002.geometry} position={[-0.56, -1.38, -0.11]} />
     </group>
   );
 }
