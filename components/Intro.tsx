@@ -21,7 +21,7 @@ export default function Intro() {
   });
 
   const refContainer = useRef<HTMLDivElement>(null);
-  const numOfPages = 3;
+  const numOfPages = 4;
   let progress = 0;
   const { current: elContainer } = refContainer;
 
@@ -61,6 +61,12 @@ export default function Intro() {
             style={{ opacity: opacityForBlock(progress, 2) }}
           >
             UX is my playground, and AI&apos;s the next adventure.
+          </span>
+          <span
+            className="introText inline-block"
+            style={{ opacity: opacityForBlock(progress, 3) }}
+          >
+            And yes, absolutely no aquarium shows!👇
           </span>
         </div>
       </div>
