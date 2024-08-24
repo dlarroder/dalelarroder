@@ -1,7 +1,6 @@
 import ListLayout from '@/layouts/MDX/ListLayout';
 import MainLayout from '@/layouts/MainLayout';
 import { allCoreContent } from '@/lib/utils/contentlayer';
-import kebabCase from '@/lib/utils/kebabCase';
 import { allBlogs } from 'contentlayer/generated';
 
 export const metadata = {
@@ -11,14 +10,13 @@ export const metadata = {
 
 export default function Tag({ params }: { params: { tag: string } }) {
   const { tag } = params;
+  const decodedTag = decodeURIComponent(tag); // 对 URL 进行解码以匹配原始标签
   const posts = allCoreContent(
-    allBlogs.filter(
-      (post) => post.draft !== true && post.tags?.map((t) => kebabCase(t)).includes(tag)
-    )
+    allBlogs.filter((post) => post.draft !== true && post.tags?.includes(decodedTag))
   );
 
   // Capitalize first letter and convert space to dash
-  const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1);
+  const title = decodedTag[0].toUpperCase() + decodedTag.slice(1).split(' ').join('-');
 
   return (
     <MainLayout>

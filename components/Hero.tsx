@@ -46,7 +46,7 @@ export default function Hero(): ReactElement {
               animate={{
                 transform: `translateY(${progress * 10}vh)`,
               }}
-              className="absolute bottom-4 left-1/2 -translate-x-1/2 transform md:bottom-8"
+              className="absolute bottom-[20%] left-1/2 -translate-x-1/2 transform md:bottom-[20%]"
             >
               <div
                 role="presentation"
@@ -57,7 +57,7 @@ export default function Hero(): ReactElement {
                   intro?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                <HiOutlineArrowNarrowDown size={20} />
+                <HiOutlineArrowNarrowDown size={25} />
               </div>
             </motion.div>
           </div>
