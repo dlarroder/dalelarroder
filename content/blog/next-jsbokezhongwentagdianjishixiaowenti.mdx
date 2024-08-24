@@ -1,0 +1,62 @@
+---
+title: 'next.js博客中文tag点击失效问题'
+date: '2024-08-24'
+tags: ['next.js', '博客', 'kebabCase']
+draft: false
+author: '莱子'
+summary: 'Next.js博客文章中文tag标签失效，将原框架中的kebabCase函数去掉，直接使用JS内置的encodeURIComponent原始标签生成的链接进行匹配。'
+---
+
+原框架中发现博客文章的tags标签如果是中文，点击标签无法正常返回含有此标签的blog列表。原因很快就容易定位到：
+Tag.tsx组件中，用于生成href的是使用kebabCase来进行编码的，但是kebabCase似乎无法处理特殊字符，（虽然kebabCase生成的URL友好，对可读性和SEO应该是有一些好处的）。
+
+```
+export default function Tag({ text }: Props) {
+return (
+<Link
+href={/tags/${kebabCase(text)}}
+className="rounded-md bg-primary-500 p-1 px-3 text-xs uppercase text-white duration-300 hover:bg-primary-400 active:bg-primary-500"
+>
+{text.split(' ').join('-')}
+</Link>
+);
+}
+```
+
+所以为了正确处理中文标签，直接使用encodeURIComponent函数处理即可。
+
+```
+export default function Tag({ text }: Props) {
+  return (
+    <Link
+      href={`/tags/${encodeURIComponent(text)}`}
+      className="rounded-md bg-primary-500 p-1 px-3 text-xs uppercase text-white duration-300 hover:bg-primary-400 active:bg-primary-500"
+    >
+      {text.split(' ').join('-')}
+    </Link>
+  );
+}
+```
+
+然后`app/tags/[tag]/page.tsx`组件修改解码和引入即可。
+
+```
+...
+export default function Tag({ params }: { params: { tag: string } }) {
+  const { tag } = params;
+  const decodedTag = decodeURIComponent(tag);
+  const posts = allCoreContent(
+    allBlogs.filter(
+      (post) => post.draft !== true && post.tags?.includes(decodedTag)
+    )
+  );
+
+  const title = decodedTag[0].toUpperCase() + decodedTag.slice(1).split(' ').join('-');
+...
+```
+
+完美解决。
+
+
+> 刚迁移新博客没多久，本来想利用一些现有的Headless CMS做内容管理，尝试了Sanity和Contentlayer直接Vercel部署，集成了半天有一些小问题，没去细深究，时间有限，就放弃了。这个博客的内容管理其实是单独使用next.js和GitHub API做了个文章发布入口。最近忙，只做了增，删改有时间再做，具体细节过几天博客再记录一下。
+
