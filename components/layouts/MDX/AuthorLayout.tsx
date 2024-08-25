@@ -1,6 +1,7 @@
 import Image from '@/components/Image';
 import type { Authors } from 'contentlayer/generated';
 import { ReactNode, Suspense } from 'react';
+import GithubContributions from '../../GithubContributions/GithubContributions';
 import TopTracks from '../../Spotify/TopTracks';
 
 interface Props {
@@ -34,6 +35,7 @@ export default function AuthorLayout({ children, content }: Props) {
       <Suspense fallback="loading..">
         <TopTracks />
       </Suspense>
+      <GithubContributions />
     </div>
   );
 }
