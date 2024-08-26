@@ -5,7 +5,7 @@ const siteMetadata = {
   description: 'Frontend & LLM Engineer',
   language: 'en-us',
   theme: 'dark', // system, dark or light
-  siteUrl: 'https://alcu1n.com',
+  siteUrl: 'https://laial.space/',
   siteRepo: 'https://github.com/alcu1n/',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/l3.svg',
