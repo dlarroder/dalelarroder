@@ -1,6 +1,7 @@
 'use client';
 
 import ActivityCalendar, { Activity } from 'react-activity-calendar';
+import ActivityTooltip from './ActivityTooltip';
 
 interface Props {
   data: Activity[];
@@ -19,6 +20,7 @@ export default function Calendar({ data }: Props) {
           totalCount: '{{count}} contributions within the last year',
           weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
         }}
+        renderBlock={(block, activity) => <ActivityTooltip block={block} activity={activity} />}
       />
     </div>
   );
