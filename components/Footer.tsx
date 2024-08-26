@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import { FaGithub, FaTwitter, FaInstagram, FaSpotify } from 'react-icons/fa'; // Import Instagram and Spotify icons
 import SectionContainer from './SectionContainer';
 import NowPlaying from './Spotify/NowPlaying';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -21,6 +22,29 @@ export default function Footer() {
                 <Link href="/">{siteMetadata.title}</Link>
               </li>
             </ul>
+            {/* 统计内容放置在此 */}
+            <div className="flex items-center space-x-2">
+              <div className="flex items-center">
+                {/* 使用Image组件加载UilEye.svg */}
+                <Image src="/UilEye.svg" alt="Total Visits" width={20} height={20} />
+                <span id="busuanzi_value_site_pv" className="ml-1">
+                  Loading
+                </span>
+                次
+              </div>
+
+              {/* 分隔符 */}
+              <span className="text-[#9CA3AF]">|</span>
+
+              <div className="flex items-center">
+                {/* 使用Image组件加载PepiconsPopPerson.svg */}
+                <Image src="/CharmPerson.svg" alt="Total Visitors" width={20} height={20} />
+                <span id="busuanzi_value_site_uv" className="ml-1">
+                  Loading
+                </span>
+                人
+              </div>
+            </div>
             <ul className="flex cursor-pointer items-center space-x-5">
               <li>
                 <a href={siteMetadata.github} target="_blank" rel="noreferrer" aria-label="github">
@@ -61,6 +85,8 @@ export default function Footer() {
           </div>
         </div>
       </footer>
+      {/* 统计脚本 */}
+      <script defer src="https://cn.vercount.one/js"></script>
     </SectionContainer>
   );
 }
