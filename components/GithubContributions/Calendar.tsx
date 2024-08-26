@@ -14,7 +14,7 @@ interface Props {
 }
 
 export default function Calendar({ data }: Props) {
-  const { theme } = useTheme();
+  const { theme = 'dark ' } = useTheme();
 
   return (
     <div className="flex flex-col space-y-4">
