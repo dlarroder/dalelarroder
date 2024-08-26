@@ -10,11 +10,11 @@ export default function Footer() {
   return (
     <SectionContainer>
       <footer>
-        <div className="mb-0 flex flex-col justify-start space-y-1.5 space-x-0 py-10 text-gray-500 dark:text-gray-400">
+        <div className="mb-0 flex flex-col justify-start space-y-4 sm:space-y-1.5 space-x-0 py-10 text-gray-500 dark:text-gray-400">
           <Suspense fallback="loading...">
             <NowPlaying />
           </Suspense>
-          <div className="flex flex-col items-center space-y-2 text-sm sm:flex-row sm:justify-between sm:text-base">
+          <div className="flex flex-col items-center space-y-4 text-sm sm:flex-row sm:justify-between sm:text-base">
             <ul className="flex space-x-2">
               <li>{`© ${new Date().getFullYear()}`}</li>
               <li>{` • `}</li>
@@ -38,7 +38,7 @@ export default function Footer() {
 
               <div className="flex items-center">
                 {/* 使用Image组件加载PepiconsPopPerson.svg */}
-                <Image src="/CharmPerson.svg" alt="Total Visitors" width={20} height={20} />
+                <Image src="/CharmPerson.svg" alt="Total Visitors" width={17} height={17} />
                 <span id="busuanzi_value_site_uv" className="ml-1">
                   Loading
                 </span>
