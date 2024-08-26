@@ -8,6 +8,7 @@ import CommandPalette from './CommandPalette/CommandPalette';
 import MobileNav from './MobileNav';
 import SectionContainer from './SectionContainer';
 import ThemeSwitch from './ThemeSwitch';
+import Image from 'next/image';
 
 export default function Header() {
   const pathName = usePathname();
@@ -19,15 +20,18 @@ export default function Header() {
           <div>
             <Link
               href="/"
-              className={classNames(
-                'horizontal-underline hidden text-3xl font-extrabold sm:block',
-                {
-                  'horizontal-underline-active': pathName === '/',
-                }
-              )}
+              className={classNames('horizontal-underline text-3xl font-extrabold', {
+                'horizontal-underline-active': pathName === '/',
+              })}
               aria-label="L ."
             >
-              L .
+              <Image
+                src="/L_logo.svg"
+                alt="L logo"
+                width={38} // 根据需求调整宽度
+                height={38} // 根据需求调整高度
+                className="opacity-80"
+              />
             </Link>
           </div>
           <div className="flex items-center space-x-3 text-base leading-5">
