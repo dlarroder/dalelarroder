@@ -1,6 +1,8 @@
 import Image from '@/components/Image';
 import type { Authors } from 'contentlayer/generated';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
+import GithubContributions from '../../GithubContributions/GithubContributions';
+import TopTracks from '../../Spotify/TopTracks';
 
 interface Props {
   children: ReactNode;
@@ -8,16 +10,14 @@ interface Props {
 }
 
 export default function AuthorLayout({ children, content }: Props) {
-  const { avatar, occupation, company } = content;
+  const { avatar, occupation } = content;
 
   return (
     <div className="pt-8">
       <div className="mb-8 flex flex-col-reverse items-center justify-between sm:flex-row sm:items-center">
         <div className="text-center sm:text-left">
           <h1 className="text-xl font-bold md:text-3xl lg:text-4xl">Dale Larroder</h1>
-          <h2 className="text-sm font-normal md:text-base">
-            {occupation} <span className="font-semibold">{company}</span>
-          </h2>
+          <h2 className="text-sm font-normal md:text-base">{occupation}</h2>
         </div>
         <div>
           <Image
@@ -32,6 +32,10 @@ export default function AuthorLayout({ children, content }: Props) {
       <div className="prose max-w-none pb-8 text-justify text-sm dark:prose-dark md:text-lg xl:col-span-2">
         {children}
       </div>
+      <Suspense fallback="loading..">
+        <TopTracks />
+      </Suspense>
+      <GithubContributions />
     </div>
   );
 }

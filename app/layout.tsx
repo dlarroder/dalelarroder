@@ -30,7 +30,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body className="bg-white text-black antialiased dark:bg-black dark:text-white">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          themes={['dark', 'light']}
+        >
           <Header />
           <LenisProvider>
             <main>{children}</main>
