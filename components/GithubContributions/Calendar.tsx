@@ -19,7 +19,7 @@ export default function Calendar({ data }: Props) {
   return (
     <div className="flex flex-col space-y-4">
       <p className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
-        Github Stats
+        Github Contributions
       </p>
       <ActivityCalendar
         colorScheme={theme as any}
