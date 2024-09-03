@@ -4,8 +4,8 @@ import SectionContainer from '@/components/SectionContainer';
 // TODO: Comment out when https://github.com/vercel/next.js/issues/50566 is fixed.
 
 // export const metadata = {
-//   title: '404 - Dale Larroder',
-//   description: 'Not Found - Dale Larroder',
+//   title: '404 - Subash Baniya',
+//   description: 'Not Found - Subash Baniya',
 // };
 
 export default function FourZeroFour() {
@@ -20,7 +20,7 @@ export default function FourZeroFour() {
         <p className="mb-4 text-xl font-bold leading-normal md:text-2xl">
           Sorry we couldn't find this page.
         </p>
-        <p className="mb-8">But dont worry, you can find plenty of other things on our homepage.</p>
+        <p className="mb-8">But dont worry, you can find other content on our homepage.</p>
         <Link href="/">Back to homepage</Link>
       </div>
     </SectionContainer>

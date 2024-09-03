@@ -43,9 +43,23 @@ export default function usePaletteOptions() {
 
   const pageOptions: PaletteOption[] = [
     { id: '/', name: 'Home', icon: <HiOutlineHome />, onSelect: (v) => router.push(v) },
-    { id: '/blog', name: 'Blog', icon: <HiOutlinePencil />, onSelect: (v) => router.push(v) },
-    { id: '/about', name: 'About', icon: <HiOutlineUser />, onSelect: (v) => router.push(v) },
-    { id: '/uses', name: 'Uses', icon: <HiOutlineDocumentAdd />, onSelect: (v) => router.push(v) },
+    { id: '/api', name: 'Api Docs', icon: <HiOutlinePencil />, onSelect: (v) => router.push(v) },
+    { id: '/lyrics', name: 'Lyrics', icon: <HiOutlineUser />, onSelect: (v) => router.push(v) },
+    {
+      id: '/playlist',
+      name: 'Playlist',
+      icon: <HiOutlineDocumentAdd />,
+      onSelect: (v) => router.push(v),
+    },
+    { id: '/imagine', name: 'Imagine', icon: <HiOutlineUser />, onSelect: (v) => router.push(v) },
+    { id: '/chat', name: 'Ai', icon: <HiOutlineUser />, onSelect: (v) => router.push(v) },
+    {
+      id: '/horoscope',
+      name: 'Horoscope',
+      icon: <HiOutlineUser />,
+      onSelect: (v) => router.push(v),
+    },
+    { id: '/game', name: 'Guessnumber', icon: <HiOutlineUser />, onSelect: (v) => router.push(v) },
   ];
 
   const blogOptions: PaletteOption[] = sortedPosts.map((post) => ({

@@ -1,8 +1,6 @@
 import Image from '@/components/Image';
 import type { Authors } from 'contentlayer/generated';
 import { ReactNode, Suspense } from 'react';
-import GithubContributions from '../../GithubContributions/GithubContributions';
-import TopTracks from '../../Spotify/TopTracks';
 
 interface Props {
   children: ReactNode;
@@ -21,7 +19,7 @@ export default function AuthorLayout({ children, content }: Props) {
         </div>
         <div>
           <Image
-            alt="Dale Larroder"
+            alt="Subash Baniya"
             height={130}
             width={130}
             src={avatar || ''}
@@ -32,10 +30,7 @@ export default function AuthorLayout({ children, content }: Props) {
       <div className="prose max-w-none pb-8 text-justify text-sm dark:prose-dark md:text-lg xl:col-span-2">
         {children}
       </div>
-      <Suspense fallback="loading..">
-        <TopTracks />
-      </Suspense>
-      <GithubContributions />
+      <Suspense fallback="loading.."></Suspense>
     </div>
   );
 }
