@@ -9,9 +9,9 @@ import LenisProvider from '@/components/Providers/LenisProvider';
 import ThemeProvider from '@/components/Providers/ThemeProvider';
 
 export const metadata = {
-  title: 'Dale Larroder',
-  description: 'I build things for the web.',
-  metadataBase: new URL('https://dalelarroder.com'),
+  title: 'Anónimo Café',
+  description: 'Un café reinventado',
+  metadataBase: new URL('https://anonimo-cafe.vercel.app/'),
 };
 
 interface RootLayoutProps {

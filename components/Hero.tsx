@@ -32,16 +32,16 @@ export default function Hero(): ReactElement {
           <div className="-mt-36">
             <div ref={ref} className="flex cursor-default flex-col space-y-2">
               <h1 className="text-5xl font-semibold sm:text-7xl md:text-8xl xl:text-9xl">
-                Dale Larroder
+                Anónimo Café
               </h1>
               <h2 className="text-3xl font-medium opacity-80 sm:text-6xl md:text-6xl xl:text-7xl">
-                I build things for the web.
+                Reinventando el café.
               </h2>
               <Link
                 href="/about"
                 className="underline-magical text-md w-max cursor-pointer sm:text-lg md:text-xl xl:text-2xl"
               >
-                Read more about me &rarr;
+                ¿Quiénes somos? &rarr;
               </Link>
             </div>
             <motion.div

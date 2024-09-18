@@ -10,37 +10,37 @@ export type WorkTile = {
 
 export const workTiles: WorkTile[] = [
   {
-    description: `Here are things`,
-    title: `I've worked on`,
+    description: `Dinámicas para aprender de`,
+    title: `Web 3 y Cripto sin estafas`,
     image: {
-      src: '/static/images/aphex-apps.webp',
+      src: '/static/images/imgsCafe/cripto.jpg',
       width: 600,
       height: 770,
     },
   },
   {
-    description: 'I built',
-    title: 'Aphex Field',
+    description: 'Dinámicas para aprender',
+    title: 'nuevos idiomas',
     image: {
-      src: '/static/images/field-app.webp',
+      src: '/static/images/imgsCafe/idiomas.png',
       width: 600,
       height: 554,
     },
   },
   {
-    description: `I maintained`,
-    title: 'Aphex Planner',
+    description: `Dinámicas para mandar mensajes`,
+    title: 'Anónimos a personas especiales',
     image: {
-      src: '/static/images/planner-app.webp',
+      src: '/static/images/imgsCafe/portavoz.jpeg',
       width: 600,
       height: 717,
     },
   },
   {
-    description: `I built`,
-    title: 'Aphex Publication',
+    description: `Dinámicas de arte`,
+    title: 'para que vuelvas un niño de nuevo',
     image: {
-      src: '/static/images/publication-app.webp',
+      src: '/static/images/imgsCafe/arte.jpeg',
       width: 600,
       height: 717,
     },
