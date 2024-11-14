@@ -5,8 +5,6 @@ const siteMetadata = {
   description: 'Reinventando el café',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://dalelarroder.com',
-  siteRepo: 'https://github.com/dlarroder/dalelarroder-blog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.webp',
   socialBanner: '/static/images/twitter-card.png',
@@ -15,8 +13,10 @@ const siteMetadata = {
   twitter: 'https://twitter.com/mrcripto_',
   facebook: 'https://facebook.com',
   linkedin: 'https://www.linkedin.com/in/driano7',
-  spotify: 'https://open.spotify.com/user/12162121994?si=e685b3546f414967',
-  steam: 'https://steamcommunity.com/',
+  spotify: 'https://open.spotify.com/user/12138049443?si=UYIjkFRkQtWqiwFmQsnFKg&pi=u-GbLyzfogTQqa',
+  tiktok: 'https://www.tiktok.com/@mrcripto_',
+  instagram: 'https://www.instagram.com/mrcripto_',
+  whats: 'https://wa.me/525512291607',
   locale: 'en-US',
   comment: {
     provider: 'giscus',
