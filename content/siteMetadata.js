@@ -8,6 +8,8 @@ const siteMetadata = {
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.webp',
   socialBanner: '/static/images/twitter-card.png',
+  siteUrl: 'https://anonimo-cafe.vercel.app/',
+  siteRepo: 'https://github.com/driano7/AnonimoCafe',
   email: 'dnvn77@gmail.com',
   github: 'https://github.com/driano7',
   twitter: 'https://twitter.com/mrcripto_',
