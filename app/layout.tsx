@@ -7,8 +7,9 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import LenisProvider from '@/components/Providers/LenisProvider';
 import ThemeProvider from '@/components/Providers/ThemeProvider';
+import { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Dale Larroder',
   description: 'I build things for the web.',
   metadataBase: new URL('https://dalelarroder.com'),
@@ -41,7 +42,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <main>{children}</main>
           </LenisProvider>
           <Footer />
-          <Analytics />
+          {process.env.NODE_ENV === 'production' && <Analytics />}
         </ThemeProvider>
       </body>
     </html>
