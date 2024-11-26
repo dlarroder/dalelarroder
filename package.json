@@ -12,7 +12,7 @@
     "prepare": "husky install"
   },
   "engines": {
-    "node": ">=18 && <= 21"
+    "node": "20.x"
   },
   "dependencies": {
     "@dlarroder/playground": "1.10.0",
