@@ -1,6 +1,6 @@
 'use client';
 
-import { Toc } from 'types/Toc';
+import { Toc } from '@/lib/types/Toc';
 
 interface TOCInlineProps {
   toc: Toc;

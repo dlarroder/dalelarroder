@@ -21,7 +21,7 @@
       "@/layouts/*": ["components/layouts/*"],
       "@/lib/*": ["lib/*"],
       "@/css/*": ["css/*"],
-      "@/types/*": ["types/*"],
+      "@/types/*": ["lib/types/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [

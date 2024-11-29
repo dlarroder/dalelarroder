@@ -1,8 +1,8 @@
+import { Toc } from '@/lib/types/Toc';
 import slugger from 'github-slugger';
 import { Heading } from 'mdast';
 import { toString } from 'mdast-util-to-string';
 import { remark } from 'remark';
-import { Toc } from 'types/Toc';
 import { Parent } from 'unist';
 import { visit } from 'unist-util-visit';
 import { VFile } from 'vfile';

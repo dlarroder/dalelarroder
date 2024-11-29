@@ -1,7 +1,7 @@
 import ListLayout from '@/layouts/MDX/ListLayout';
 import MainLayout from '@/layouts/MainLayout';
+import { POSTS_PER_PAGE } from '@/lib/types/default';
 import { sortedBlogPost } from '@/lib/utils/contentlayer';
-import { POSTS_PER_PAGE } from '@/types/default';
 import { allBlogs } from 'contentlayer/generated';
 import { redirect } from 'next/navigation';
 
