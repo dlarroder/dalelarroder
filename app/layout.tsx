@@ -1,4 +1,3 @@
-import '@/css/prism.css';
 import '@/css/tailwind.css';
 import '@fontsource/mukta';
 

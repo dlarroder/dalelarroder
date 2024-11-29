@@ -18,7 +18,7 @@ interface ScrollProviderProps {
 export const ScrollProvider = ({ children }: ScrollProviderProps) => {
   const [scrollY, setScrollY] = useState(0);
 
-  useLenis(({ scroll }: any) => {
+  useLenis(({ scroll }) => {
     setScrollY(scroll);
   });
 

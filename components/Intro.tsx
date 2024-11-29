@@ -16,7 +16,7 @@ function opacityForBlock(sectionProgress: number, blockNumber: number) {
 export default function Intro() {
   const [scrollY, setScrollY] = useState(0);
 
-  useLenis(({ scroll }: any) => {
+  useLenis(({ scroll }) => {
     setScrollY(scroll);
   });
 

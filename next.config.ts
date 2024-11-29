@@ -1,4 +1,4 @@
-const { withContentlayer } = require('next-contentlayer');
+const { withContentlayer } = require('next-contentlayer2');
 
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
@@ -9,5 +9,4 @@ module.exports = withContentlayer({
   eslint: {
     dirs: ['app', 'components', 'lib', 'layouts', 'scripts'],
   },
-  swcMinify: true,
 });

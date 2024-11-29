@@ -22,7 +22,7 @@ export default function Calendar({ data }: Props) {
         Github Contributions
       </p>
       <ActivityCalendar
-        colorScheme={theme as any}
+        colorScheme={theme === 'dark' ? 'dark' : 'light'}
         data={data}
         theme={GITHUB_THEME}
         showWeekdayLabels
