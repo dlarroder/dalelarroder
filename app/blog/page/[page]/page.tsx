@@ -10,7 +10,8 @@ export const metadata = {
   description: 'My Blogs - Dale Larroder',
 };
 
-export default function BlogPage({ params }: { params: { page: string } }) {
+export default async function BlogPage(props: { params: Promise<{ page: string }> }) {
+  const params = await props.params;
   const pageNumber = parseInt(params.page);
   const posts = sortedBlogPost(allBlogs);
   const initialDisplayPosts = posts.slice(

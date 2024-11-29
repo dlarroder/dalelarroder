@@ -9,7 +9,8 @@ export const metadata = {
   description: 'My Tags - Dale Larroder',
 };
 
-export default function Tag({ params }: { params: { tag: string } }) {
+export default async function Tag(props: { params: Promise<{ tag: string }> }) {
+  const params = await props.params;
   const { tag } = params;
   const posts = allCoreContent(
     allBlogs.filter(
