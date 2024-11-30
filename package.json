@@ -21,7 +21,7 @@
     "contentlayer2": "^0.4.6",
     "contributions": "^0.8.0",
     "esbuild": "0.16.12",
-    "framer-motion": "10.16.4",
+    "framer-motion": "10.18.0",
     "github-slugger": "1.5.0",
     "gsap": "3.12.2",
     "logrocket": "6.0.2",
