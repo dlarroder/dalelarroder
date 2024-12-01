@@ -4,7 +4,6 @@ import ScrollProgressBar from '@/components/ScrollProgressBar';
 import PostLayout from '@/layouts/MDX/PostLayout';
 import MainLayout from '@/layouts/MainLayout';
 import { coreContent, formatBlogLink, sortedBlogPost } from '@/lib/utils/contentlayer';
-import { allBlogs } from 'contentlayer/generated';
 import { Metadata } from 'next';
 
 export async function generateMetadata(props: {
@@ -27,7 +26,7 @@ export async function generateMetadata(props: {
 export default async function BlogPost(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
   const slug = params.slug;
-  const sortedPosts = sortedBlogPost(allBlogs);
+  const sortedPosts = sortedBlogPost([]); // TODO: all blogs
 
   const post = sortedPosts.find((p) => p.slug === slug);
   const author = post?.author || ['default'];

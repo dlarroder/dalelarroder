@@ -1,12 +1,17 @@
-const { withContentlayer } = require('next-contentlayer2');
+import createMDX from '@next/mdx';
+import remarkGfm from 'remark-gfm';
 
-/**
- * @type {import('next/dist/next-server/server/config').NextConfig}
- **/
-module.exports = withContentlayer({
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-  eslint: {
-    dirs: ['app', 'components', 'lib', 'layouts', 'scripts'],
+  pageExtensions: ['ts', 'tsx', 'mdx'],
+};
+
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [remarkGfm],
   },
 });
+
+// Merge MDX config with Next.js config
+export default withMDX(nextConfig);

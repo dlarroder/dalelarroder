@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import { coreContent } from '@/lib/utils/contentlayer';
 import type { Authors, Blog } from 'contentlayer/generated';
 import type { MDXComponents } from 'mdx/types';

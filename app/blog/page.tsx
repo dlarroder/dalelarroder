@@ -1,8 +1,6 @@
 import ListLayout from '@/layouts/MDX/ListLayout';
 import MainLayout from '@/layouts/MainLayout';
 import { POSTS_PER_PAGE } from '@/lib/types/default';
-import { sortedBlogPost } from '@/lib/utils/contentlayer';
-import { allBlogs } from 'contentlayer/generated';
 
 export const metadata = {
   title: 'Blog - Dale Larroder',
@@ -10,8 +8,7 @@ export const metadata = {
 };
 
 export default function Blog() {
-  const activePosts = allBlogs.filter((p) => p.draft === false);
-  const posts = sortedBlogPost(activePosts);
+  const posts = []; // TODO: fetch posts
   const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE);
   const pagination = {
     currentPage: 1,

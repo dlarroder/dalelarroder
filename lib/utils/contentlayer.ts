@@ -1,5 +1,4 @@
 import kebabCase from '@/lib/utils/kebabCase';
-import type { Blog, DocumentTypes } from 'contentlayer/generated';
 
 export function dateSortDesc(a: string, b: string) {
   if (a > b) return -1;
@@ -7,7 +6,7 @@ export function dateSortDesc(a: string, b: string) {
   return 0;
 }
 
-export function sortedBlogPost(allBlogs: Blog[]) {
+export function sortedBlogPost(allBlogs: any[]) {
   return allBlogs.sort((a, b) => dateSortDesc(a.date, b.date)).filter((p) => p.draft === false);
 }
 
@@ -45,15 +44,15 @@ export const omit = <Obj, Keys extends keyof Obj>(obj: Obj, keys: Keys[]): Omit<
 
 export type CoreContent<T> = Omit<T, 'body' | '_raw' | '_id'>;
 
-export function coreContent<T extends DocumentTypes>(content: T) {
+export function coreContent<T extends any>(content: T) {
   return omit(content, ['body', '_raw', '_id']);
 }
 
-export function allCoreContent<T extends DocumentTypes>(contents: T[]) {
+export function allCoreContent<T extends any>(contents: T[]) {
   return contents.map((c) => coreContent(c));
 }
 
-export function getAllTags(allBlogs: Blog[]) {
+export function getAllTags(allBlogs: any[]) {
   const tagCount: Record<string, number> = {};
   // Iterate through each post, putting all found tags into `tags`
   allBlogs.forEach((file) => {
@@ -75,7 +74,7 @@ export function getAllTags(allBlogs: Blog[]) {
 export type BlogLink = { slug: string; title: string };
 
 export function formatBlogLink(
-  blog: Omit<Blog, 'body' | '_raw' | '_id'> | null
+  blog: Omit<any, 'body' | '_raw' | '_id'> | null
 ): BlogLink | undefined {
   if (blog) {
     return {
