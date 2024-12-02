@@ -64,7 +64,7 @@
     "file-loader": "6.2.0",
     "globby": "11.1.0",
     "husky": "8.0.3",
-    "inquirer": "9.1.4",
+    "inquirer": "9.3.7",
     "lint-staged": "15.0.2",
     "postcss": "8.4.31",
     "prettier": "3.0.3",
