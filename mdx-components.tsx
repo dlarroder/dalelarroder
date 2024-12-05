@@ -11,22 +11,22 @@ type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
 const components: MDXComponents = {
   h1: ({ children, ...props }: HeadingProps) => (
-    <h1 className="text-4xl font-bold" {...props}>
+    <h1 className="text-4xl font-bold py-3" {...props}>
       {children}
     </h1>
   ),
   h2: ({ children, ...props }: HeadingProps) => (
-    <h2 className="text-3xl font-bold" {...props}>
+    <h2 className="text-3xl font-bold py-3" {...props}>
       {children}
     </h2>
   ),
   h3: ({ children, ...props }: HeadingProps) => (
-    <h3 className="text-2xl font-bold" {...props}>
+    <h3 className="text-2xl font-bold py-3" {...props}>
       {children}
     </h3>
   ),
   h4: ({ children, ...props }: HeadingProps) => (
-    <h4 className="text-xl font-bold" {...props}>
+    <h4 className="text-xl font-bold py-3" {...props}>
       {children}
     </h4>
   ),

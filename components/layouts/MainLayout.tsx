@@ -18,7 +18,6 @@ export default function MainLayout({ children }: Props) {
   return (
     <SectionContainer>
       <motion.main
-        data-scroll
         className="mb-auto"
         initial="hidden"
         animate="enter"
