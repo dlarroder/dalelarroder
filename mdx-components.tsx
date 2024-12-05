@@ -11,43 +11,39 @@ type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
 const components: MDXComponents = {
   h1: ({ children, ...props }: HeadingProps) => (
-    <h1 className="font-medium pt-12 mb-0 fade-in" {...props}>
+    <h1 className="text-4xl font-bold" {...props}>
       {children}
     </h1>
   ),
   h2: ({ children, ...props }: HeadingProps) => (
-    <h2 className="text-gray-900 dark:text-gray-100 font-medium mt-8 mb-3" {...props}>
+    <h2 className="text-3xl font-bold" {...props}>
       {children}
     </h2>
   ),
   h3: ({ children, ...props }: HeadingProps) => (
-    <h3 className="text-gray-900 dark:text-gray-100 font-medium mt-8 mb-3" {...props}>
+    <h3 className="text-2xl font-bold" {...props}>
       {children}
     </h3>
   ),
   h4: ({ children, ...props }: HeadingProps) => (
-    <h4 className="font-medium" {...props}>
+    <h4 className="text-xl font-bold" {...props}>
       {children}
     </h4>
   ),
   p: ({ children, ...props }: ParagraphProps) => (
-    <p className="text-gray-900 dark:text-gray-100 leading-snug" {...props}>
+    <p className="leading-snug" {...props}>
       {children}
     </p>
   ),
-  ol: (props: ListProps) => (
-    <ol className="text-gray-900 dark:text-gray-100 list-decimal pl-5 space-y-2" {...props} />
-  ),
-  ul: (props: ListProps) => (
-    <ul className="text-gray-900 dark:text-gray-100 list-disc pl-5 space-y-1" {...props} />
-  ),
-  li: (props: ListItemProps) => <li className="pl-1" {...props} />,
+  ol: (props: ListProps) => <ol className="list-decimal pl-5 space-y-2" {...props} />,
+  ul: (props: ListProps) => <ul className="list-disc pl-5 space-y-1" {...props} />,
+  li: (props: ListItemProps) => <li className="" {...props} />,
   em: (props: ComponentPropsWithoutRef<'em'>) => <em className="font-medium" {...props} />,
   strong: (props: ComponentPropsWithoutRef<'strong'>) => (
     <strong className="font-medium" {...props} />
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
-    const className = 'text-blue-500 hover:text-blue-700';
+    const className = `no-underline cursor-pointer bg-no-repeat bg-gradient-to-r  from-primary-500 to-primary-500 [background-position:0_100%] [background-size:100%_0.2em] hover:[background-size:100%_100%] hover:text-white focus:[background-size:100%_100%] motion-safe:transition-all motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500`;
     if (href?.startsWith('/')) {
       return (
         <Link href={href} className={className} {...props}>
