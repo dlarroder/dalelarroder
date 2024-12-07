@@ -47,7 +47,7 @@ export function readMDXFile(filePath: string) {
   return parseFrontmatter(rawContent);
 }
 
-export function getMDXData(dir: string) {
+export function getMDXData(dir: string): BlogPost[] {
   const mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
     const { metadata, content } = readMDXFile(path.join(dir, file));
@@ -62,7 +62,9 @@ export function getMDXData(dir: string) {
 }
 
 export function getBlogPosts(): BlogPost[] {
-  return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'));
+  const posts = getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'));
+
+  return posts.filter((post) => !post.metadata.draft);
 }
 
 export function formatDate(date: string, includeRelative = false) {
