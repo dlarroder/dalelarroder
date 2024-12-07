@@ -1,28 +1,15 @@
-import ListLayout from '@/layouts/MDX/ListLayout';
-import MainLayout from '@/layouts/MainLayout';
-import { POSTS_PER_PAGE } from '@/lib/types/default';
+import { BlogPosts } from 'app/components/posts';
 
 export const metadata = {
-  title: 'Blog - Dale Larroder',
-  description: 'My Blogs - Dale Larroder',
+  title: 'Blog',
+  description: 'Read my blog.',
 };
 
-export default function Blog() {
-  const posts = []; // TODO: fetch posts
-  const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE);
-  const pagination = {
-    currentPage: 1,
-    totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
-  };
-
+export default function Page() {
   return (
-    <MainLayout>
-      <ListLayout
-        posts={posts}
-        initialDisplayPosts={initialDisplayPosts}
-        pagination={pagination}
-        title="Blog"
-      />
-    </MainLayout>
+    <section>
+      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">My Blog</h1>
+      <BlogPosts />
+    </section>
   );
 }

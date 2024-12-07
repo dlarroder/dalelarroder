@@ -9,7 +9,6 @@ module.exports = {
     './components/**/*.tsx',
     './layouts/**/*.tsx',
     './lib/**/*.ts',
-    './mdx-components.tsx',
   ],
   darkMode: 'class',
   theme: {

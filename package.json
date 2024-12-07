@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "dev & next dev",
+    "dev": "next dev",
     "build": "next build",
     "serve": "next start",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
@@ -30,6 +30,7 @@
     "logrocket": "6.0.2",
     "mdx-bundler": "9.2.1",
     "next": "15.0.3",
+    "next-mdx-remote": "5.0.0",
     "next-themes": "0.2.1",
     "react": "18.2.0",
     "react-activity-calendar": "^2.3.5",

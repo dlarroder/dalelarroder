@@ -1,6 +1,9 @@
-import type { MDXComponents } from 'mdx/types';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import { ComponentPropsWithoutRef } from 'react';
+import LinkButton from '../../components/LinkButton';
+import Pre from '../../components/Pre';
+import TOCInline from '../../components/TOCInline';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -9,29 +12,32 @@ type ListItemProps = ComponentPropsWithoutRef<'li'>;
 type AnchorProps = ComponentPropsWithoutRef<'a'>;
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
-const components: MDXComponents = {
+const components = {
+  LinkButton,
+  TOCInline,
+  Pre,
   h1: ({ children, ...props }: HeadingProps) => (
-    <h1 className="text-4xl font-bold py-3" {...props}>
+    <h1 className="text-4xl font-bold py-3 text-gray-900 dark:text-gray-100" {...props}>
       {children}
     </h1>
   ),
   h2: ({ children, ...props }: HeadingProps) => (
-    <h2 className="text-3xl font-bold py-3" {...props}>
+    <h2 className="text-3xl font-bold py-3 text-gray-900 dark:text-gray-100" {...props}>
       {children}
     </h2>
   ),
   h3: ({ children, ...props }: HeadingProps) => (
-    <h3 className="text-2xl font-bold py-3" {...props}>
+    <h3 className="text-2xl font-bold py-3 text-gray-900 dark:text-gray-100" {...props}>
       {children}
     </h3>
   ),
   h4: ({ children, ...props }: HeadingProps) => (
-    <h4 className="text-xl font-bold py-3" {...props}>
+    <h4 className="text-xl font-bold py-3 text-gray-900 dark:text-gray-100" {...props}>
       {children}
     </h4>
   ),
   p: ({ children, ...props }: ParagraphProps) => (
-    <p className="leading-snug" {...props}>
+    <p className="leading-snug text-gray-900 dark:text-gray-100" {...props}>
       {children}
     </p>
   ),
@@ -43,7 +49,7 @@ const components: MDXComponents = {
     <strong className="font-medium" {...props} />
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
-    const className = `no-underline cursor-pointer bg-no-repeat bg-gradient-to-r  from-primary-500 to-primary-500 [background-position:0_100%] [background-size:100%_0.2em] hover:[background-size:100%_100%] hover:text-white focus:[background-size:100%_100%] motion-safe:transition-all motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500`;
+    const className = `text-gray-900 dark:text-gray-100 no-underline cursor-pointer bg-no-repeat bg-gradient-to-r  from-primary-500 to-primary-500 [background-position:0_100%] [background-size:100%_0.2em] hover:[background-size:100%_100%] hover:text-white focus:[background-size:100%_100%] motion-safe:transition-all motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500`;
     if (href?.startsWith('/')) {
       return (
         <Link href={href} className={className} {...props}>
@@ -72,9 +78,6 @@ const components: MDXComponents = {
   ),
 };
 
-export function useMDXComponents(_components: MDXComponents): MDXComponents {
-  return {
-    ..._components,
-    ...components,
-  };
+export function CustomMDX(props: any) {
+  return <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />;
 }
