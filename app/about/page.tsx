@@ -1,5 +1,5 @@
 import path from 'path';
-import { Suspense } from 'react';
+import { Fragment, Suspense } from 'react';
 import GithubContributions from '../../components/GithubContributions/GithubContributions';
 import TopTracks from '../../components/Spotify/TopTracks';
 import { readMDXFile } from '../blog/utils';
@@ -11,7 +11,7 @@ const { content } = readMDXFile(contentPath);
 
 export default function Page() {
   return (
-    <div>
+    <Fragment>
       <Occupation />
       <CustomMDX source={content} />
       <GithubContributions />
@@ -19,6 +19,6 @@ export default function Page() {
       <Suspense fallback="loading..">
         <TopTracks />
       </Suspense>
-    </div>
+    </Fragment>
   );
 }

@@ -2,21 +2,20 @@
 
 import Pagination from '@/components/Pagination';
 import PostCard from '@/components/PostCard';
-import { CoreContent } from '@/lib/utils/contentlayer';
-import type { Blog } from 'contentlayer/generated';
 import { ComponentProps, useState } from 'react';
+import { BlogPost } from '../../../app/blog/utils';
 
 interface Props {
-  posts: CoreContent<Blog>[];
+  posts: BlogPost[];
   title: string;
-  initialDisplayPosts?: CoreContent<Blog>[];
+  initialDisplayPosts?: BlogPost[];
   pagination?: ComponentProps<typeof Pagination>;
 }
 
 export default function ListLayout({ posts, title, initialDisplayPosts = [], pagination }: Props) {
   const [searchValue, setSearchValue] = useState('');
   const filteredBlogPosts = posts.filter((post) => {
-    const searchContent = post.title + post.summary + post.tags?.join(' ');
+    const searchContent = post.metadata.title + post.metadata.summary;
     return searchContent.toLowerCase().includes(searchValue.toLowerCase());
   });
 

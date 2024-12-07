@@ -1,10 +1,17 @@
 import fs from 'fs';
 import path from 'path';
 
+export interface BlogPost {
+  metadata: Metadata;
+  slug: string;
+  content: string;
+}
+
 type Metadata = {
   title: string;
   publishedAt: string;
   summary: string;
+  draft: boolean;
   image?: string;
 };
 
@@ -20,7 +27,12 @@ function parseFrontmatter(fileContent: string) {
     const [key, ...valueArr] = line.split(': ');
     let value = valueArr.join(': ').trim();
     value = value.replace(/^['"](.*)['"]$/, '$1'); // Remove quotes
-    metadata[key.trim() as keyof Metadata] = value;
+    const trimmedKey = key.trim() as keyof Metadata;
+    if (trimmedKey === 'draft') {
+      metadata[trimmedKey] = value === 'true';
+    } else {
+      metadata[trimmedKey] = value;
+    }
   });
 
   return { metadata: metadata as Metadata, content };
@@ -49,7 +61,7 @@ export function getMDXData(dir: string) {
   });
 }
 
-export function getBlogPosts() {
+export function getBlogPosts(): BlogPost[] {
   return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'));
 }
 
