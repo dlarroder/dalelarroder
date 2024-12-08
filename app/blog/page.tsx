@@ -8,13 +8,16 @@ export const metadata = {
 
 export default function Page() {
   const posts = getBlogPosts();
+  const sortedPosts = posts.sort((a, b) => {
+    return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
+  });
 
   return (
     <section>
       <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
         Blog
       </h1>
-      <BlogPosts posts={posts} />
+      <BlogPosts posts={sortedPosts} />
     </section>
   );
 }

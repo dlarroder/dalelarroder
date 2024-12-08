@@ -2,6 +2,7 @@ import { formatDate, getBlogPosts } from 'app/blog/utils';
 import { CustomMDX } from 'app/components/mdx';
 import { baseUrl } from 'app/sitemap';
 import { notFound } from 'next/navigation';
+import PageTitle from '../../../components/PageTitle';
 
 export default async function Blog(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
@@ -35,13 +36,13 @@ export default async function Blog(props: { params: Promise<{ slug: string }> })
           }),
         }}
       />
-      <h1 className="title font-semibold text-2xl tracking-tighter">{post.metadata.title}</h1>
+      <PageTitle>{post.metadata.title}</PageTitle>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>
-      <article className="prose">
+      <article className="prose md:max-w-5xl">
         <CustomMDX source={post.content} />
       </article>
     </section>
