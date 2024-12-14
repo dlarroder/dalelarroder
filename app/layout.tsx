@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import LenisProvider from '@/components/Providers/LenisProvider';
 import ThemeProvider from '@/components/Providers/ThemeProvider';
 import { Metadata } from 'next';
+import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: 'Dale Larroder',
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 interface RootLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -37,9 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           themes={['dark', 'light']}
         >
           <Header />
-          <LenisProvider>
-            <main>{children}</main>
-          </LenisProvider>
+          <LenisProvider>{children}</LenisProvider>
           <Footer />
           {process.env.NODE_ENV === 'production' && <Analytics />}
         </ThemeProvider>

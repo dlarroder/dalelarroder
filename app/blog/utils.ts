@@ -1,5 +1,8 @@
 import fs from 'fs';
+import { compileMDX } from 'next-mdx-remote/rsc';
 import path from 'path';
+import rehypePrettyCode from 'rehype-pretty-code';
+import { components } from '../components/mdx';
 
 export interface BlogPost {
   metadata: Metadata;
@@ -62,7 +65,7 @@ export function getMDXData(dir: string): BlogPost[] {
 }
 
 export function getBlogPosts(): BlogPost[] {
-  const posts = getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'));
+  const posts = getMDXData(path.join(process.cwd(), 'app/blog/posts'));
 
   return posts.filter((post) => !post.metadata.draft);
 }
@@ -101,4 +104,36 @@ export function formatDate(date: string, includeRelative = false) {
   }
 
   return `${fullDate} (${formattedDate})`;
+}
+
+export async function getPostFromSlug(slug: string) {
+  const source = await fs.promises.readFile(
+    path.join(process.cwd(), 'app/blog/posts', `${slug}.mdx`),
+    'utf-8'
+  );
+
+  const { content, frontmatter } = await compileMDX<Metadata>({
+    source,
+    options: {
+      parseFrontmatter: true,
+      scope: {},
+      mdxOptions: {
+        remarkPlugins: [],
+        rehypePlugins: [
+          [
+            rehypePrettyCode,
+            {
+              theme: 'dracula',
+            },
+          ],
+        ],
+      },
+    },
+    components: components,
+  });
+
+  return {
+    metadata: frontmatter,
+    content,
+  };
 }

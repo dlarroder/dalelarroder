@@ -1,4 +1,4 @@
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import { ComponentPropsWithoutRef } from 'react';
 import LinkButton from '../../components/LinkButton';
@@ -50,6 +50,7 @@ export const components = {
   ),
   a: ({ href, children, ...props }: AnchorProps) => {
     const className = `text-gray-900 dark:text-gray-100 no-underline cursor-pointer bg-no-repeat bg-gradient-to-r  from-primary-500 to-primary-500 [background-position:0_100%] [background-size:100%_0.2em] hover:[background-size:100%_100%] hover:text-white focus:[background-size:100%_100%] motion-safe:transition-all motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500`;
+
     if (href?.startsWith('/')) {
       return (
         <Link href={href} className={className} {...props}>
@@ -71,13 +72,13 @@ export const components = {
     );
   },
   code: (props: ComponentPropsWithoutRef<'code'>) => {
-    return <code {...props} />;
+    return <code className="text-red-400" {...props} />;
   },
   blockquote: (props: BlockquoteProps) => (
     <blockquote className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700" {...props} />
   ),
 };
 
-export function CustomMDX(props: any) {
+export function CustomMDX(props: MDXRemoteProps) {
   return <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />;
 }
