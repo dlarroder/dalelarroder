@@ -7,7 +7,7 @@ export interface BlogPost {
   content: string;
 }
 
-type Metadata = {
+export type Metadata = {
   title: string;
   publishedAt: string;
   summary: string;

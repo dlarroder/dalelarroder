@@ -12,7 +12,7 @@ type ListItemProps = ComponentPropsWithoutRef<'li'>;
 type AnchorProps = ComponentPropsWithoutRef<'a'>;
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
-const components = {
+export const components = {
   LinkButton,
   TOCInline,
   Pre,
