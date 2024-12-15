@@ -6,27 +6,27 @@ summary: 'A deep dive into how to properly type a setState function from the use
 
 Imagine you have a component with a number state, and you pass the same state into another component for it you be used:
 
-```tsx:Sample.tsx
-import { useState } from 'react'
-import { Snippets } from './snippets'
+```tsx
+import { useState } from 'react';
+import { Snippets } from './snippets';
 
 export const Sample = () => {
-  const [number, setNumber] = useState<number>(0)
+  const [number, setNumber] = useState<number>(0);
 
-  return <Snippets number={number} setNumber={setNumber} />
-}
+  return <Snippets number={number} setNumber={setNumber} />;
+};
 ```
 
 What should the SnippetsProps interface look like?
 
 Most people will type something like this:
 
-```tsx:Snippets.tsx
-import { Dispatch, SetStateAction } from 'react'
+```tsx
+import { Dispatch, SetStateAction } from 'react';
 
 interface SnippetsProps {
-  number: number
-  setNumber: Dispatch<SetStateAction<number>>
+  number: number;
+  setNumber: Dispatch<SetStateAction<number>>;
 }
 
 export const Snippets = ({ number, setNumber }: SnippetsProps) => {
@@ -35,8 +35,8 @@ export const Snippets = ({ number, setNumber }: SnippetsProps) => {
       <span>Clicked {number} times</span>
       <button onClick={() => setNumber(number + 1)}>Click me</button>
     </div>
-  )
-}
+  );
+};
 ```
 
 But it bothers me to have to import `Dispatch` and `SetStateAction` from react just to be able to define the interface.
@@ -45,10 +45,10 @@ The type `Dispatch<SetStateAction<T>>` here is basically a function that accepts
 
 So basically you can also do this here:
 
-```tsx:Snippets.tsx
+```tsx
 interface SnippetsProps {
-  number: number
-  setNumber: (v: number) => void
+  number: number;
+  setNumber: (v: number) => void;
 }
 
 export const Snippets = ({ number, setNumber }: SnippetsProps) => {
@@ -57,8 +57,8 @@ export const Snippets = ({ number, setNumber }: SnippetsProps) => {
       <span>Clicked {number} times</span>
       <button onClick={() => setNumber(number + 1)}>Click me</button>
     </div>
-  )
-}
+  );
+};
 ```
 
 We just saved two imports just by declaring it as a function that accepts a number, and returns nothing.
