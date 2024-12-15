@@ -1,4 +1,4 @@
-import { getTopTracks } from '@/lib/spotify';
+import { getTopTracks } from 'app/components/spotify/spotify';
 import Track from './track';
 import { Song, TrackInfo } from './types';
 

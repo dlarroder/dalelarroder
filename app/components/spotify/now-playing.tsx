@@ -1,4 +1,4 @@
-import { getNowPlaying } from '@/lib/spotify';
+import { getNowPlaying } from 'app/components/spotify/spotify';
 import AnimatedBars from './animated-bars';
 import { Artist, NowPlayingSong } from './types';
 
