@@ -9,6 +9,11 @@ import Occupation from './occupation';
 const contentPath = path.join(process.cwd(), 'app', 'about', 'content.mdx');
 const { content } = readMDXFile(contentPath);
 
+export const metadata = {
+  title: 'About',
+  description: 'About Dale Larroder',
+};
+
 export default function Page() {
   return (
     <Fragment>

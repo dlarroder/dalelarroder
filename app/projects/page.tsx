@@ -2,7 +2,7 @@ import Projects from '@/components/Projects/Projects';
 import MainLayout from '@/layouts/MainLayout';
 
 export const metadata = {
-  title: 'Projects - Dale Larroder',
+  title: 'Projects',
   description: 'My Projects - Dale Larroder',
 };
 

@@ -10,7 +10,10 @@ import { Metadata } from 'next';
 import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
-  title: 'Dale Larroder',
+  title: {
+    template: '%s | Dale Larroder',
+    default: 'Dale Larroder',
+  },
   description: 'I build things for the web.',
   metadataBase: new URL('https://dalelarroder.com'),
 };
