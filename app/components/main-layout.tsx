@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
-import SectionContainer from '../SectionContainer';
+import SectionContainer from '../../components/SectionContainer';
 
 interface Props {
   children: ReactNode;
