@@ -2,8 +2,8 @@ import path from 'path';
 import { Fragment, Suspense } from 'react';
 import TopTracks from '../../components/Spotify/TopTracks';
 import { readMDXFile } from '../blog/utils';
-import GithubContributions from '../components/github-contributions/github-contributions';
 import { CustomMDX } from '../components/mdx';
+import GithubContributions from './github-contributions/github-contributions';
 import Occupation from './occupation';
 
 const contentPath = path.join(process.cwd(), 'app', 'about', 'content.mdx');

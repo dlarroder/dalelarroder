@@ -6,5 +6,9 @@ import { AnchorHTMLAttributes, DetailedHTMLProps } from 'react';
 export default function LinkButton(
   props: DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>
 ) {
-  return <MyLinkButton {...props} />;
+  return (
+    <div className="text-white">
+      <MyLinkButton {...props} />
+    </div>
+  );
 }

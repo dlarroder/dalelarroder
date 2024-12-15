@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ReactElement, useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi';
-import { ScrollContext } from './Providers/ScrollProvider';
+import { ScrollContext } from '../../../components/Providers/ScrollProvider';
 import { renderCanvas } from './renderCanvas';
 
-export default function Hero(): ReactElement {
+export default function Hero() {
   const ref = useRef<HTMLHeadingElement>(null);
   const { scrollY } = useContext(ScrollContext);
 
