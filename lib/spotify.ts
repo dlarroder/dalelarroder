@@ -1,3 +1,5 @@
+import { cache } from 'react';
+
 const client_id = process.env.SPOTIFY_CLIENT_ID || '';
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET || '';
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN || '';
@@ -39,7 +41,7 @@ export const getNowPlaying = async () => {
   });
 };
 
-export const getTopTracks = async () => {
+export const getTopTracks = cache(async () => {
   const { access_token } = await getAccessToken();
 
   return fetch(TOP_TRACKS_ENDPOINT, {
@@ -47,4 +49,4 @@ export const getTopTracks = async () => {
       Authorization: `Bearer ${access_token}`,
     },
   });
-};
+});
