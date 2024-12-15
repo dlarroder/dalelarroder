@@ -30,7 +30,7 @@ export default function Header() {
             </Link>
           </div>
           <div className="flex items-center space-x-3 text-base leading-5">
-            <div className="hidden space-x-5 sm:flex">
+            <div className="hidden space-x-5 sm:flex mr-2">
               {navigationLinks.map(({ title, href }) => {
                 const active = pathName?.includes(href);
                 return (
@@ -50,7 +50,7 @@ export default function Header() {
                 );
               })}
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center space-x-4">
               <ThemeSwitch />
               <MobileNav />
             </div>
