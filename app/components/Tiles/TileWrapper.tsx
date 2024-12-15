@@ -2,7 +2,7 @@
 
 import { ReactNode, useContext, useRef } from 'react';
 import { ScrollContext } from '../providers/ScrollProvider';
-import { TileContext } from './TileContext';
+import { TileContext } from '../tiles/TileContext';
 
 interface WrapperProps {
   children: ReactNode;

@@ -3,9 +3,9 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import useBreakpoint from 'use-breakpoint';
-import ProjectItem from './ProjectItem';
-import ProjectPreview from './ProjectPreview';
 import { projects } from './constants';
+import ProjectItem from './project-item';
+import ProjectPreview from './project-preview';
 import { ProjectModal } from './types';
 
 const BREAKPOINTS = { mobile: 0, tablet: 768, desktop: 1280 };

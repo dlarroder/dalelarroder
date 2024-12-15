@@ -1,11 +1,11 @@
 import '@/css/tailwind.css';
 import '@fontsource/mukta';
 
-import LenisProvider from '@/components/Providers/LenisProvider';
-import ThemeProvider from '@/components/Providers/ThemeProvider';
 import Analytics from 'app/components/analytics/analytics';
 import Footer from 'app/components/layouts/footer';
 import Header from 'app/components/layouts/header';
+import LenisProvider from 'app/components/providers/LenisProvider';
+import ThemeProvider from 'app/components/providers/ThemeProvider';
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
 
