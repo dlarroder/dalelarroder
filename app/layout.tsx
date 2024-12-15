@@ -1,21 +1,25 @@
-import '@/css/tailwind.css';
 import '@fontsource/mukta';
+import './tailwind.css';
 
-import Analytics from '@/components/Analytics';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
-import LenisProvider from '@/components/Providers/LenisProvider';
-import ThemeProvider from '@/components/Providers/ThemeProvider';
+import Analytics from 'app/components/analytics/analytics';
+import Footer from 'app/components/layouts/footer';
+import Header from 'app/components/layouts/header';
+import LenisProvider from 'app/components/providers/LenisProvider';
+import ThemeProvider from 'app/components/providers/ThemeProvider';
 import { Metadata } from 'next';
+import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
-  title: 'Dale Larroder',
+  title: {
+    template: '%s | Dale Larroder',
+    default: 'Dale Larroder',
+  },
   description: 'I build things for the web.',
   metadataBase: new URL('https://dalelarroder.com'),
 };
 
 interface RootLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -37,9 +41,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           themes={['dark', 'light']}
         >
           <Header />
-          <LenisProvider>
-            <main>{children}</main>
-          </LenisProvider>
+          <LenisProvider>{children}</LenisProvider>
           <Footer />
           {process.env.NODE_ENV === 'production' && <Analytics />}
         </ThemeProvider>

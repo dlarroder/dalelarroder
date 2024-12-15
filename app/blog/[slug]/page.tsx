@@ -1,62 +1,30 @@
-import { MDXLayoutRenderer } from '@/components/MDXComponents';
-import PageTitle from '@/components/PageTitle';
-import ScrollProgressBar from '@/components/ScrollProgressBar';
-import PostLayout from '@/layouts/MDX/PostLayout';
-import MainLayout from '@/layouts/MainLayout';
-import { coreContent, formatBlogLink, sortedBlogPost } from '@/lib/utils/contentlayer';
-import { allBlogs } from 'contentlayer/generated';
-import { Metadata } from 'next';
+import { formatDate, getPostFromSlug } from '../utils';
+import PageTitle from './page-title';
 
-export async function generateMetadata(props: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
-  const slug = params.slug;
-  const post = allBlogs.find((p) => p.slug === slug);
-
-  if (!post) {
-    return {};
-  }
+  const { metadata } = await getPostFromSlug(params.slug);
 
   return {
-    title: post.title,
-    description: post.summary,
+    title: metadata.title,
+    description: metadata.summary,
   };
 }
 
-export default async function BlogPost(props: { params: Promise<{ slug: string }> }) {
+export default async function Blog(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
-  const slug = params.slug;
-  const sortedPosts = sortedBlogPost(allBlogs);
 
-  const post = sortedPosts.find((p) => p.slug === slug);
-  const author = post?.author || ['default'];
-
-  const postIndex = sortedPosts.findIndex((p) => p.slug === slug);
-  const prevContent = sortedPosts[postIndex + 1] || null;
-  const prev = prevContent ? coreContent(prevContent) : null;
-  const nextContent = sortedPosts[postIndex - 1] || null;
-  const next = nextContent ? coreContent(nextContent) : null;
+  const { metadata, content } = await getPostFromSlug(params.slug);
 
   return (
-    <>
-      <ScrollProgressBar />
-      <MainLayout>
-        {post && 'draft' in post && post.draft !== true ? (
-          <PostLayout content={post} prev={formatBlogLink(prev)} next={formatBlogLink(next)}>
-            <MDXLayoutRenderer toc={post.toc} content={post} authorDetails={author} />
-          </PostLayout>
-        ) : (
-          <div className="mt-24 text-center">
-            <PageTitle>
-              Under Construction{' '}
-              <span role="img" aria-label="roadwork sign">
-                🚧
-              </span>
-            </PageTitle>
-          </div>
-        )}
-      </MainLayout>
-    </>
+    <section>
+      <PageTitle>{metadata.title}</PageTitle>
+      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          {formatDate(metadata.publishedAt)}
+        </p>
+      </div>
+      <article className="prose md:max-w-5xl">{content}</article>
+    </section>
   );
 }

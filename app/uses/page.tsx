@@ -1,25 +1,22 @@
-import { MDXLayoutRenderer } from '@/components/MDXComponents';
-import UsesLayout from '@/layouts/MDX/UsesLayout';
-import MainLayout from '@/layouts/MainLayout';
-import { allAuthors } from 'contentlayer/generated';
+import path from 'path';
+import { Fragment } from 'react';
+import { readMDXFile } from '../blog/utils';
+import { CustomMDX } from '../components/mdx';
+import UsesTitle from './uses-title';
+
+const contentPath = path.join(process.cwd(), 'app', 'uses', 'content.mdx');
+const { content } = readMDXFile(contentPath);
 
 export const metadata = {
-  title: 'Uses - Dale Larroder',
-  description: 'What I Use - Dale Larroder',
+  title: 'Uses',
+  description: 'What I use',
 };
 
-export default function Uses() {
-  const author = allAuthors.find((p) => p.slug === 'uses');
-
-  if (!author) {
-    return null;
-  }
-
+export default function Page() {
   return (
-    <MainLayout>
-      <UsesLayout>
-        <MDXLayoutRenderer content={author} />
-      </UsesLayout>
-    </MainLayout>
+    <Fragment>
+      <UsesTitle />
+      <CustomMDX source={content} />
+    </Fragment>
   );
 }

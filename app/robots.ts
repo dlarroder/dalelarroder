@@ -1,5 +1,5 @@
-import siteMetadata from 'content/siteMetadata';
 import { MetadataRoute } from 'next';
+import { siteMetadata } from './components/metadata';
 
 export default function robots(): MetadataRoute.Robots {
   return {

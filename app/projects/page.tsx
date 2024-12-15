@@ -1,8 +1,8 @@
-import Projects from '@/components/Projects/Projects';
-import MainLayout from '@/layouts/MainLayout';
+import MainLayout from 'app/components/layouts/main-layout';
+import Projects from 'app/projects/projects';
 
 export const metadata = {
-  title: 'Projects - Dale Larroder',
+  title: 'Projects',
   description: 'My Projects - Dale Larroder',
 };
 

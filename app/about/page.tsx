@@ -1,25 +1,28 @@
-import { MDXLayoutRenderer } from '@/components/MDXComponents';
-import AuthorLayout from '@/layouts/MDX/AuthorLayout';
-import MainLayout from '@/layouts/MainLayout';
-import { allAuthors } from 'contentlayer/generated';
+import path from 'path';
+import { Fragment, Suspense } from 'react';
+import { readMDXFile } from '../blog/utils';
+import { CustomMDX } from '../components/mdx';
+import TopTracks from '../components/spotify/top-tracks';
+import GithubContributions from './github-contributions/github-contributions';
+import Occupation from './occupation';
+
+const contentPath = path.join(process.cwd(), 'app', 'about', 'content.mdx');
+const { content } = readMDXFile(contentPath);
 
 export const metadata = {
-  title: 'About - Dale Larroder',
-  description: 'About me - Dale Larroder',
+  title: 'About',
+  description: 'About Dale Larroder',
 };
 
-export default function About() {
-  const author = allAuthors.find((p) => p.slug === 'about');
-
-  if (!author) {
-    return null;
-  }
-
+export default function Page() {
   return (
-    <MainLayout>
-      <AuthorLayout content={author}>
-        <MDXLayoutRenderer content={author} />
-      </AuthorLayout>
-    </MainLayout>
+    <Fragment>
+      <Occupation />
+      <CustomMDX source={content} />
+      <GithubContributions />
+      <Suspense fallback="loading..">
+        <TopTracks />
+      </Suspense>
+    </Fragment>
   );
 }

@@ -1,0 +1,95 @@
+---
+title: 'Passing an argument to a selector in Redux toolkit'
+publishedAt: '2022-04-16'
+summary: 'A short guide on how to pass arguments to a selector in Redux toolkit.'
+draft: true
+---
+
+## Intro
+
+Redux toolkit uses [Reselect](https://github.com/reduxjs/reselect#redux-toolkit) out of the box for its selectors.
+
+Reselect is library for creating memoized "selector" functions. Commonly used with Redux, but usable with any plain JS immutable data as well.
+
+### Passing an argument to a selector
+
+This is a sample snippet in creating a selector that accepts a **single** argument `projectId`.
+
+```tsx
+export const calendarProjectOptionsSelector = createSelector(
+  calendarsSelector.selectAll,
+  (_: RootState, projectId: string) => projectId,
+  (calendars, projectId) => {
+    const options: Option[] = calendars
+      .filter((c) => c.projectId === projectId)
+      .map((p) => ({
+        value: p.id,
+        label: p.name,
+        tag: {
+          label: p.name,
+          color: p.color,
+        },
+      }));
+    return options;
+  }
+);
+```
+
+## How to use it
+
+Just pass `projectId` as a second argument to the selector
+
+```tsx
+const calendarOptions = useSelector((state: RootState) =>
+  calendarProjectOptionsSelector(state, projectId)
+);
+```
+
+### Passing multiple values to a selector
+
+This is a sample snippet in creating a selector that accepts **multiple** arguments `projectId` and `ownerId`.
+
+```tsx
+export const groupedPackagesSelector = createSelector(
+  activePackagesSelector,
+  (_: RootState, { ownerId, projectId }: { ownerId: string; projectId: string }) => ({
+    ownerId,
+    projectId,
+  }),
+  (packages, { ownerId, projectId }) => {
+    const groupedPackages: GroupedPackage[] = [];
+
+    packages
+      .filter((p) => p.projectId === projectId)
+      .forEach((p) => {
+        if (!p.locked || (p.locked && ownerId === p.owner.id)) {
+          groupedPackages.push({
+            label: p.name,
+            value: p.id,
+            color: p.color,
+            group: p.locked ? PackageGroup.Locked : PackageGroup.Public,
+            code: p.code,
+          });
+        }
+      });
+
+    return groupedPackages;
+  }
+);
+```
+
+## How to use it
+
+Just pass `projectId` and `ownerId` in a object as a second argument to the selector
+
+```tsx
+const groupedPackages = useSelector((state: RootState) =>
+  groupedPackagesSelector(state, { ownerId, projectId })
+);
+```
+
+## Conclusion
+
+Reselect only allows you to pass a single argument to a selector, for you to be able to pass multiple values, you need to wrap those values into one object and pass it as a single argument.
+
+You can read more in the official documentation of Reselect [here](https://github.com/reduxjs/reselect#q-how-do-i-create-a-selector-that-takes-an-argument).

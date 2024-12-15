@@ -1,0 +1,45 @@
+---
+title: How to share assets to multiple apps/libraries in Nx
+publishedAt: '2022-05-24'
+author: 'Dale Larroder'
+draft: true
+---
+
+# Sharing assets in your Nx Workspace
+
+## Step 1: Create your shared asset libary
+
+```bash
+nx g @nrwl/workspace:lib assets
+```
+
+## Step 2: Tell you workspace where your assets will come from
+
+In your `project.json` you can add the following:
+
+```json
+"assets": [
+  "apps/field-app/src/favicon.ico",
+  {
+    "glob": "**/*",
+    "input": "./libs/assets/css",
+    "output": "./"
+  },
+  {
+    "glob": "**/*",
+    "input": "./libs/assets/fonts",
+    "output": "./fonts"
+  },
+  {
+    "glob": "**/*",
+    "input": "./libs/assets/images",
+    "output": "./images"
+  }
+],
+
+```
+
+#### Resources
+
+- [Nrwl](https://www.youtube.com/watch?v=LYjX2V-eQa8)
+- [Charl Kruger](https://medium.com/@nit3watch/angular-shared-assets-with-multiple-apps-nrwl-nx-b4801c05c771)

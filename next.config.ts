@@ -1,12 +1,8 @@
-const { withContentlayer } = require('next-contentlayer2');
-
-/**
- * @type {import('next/dist/next-server/server/config').NextConfig}
- **/
-module.exports = withContentlayer({
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-  eslint: {
-    dirs: ['app', 'components', 'lib', 'layouts', 'scripts'],
-  },
-});
+  pageExtensions: ['ts', 'tsx'],
+  transpilePackages: ['next-mdx-remote'],
+};
+
+export default nextConfig;

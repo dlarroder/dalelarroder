@@ -1,8 +1,8 @@
-import Contact from '@/components/Contact/Contact';
-import Hero from '@/components/Hero';
-import Intro from '@/components/Intro';
-import { ScrollProvider } from '@/components/Providers/ScrollProvider';
-import Works from '@/components/Work/Works';
+import Contact from 'app/components/contact';
+import Hero from 'app/components/hero/hero';
+import Intro from 'app/components/intro';
+import { ScrollProvider } from 'app/components/providers/ScrollProvider';
+import Works from 'app/components/work/works';
 
 export default function Page() {
   return (
