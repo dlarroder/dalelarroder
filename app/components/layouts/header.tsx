@@ -4,9 +4,9 @@ import classNames from 'classnames';
 import headerNavLinks from 'content/headerNavLinks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import MobileNav from './MobileNav';
-import SectionContainer from './SectionContainer';
-import ThemeSwitch from './ThemeSwitch';
+import MobileNav from './mobile-nav';
+import SectionContainer from './section-container';
+import ThemeSwitch from './theme-switch';
 
 export default function Header() {
   const pathName = usePathname();

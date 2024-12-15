@@ -1,5 +1,5 @@
 import Link from '@/components/Link';
-import SectionContainer from '@/components/SectionContainer';
+import SectionContainer from 'app/components/layouts/section-container';
 
 export default function FourZeroFour() {
   return (

@@ -1,5 +1,5 @@
 import Projects from '@/components/Projects/Projects';
-import MainLayout from 'app/components/main-layout';
+import MainLayout from 'app/components/layouts/main-layout';
 
 export const metadata = {
   title: 'Projects',
