@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "serve": "next start",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
