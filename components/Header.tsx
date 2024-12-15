@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import headerNavLinks from 'content/headerNavLinks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import CommandPalette from './CommandPalette/CommandPalette';
 import MobileNav from './MobileNav';
 import SectionContainer from './SectionContainer';
 import ThemeSwitch from './ThemeSwitch';
@@ -52,7 +51,6 @@ export default function Header() {
               })}
             </div>
             <div className="flex items-center">
-              <CommandPalette />
               <ThemeSwitch />
               <MobileNav />
             </div>

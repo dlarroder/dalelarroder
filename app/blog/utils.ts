@@ -67,7 +67,13 @@ export function getMDXData(dir: string): BlogPost[] {
 export function getBlogPosts(): BlogPost[] {
   const posts = getMDXData(path.join(process.cwd(), 'app/blog/posts'));
 
-  return posts.filter((post) => !post.metadata.draft);
+  return posts
+    .filter((post) => !post.metadata.draft)
+    .sort((a, b) => {
+      return (
+        new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime()
+      );
+    });
 }
 
 export function formatDate(date: string, includeRelative = false) {

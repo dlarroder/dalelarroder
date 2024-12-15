@@ -1,7 +1,5 @@
 'use client';
 
-// import { sortedBlogPost } from '@/lib/utils/contentlayer';
-// import { allBlogs } from 'contentlayer/generated';
 import { useTheme } from 'next-themes';
 import { useRouter } from 'next/navigation';
 import { ReactNode } from 'react';
@@ -13,6 +11,7 @@ import {
   HiOutlineUser,
 } from 'react-icons/hi';
 import { TbBolt, TbBoltOff } from 'react-icons/tb';
+import { getBlogPosts } from '../../app/blog/utils';
 
 type PaletteOption = {
   id: string;
@@ -23,8 +22,8 @@ type PaletteOption = {
 
 export default function usePaletteOptions() {
   const router = useRouter();
-  const sortedPosts = []; // TODO: fetch sorted posts
   const { theme, setTheme } = useTheme();
+  const posts = getBlogPosts();
 
   const generalOptions: PaletteOption[] = [
     {
@@ -48,10 +47,10 @@ export default function usePaletteOptions() {
     { id: '/uses', name: 'Uses', icon: <HiOutlineDocumentAdd />, onSelect: (v) => router.push(v) },
   ];
 
-  const blogOptions: PaletteOption[] = sortedPosts.map((post) => ({
+  const blogOptions: PaletteOption[] = posts.map((post) => ({
     id: post.slug,
-    name: post.title,
-    onSelect: (v) => router.push(`/blog/${v}`),
+    name: post.metadata.title,
+    onSelect: (slug) => router.push(`/blog/${slug}`),
   }));
 
   return { pageOptions, blogOptions, generalOptions };
