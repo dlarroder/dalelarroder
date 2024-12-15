@@ -1,3 +1,4 @@
+import tailwindTypography from '@tailwindcss/typography';
 import tailwindScrollbar from 'tailwind-scrollbar';
 import colors from 'tailwindcss/colors';
 import defaultTheme from 'tailwindcss/defaultTheme';
@@ -227,6 +228,7 @@ module.exports = {
   plugins: [
     require('tailwindcss-animate'),
     require('@tailwindcss/forms'),
+    tailwindTypography(),
     tailwindScrollbar({ nocompatible: true }),
   ],
 };
