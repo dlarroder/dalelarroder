@@ -25,7 +25,8 @@ export default function Hero() {
   return (
     <div>
       <h1 className="sr-only">
-        Hello I'm Dale Larroder, I'm a software developer, and I love building things for the web.
+        Hello I&apos;m Dale Larroder, I&apos;m a software developer, and I love building things for
+        the web.
       </h1>
       <div className="relative z-10 flex h-[calc(100vh-81px)] items-center md:h-[calc(100vh-116px)]">
         <div className="mx-auto w-screen max-w-3xl px-4 sm:px-9 xl:max-w-5xl xl:px-0">

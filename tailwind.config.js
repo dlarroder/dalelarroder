@@ -1,5 +1,6 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors');
+import tailwindScrollbar from 'tailwind-scrollbar';
+import colors from 'tailwindcss/colors';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 module.exports = {
   mode: 'jit',
@@ -226,7 +227,6 @@ module.exports = {
   plugins: [
     require('tailwindcss-animate'),
     require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('tailwind-scrollbar')({ nocompatible: true }),
+    tailwindScrollbar({ nocompatible: true }),
   ],
 };
