@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode, useContext, useRef } from 'react';
-import { ScrollContext } from '../Providers/ScrollProvider';
+import { ScrollContext } from '../../../components/Providers/ScrollProvider';
 import { TileContext } from './TileContext';
 
 interface WrapperProps {

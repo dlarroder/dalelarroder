@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { WorkContainer } from './WorkContainer';
-import { WorkLeft } from './WorkLeft';
-import { WorkRight } from './WorkRight';
+import { WorkContainer } from './work-container';
+import { WorkLeft } from './work-left';
+import { WorkRight } from './work-right';
 import { WorkTile } from './workTiles';
 
 interface WorkContentProps {

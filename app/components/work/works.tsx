@@ -1,9 +1,9 @@
-import { Tile } from '../Tiles/Tile';
-import TileBackground from '../Tiles/TileBackground';
-import { TileContent } from '../Tiles/TileContent';
-import TileWrapper from '../Tiles/TileWrapper';
-import { WorkBackground } from './WorkBackground';
-import WorkContent from './WorkContent';
+import { Tile } from '../tiles/tile';
+import TileBackground from '../tiles/tile-background';
+import { TileContent } from '../tiles/tile-content';
+import TileWrapper from '../tiles/tile-wrapper';
+import { WorkBackground } from './work-background';
+import WorkContent from './work-content';
 import { workTiles } from './workTiles';
 
 export default function Works() {
