@@ -1,9 +1,9 @@
 'use client';
 
 import classNames from 'classnames';
-import headerNavLinks from 'content/headerNavLinks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { navigationLinks } from './constants';
 import MobileNav from './mobile-nav';
 import SectionContainer from './section-container';
 import ThemeSwitch from './theme-switch';
@@ -31,7 +31,7 @@ export default function Header() {
           </div>
           <div className="flex items-center space-x-3 text-base leading-5">
             <div className="hidden space-x-5 sm:flex">
-              {headerNavLinks.map(({ title, href }) => {
+              {navigationLinks.map(({ title, href }) => {
                 const active = pathName?.includes(href);
                 return (
                   <Link

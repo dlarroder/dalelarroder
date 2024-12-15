@@ -1,5 +1,5 @@
-import '@/css/tailwind.css';
 import '@fontsource/mukta';
+import './tailwind.css';
 
 import Analytics from 'app/components/analytics/analytics';
 import Footer from 'app/components/layouts/footer';

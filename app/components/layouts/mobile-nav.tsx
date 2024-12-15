@@ -1,11 +1,11 @@
 'use client';
 
 import classNames from 'classnames';
-import headerNavLinks from 'content/headerNavLinks';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { navigationLinks } from './constants';
 
 export default function MobileNav() {
   const pathName = usePathname();
@@ -92,7 +92,7 @@ export default function MobileNav() {
                 Home
               </Link>
             </div>
-            {headerNavLinks.map(({ title, href }) => {
+            {navigationLinks.map(({ title, href }) => {
               const active = pathName?.includes(href);
 
               return (
