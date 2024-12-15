@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { AiFillLinkedin } from 'react-icons/ai';
 import { FaGithub, FaSpotify, FaSteam } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import NowPlaying from '../../../components/Spotify/NowPlaying';
+import NowPlaying from '../spotify/now-playing';
 import SectionContainer from './section-container';
 
 export default function Footer() {

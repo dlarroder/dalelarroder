@@ -1,9 +1,6 @@
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import { ComponentPropsWithoutRef } from 'react';
-import LinkButton from '../../components/LinkButton';
-import Pre from '../../components/Pre';
-import TOCInline from '../../components/TOCInline';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -13,9 +10,6 @@ type AnchorProps = ComponentPropsWithoutRef<'a'>;
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
 export const components = {
-  LinkButton,
-  TOCInline,
-  Pre,
   h1: ({ children, ...props }: HeadingProps) => (
     <h1 className="text-4xl font-bold py-3 text-gray-900 dark:text-gray-100" {...props}>
       {children}

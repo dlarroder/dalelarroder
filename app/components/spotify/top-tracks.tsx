@@ -1,5 +1,5 @@
 import { getTopTracks } from '@/lib/spotify';
-import Track from './Track';
+import Track from './track';
 import { Song, TrackInfo } from './types';
 
 async function fetchTopTracks(): Promise<Song[] | null> {
