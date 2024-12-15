@@ -6524,10 +6524,10 @@ next-mdx-remote@5.0.0:
     vfile "^6.0.1"
     vfile-matter "^5.0.0"
 
-next-themes@0.2.1:
-  version "0.2.1"
-  resolved "https://registry.npmjs.org/next-themes/-/next-themes-0.2.1.tgz"
-  integrity sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==
+next-themes@0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.4.4.tgz#ce6f68a4af543821bbc4755b59c0d3ced55c2d13"
+  integrity sha512-LDQ2qIOJF0VnuVrrMSMLrWGjRMkq+0mpgl6e0juCLqdJ+oo8Q84JRWT6Wh11VDQKkMMe+dVzDKLWs5n87T+PkQ==
 
 next@15.0.3:
   version "15.0.3"
