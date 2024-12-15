@@ -28,7 +28,7 @@ const getAccessToken = async () => {
   return response.json();
 };
 
-export const getNowPlaying = async () => {
+export const getNowPlaying = cache(async () => {
   const { access_token } = await getAccessToken();
 
   return fetch(NOW_PLAYING_ENDPOINT, {
@@ -39,7 +39,7 @@ export const getNowPlaying = async () => {
       revalidate: 30,
     },
   });
-};
+});
 
 export const getTopTracks = cache(async () => {
   const { access_token } = await getAccessToken();

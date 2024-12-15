@@ -1,8 +1,8 @@
 'use client';
 
-import LogRocket from '@/components/LogRocket';
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import LogRocket from 'app/components/analytics/log-rocket';
 
 export default function Analytics() {
   return (

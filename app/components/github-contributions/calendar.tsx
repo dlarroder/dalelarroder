@@ -2,7 +2,7 @@
 
 import { useTheme } from 'next-themes';
 import ActivityCalendar, { Activity, ThemeInput } from 'react-activity-calendar';
-import ActivityTooltip from './ActivityTooltip';
+import ActivityTooltip from './activity-tooltip';
 
 export const GITHUB_THEME: ThemeInput = {
   light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],

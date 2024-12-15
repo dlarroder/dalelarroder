@@ -11,7 +11,7 @@ import {
   HiOutlineUser,
 } from 'react-icons/hi';
 import { TbBolt, TbBoltOff } from 'react-icons/tb';
-import { getBlogPosts } from '../../app/blog/utils';
+import { getBlogPosts } from '../../blog/utils';
 
 type PaletteOption = {
   id: string;

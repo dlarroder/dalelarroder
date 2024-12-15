@@ -1,6 +1,6 @@
 import { Contributions } from 'contributions';
 import { Activity } from 'react-activity-calendar';
-import Calendar from './Calendar';
+import Calendar from './calendar';
 
 export default async function GithubContributions() {
   const contributions = await Contributions.forUser('dlarroder');

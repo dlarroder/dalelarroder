@@ -72,7 +72,7 @@ export const components = {
     );
   },
   code: (props: ComponentPropsWithoutRef<'code'>) => {
-    return <code className="text-red-400" {...props} />;
+    return <code {...props} />;
   },
   blockquote: (props: BlockquoteProps) => (
     <blockquote className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700" {...props} />
