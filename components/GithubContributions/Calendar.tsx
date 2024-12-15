@@ -17,7 +17,7 @@ export default function Calendar({ data }: Props) {
   const { theme = 'dark' } = useTheme();
 
   return (
-    <div className="flex flex-col space-y-4">
+    <section className="flex flex-col space-y-4">
       <p className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
         Github Contributions
       </p>
@@ -32,6 +32,6 @@ export default function Calendar({ data }: Props) {
         }}
         renderBlock={(block, activity) => <ActivityTooltip block={block} activity={activity} />}
       />
-    </div>
+    </section>
   );
 }
