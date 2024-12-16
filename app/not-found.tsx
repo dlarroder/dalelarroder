@@ -11,7 +11,9 @@ export default function FourZeroFour() {
         <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
           Looks like you&apos;re lost.
         </p>
-        <Link href="/">Go back home</Link>
+        <Link href="/" className="underline-magical">
+          Go back home
+        </Link>
       </div>
     </SectionContainer>
   );

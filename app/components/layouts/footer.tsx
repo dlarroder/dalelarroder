@@ -12,7 +12,7 @@ export default function Footer() {
     <SectionContainer>
       <footer>
         <div className="mb-0 flex flex-col justify-start space-y-1.5 space-x-0 py-10 text-gray-500 dark:text-gray-400">
-          <Suspense fallback={null}>
+          <Suspense fallback={<div className="h-6" />}>
             <NowPlaying />
           </Suspense>
           <div className="flex flex-col items-center space-y-2 text-sm sm:flex-row sm:justify-between sm:text-base">
