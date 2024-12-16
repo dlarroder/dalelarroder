@@ -7,4 +7,7 @@ interface TileContextValue {
   currentPage: number;
 }
 
-export const TileContext = createContext<TileContextValue>({ numOfPages: 0, currentPage: 0 });
+export const TileContext = createContext<TileContextValue>({
+  numOfPages: 0,
+  currentPage: 0,
+});
