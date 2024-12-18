@@ -12,7 +12,7 @@
   "dependencies": {
     "@fontsource/mukta": "5.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
-    "@studio-freight/react-lenis": "0.0.36",
+    "@studio-freight/react-lenis": "0.0.47",
     "@vercel/analytics": "1.1.1",
     "@vercel/speed-insights": "^1.0.2",
     "classnames": "2.3.2",
