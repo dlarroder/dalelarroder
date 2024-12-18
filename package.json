@@ -19,7 +19,7 @@
     "cmdk": "0.2.0",
     "contributions": "^0.8.0",
     "framer-motion": "10.16.4",
-    "gsap": "3.12.2",
+    "gsap": "3.12.5",
     "logrocket": "6.0.2",
     "next": "15.1.0",
     "next-mdx-remote": "5.0.0",
