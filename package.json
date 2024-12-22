@@ -15,7 +15,7 @@
     "@studio-freight/react-lenis": "0.0.47",
     "@vercel/analytics": "1.1.1",
     "@vercel/speed-insights": "^1.0.2",
-    "classnames": "2.3.2",
+    "classnames": "2.5.1",
     "cmdk": "0.2.1",
     "contributions": "^0.8.0",
     "framer-motion": "10.16.4",
