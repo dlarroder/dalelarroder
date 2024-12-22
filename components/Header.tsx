@@ -25,9 +25,9 @@ export default function Header() {
                   'horizontal-underline-active': pathName === '/',
                 }
               )}
-              aria-label="d."
+              aria-label="A"
             >
-              d.
+              Anónimo
             </Link>
           </div>
           <div className="flex items-center space-x-3 text-base leading-5">

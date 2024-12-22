@@ -1,12 +1,12 @@
 const siteMetadata = {
   title: 'Anónimo Café',
   author: 'Donovan Riaño',
-  headerTitle: 'abc',
+  headerTitle: 'Cafeteria anónima',
   description: 'Reinventando el café',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteLogo: '/static/images/logo.png',
-  image: '/static/images/avatar.webp',
+  siteLogo: '/static/images/anonimo3.jpeg',
+  image: '/static/images/anonimo1.jpeg',
   socialBanner: '/static/images/twitter-card.png',
   siteUrl: 'https://anonimo-cafe.vercel.app/',
   siteRepo: 'https://github.com/driano7/AnonimoCafe',
