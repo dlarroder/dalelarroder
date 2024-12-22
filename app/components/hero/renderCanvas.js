@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 function n(e) {
   this.init(e || {});
 }
