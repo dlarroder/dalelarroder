@@ -93,9 +93,9 @@ module.exports = {
           900: '#7A0747',
         },
         'spotify-green': '#1DB954',
-        green: colors.emerald,
-        yellow: colors.amber,
-        purple: colors.violet,
+        green: colors.cyan,
+        yellow: colors.neutral,
+        purple: colors.cyan,
       },
       typography: (theme) => ({
         DEFAULT: {
