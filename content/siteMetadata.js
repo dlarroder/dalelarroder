@@ -17,7 +17,7 @@ const siteMetadata = {
   linkedin: 'https://www.linkedin.com/in/driano7',
   spotify: 'https://open.spotify.com/user/12138049443?si=UYIjkFRkQtWqiwFmQsnFKg&pi=u-GbLyzfogTQqa',
   tiktok: 'https://www.tiktok.com/@mrcripto_',
-  instagram: 'https://www.instagram.com/mrcripto_',
+  instagram: 'https://www.instagram.com/anonimocafe_',
   whats: 'https://wa.me/525512291607',
   locale: 'en-US',
   comment: {
