@@ -38,7 +38,7 @@ export const workTiles: WorkTile[] = [
   },
   {
     description: `Dinámicas de arte`,
-    title: 'para que vuelvas un niño de nuevo.',
+    title: 'para que vuelvas a ser un niño de nuevo.',
     image: {
       src: '/static/images/imgsCafe/arte.jpeg',
       width: 600,
