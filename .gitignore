@@ -40,3 +40,6 @@ yarn-error.log*
 # Contentlayer
 .contentlayer
 .env*.local
+
+# lock files
+bun.lock
