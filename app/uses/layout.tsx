@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import MainLayout from '../components/layouts/main-layout';
+import SectionContainer from '../components/layouts/section-container';
 
 export default function Layout({ children }: { children: ReactNode }) {
-  return <MainLayout>{children}</MainLayout>;
+  return <SectionContainer>{children}</SectionContainer>;
 }

@@ -1,5 +1,5 @@
-import MainLayout from 'app/components/layouts/main-layout';
 import Projects from 'app/projects/projects';
+import SectionContainer from '../components/layouts/section-container';
 
 export const metadata = {
   title: 'Projects',
@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <MainLayout>
+    <SectionContainer>
       <div className="space-y-2 pt-6 pb-8 md:space-y-5 ">
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
           Projects
@@ -18,6 +18,6 @@ export default function Page() {
         </p>
       </div>
       <Projects />
-    </MainLayout>
+    </SectionContainer>
   );
 }
