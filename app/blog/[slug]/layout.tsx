@@ -1,12 +1,12 @@
 import { Fragment, ReactNode } from 'react';
-import MainLayout from '../../components/layouts/main-layout';
+import SectionContainer from '../../components/layouts/section-container';
 import ScrollProgressBar from './scroll-progress-bar';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <Fragment>
       <ScrollProgressBar />
-      <MainLayout>{children}</MainLayout>
+      <SectionContainer>{children}</SectionContainer>
     </Fragment>
   );
 }
