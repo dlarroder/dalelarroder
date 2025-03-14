@@ -1,3 +1,5 @@
+'server only';
+
 import { cache } from 'react';
 
 const client_id = process.env.SPOTIFY_CLIENT_ID || '';
@@ -9,7 +11,7 @@ const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-pla
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=short_term`;
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
-const getAccessToken = async () => {
+const getAccessToken = cache(async () => {
   const response = await fetch(TOKEN_ENDPOINT, {
     method: 'POST',
     headers: {
@@ -26,7 +28,7 @@ const getAccessToken = async () => {
   });
 
   return response.json();
-};
+});
 
 export const getNowPlaying = cache(async () => {
   const { access_token } = await getAccessToken();

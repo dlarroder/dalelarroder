@@ -33,7 +33,7 @@ export default async function TopTracks() {
   return (
     <section className="py-7">
       <p className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
-        Spotify Top Songs
+        Top Spotify Songs
       </p>
       {topTracks.map((track, index) => (
         <Track ranking={index + 1} key={track.songUrl} track={track} />
