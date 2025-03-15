@@ -3,10 +3,15 @@
 import { cache } from 'react';
 import { UserStats, WakaTimeAllTimeStats } from './types';
 
-const secret_key = process.env.WAKATIME_SECRET_KEY;
 const WAKATIME_ENDPOINT = 'https://wakatime.com/api/v1';
 
 const getWakatimeToken = cache(() => {
+  const secret_key = process.env.WAKATIME_SECRET_KEY;
+
+  if (!secret_key) {
+    throw new Error('WAKATIME_SECRET_KEY is required');
+  }
+
   const encodedKey = Buffer.from(`${secret_key} :`).toString('base64');
 
   return encodedKey;
