@@ -121,3 +121,15 @@ export const getBestDay = (weeks: ContributionWeeks) => {
 
   return bestDay;
 };
+
+export const getThisWeeksContributions = (weeks: ContributionWeeks) => {
+  return (
+    weeks[weeks.length - 1]?.contributionDays
+      ?.map((item) => item.contributionCount)
+      ?.reduce((previousValue, currentValue) => previousValue + currentValue, 0) || 0
+  );
+};
+
+export const getDaysFromContribution = (weeks: ContributionWeeks) => {
+  return weeks.flatMap((week) => week.contributionDays).length;
+};
