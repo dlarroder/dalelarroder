@@ -1,7 +1,7 @@
 import { format, secondsToMinutes } from 'date-fns';
 import Link from 'next/link';
-import AnimatedNumber from './animated-number';
-import StatItem from './stat-item';
+import AnimatedNumber from '../animated-number';
+import StatItem from '../stat-item';
 import { extractHoursAndMinutes, secondsToHours } from './utils';
 import { getAllTimeStats, getStatsThisWeek } from './wakatime';
 
@@ -34,7 +34,7 @@ export default async function WakaStats() {
           <AnimatedNumber number={minutes} /> <span>minutes</span>
         </StatItem>
         <StatItem title="Best Day Coding">
-          <span>{format(thisWeekStats.best_day.date, 'PPP')} — </span>
+          <span>{format(thisWeekStats.best_day.date, 'PP')} — </span>
           <AnimatedNumber number={secondsToHours(thisWeekStats.best_day.total_seconds)} />{' '}
           <span>hours</span>
         </StatItem>

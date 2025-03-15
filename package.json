@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@fontsource/mukta": "5.1.0",
+    "@octokit/graphql": "^8.2.1",
     "@radix-ui/react-tooltip": "1.1.6",
     "@studio-freight/react-lenis": "0.0.47",
     "@tailwindcss/forms": "0.5.9",
@@ -24,7 +25,6 @@
     "autoprefixer": "10.4.20",
     "classnames": "2.5.1",
     "cmdk": "1.0.4",
-    "contributions": "0.8.0",
     "date-fns": "^4.1.0",
     "eslint": "9.17.0",
     "eslint-config-next": "15.1.1",
@@ -43,7 +43,6 @@
     "prettier": "3.4.2",
     "prettier-plugin-tailwindcss": "0.6.9",
     "react": "18.2.0",
-    "react-activity-calendar": "^2.3.5",
     "react-dom": "18.2.0",
     "react-icons": "5.4.0",
     "rehype-pretty-code": "^0.14.0",

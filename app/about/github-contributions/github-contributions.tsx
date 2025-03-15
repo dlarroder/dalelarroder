@@ -1,22 +1,20 @@
-import { Contributions } from 'contributions';
-import { Activity } from 'react-activity-calendar';
 import Calendar from './calendar';
+import { getContributions } from './github';
+import GithubStats from './github-stats';
 
 export default async function GithubContributions() {
-  const contributions = await Contributions.forUser('dlarroder');
-  const days = contributions.getDays();
+  const contributions = await getContributions('dlarroder');
 
-  const data: Activity[] = days.map((day) => {
-    const date = day.getDate();
-    const intensity = day.getIntensity();
-    const count = day.getCount();
-
-    return {
-      date: date,
-      level: intensity,
-      count: count,
-    };
-  });
-
-  return <Calendar data={data} />;
+  return (
+    <section className="space-y-4">
+      <div>
+        <p className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
+          Github
+        </p>
+        <p className="text-gray-500 dark:text-gray-400 leading-4">Contributions Stats</p>
+      </div>
+      <Calendar contributions={contributions} />
+      <GithubStats contributions={contributions} />
+    </section>
+  );
 }

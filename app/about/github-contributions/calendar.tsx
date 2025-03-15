@@ -1,37 +1,96 @@
 'use client';
 
-import { useTheme } from 'next-themes';
-import ActivityCalendar, { Activity, ThemeInput } from 'react-activity-calendar';
+import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
+import classNames from 'classnames';
+import { motion } from 'framer-motion';
 import ActivityTooltip from './activity-tooltip';
-
-export const GITHUB_THEME: ThemeInput = {
-  light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
-  dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
-};
+import { ContributionCalendar } from './github';
 
 interface Props {
-  data: Activity[];
+  contributions: ContributionCalendar;
 }
 
-export default function Calendar({ data }: Props) {
-  const { theme = 'dark' } = useTheme();
+export default function Calendar({ contributions }: Props) {
+  const { weeks, months, colors } = contributions;
 
   return (
-    <section className="flex flex-col space-y-4">
-      <p className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
-        Github Contributions
-      </p>
-      <ActivityCalendar
-        colorScheme={theme === 'dark' ? 'dark' : 'light'}
-        data={data}
-        theme={GITHUB_THEME}
-        showWeekdayLabels
-        labels={{
-          totalCount: '{{count}} contributions within the last year',
-          weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-        }}
-        renderBlock={(block, activity) => <ActivityTooltip block={block} activity={activity} />}
-      />
-    </section>
+    <TooltipProvider delayDuration={400} skipDelayDuration={100}>
+      <div className="relative flex flex-col">
+        <ul className="flex justify-end gap-0.75 overflow-hidden text-xs dark:text-neutral-400 md:justify-start">
+          {months.map((month) => (
+            <li
+              key={month.firstDay}
+              className={classNames(`${month.totalWeeks < 2 ? 'invisible' : ''}`)}
+              style={{ minWidth: 14.3 * month.totalWeeks }}
+            >
+              {month.name}
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex justify-start gap-0.75 overflow-hidden">
+          {weeks?.map((week) => (
+            <div key={week.firstDay}>
+              {week.contributionDays.map((contribution) => {
+                const backgroundColor = contribution.contributionCount > 0 && contribution.color;
+
+                const randomizedDelay = Math.random() * week.contributionDays.length * 0.3;
+
+                return (
+                  <ActivityTooltip
+                    block={
+                      <motion.span
+                        key={contribution.date}
+                        initial="initial"
+                        animate="animate"
+                        variants={{
+                          initial: { opacity: 0, translateY: -20 },
+                          animate: {
+                            opacity: 1,
+                            translateY: 0,
+                            transition: { delay: randomizedDelay },
+                          },
+                        }}
+                        className="my-0.5 block h-3 w-3 rounded-sm bg-neutral-200 dark:bg-[#161B22]"
+                        style={backgroundColor ? { backgroundColor } : undefined}
+                      />
+                    }
+                    count={contribution.contributionCount}
+                    date={new Date(contribution.date)}
+                    key={contribution.date}
+                  />
+                );
+              })}
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex items-center gap-2 text-sm">
+            <span className="dark:text-neutral-400">Less</span>
+            <ul className="flex gap-1">
+              <motion.li className="h-2.5 w-2.5 rounded-sm bg-neutral-300 dark:bg-neutral-800" />
+              {colors.map((item, index) => (
+                <motion.li
+                  key={item}
+                  initial="initial"
+                  animate="animate"
+                  variants={{
+                    initial: { opacity: 0 },
+                    animate: {
+                      opacity: 1,
+                      transition: { delay: index * 0.5 },
+                    },
+                  }}
+                  className="h-2.5 w-2.5 rounded-sm"
+                  style={{ backgroundColor: item }}
+                />
+              ))}
+            </ul>
+            <span>More</span>
+          </div>
+        </div>
+      </div>
+    </TooltipProvider>
   );
 }
