@@ -1,7 +1,7 @@
 import { format, secondsToMinutes } from 'date-fns';
 import Link from 'next/link';
 import AnimatedNumber from './animated-number';
-import StatItem from './StatItem';
+import StatItem from './stat-item';
 import { extractHoursAndMinutes, secondsToHours } from './utils';
 import { getAllTimeStats, getStatsThisWeek } from './wakatime';
 
