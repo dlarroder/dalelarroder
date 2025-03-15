@@ -7,7 +7,7 @@ async function fetchTopTracks(): Promise<Song[] | null> {
     const response = await getTopTracks();
     const { items } = await response.json();
 
-    const tracks = items.slice(0, 5).map((track: TrackInfo) => ({
+    const tracks = items?.slice(0, 5).map((track: TrackInfo) => ({
       artist: track.artists.map((_artist) => _artist.name).join(', '),
       songUrl: track.external_urls.spotify,
       title: track.name,

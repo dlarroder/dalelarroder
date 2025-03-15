@@ -98,3 +98,26 @@ export const getMonthContributionCount = (months: ContributionMonths, weeks: Con
     };
   });
 };
+
+export const getBestDay = (weeks: ContributionWeeks) => {
+  let bestDay: {
+    day: string;
+    count: number;
+  } = {
+    day: '',
+    count: 0,
+  };
+
+  weeks.forEach((week) => {
+    week.contributionDays.forEach((day) => {
+      if (day.contributionCount > bestDay.count) {
+        bestDay = {
+          day: day.date,
+          count: day.contributionCount,
+        };
+      }
+    });
+  });
+
+  return bestDay;
+};
