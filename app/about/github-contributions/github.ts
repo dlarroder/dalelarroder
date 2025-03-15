@@ -81,24 +81,6 @@ export const getContributions = cache(async (username: string): Promise<Contribu
   return contributions;
 });
 
-export const getMonthContributionCount = (months: ContributionMonths, weeks: ContributionWeeks) => {
-  return months.map((month) => {
-    const filterContributionDay = weeks
-      .filter((week) => week.firstDay.slice(0, 7) === month.firstDay.slice(0, 7))
-      .map((item) => item.contributionDays)
-      .flat(1);
-    const getContributionsByMonth = filterContributionDay.reduce(
-      (previousValue, currentValue) => previousValue + currentValue.contributionCount,
-      0
-    );
-
-    return {
-      ...month,
-      contributionsCount: getContributionsByMonth,
-    };
-  });
-};
-
 export const getBestDay = (weeks: ContributionWeeks) => {
   let bestDay: {
     day: string;
