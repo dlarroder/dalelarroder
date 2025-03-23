@@ -20,7 +20,7 @@ export default function GithubContributions() {
   }, [year]);
 
   if (!contributions) {
-    return null;
+    return <GithubCalendarSkeleton />;
   }
 
   return (
