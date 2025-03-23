@@ -18,7 +18,7 @@ export default function YearSelect({ selectedYear, onYearChange }: Props) {
             onYearChange(year);
           }}
           key={year}
-          className={classNames('border-b', {
+          className={classNames('border-b-2', {
             'border-transparent': selectedYear !== year,
             'border-primary-500': selectedYear === year,
           })}
