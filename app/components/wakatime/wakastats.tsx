@@ -1,5 +1,4 @@
 import { format, secondsToMinutes } from 'date-fns';
-import Link from 'next/link';
 import AnimatedNumber from '../animated-number';
 import StatItem from '../stat-item';
 import { extractHoursAndMinutes, secondsToHours } from './utils';
@@ -14,18 +13,9 @@ export default async function WakaStats() {
   return (
     <section className="space-y-4 mt-7">
       <div>
-        <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
-            Wakatime
-          </h2>
-          <Link
-            href="https://wakatime.com/@dlarroder"
-            target="_blank"
-            className="text-gray-500 dark:text-gray-400"
-          >
-            @dlarroder
-          </Link>
-        </div>
+        <h2 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
+          Wakatime
+        </h2>
         <p className="text-gray-500 dark:text-gray-400 leading-4">Coding Stats</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

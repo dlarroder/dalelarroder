@@ -1,10 +1,6 @@
-import Calendar from './calendar';
-import { getContributions } from './github';
-import GithubStats from './github-stats';
+import Contributions from './contributions';
 
-export default async function GithubContributions() {
-  const contributions = await getContributions('dlarroder');
-
+export default function GithubContributions() {
   return (
     <section className="space-y-4">
       <div>
@@ -13,8 +9,7 @@ export default async function GithubContributions() {
         </p>
         <p className="text-gray-500 dark:text-gray-400 leading-4">Contributions Stats</p>
       </div>
-      <Calendar contributions={contributions} />
-      <GithubStats contributions={contributions} />
+      <Contributions />
     </section>
   );
 }

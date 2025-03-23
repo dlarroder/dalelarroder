@@ -4,8 +4,8 @@ import StatItem from '../../components/stat-item';
 import {
   ContributionCalendar,
   getBestDay,
+  getContributionStreak,
   getDaysFromContribution,
-  getThisWeeksContributions,
 } from './github';
 
 interface Props {
@@ -16,8 +16,10 @@ export default function GithubStats({ contributions }: Props) {
   const { weeks, totalContributions } = contributions;
 
   const bestDay = getBestDay(weeks);
-  const thisWeeksContributions = getThisWeeksContributions(weeks);
   const daysFromContribution = getDaysFromContribution(weeks);
+  const streak = getContributionStreak(
+    contributions.weeks.flatMap((week) => week.contributionDays)
+  );
   const averageContribution = totalContributions / daysFromContribution;
 
   return (
@@ -26,9 +28,9 @@ export default function GithubStats({ contributions }: Props) {
         <AnimatedNumber number={totalContributions} />
         <span> contributions</span>
       </StatItem>
-      <StatItem title="This week">
-        <AnimatedNumber number={thisWeeksContributions} />
-        <span> contributions</span>
+      <StatItem title="Longest Streak">
+        <AnimatedNumber number={streak.longestStreak} />
+        <span> days</span>
       </StatItem>
       <StatItem title="Best day">
         <span>{format(bestDay.day, 'PP')} — </span>

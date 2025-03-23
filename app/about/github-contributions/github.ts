@@ -1,10 +1,8 @@
-'server only';
-
 import { graphql } from '@octokit/graphql';
 import { cache } from 'react';
 
 const getGraphqlWithAuth = cache(() => {
-  const github_token = process.env.GITHUB_TOKEN || '';
+  const github_token = process.env.NEXT_PUBLIC_GITHUB_TOKEN || '';
 
   if (!github_token) {
     throw new Error('GITHUB_TOKEN is required');
@@ -20,9 +18,9 @@ const getGraphqlWithAuth = cache(() => {
 });
 
 const query = `
-  query ($username: String!) {
+  query ($username: String!, $from: DateTime!, $to: DateTime!) {
     user(login: $username) {
-      contributionsCollection {
+      contributionsCollection(from: $from, to: $to) {
         contributionCalendar {
           colors
           totalContributions
@@ -32,7 +30,7 @@ const query = `
               date
               contributionCount
             }
-            firstDay,
+            firstDay
           }
           months {
             firstDay
@@ -69,17 +67,46 @@ export type ContributionMonths = ContributionCalendar['months'];
 
 export type ContributionWeeks = ContributionCalendar['weeks'];
 
-export const getContributions = cache(async (username: string): Promise<ContributionCalendar> => {
-  const graphqlWithAuth = getGraphqlWithAuth();
-  const response = await graphqlWithAuth<GithubResponse>({
-    query,
-    username,
-  });
+export type ContributionDay = ContributionWeeks[0]['contributionDays'][0];
 
-  const contributions = response.user.contributionsCollection.contributionCalendar;
+export type ContributionStreak = {
+  longestStreak: number;
+  currentStreak: number;
+  longestStreakStart: string | null;
+  longestStreakEnd: string | null;
+  currentStreakStart: string | null;
+};
 
-  return contributions;
-});
+export const getContributions = cache(
+  async (username: string, year: number): Promise<ContributionCalendar> => {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+
+    let from: string;
+    let to: string = today.toISOString(); // Always set `to` as today
+
+    if (year === currentYear) {
+      // If the year is the current year, set `from` to today minus 1 year
+      const pastYear = new Date();
+      pastYear.setFullYear(today.getFullYear() - 1);
+      from = pastYear.toISOString();
+    } else {
+      // Otherwise, use the standard Jan 1 - Dec 31 range
+      from = new Date(year, 0, 1).toISOString();
+      to = new Date(year, 11, 31, 23, 59, 59).toISOString();
+    }
+
+    const graphqlWithAuth = getGraphqlWithAuth();
+    const response = await graphqlWithAuth<GithubResponse>({
+      query,
+      username,
+      from,
+      to,
+    });
+
+    return response.user.contributionsCollection.contributionCalendar;
+  }
+);
 
 export const getBestDay = (weeks: ContributionWeeks) => {
   let bestDay: {
@@ -115,3 +142,49 @@ export const getThisWeeksContributions = (weeks: ContributionWeeks) => {
 export const getDaysFromContribution = (weeks: ContributionWeeks) => {
   return weeks.flatMap((week) => week.contributionDays).length;
 };
+
+export function getContributionStreak(contributionDays: ContributionDay[]): ContributionStreak {
+  let longestStreak = 0;
+  let currentStreak = 0;
+  let tempStreak = 0;
+  let longestStreakStart: string | null = null;
+  let longestStreakEnd: string | null = null;
+  let currentStreakStart: string | null = null;
+
+  let previousDate: Date | null = null;
+
+  for (const { date, contributionCount } of contributionDays) {
+    const currentDate = new Date(date);
+
+    if (contributionCount > 0) {
+      if (previousDate && currentDate.getTime() - previousDate.getTime() === 86400000) {
+        tempStreak++;
+      } else {
+        tempStreak = 1;
+        currentStreakStart = date;
+      }
+
+      if (tempStreak > longestStreak) {
+        longestStreak = tempStreak;
+        longestStreakStart = currentStreakStart;
+        longestStreakEnd = date;
+      }
+
+      currentStreak = tempStreak;
+    } else {
+      tempStreak = 0;
+      currentStreak = 0;
+      currentStreakStart = null;
+    }
+
+    previousDate = currentDate;
+  }
+
+  return {
+    longestStreak,
+    currentStreak,
+    longestStreakStart,
+    longestStreakEnd,
+    currentStreakStart,
+  };
+}
