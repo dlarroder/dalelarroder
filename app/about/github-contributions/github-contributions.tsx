@@ -1,9 +1,27 @@
-import Calendar from './calendar';
-import { getContributions } from './github';
-import GithubStats from './github-stats';
+'use client';
 
-export default async function GithubContributions() {
-  const contributions = await getContributions('dlarroder');
+import { useEffect, useState, useTransition } from 'react';
+import Calendar from './calendar';
+import { ContributionCalendar, getContributions } from './github';
+import GithubCalendarSkeleton from './github-calendar-skeleton';
+import GithubStats from './github-stats';
+import YearSelect from './year-select';
+
+export default function GithubContributions() {
+  const [year, setYear] = useState(new Date().getFullYear());
+  const [contributions, setContributions] = useState<ContributionCalendar | null>(null);
+  const [isPending, startTransition] = useTransition();
+
+  useEffect(() => {
+    startTransition(async () => {
+      const data = await getContributions('dlarroder', year);
+      setContributions(data);
+    });
+  }, [year]);
+
+  if (!contributions) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <section className="space-y-4">
@@ -13,7 +31,10 @@ export default async function GithubContributions() {
         </p>
         <p className="text-gray-500 dark:text-gray-400 leading-4">Contributions Stats</p>
       </div>
-      <Calendar contributions={contributions} />
+      <div className="flex space-x-4">
+        {isPending ? <GithubCalendarSkeleton /> : <Calendar contributions={contributions} />}
+        <YearSelect selectedYear={year} onYearChange={setYear} />
+      </div>
       <GithubStats contributions={contributions} />
     </section>
   );

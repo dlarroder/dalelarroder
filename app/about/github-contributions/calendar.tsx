@@ -15,7 +15,7 @@ export default function Calendar({ contributions }: Props) {
 
   return (
     <TooltipProvider delayDuration={400} skipDelayDuration={100}>
-      <div className="relative flex flex-col">
+      <div className="relative flex flex-col space-y-2 w-[300px] md:w-[640px] lg:w-[800px]">
         <ul className="flex justify-end gap-0.75 overflow-hidden text-xs dark:text-neutral-400 md:justify-start">
           {months.map((month) => (
             <li
@@ -34,7 +34,7 @@ export default function Calendar({ contributions }: Props) {
               {week.contributionDays.map((contribution) => {
                 const backgroundColor = contribution.contributionCount > 0 && contribution.color;
 
-                const randomizedDelay = Math.random() * week.contributionDays.length * 0.3;
+                const randomizedDelay = Math.random() * week.contributionDays.length * 0.2;
 
                 return (
                   <ActivityTooltip
