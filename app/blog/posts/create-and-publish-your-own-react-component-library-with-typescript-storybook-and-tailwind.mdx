@@ -4,9 +4,7 @@ publishedAt: '2022-09-18'
 summary: 'A guide on how to create your own custom React component library with Storybook, TypeScript, and Tailwind, and publish them to npm.'
 ---
 
-# Overview
-
-# What is a component library?
+### What is a component library?
 
 A [component library](https://langvad.dev/blog/what-is-a-component-library/) is basically a set of re-usable components. It could be a folder inside your project with
 common components used throughout the application. It could be a distributed package on npm. It could also be a part of a bigger design system. A component
@@ -14,7 +12,7 @@ library can be small and it can be large. There are no official rules for what a
 
 Some examples of a component library are: Google's [MUI](https://mui.com/), Alibaba's [Ant Design](https://ant.design/) and IBM's design system [Carbon](https://carbondesignsystem.com/).
 
-# Introduction
+### Introduction
 
 I have spent the weekend trying out different guides and tutorials, trying to setup [Storybook](https://storybook.js.org/), [Rollup](https://rollupjs.org/guide/en/), [Yarn](https://yarnpkg.com/), and
 [Jest](https://jestjs.io/) to play nicely together but it was a pain, not to mention I really wanted to make [Vite](https://vitejs.dev/) work with this but to no avail.
@@ -24,9 +22,9 @@ But behold, I found a package called [TSDX](https://tsdx.io/), it is a zero-conf
 In this guide, I'll be creating my component library `playground`, this is where (I'm hoping) I can show off some of the cool component ideas I have to the world and
 publish it to [NPM](https://www.npmjs.com/) (because I'm cool).
 
-# Getting Started
+### Getting Started
 
-## Step 1: Initialize project using tsdx
+#### Step 1: Initialize project using tsdx
 
 ```bash
 npx tsdx create playground
@@ -38,7 +36,7 @@ Please choose `react-with-storybook`
 
 ![create-playground](/static/blog/create-playground.webp)
 
-## Step 2: Adding Tailwind
+#### Step 2: Adding Tailwind
 
 We will need to install `tailwindcss`, `postcss` and `autoprefixer`
 
@@ -128,7 +126,7 @@ and you should see our tailwind styles working
 
 ![tailwind-working](/static/blog/tailwind-working.webp)
 
-## Step 3: Setup our build configuration
+#### Step 3: Setup our build configuration
 
 Because we added Tailwind to our library, we need to include exporting it's styles in
 our build config.
@@ -166,7 +164,7 @@ index.js
 The `styles.css` is important because this is what our package consumers will use for our
 styles to take effect in their projects.
 
-## Step 4: Publishing to NPM
+#### Step 4: Publishing to NPM
 
 First step is to push our code to a Github repo, so just create a new repository
 and push your code to Github,
@@ -213,7 +211,7 @@ npm publish --access public
 
 Boom, you are done! you can now check our NPM account for our new package [@dlarroder/playground](https://www.npmjs.com/package/@dlarroder/playground).
 
-# Conclusion
+### Conclusion
 
 Building and publishing your own package might sound hard at first, but it is really simple when you've tried it,
 you just need to follow some random guide in the internet like this one, (joke) but CLI tools like [tsdx](https://tsdx.io/) really

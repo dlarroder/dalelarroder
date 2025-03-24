@@ -4,9 +4,7 @@ publishedAt: '2022-07-31'
 summary: 'This article will show you what is the purpose if the “key” prop in React and some best practices around it.'
 ---
 
-## Overview
-
-# Why does React need keys?
+### Why does React need keys?
 
 The `key` prop is the only thing React can use to identify components in the DOM when they are
 mapped from an array. If no key is provided then you will see an error like this:
@@ -18,7 +16,7 @@ Missing “key” prop for element in iterator
 In that case, React will default to use the index of the element in the array as the key.
 Usually, developers will also provide index as the key just to remove the warning.
 
-# Using the index as a key is dangerous
+#### Using the index as a key is dangerous
 
 #### Please do NOT do this:
 
@@ -36,13 +34,13 @@ It is stated in the official React [docs](https://reactjs.org/docs/lists-and-key
 
 Robin Pokorny has an amazing [article](https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318) explaining in detail the negative impacts of using an index as a key.
 
-# Rules of keys
+#### Rules of keys
 
 - Keys must be `unique` among siblings. However, it’s okay to use the same keys for JSX nodes
   in different arrays.
 - Keys must `not change` or that defeats their purpose! Don’t generate them while rendering.
 
-# Where to get your key
+#### Where to get your key
 
 - **Data from a database:** If your data is coming from a database, you can use the database keys/IDs,
   which are unique by nature.
@@ -65,7 +63,7 @@ const todos = [
 todos.map((todo) => <Todo {...todo} key={todo.id} />);
 ```
 
-# Conclusion
+#### Conclusion
 
 - Always try to use stable **unique** IDs as the key.
 - If the list is **never** reordered or filtered, you can use their index as keys. (As a last resort)

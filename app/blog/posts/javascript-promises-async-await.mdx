@@ -4,7 +4,7 @@ publishedAt: '2022-04-20'
 summary: 'A short visual guide on what a Promise is in JavaScript, and how to avoid call back hell.'
 ---
 
-## What is a Promise?
+### What is a Promise?
 
 The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
 
@@ -14,15 +14,15 @@ A **Promise** is in one of these states:
 - <em>fulfilled</em>: meaning that the operation was completed successfully.
 - <em>rejected</em>: meaning that the operation failed.
 
-## Visualization of a Promise
+### Visualization of a Promise
 
 ![image](/static/blog/promises.webp)
 
-## What is Async/Await?
+### What is Async/Await?
 
 Async/Await was the result of `callback hell` and nested promises from the `old era` of JavaScript
 
-## Visualization of callback hell
+### Visualization of callback hell
 
 ```js
 const doSomeFetch = fetch('/some-api');
@@ -59,7 +59,7 @@ doSomeFetch().then((data) => {
 });
 ```
 
-## Async/Await allows us to write code like this:
+### Async/Await allows us to write code like this:
 
 ```js
 const data = await doSomeFetch();
@@ -123,7 +123,7 @@ const outcome = await doAnoterFetch(data, result).catch(handleError);
 const fin = await probablyLastFetch(data, result, outcome).catch(handleError);
 ```
 
-## A Clean Approach
+### A Clean Approach
 
 Building up on our previous examples, let's create a better error handler:
 
@@ -157,7 +157,7 @@ const [fin, finError] = await fancyFetch(probablyLastFetch, data, result, outcom
 if(finError) { // got the error context, do something! }
 ```
 
-## Conclusion
+### Conclusion
 
 - If you don't care about handling errors for individual async calls, go with a single `try/catch`.
 - If you care about handling errors for individual async calls, but do not care about the things inside the context of the catch block, use `await doSomeFetch().catch(handleError)`;

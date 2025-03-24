@@ -4,13 +4,13 @@ publishedAt: '2024-11-26'
 summary: 'A guide on how to merge any existing app or library into Turborepo.'
 ---
 
-# Intro
+### Intro
 
 Recently I have been challenged with the task of merging an existing repository into a [Turborepo](https://turbo.build/repo/docs) monorepo. This is a common task when migrating to a monorepo, and it can be a bit tricky if you are not familiar with the process. In this article, I will guide you through the steps to merge a git repository into Turborepo.
 
 I won't be explaining what a monorepo is in this article, but if you are interested in learning more about it, I have made a similar article on [how to merge a git repository into Nx](https://www.dalelarroder.com/blog/how-to-merge-a-repository-into-nx).
 
-## Step 1: Clone the source repository
+### Step 1: Clone the source repository
 
 The first step is to clone the repository you want to merge into the Turborepo monorepo. You can do this by running the following command:
 
@@ -24,7 +24,7 @@ Change the directory to the cloned repository:
 cd source-repo
 ```
 
-## Step 2: Filter the source repository into its own subdirectory
+### Step 2: Filter the source repository into its own subdirectory
 
 For this step we will use the [git filter-repo](https://github.com/newren/git-filter-repo) tool to filter the source repository into its own subdirectory, this will also filter the history of the repository.
 
@@ -34,7 +34,7 @@ git filter-repo --to-subdirectory-filter folder-name
 
 Replace `folder-name` with the desired subdirectory for this repository in the monorepo.
 
-## Step 3: Push the Filtered Repo to the Monorepo
+### Step 3: Push the Filtered Repo to the Monorepo
 
 Add the monorepo as a remote:
 

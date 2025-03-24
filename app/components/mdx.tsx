@@ -73,7 +73,12 @@ export const components = {
     );
   },
   code: (props: ComponentPropsWithoutRef<'code'>) => {
-    return <code className="bg-transparent before:content-none after:content-none" {...props} />;
+    return (
+      <code
+        className="bg-transparent before:content-none after:content-none text-green-500 text-sm"
+        {...props}
+      />
+    );
   },
   pre: (props: ComponentPropsWithoutRef<'pre'>) => (
     <pre className="bg-gray-800 p-4 rounded-md overflow-x-auto text-sm" {...props} />
