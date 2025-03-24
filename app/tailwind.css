@@ -1,13 +1,23 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-.task-list-item::before {
-  @apply hidden;
-}
+@config '../tailwind.config.js';
 
-.task-list-item {
-  @apply list-none;
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
 }
 
 html::-webkit-scrollbar {
@@ -23,7 +33,7 @@ input:-webkit-autofill:focus {
 }
 
 .underline-magical {
-  @apply bg-gradient-to-r from-primary-500 to-primary-500 bg-no-repeat 
+  @apply bg-linear-to-r from-primary-500 to-primary-500 bg-no-repeat 
   no-underline [background-position:0_100%]
   [background-size:100%_0.2em] focus:[background-size:100%_100%] hover:text-white
   hover:[background-size:100%_100%] motion-safe:transition-all
@@ -54,47 +64,6 @@ input:-webkit-autofill:focus {
   height: 4px !important;
 }
 
-.introText {
+.intro-text {
   transition: opacity 0.4s;
-}
-
-[cmdk-root] {
-  @apply fixed top-[25vh] left-1/2 z-10 w-full max-w-[640px] 
-  -translate-x-1/2 transform rounded-xl border bg-white p-2 shadow-lg 
-  dark:border-neutral-800 dark:bg-neutral-900 dark:shadow 
-  dark:shadow-neutral-700;
-}
-
-[cmdk-input] {
-  @apply h-12 w-full border-0 border-b border-b-gray-200 
-  bg-transparent text-sm font-semibold
-  text-gray-500 placeholder-gray-500 outline-none focus:border-b focus:border-transparent 
-  focus:border-b-gray-200 focus:ring-0 dark:border-b-gray-500 dark:text-gray-200
-  dark:placeholder-gray-300;
-}
-
-[cmdk-list] {
-  @apply mt-2 max-h-64 overflow-y-scroll px-4 scrollbar-thin
-  scrollbar-track-gray-100 scrollbar-thumb-gray-300 scrollbar-track-rounded-lg 
-  scrollbar-thumb-rounded-lg dark:scrollbar-track-neutral-800 
-  dark:scrollbar-thumb-neutral-700;
-}
-
-[cmdk-item] {
-  @apply relative flex h-12 cursor-pointer select-none items-center space-x-3 rounded-md
-  px-4 text-sm font-medium text-gray-700 transition-all duration-200 
-  ease-in dark:text-gray-200;
-}
-
-[cmdk-item][aria-selected='true'] {
-  @apply bg-gray-200 dark:bg-neutral-800;
-}
-
-[cmdk-group-heading] {
-  @apply flex select-none items-center py-1 text-sm 
-  font-medium text-gray-700 dark:text-gray-200;
-}
-
-[cmdk-empty] {
-  @apply flex items-center justify-center py-4 text-sm text-gray-500;
 }

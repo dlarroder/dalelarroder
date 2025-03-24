@@ -11,7 +11,7 @@ summary: 'This article will show you what is the purpose if the “key” prop i
 The `key` prop is the only thing React can use to identify components in the DOM when they are
 mapped from an array. If no key is provided then you will see an error like this:
 
-```console
+```bash
 Missing “key” prop for element in iterator
 ```
 
@@ -40,16 +40,16 @@ Robin Pokorny has an amazing [article](https://robinpokorny.medium.com/index-as-
 
 - Keys must be `unique` among siblings. However, it’s okay to use the same keys for JSX nodes
   in different arrays.
-
 - Keys must `not change` or that defeats their purpose! Don’t generate them while rendering.
 
 # Where to get your key
 
 - **Data from a database:** If your data is coming from a database, you can use the database keys/IDs,
   which are unique by nature.
-
 - **Locally generated data:** If your data is generated and persisted locally (e.g. notes in a note-taking app),
   use an incrementing counter, `crypto.randomUUID()` or a package like `uuid` when creating items.
+
+<br />
 
 ```js
 // id must be from db, which are unique by nature.

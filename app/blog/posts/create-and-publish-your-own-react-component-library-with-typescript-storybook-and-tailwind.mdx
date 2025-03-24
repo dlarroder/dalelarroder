@@ -55,7 +55,7 @@ npx tailwindcss init
 After generating your `tailwind.config.js` file, you can add the following lines to run
 [Just in Time](https://v2.tailwindcss.com/docs/just-in-time-mode) Mode and specify a purge path to purge any unused CSS
 
-```js:tailwind.config.js
+```ts
 module.exports = {
   mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './stories/*'],
@@ -66,7 +66,7 @@ module.exports = {
 Next is to create a `tailwind.css` file at the root of your project, you can name it anything you like by the way,
 I just want to name it tailwind.css because thats the only styles I'll be needing.
 
-```css:tailwind.css
+```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -81,7 +81,7 @@ yarn add -D @storybook/addon-postcss
 
 After installing `@storybook/addon-postcss`, we need to add it to `./storybook/main.js`
 
-```js:./storybook/main.js
+```js
 module.exports = {
   stories: ['../stories/**/*.stories.@(ts|tsx|js|jsx)'],
   addons: [
@@ -114,7 +114,7 @@ yarn storybook
 
 You can add the following styles in your `src/index.tsx`
 
-```tsx:src/index.tsx
+```tsx
 export const Thing: FC<Props> = ({ children }) => {
   return (
     <div className="text-xl text-pink-500 p-4 bg-gray-200 rounded-lg">
@@ -138,18 +138,16 @@ Luckily, Tailwind has great documentation, and we can just use it's default conf
 
 In our `package.json` file, we just need to add the following
 
-```json:package.json
+```json
 "scripts": {
-  ... rest of
-"build-tailwind": "npx tailwindcss -o ./dist/styles.css --minify"
+  "build-tailwind": "npx tailwindcss -o ./dist/styles.css --minify"
 }
 ```
 
 And we also need to change our build script to consume our new `build-tailwind` script
 
-```json:package.json
+```json
 "scripts": {
-  ... rest of
   "build": "tsdx build && yarn build-tailwind",
 }
 ```
@@ -157,7 +155,7 @@ And we also need to change our build script to consume our new `build-tailwind` 
 To check if your build worked, you can run `yarn build` and check if your build has
 generated a `styles.css` file in your `dist` folder
 
-```diff:dist/
+```diff
 dist/
 index.d.ts
 index.js
@@ -194,7 +192,7 @@ If you don't have an NPM account yet, you can create an account [here](https://w
 After logging in, we are ready to publish our package, but first, we need to change our
 package name to whatever we want, in our case it is called `@dlarroder/playground`
 
-```json:package.json
+```json
 "name": "@dlarroder/playground",
 "author": "Dale Larroder",
 "version": "0.0.1",

@@ -24,7 +24,7 @@ export default async function Blog(props: { params: Promise<{ slug: string }> })
           {formatDate(metadata.publishedAt)}
         </p>
       </div>
-      <article className="prose md:max-w-5xl">{content}</article>
+      <article className="md:max-w-5xl">{content}</article>
     </section>
   );
 }

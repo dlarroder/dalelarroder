@@ -47,7 +47,7 @@ export default function MobileNav() {
             <button
               type="button"
               aria-label="toggle modal"
-              className="h-8 w-8 rounded"
+              className="h-8 w-8 rounded-sm"
               onClick={() => setNavShow(!navShow)}
             >
               <svg

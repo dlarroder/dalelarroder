@@ -22,7 +22,7 @@ it is basically a version-controlled code repository that holds many projects an
 
 ## Creating an Nx Workspace
 
-```
+```bash
 npx create-nx-workspace@latest
 ```
 
@@ -45,7 +45,7 @@ You can read more about Nx's folder structure [here](https://nx.dev/getting-star
 
 ## Step 1: Clone source repository
 
-```
+```bash
 git clone <repo-url> packageC
 ```
 
@@ -56,24 +56,24 @@ will be some git changes that are easier to delete than to start over.
 
 If you are trying to move an app, the sub directory should be `apps/packageC`
 
-```
+```bash
 export TARGET_DIR="apps/packageC"
 ```
 
 If you are trying to move a library, the sub directory should be `libs/packageC`
 
-```
+```bash
 export TARGET_DIR="libs/packageC"
 ```
 
 The next commands will actually move the files and will rewrite all of the git
 history into the the TARGET_DIR you have specified above.
 
-```
+```bash
 cd packageC
 ```
 
-```
+```bash
 git filter-branch --prune-empty --tree-filter '
   mkdir -p "$TARGET_DIR"
   git ls-tree --name-only $GIT_COMMIT | xargs -I files mv files "$TARGET_DIR"
@@ -84,33 +84,33 @@ git filter-branch --prune-empty --tree-filter '
 
 This will print the working directory of the current package you are trying to clone.
 
-```
+```bash
 cd packageC && pwd
 ```
 
 The next step is adding the newly acquired remote to your nx workspace for you to be able to fetch.
 
-```
+```bash
 cd nx-workspace
 ```
 
-```
+```bash
 git remote add packageC <packageC-pwd>
 ```
 
 ## Step 4: Merge packageC into monorepo
 
-```
+```bash
 git fetch packageC --no-tags
 ```
 
-```
+```bash
 git merge packageC/master --allow-unrelated-histories
 ```
 
 ## Step 5: Clean up
 
-```
+```bash
 git remote remove packageC
 ```
 
@@ -136,10 +136,10 @@ If you are importing a CRA, One of the errors you'll be getting is `@nrwl/nx/enf
 
 To fix this, you will need to update all your absolute paths to the path you specified in `tsconfig.base.json`
 
-```:tsconfig.base.json
-    "paths": {
-      "@design-system": ["libs/design/src/index.ts"],
-      },
+```json
+"paths": {
+  "@design-system": ["libs/design/src/index.ts"],
+  },
 ```
 
 and fix all the files that use absolute paths
@@ -155,7 +155,7 @@ If you have merged an existing create react app into nx, you might have encounte
 
 The simple fix for this is to override Nx's webpack config and add the following:
 
-```js:webpack.config.js
+```js
 const nrwlConfig = require('@nrwl/react/plugins/webpack.js');
 
 module.exports = (config, context) => {
@@ -172,7 +172,14 @@ module.exports = (config, context) => {
 
 and don't forget to call it in your apps `project.json` file
 
-```diff:project.json
+```diff
 -"webpackConfig": "@nrwl/react/plugins/webpack"
 +"webpackConfig": "./apps/field-app/webpack.config.js"
 ```
+
+<br />
+
+## Conclusion
+
+Merging an existing repository into an Nx monorepo can be a daunting task, but with the right steps and tools, it can be done seamlessly.
+Nx provides a lot of tools to help you manage your monorepo, and with the right configuration, you can easily merge any existing app or library into your Nx workspace.
