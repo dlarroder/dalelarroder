@@ -1,44 +1,19 @@
-import { getNowPlaying } from 'app/components/spotify/spotify';
+'use client';
+
+import { fetchNowPlaying } from 'app/components/spotify/spotify';
+import useSWR from 'swr';
 import AnimatedBars from './animated-bars';
-import { Artist, NowPlayingSong } from './types';
 
-async function fetchNowPlaying(): Promise<NowPlayingSong | null> {
-  try {
-    const response = await getNowPlaying();
-
-    if (response.status === 204 || response.status > 400) {
-      return null;
+export default function NowPlaying() {
+  const { data: nowPlaying } = useSWR(
+    'nowPlaying', // Cache key
+    () => fetchNowPlaying(),
+    {
+      refreshInterval: 15000,
     }
+  );
 
-    const song = await response.json();
-    const isPlaying = song.is_playing;
-    const title = song.item.name;
-    const artist = song.item.artists.map((artist: Artist) => artist.name).join(', ');
-    const album = song.item.album.name;
-    const albumImageUrl = song.item.album.images[0].url;
-    const songUrl = song.item.external_urls.spotify;
-
-    return {
-      album,
-      albumImageUrl,
-      artist,
-      isPlaying,
-      songUrl,
-      title,
-    };
-  } catch (e) {
-    if (e instanceof Error) {
-      console.error(e.message);
-    }
-  }
-
-  return null;
-}
-
-export default async function NowPlaying() {
-  const nowPlaying = await fetchNowPlaying();
-
-  if (!nowPlaying?.songUrl || !nowPlaying.title || !nowPlaying.artist) {
+  if (!nowPlaying) {
     return (
       <div className="flex items-center justify-center space-x-2 text-sm sm:justify-start sm:text-base">
         <svg className="mt-[-2px] h-4 w-4" viewBox="0 0 168 168">

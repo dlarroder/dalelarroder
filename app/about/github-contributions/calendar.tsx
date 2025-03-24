@@ -15,7 +15,7 @@ export default function Calendar({ contributions }: Props) {
 
   return (
     <TooltipProvider delayDuration={400} skipDelayDuration={100}>
-      <div className="relative flex flex-col space-y-2 w-[300px] md:w-[640px] lg:w-[800px]">
+      <div className="relative flex flex-col space-y-2 w-[calc(100%-53px)] md:w-[640px] lg:w-[800px]">
         <ul className="flex justify-end gap-0.75 overflow-hidden text-xs dark:text-neutral-400 md:justify-start">
           {months.map((month) => (
             <li
