@@ -30,7 +30,7 @@ export function BlogPosts({ posts }: { posts: BlogPost[] }) {
                   </Link>
                 </span>
 
-                <div className="prose max-w-none text-gray-900 dark:text-gray-100">
+                <div className="max-w-none text-gray-900 dark:text-gray-100">
                   {post.metadata.summary}
                 </div>
               </div>

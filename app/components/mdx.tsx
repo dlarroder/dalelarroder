@@ -33,24 +33,24 @@ export const components = {
       {children}
     </h4>
   ),
-  p: ({ children, ...props }: ParagraphProps) => (
-    <p className="leading-snug text-gray-900 dark:text-gray-100" {...props}>
-      {children}
-    </p>
-  ),
   ol: (props: ListProps) => (
-    <ol className="list-decimal pl-5 space-y-2 text-gray-900 dark:text-gray-100" {...props} />
+    <ol className="list-decimal pl-5 text-gray-900 dark:text-gray-100" {...props} />
   ),
   ul: (props: ListProps) => (
-    <ul className="list-disc pl-5 space-y-1 text-gray-900 dark:text-gray-100" {...props} />
+    <ul className="list-disc pl-5 text-gray-900 dark:text-gray-100" {...props} />
   ),
   li: (props: ListItemProps) => <li className="text-gray-900 dark:text-gray-100" {...props} />,
   em: (props: ComponentPropsWithoutRef<'em'>) => <em className="font-medium" {...props} />,
   strong: (props: ComponentPropsWithoutRef<'strong'>) => (
     <strong className="font-bold text-gray-900 dark:text-gray-100" {...props} />
   ),
+  p: ({ children, ...props }: ParagraphProps) => (
+    <p className="leading-snug text-gray-900 dark:text-gray-100 py-4" {...props}>
+      {children}
+    </p>
+  ),
   a: ({ href, children, ...props }: AnchorProps) => {
-    const className = `text-gray-900 dark:text-gray-100 no-underline cursor-pointer bg-no-repeat bg-gradient-to-r  from-primary-500 to-primary-500 [background-position:0_100%] [background-size:100%_0.2em] hover:[background-size:100%_100%] hover:text-white focus:[background-size:100%_100%] motion-safe:transition-all motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500`;
+    const className = `text-gray-900 dark:text-gray-100 no-underline cursor-pointer bg-no-repeat bg-linear-to-r  from-primary-500 to-primary-500 [background-position:0_100%] [background-size:100%_0.2em] hover:[background-size:100%_100%] hover:text-white focus:[background-size:100%_100%] motion-safe:transition-all motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500`;
 
     if (href?.startsWith('/')) {
       return (
@@ -73,8 +73,16 @@ export const components = {
     );
   },
   code: (props: ComponentPropsWithoutRef<'code'>) => {
-    return <code className="bg-transparent before:content-none after:content-none" {...props} />;
+    return (
+      <code
+        className="bg-transparent before:content-none after:content-none text-green-500 text-sm"
+        {...props}
+      />
+    );
   },
+  pre: (props: ComponentPropsWithoutRef<'pre'>) => (
+    <pre className="bg-gray-800 p-4 rounded-md overflow-x-auto text-sm" {...props} />
+  ),
   blockquote: (props: BlockquoteProps) => (
     <blockquote className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700" {...props} />
   ),

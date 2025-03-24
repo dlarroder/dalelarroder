@@ -73,7 +73,7 @@ export default function CommandPalette() {
         onClick={() => setOpen(true)}
         aria-label="Open command palette"
         type="button"
-        className="hidden h-8 w-8 rounded p-1 sm:block"
+        className="hidden h-8 w-8 rounded-sm p-1 sm:block"
         whileHover={{ scale: 1.2 }}
       >
         <TbCommand size={22} className="ext-gray-100" />
