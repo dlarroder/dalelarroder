@@ -3,6 +3,7 @@
 import { Fragment, useState } from 'react';
 import useSWR from 'swr';
 import Calendar from './calendar';
+import Days from './days';
 import { getContributions, GITHUB_USERNAME } from './github';
 import GithubCalendarSkeleton from './github-calendar-skeleton';
 import GithubStats from './github-stats';
@@ -20,7 +21,8 @@ export default function Contributions() {
   if (!contributions || isLoading) {
     return (
       <div className="flex flex-col space-y-4">
-        <div className="flex space-x-4">
+        <div className="flex space-x-2">
+          <Days />
           <GithubCalendarSkeleton />
           <YearSelect selectedYear={year} onYearChange={setYear} />
         </div>
@@ -31,7 +33,8 @@ export default function Contributions() {
 
   return (
     <Fragment>
-      <div className="flex space-x-4">
+      <div className="flex space-x-2">
+        <Days />
         <Calendar contributions={contributions} />
         <YearSelect selectedYear={year} onYearChange={setYear} />
       </div>
