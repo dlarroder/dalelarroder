@@ -7,7 +7,10 @@ import Header from 'app/components/layouts/header';
 import LenisProvider from 'app/components/providers/LenisProvider';
 import ThemeProvider from 'app/components/providers/ThemeProvider';
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { ReactNode } from 'react';
+
+const umamiWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ?? '';
 
 export const metadata: Metadata = {
   title: {
@@ -32,6 +35,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#000000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        <Script defer src="/umami.js" data-website-id={umamiWebsiteId} />
       </head>
       <body className="bg-white text-black antialiased dark:bg-black dark:text-white">
         <ThemeProvider
