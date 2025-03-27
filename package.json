@@ -49,7 +49,7 @@
     "swr": "^2.3.3",
     "tailwindcss": "^4.0.15",
     "typescript": "5.7.2",
-    "use-breakpoint": "4.0.5"
+    "use-breakpoint": "4.0.6"
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
