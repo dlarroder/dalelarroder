@@ -1,11 +1,14 @@
 'use client';
 
-import { cloneElement, useContext } from 'react';
+import { cloneElement, ReactElement, useContext } from 'react';
 import { TileContext } from './TileContext';
 
 interface TileProps {
   page: number;
-  children: JSX.Element;
+  children: ReactElement<{
+    progress: number;
+    opacity: number;
+  }>;
 }
 
 export const Tile = ({ page, children }: TileProps) => {
@@ -27,8 +30,8 @@ export const Tile = ({ page, children }: TileProps) => {
       }}
     >
       {cloneElement(children, {
-        progress: progress,
-        opacity: opacity,
+        progress,
+        opacity,
       })}
     </div>
   );
