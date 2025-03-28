@@ -6,7 +6,7 @@ import { BlogPost } from '../blog/utils';
 
 export function Posts({ posts }: { posts: BlogPost[] }) {
   return (
-    <ul className="mt-6">
+    <ul>
       {posts.map((post, index) => (
         <motion.li
           key={post.slug}
@@ -16,7 +16,7 @@ export function Posts({ posts }: { posts: BlogPost[] }) {
           transition={{ duration: 0.6, delay: index / 10 }}
         >
           <Link href={`/blog/${post.slug}`} aria-label={`Read "${post.metadata.title}"`}>
-            <article className="py-5 flex flex-col space-y-3">
+            <article className="py-7 flex flex-col space-y-3">
               <span className="text-2xl font-bold leading-8 tracking-tight">
                 {post.metadata.title}
               </span>
