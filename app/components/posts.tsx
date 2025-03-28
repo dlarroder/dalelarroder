@@ -10,7 +10,7 @@ export function Posts({ posts }: { posts: BlogPost[] }) {
       {posts.map((post, index) => (
         <motion.li
           key={post.slug}
-          className="border-b border-gray-200 dark:border-gray-800"
+          className="border-b border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 hover:border-gray-400 duration-300"
           initial={{ scale: 0.8, opacity: 0, filter: 'blur(2px)' }}
           animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
           transition={{ duration: 0.6, delay: index / 10 }}
