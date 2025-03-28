@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import gsap from 'gsap';
+import { motion } from 'motion/react';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { Project, ProjectModal } from './types';

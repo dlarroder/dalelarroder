@@ -1,6 +1,6 @@
 'use client';
 
-import { animate, AnimationPlaybackControls } from 'framer-motion';
+import { animate, AnimationPlaybackControls } from 'motion/react';
 import { HTMLProps, useEffect, useRef } from 'react';
 
 interface AnimateCounterProps extends HTMLProps<HTMLSpanElement> {

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useState } from 'react';
 import useBreakpoint from 'use-breakpoint';
 import { projects } from './constants';
@@ -19,8 +19,8 @@ export default function Projects() {
       {projects.map((project, index) => (
         <motion.div
           key={project.title}
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          initial={{ scale: 0.8, opacity: 0, filter: 'blur(2px)' }}
+          animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
           transition={{ duration: 0.6, delay: index / 10 }}
         >
           <ProjectItem

@@ -2,7 +2,7 @@
 
 import { Provider as TooltipProvider } from '@radix-ui/react-tooltip';
 import classNames from 'classnames';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import ActivityTooltip from './activity-tooltip';
 import { ContributionCalendar } from './github';
 
