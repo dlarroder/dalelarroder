@@ -27,7 +27,7 @@
     "eslint-config-next": "15.2.3",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-prettier": "5.2.1",
+    "eslint-plugin-prettier": "5.2.5",
     "gsap": "3.12.5",
     "husky": "9.1.7",
     "lenis": "^1.2.3",
