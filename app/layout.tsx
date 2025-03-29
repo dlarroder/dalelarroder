@@ -1,6 +1,3 @@
-import '@fontsource/mukta';
-import './tailwind.css';
-
 import Analytics from 'app/components/analytics/analytics';
 import Footer from 'app/components/layouts/footer';
 import Header from 'app/components/layouts/header';
@@ -8,6 +5,8 @@ import LenisProvider from 'app/components/providers/LenisProvider';
 import ThemeProvider from 'app/components/providers/ThemeProvider';
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
+import { mukta } from './fonts';
+import './tailwind.css';
 
 export const metadata: Metadata = {
   title: {
@@ -24,7 +23,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={mukta.className}>
       <head>
         <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon.ico" />

@@ -10,7 +10,6 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@fontsource/mukta": "5.2.5",
     "@octokit/graphql": "^8.2.1",
     "@radix-ui/react-tooltip": "1.1.8",
     "@tailwindcss/postcss": "^4.0.15",
