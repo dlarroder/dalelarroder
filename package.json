@@ -20,7 +20,7 @@
     "@vercel/analytics": "1.5.0",
     "@vercel/speed-insights": "^1.0.2",
     "classnames": "2.5.1",
-    "cmdk": "1.0.4",
+    "cmdk": "1.1.1",
     "date-fns": "^4.1.0",
     "eslint": "9.17.0",
     "eslint-config-next": "15.2.4",
