@@ -13,7 +13,7 @@
     "@octokit/graphql": "^8.2.1",
     "@radix-ui/react-tooltip": "1.1.8",
     "@tailwindcss/postcss": "^4.0.15",
-    "@types/node": "22.10.4",
+    "@types/node": "22.13.16",
     "@types/react": "19.0.12",
     "@typescript-eslint/eslint-plugin": "8.28.0",
     "@typescript-eslint/parser": "8.28.0",
