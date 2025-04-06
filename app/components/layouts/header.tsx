@@ -3,6 +3,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { loveLight } from '../../fonts';
 import { navigationLinks } from './constants';
 import MobileNav from './mobile-nav';
 import SectionContainer from './section-container';
@@ -18,15 +19,9 @@ export default function Header() {
           <div>
             <Link
               href="/"
-              className={classNames(
-                'horizontal-underline hidden text-3xl font-extrabold sm:block',
-                {
-                  'horizontal-underline-active': pathName === '/',
-                }
-              )}
-              aria-label="d."
+              className={classNames('hidden text-3xl font-extrabold sm:block', loveLight.className)}
             >
-              d.
+              D
             </Link>
           </div>
           <div className="flex items-center space-x-3 text-base leading-5">
