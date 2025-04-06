@@ -3,7 +3,7 @@
 import { motion } from 'motion/react';
 import Link from 'next/link';
 import { useContext, useEffect, useRef } from 'react';
-import { HiOutlineArrowNarrowDown } from 'react-icons/hi';
+import { ArrowDownIcon } from '../layouts/icons/arrow-down-icon';
 import { ScrollContext } from '../providers/ScrollProvider';
 import { renderCanvas } from './renderCanvas';
 
@@ -59,7 +59,7 @@ export default function Hero() {
                 intro?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              <HiOutlineArrowNarrowDown size={20} />
+              <ArrowDownIcon size={20} />
             </div>
           </motion.div>
         </div>
