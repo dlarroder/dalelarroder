@@ -3,7 +3,8 @@
 import { motion } from 'motion/react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
-import { BsMoonFill, BsSunFill } from 'react-icons/bs';
+import { MoonIcon } from '../icons/moon-icon';
+import { SunMediumIcon } from '../icons/sun-icon';
 
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false);
@@ -25,9 +26,9 @@ const ThemeSwitch = () => {
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
       {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? (
-        <BsSunFill size={24} />
+        <SunMediumIcon className="h-10 w-10" />
       ) : (
-        <BsMoonFill size={24} />
+        <MoonIcon className="h-10 w-10" />
       )}
     </motion.button>
   );

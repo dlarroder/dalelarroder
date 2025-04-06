@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { AiFillLinkedin } from 'react-icons/ai';
-import { FaGithub, FaSpotify, FaSteam } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
-import { siteMetadata } from '../metadata';
 import NowPlaying from '../spotify/now-playing';
+import { GithubIcon } from './icons/github-icon';
+import { InstagramIcon } from './icons/instagram-icon';
+import { LinkedinIcon } from './icons/linkedin-icon';
+import { XIcon } from './icons/x-icon';
 import SectionContainer from './section-container';
 
 export default function Footer() {
@@ -20,49 +20,49 @@ export default function Footer() {
               <li>{`© ${new Date().getFullYear()}`}</li>
               <li>{` • `}</li>
               <li>
-                <Link href="/">{siteMetadata.title}</Link>
+                <Link href="/">Dale Larroder</Link>
               </li>
             </ul>
-            <ul className="flex cursor-pointer items-center space-x-5">
+            <ul className="flex cursor-pointer items-center">
               <li>
-                <a
-                  href={siteMetadata.linkedin}
+                <Link
+                  href="https://www.linkedin.com/in/dale-larroder/"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="linkedin"
                 >
-                  <AiFillLinkedin className="sm:text-lg" />
-                </a>
+                  <LinkedinIcon className="h-9 w-9" />
+                </Link>
               </li>
               <li>
-                <a href={siteMetadata.github} target="_blank" rel="noreferrer" aria-label="github">
-                  <FaGithub className="sm:text-lg" />
-                </a>
+                <Link
+                  href="https://github.com/dlarroder"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="github"
+                >
+                  <GithubIcon className="h-9 w-9" />
+                </Link>
               </li>
               <li>
-                <a
-                  href={siteMetadata.twitter}
+                <Link
+                  href="https://x.com/dalelarroder"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="twitter"
                 >
-                  <FaXTwitter className="sm:text-lg" />
-                </a>
+                  <XIcon className="h-9 w-9" />
+                </Link>
               </li>
               <li>
-                <a
-                  href={siteMetadata.spotify}
+                <Link
+                  href="https://www.instagram.com/dalelarroder/"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="spotify"
+                  aria-label="instagram"
                 >
-                  <FaSpotify className="sm:text-lg" />
-                </a>
-              </li>
-              <li>
-                <a href={siteMetadata.steam} target="_blank" rel="noreferrer" aria-label="steam">
-                  <FaSteam className="sm:text-lg" />
-                </a>
+                  <InstagramIcon className="h-9 w-9" />
+                </Link>
               </li>
             </ul>
           </div>
