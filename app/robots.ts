@@ -1,5 +1,4 @@
 import { MetadataRoute } from 'next';
-import { siteMetadata } from './components/metadata';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: `${siteMetadata.siteUrl}/sitemap.xml`,
-    host: siteMetadata.siteUrl,
+    sitemap: `https://dalelarroder.com/sitemap.xml`,
+    host: `https://dalelarroder.com`,
   };
 }

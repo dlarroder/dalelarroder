@@ -7,7 +7,7 @@ import { loveLight } from '../../fonts';
 import { navigationLinks } from './constants';
 import MobileNav from './mobile-nav';
 import SectionContainer from './section-container';
-import ThemeSwitch from './theme-switch';
+import ThemeSwitch from './theme-switch/theme-switch';
 
 export default function Header() {
   const pathName = usePathname();
@@ -25,7 +25,7 @@ export default function Header() {
             </Link>
           </div>
           <div className="flex items-center space-x-3 text-base leading-5">
-            <div className="hidden space-x-5 sm:flex mr-5">
+            <div className="hidden space-x-5 sm:flex mr-2">
               {navigationLinks.map(({ title, href }) => {
                 const active = pathName?.includes(href);
                 return (
@@ -45,7 +45,7 @@ export default function Header() {
                 );
               })}
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-1">
               <ThemeSwitch />
               <MobileNav />
             </div>
