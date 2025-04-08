@@ -1,3 +1,5 @@
+'use client';
+
 import { MDXLayoutRenderer } from '@/components/MDXComponents';
 import UsesLayout from '@/layouts/MDX/UsesLayout';
 import MainLayout from '@/layouts/MainLayout';
