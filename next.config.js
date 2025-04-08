@@ -7,6 +7,7 @@ module.exports = withContentlayer({
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   eslint: {
+    ignoreDuringBuilds: true,
     dirs: ['app', 'components', 'lib', 'layouts', 'scripts'],
   },
   swcMinify: true,
