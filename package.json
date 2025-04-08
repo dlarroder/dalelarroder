@@ -19,6 +19,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fontsource/mukta": "5.0.18",
+    "@material-ui/core": "^4.12.4",
     "@mui/material": "^7.0.1",
     "@mui/styled-engine-sc": "^7.0.1",
     "@radix-ui/react-tooltip": "^1.1.2",
