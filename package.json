@@ -16,7 +16,11 @@
   },
   "dependencies": {
     "@dlarroder/playground": "1.10.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@fontsource/mukta": "5.0.18",
+    "@mui/material": "^7.0.1",
+    "@mui/styled-engine-sc": "^7.0.1",
     "@radix-ui/react-tooltip": "^1.1.2",
     "@studio-freight/react-lenis": "0.0.36",
     "@vercel/analytics": "1.1.1",
@@ -43,6 +47,7 @@
     "rehype-prism-plus": "1.6.3",
     "rehype-slug": "6.0.0",
     "remark": "14.0.3",
+    "styled-components": "^6.1.17",
     "tailwindcss-animate": "^1.0.7",
     "use-breakpoint": "4.0.1"
   },
