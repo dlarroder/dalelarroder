@@ -1,10 +1,11 @@
-'use client';
+//'use client';
 
 import { MDXLayoutRenderer } from '@/components/MDXComponents';
 import UsesLayout from '@/layouts/MDX/UsesLayout';
 import MainLayout from '@/layouts/MainLayout';
 import { allAuthors } from 'contentlayer/generated';
 
+/*
 import React from 'react';
 import { withStyles, Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -13,13 +14,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import Paper from '@material-ui/core/Paper';*/
 
 export const metadata = {
   title: 'Menú - Anónimo café',
   description: 'Menú',
 };
-
+/*
 const StyledTableCell = withStyles((theme: Theme) =>
   createStyles({
     head: {
@@ -59,11 +60,12 @@ const useStyles = makeStyles({
     minWidth: 700,
   },
 });
+*/
 
 export default function Uses() {
   const author = allAuthors.find((p) => p.slug === 'uses');
 
-  const classes = useStyles();
+  //const classes = useStyles();
 
   if (!author) {
     return null;
@@ -74,33 +76,6 @@ export default function Uses() {
       <UsesLayout>
         <MDXLayoutRenderer content={author} />
       </UsesLayout>
-
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-              <StyledTableCell align="right">Calories</StyledTableCell>
-              <StyledTableCell align="right">Fat</StyledTableCell>
-              <StyledTableCell align="right">Carbs</StyledTableCell>
-              <StyledTableCell align="right">Protein</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
-                  {row.name}
-                </StyledTableCell>
-                <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                <StyledTableCell align="right">{row.protein}</StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
     </MainLayout>
   );
 }
