@@ -1,7 +1,6 @@
 import fs from 'fs';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import path from 'path';
-import rehypePrettyCode from 'rehype-pretty-code';
 import { components } from '../components/mdx';
 
 export interface BlogPost {
@@ -125,14 +124,14 @@ export async function getPostFromSlug(slug: string) {
       scope: {},
       mdxOptions: {
         remarkPlugins: [],
-        rehypePlugins: [
-          [
-            rehypePrettyCode,
-            {
-              theme: 'dracula',
-            },
-          ],
-        ],
+        // rehypePlugins: [
+        //   [
+        //     rehypePrettyCode,
+        //     {
+        //       theme: 'dracula',
+        //     },
+        //   ],
+        // ],
       },
     },
     components: components,
