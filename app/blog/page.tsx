@@ -5,8 +5,8 @@ import { POSTS_PER_PAGE } from '@/types/default';
 import { allBlogs } from 'contentlayer/generated';
 
 export const metadata = {
-  title: 'Blog - Anónimo Café',
-  description: 'Our Blogs - Anónimo Café',
+  title: 'Blog - Xoco Café',
+  description: 'Our Blogs - Xoco Café',
 };
 
 export default function Blog() {
