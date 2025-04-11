@@ -9,8 +9,8 @@ import LenisProvider from '@/components/Providers/LenisProvider';
 import ThemeProvider from '@/components/Providers/ThemeProvider';
 
 export const metadata = {
-  title: 'Anónimo Café',
-  description: 'Un café reinventado',
+  title: 'Xoco Café',
+  description: 'Tagline: sabor ancestral, placer eterno',
   metadataBase: new URL('https://anonimo-cafe.vercel.app/'),
 };
 
