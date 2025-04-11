@@ -16,12 +16,12 @@ export default function AuthorLayout({ children, content }: Props) {
     <div className="pt-8">
       <div className="mb-8 flex flex-col-reverse items-center justify-between sm:flex-row sm:items-center">
         <div className="text-center sm:text-left">
-          <h1 className="text-xl font-bold md:text-3xl lg:text-4xl">Anónimo Café</h1>
+          <h1 className="text-xl font-bold md:text-3xl lg:text-4xl">Xoco Café</h1>
           <h2 className="text-sm font-normal md:text-base">{occupation}</h2>
         </div>
         <div>
           <Image
-            alt="Anónimo Café"
+            alt="Xoco Café"
             height={250}
             width={250}
             src={avatar || ''}
