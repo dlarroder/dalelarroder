@@ -1,8 +1,8 @@
 const siteMetadata = {
-  title: 'Anónimo Café',
+  title: 'Xoco Café',
   author: 'Donovan Riaño',
-  headerTitle: 'Cafeteria anónima',
-  description: 'Reinventando el café',
+  headerTitle: 'Chocolate y café hecho por los dioses.',
+  description: 'Sabor ancestral, placer eterno.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteLogo: '/static/images/anonimo3.jpeg',
