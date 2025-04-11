@@ -1,4 +1,4 @@
-import { Love_Light, Mukta } from 'next/font/google';
+import { Copse, Mukta } from 'next/font/google';
 
 export const mukta = Mukta({
   weight: ['200', '300', '400', '500', '600', '700'],
@@ -8,9 +8,9 @@ export const mukta = Mukta({
   preload: true,
 });
 
-export const loveLight = Love_Light({
+export const copse = Copse({
   weight: '400',
-  variable: '--font-love-light',
+  variable: '--font-copse-swash',
   subsets: ['latin'],
   display: 'swap',
   preload: true,

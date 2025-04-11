@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { loveLight } from '../../fonts';
+import { copse } from '../../fonts';
 import { navigationLinks } from './constants';
 import MobileNav from './mobile-nav';
 import SectionContainer from './section-container';
@@ -19,7 +19,7 @@ export default function Header() {
           <div>
             <Link
               href="/"
-              className={classNames('hidden text-3xl font-extrabold sm:block', loveLight.className)}
+              className={classNames('hidden text-2xl font-extrabold sm:block', copse.className)}
             >
               D
             </Link>
