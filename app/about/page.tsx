@@ -4,8 +4,8 @@ import MainLayout from '@/layouts/MainLayout';
 import { allAuthors } from 'contentlayer/generated';
 
 export const metadata = {
-  title: 'About - Anónimo Café',
-  description: 'About me - Dale Larroder',
+  title: 'About - Xoco Café',
+  description: 'About team - Xoco Café',
 };
 
 export default function About() {
