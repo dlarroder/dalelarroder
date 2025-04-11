@@ -11,44 +11,108 @@ github: https://github.com/driano
 
 ## Bebidas🧋
 
-<div className="overflow-x-auto rounded-xl shadow-md my-6">
-  <table className="min-w-full table-auto border border-gray-200 text-left text-sm text-gray-700">
-    <thead className="bg-gray-100">
-      <tr>
-        <th className="border px-4 py-2 font-semibold text-amber-500">Categoría</th>
-        <th className="border px-4 py-2 font-semibold text-amber-500">Bebida</th>
-        <th className="border px-4 py-2 font-semibold text-amber-500">Precio Mediano</th>
-        <th className="border px-4 py-2 font-semibold text-amber-500">Precio Grande</th>
-      </tr>
-    </thead>
-    <tbody className="bg-white">
-      {[
-        ["🔥", "Café americano", "$45", "$50"],
-        ["🔥", "Café expreso (doble)", "$45", "–"],
-        ["🔥", "Café capuccino", "$45", "$50"],
-        ["🔥", "Café moka", "$45", "$50"],
-        ["🔥", "Café cortado", "$45", "–"],
-        ["🔥", "Chocolate de agua", "$45", "$50"],
-        ["🔥", "Chocolate de leche", "$45", "$50"],
-        ["🔥", "Té chai", "$45", "$50"],
-        ["🔥", "Chai latte", "$45", "$50"],
-        ["❄️", "Chocolate frío", "$45", "$50"],
-        ["❄️", "Matcha", "$45", "$50"],
-        ["❄️", "Frappé (chocolate, café, matcha)", "$45", "$50"],
-        ["❄️", "Refresco", "–", "$50"],
-        ["❄️", "Agua embotellada", "–", "$50"],
-        ["❄️", "Agua mineral", "–", "$50"]
-      ].map(([cat, name, med, grande], i) => (
-        <tr key={i} className="hover:bg-gray-50">
-          <td className="border px-4 py-2">{cat}</td>
-          <td className="border px-4 py-2">{name}</td>
-          <td className="border px-4 py-2">{med}</td>
-          <td className="border px-4 py-2">{grande}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Categoría</th>
+      <th>Bebida</th>
+      <th>Tamaño(s)</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>🔥</td>
+      <td>Café americano</td>
+      <td>Chico / Grande</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>🔥</td>
+      <td>Café expreso</td>
+      <td>Doble</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>🔥</td>
+      <td>Café capuccino</td>
+      <td>Chico / Grande</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>🔥</td>
+      <td>Café moka</td>
+      <td>Chico / Grande</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>🔥</td>
+      <td>Café cortado</td>
+      <td>Chico</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>🔥</td>
+      <td>Chocolate de agua</td>
+      <td>Chico / Grande</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>🔥</td>
+      <td>Chocolate de leche</td>
+      <td>Chico / Grande</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>🔥</td>
+      <td>Té chai</td>
+      <td>Chico / Grande</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>🔥</td>
+      <td>Chai latte</td>
+      <td>Chico / Grande</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>❄️</td>
+      <td>Chocolate frío</td>
+      <td>Chico / Grande</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>❄️</td>
+      <td>Matcha</td>
+      <td>Chico / Grande</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>❄️</td>
+      <td>Frappé (chocolate, café, matcha)</td>
+      <td>Chico / Grande</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>❄️</td>
+      <td>Refresco</td>
+      <td>Lata / Botella</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>❄️</td>
+      <td>Agua embotellada</td>
+      <td>600ml</td>
+      <td>$50</td>
+    </tr>
+    <tr>
+      <td>❄️</td>
+      <td>Agua mineral</td>
+      <td>600ml</td>
+      <td>$50</td>
+    </tr>
+  </tbody>
+</table>
 
 
 ## Alimentos 🥪
