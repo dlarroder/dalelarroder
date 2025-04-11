@@ -11,7 +11,7 @@ import ThemeProvider from '@/components/Providers/ThemeProvider';
 export const metadata = {
   title: 'Xoco Café',
   description: 'Tagline: sabor ancestral, placer eterno',
-  metadataBase: new URL('https://anonimo-cafe.vercel.app/'),
+  metadataBase: new URL('https://xococafe.netlify.app'),
 };
 
 interface RootLayoutProps {
