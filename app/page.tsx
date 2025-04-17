@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import GooeyBackground from './components/gooey-background';
+import { AtSignIcon } from './components/layouts/icons/at-sign-icon';
 import { GithubIcon } from './components/layouts/icons/github-icon';
 import { LinkedinIcon } from './components/layouts/icons/linkedin-icon';
 import { XIcon } from './components/layouts/icons/x-icon';
@@ -11,7 +12,7 @@ export default function Home() {
   return (
     <div className="min-h-svh w-screen overflow-hidden">
       <GooeyBackground />
-      <main className="relative z-10 flex min-h-svh max-w-5xl flex-col justify-center gap-4 px-8 md:px-24 text-shadow-lg">
+      <main className="relative z-10 flex min-h-svh max-w-5xl flex-col justify-center gap-4 px-8 md:px-24 text-shadow-lg lg:ml-14">
         <h1
           className={classNames(
             'max-w-6xl font-serif text-2xl font-medium md:mr-4 md:text-4xl',
@@ -71,9 +72,12 @@ export default function Home() {
               >
                 <XIcon className="h-9 w-9" />
               </Link>
+              <a href="mailto:hi@dalelarroder.com">
+                <AtSignIcon className="h-9 w-9" />
+              </a>
             </div>
           </div>
-          <div className="h-14 border-l border-primary-500" />
+          <div className="h-14 border-l border-gray-300" />
           <div className={classNames('flex flex-wrap space-x-3 space-y-1', merryWeather.className)}>
             <Link href="/projects">/projects</Link>
             <Link href="/thoughts">/thoughts</Link>
