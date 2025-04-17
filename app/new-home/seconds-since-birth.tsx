@@ -1,27 +1,24 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import classNames from 'classnames';
+import { useEffect, useState } from 'react';
+import { dmMono } from '../fonts';
 
-export default function SecondsSinceBirth() {
-  const birthDate = useMemo(() => new Date('July 22, 1997'), []);
+export default function SecondsSinceBirth({ date }: { date: Date }) {
   const [secondsPassed, setSecondsPassed] = useState(
-    Math.floor((new Date().getTime() - new Date(birthDate).getTime()) / 1000)
+    Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000)
   );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const now = new Date();
-      const diffInSeconds = Math.floor((now.getTime() - new Date(birthDate).getTime()) / 1000);
-      setSecondsPassed(diffInSeconds);
+      setSecondsPassed((prevCount) => prevCount + 1);
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [birthDate]);
-
-  // return <AnimatedNumber number={secondsPassed} />;
+  }, [date]);
 
   return (
-    <span className="tabular-nums">
+    <span key={secondsPassed} className={classNames('tabular-nums', dmMono.className)}>
       {secondsPassed.toLocaleString('en-US', {
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,

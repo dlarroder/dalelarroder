@@ -29,7 +29,7 @@ export default function GooeyBackground() {
 
   // Generate random blobs on component mount
   useEffect(() => {
-    const colors = ['#DE1D8D', '#DE1D8D'];
+    const colors = ['#DE1D8D', '#BE1588'];
 
     const shapes: ShapeType[] = ['circle', 'square', 'triangle'];
 
@@ -258,7 +258,7 @@ export default function GooeyBackground() {
   }, [dimensions, mousePosition]);
 
   return (
-    <div className="absolute inset-0 w-full h-full bg-gray-900">
+    <div className="absolute inset-0 w-full h-full bg-black">
       <svg
         width="100%"
         height="100%"
