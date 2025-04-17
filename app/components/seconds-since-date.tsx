@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { dmMono } from '../fonts';
 
-export default function SecondsSinceBirth({ date }: { date: Date }) {
+export default function SecondsSinceDate({ date }: { date: Date }) {
   const [mounted, setMounted] = useState(false);
   const [secondsPassed, setSecondsPassed] = useState(
     Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000)

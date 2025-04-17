@@ -1,8 +1,8 @@
 import path from 'path';
 import { Fragment } from 'react';
-import { readMDXFile } from '../blog/utils';
 import Header from '../components/header';
 import { CustomMDX } from '../components/mdx';
+import { readMDXFile } from '../thoughts/utils';
 import UsesTitle from './uses-title';
 
 const contentPath = path.join(process.cwd(), 'app', 'uses', 'content.mdx');

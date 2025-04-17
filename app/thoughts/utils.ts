@@ -64,8 +64,8 @@ export function getMDXData(dir: string): BlogPost[] {
   });
 }
 
-export function getBlogPosts(): BlogPost[] {
-  const posts = getMDXData(path.join(process.cwd(), 'app/blog/posts'));
+export function getPosts(): BlogPost[] {
+  const posts = getMDXData(path.join(process.cwd(), 'app/thoughts/posts'));
 
   return posts
     .filter((post) => !post.metadata.draft)

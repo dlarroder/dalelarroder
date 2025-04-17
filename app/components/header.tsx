@@ -6,7 +6,7 @@ import { SquareArrowLeftIcon } from './layouts/icons/square-arrow-left';
 export default function Header({ title }: { title: string }) {
   return (
     <Link
-      href="/new-home"
+      href="/"
       className={classNames('flex gap-2 items-center text-primary-500 mb-12', mukta.className)}
     >
       <div className="flex items-center">
