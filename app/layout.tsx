@@ -1,6 +1,6 @@
 import Analytics from 'app/components/analytics/analytics';
-import Footer from 'app/components/layouts/footer';
-import Header from 'app/components/layouts/header';
+// import Footer from 'app/components/layouts/footer';
+// import Header from 'app/components/layouts/header';
 import LenisProvider from 'app/components/providers/LenisProvider';
 import ThemeProvider from 'app/components/providers/ThemeProvider';
 import { Metadata } from 'next';
@@ -39,9 +39,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
           enableSystem={false}
           themes={['dark', 'light']}
         >
-          <Header />
+          {/* <Header /> */}
           <LenisProvider>{children}</LenisProvider>
-          <Footer />
+          {/* <Footer /> */}
           {process.env.NODE_ENV === 'production' && <Analytics />}
         </ThemeProvider>
       </body>
