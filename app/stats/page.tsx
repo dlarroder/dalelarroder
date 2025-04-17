@@ -1,6 +1,7 @@
 import { Fragment, Suspense } from 'react';
 import GithubContributions from '../about/github-contributions/github-contributions';
 import Header from '../components/header';
+import NowPlaying from '../components/spotify/now-playing';
 import SpotifySkeleton from '../components/spotify/spotify-skeleton';
 import TopTracks from '../components/spotify/top-tracks';
 import WakaStats from '../components/wakatime/wakastats';
@@ -29,6 +30,7 @@ export default function StatsPage() {
           <WakaStats />
           <TopTracks />
         </Suspense>
+        <NowPlaying />
       </section>
     </div>
   );
