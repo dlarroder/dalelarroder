@@ -1,4 +1,4 @@
-import { Copse, DM_Mono, DM_Sans, Merriweather_Sans, Mukta } from 'next/font/google';
+import { Copse, DM_Mono, Merriweather, Mukta, Rubik } from 'next/font/google';
 
 export const mukta = Mukta({
   weight: ['200', '300', '400', '500', '600', '700'],
@@ -16,14 +16,6 @@ export const copse = Copse({
   preload: true,
 });
 
-export const dmSans = DM_Sans({
-  weight: ['100', '200', '300', '400', '500', '600', '700'],
-  variable: '--font-dm-sans',
-  subsets: ['latin'],
-  display: 'swap',
-  preload: true,
-});
-
 export const dmMono = DM_Mono({
   weight: ['300', '400', '500'],
   variable: '--font-dm-mono',
@@ -32,9 +24,17 @@ export const dmMono = DM_Mono({
   preload: true,
 });
 
-export const merryweatherSans = Merriweather_Sans({
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-merryweather-sans',
+export const rubik = Rubik({
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-rubik',
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+});
+
+export const merryWeather = Merriweather({
+  weight: ['300', '400', '700', '900'],
+  variable: '--font-merriweather',
   subsets: ['latin'],
   display: 'swap',
   preload: true,

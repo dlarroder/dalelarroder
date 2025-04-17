@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { dmMono } from '../fonts';
 
 export default function SecondsSinceBirth({ date }: { date: Date }) {
+  const [mounted, setMounted] = useState(false);
   const [secondsPassed, setSecondsPassed] = useState(
     Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000)
   );
@@ -17,12 +18,15 @@ export default function SecondsSinceBirth({ date }: { date: Date }) {
     return () => clearInterval(interval);
   }, [date]);
 
+  useEffect(() => setMounted(true), []);
+
   return (
     <span key={secondsPassed} className={classNames('tabular-nums', dmMono.className)}>
-      {secondsPassed.toLocaleString('en-US', {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      })}
+      {mounted &&
+        secondsPassed.toLocaleString('en-US', {
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+        })}
     </span>
   );
 }
