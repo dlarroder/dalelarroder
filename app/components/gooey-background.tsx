@@ -1,5 +1,6 @@
 'use client';
 
+import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
 
 type ShapeType = 'circle' | 'square' | 'triangle' | 'pentagon' | 'hexagon';
@@ -27,9 +28,14 @@ export default function GooeyBackground() {
   const requestRef = useRef<number | null>(null);
   const previousTimeRef = useRef<number | undefined>(undefined);
 
+  const { resolvedTheme } = useTheme();
+
+  const darkColors = ['#DE1D8D', '#BE1588'];
+  const lightColors = ['#FDD1D9', '#FBA4BC'];
+
   // Generate random blobs on component mount
   useEffect(() => {
-    const colors = ['#DE1D8D', '#BE1588'];
+    const colors = resolvedTheme === 'dark' ? darkColors : lightColors;
 
     const shapes: ShapeType[] = ['circle', 'square', 'triangle'];
 
