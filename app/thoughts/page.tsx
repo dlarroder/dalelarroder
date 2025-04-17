@@ -1,34 +1,18 @@
-import classNames from 'classnames';
 import { format } from 'date-fns';
 import Link from 'next/link';
-import { Fragment } from 'react';
 import { getBlogPosts } from '../blog/utils';
-import { SquareArrowLeftIcon } from '../components/layouts/icons/square-arrow-left';
-import { merryWeather, mukta } from '../fonts';
+import Header from '../components/header';
 
 export default function Thoughts() {
   const posts = getBlogPosts();
 
   return (
-    <Fragment>
-      <Link
-        href="/new-home"
-        className={classNames('flex gap-2 items-center text-primary-500 mb-12', mukta.className)}
-      >
-        <div className="flex items-center">
-          <SquareArrowLeftIcon size={20} className="h-9 w-9" />
-          <span className="font-bold">Home</span>
-        </div>
-        <div className="mx-1 w-full border-b border-primary-500" />
-        <span className={classNames('text-white text-lg md:text-4xl', merryWeather.className)}>
-          Thoughts
-        </span>
-      </Link>
-
+    <main className="flex min-h-svh w-full max-w-5xl flex-col justify-center gap-4 border-gray-300/20 p-8 pt-16 md:p-24 xl:border-r 3xl:ml-auto 3xl:border-l">
+      <Header title="Thoughts" />
       <section>
         {posts.map((post) => {
           return (
-            <Link href={`/blog/${post.slug}`} key={post.slug}>
+            <Link href={`/thoughts/${post.slug}`} key={post.slug}>
               <article className="space-y-2 py-5 border-b border-gray-300/20">
                 <div className="flex w-full items-center justify-between">
                   <h2 className="text-md w-full max-w-2xl truncate whitespace-nowrap pr-2 font-medium text-white/80 group-hover:underline md:w-auto md:flex-none md:text-xl">
@@ -45,6 +29,6 @@ export default function Thoughts() {
           );
         })}
       </section>
-    </Fragment>
+    </main>
   );
 }
