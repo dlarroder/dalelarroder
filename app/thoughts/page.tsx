@@ -2,12 +2,13 @@ import { format } from 'date-fns';
 import Link from 'next/link';
 import { getBlogPosts } from '../blog/utils';
 import Header from '../components/header';
+import PageContainer from '../components/layouts/page-container';
 
 export default function Thoughts() {
   const posts = getBlogPosts();
 
   return (
-    <main className="flex min-h-svh w-full max-w-5xl flex-col justify-center gap-4 border-gray-300/20 p-8 pt-16 md:p-24 xl:border-r 3xl:ml-auto 3xl:border-l">
+    <PageContainer>
       <Header title="Thoughts" />
       <section>
         {posts.map((post) => {
@@ -29,6 +30,6 @@ export default function Thoughts() {
           );
         })}
       </section>
-    </main>
+    </PageContainer>
   );
 }

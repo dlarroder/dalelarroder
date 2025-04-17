@@ -1,6 +1,7 @@
 import path from 'path';
 import { Fragment } from 'react';
 import { readMDXFile } from '../blog/utils';
+import Header from '../components/header';
 import { CustomMDX } from '../components/mdx';
 import UsesTitle from './uses-title';
 
@@ -15,6 +16,7 @@ export const metadata = {
 export default function Page() {
   return (
     <Fragment>
+      <Header title="Uses" />
       <UsesTitle />
       <CustomMDX source={content} />
     </Fragment>
