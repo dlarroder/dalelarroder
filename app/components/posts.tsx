@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react';
 import Link from 'next/link';
-import { BlogPost } from '../blog/utils';
+import { BlogPost } from '../thoughts/utils';
 
 export function Posts({ posts }: { posts: BlogPost[] }) {
   return (

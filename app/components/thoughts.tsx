@@ -3,7 +3,7 @@
 import { format } from 'date-fns';
 import { motion } from 'motion/react';
 import Link from 'next/link';
-import { BlogPost } from '../blog/utils';
+import { BlogPost } from '../thoughts/utils';
 
 export function Thoughts({ posts }: { posts: BlogPost[] }) {
   return (
