@@ -1,4 +1,4 @@
-import { Copse, DM_Mono, Merriweather, Mukta, Rubik } from 'next/font/google';
+import { Copse, DM_Mono, Merriweather, Mukta } from 'next/font/google';
 
 export const mukta = Mukta({
   weight: ['200', '300', '400', '500', '600', '700'],
@@ -19,14 +19,6 @@ export const copse = Copse({
 export const dmMono = DM_Mono({
   weight: ['300', '400', '500'],
   variable: '--font-dm-mono',
-  subsets: ['latin'],
-  display: 'swap',
-  preload: true,
-});
-
-export const rubik = Rubik({
-  weight: ['300', '400', '500', '600'],
-  variable: '--font-rubik',
   subsets: ['latin'],
   display: 'swap',
   preload: true,
