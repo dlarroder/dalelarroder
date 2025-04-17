@@ -258,7 +258,7 @@ export default function GooeyBackground() {
   }, [dimensions, mousePosition]);
 
   return (
-    <div className="absolute inset-0 w-full h-full bg-black">
+    <div className="absolute inset-0 w-full h-full bg-white dark:bg-black">
       <svg
         width="100%"
         height="100%"

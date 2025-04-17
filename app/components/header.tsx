@@ -14,7 +14,12 @@ export default function Header({ title }: { title: string }) {
         <span className="font-bold">Home</span>
       </div>
       <div className="mx-1 w-full border-b border-primary-500" />
-      <span className={classNames('text-white text-lg md:text-4xl', merryWeather.className)}>
+      <span
+        className={classNames(
+          'text-black dark:text-white text-lg md:text-4xl',
+          merryWeather.className
+        )}
+      >
         {title}
       </span>
     </Link>
