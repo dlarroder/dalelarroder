@@ -17,8 +17,8 @@ export default function Home() {
             merryWeather.className
           )}
         >
-          Welcome to my <span className="font-bold">personal portfolio</span>, or as I like to call
-          it, my <span className="italic border-b">playground</span> on the web.
+          Welcome to my <span className="font-bold">personal portfolio — </span> or, as I like to
+          call it, my <span className="italic border-b">playground</span> on the web.
         </h1>
         <section>
           <p
@@ -73,7 +73,7 @@ export default function Home() {
             </div>
           </div>
           <div className="h-14 border-l border-primary-500" />
-          <div className={classNames('flex flex-wrap space-x-3', merryWeather.className)}>
+          <div className={classNames('flex flex-wrap space-x-3 space-y-1', merryWeather.className)}>
             <Link href="/projects">/projects</Link>
             <Link href="/thoughts">/thoughts</Link>
             <Link href="/uses">/uses</Link>

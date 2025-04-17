@@ -28,14 +28,14 @@ export default function GooeyBackground() {
   const requestRef = useRef<number | null>(null);
   const previousTimeRef = useRef<number | undefined>(undefined);
 
-  const { resolvedTheme } = useTheme();
+  const { theme } = useTheme();
 
   const darkColors = ['#DE1D8D', '#BE1588'];
   const lightColors = ['#FDD1D9', '#FBA4BC'];
 
   // Generate random blobs on component mount
   useEffect(() => {
-    const colors = resolvedTheme === 'dark' ? darkColors : lightColors;
+    const colors = theme === 'dark' ? darkColors : lightColors;
 
     const shapes: ShapeType[] = ['circle', 'square', 'triangle'];
 
@@ -90,7 +90,8 @@ export default function GooeyBackground() {
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [theme]);
 
   // Track mouse position
   useEffect(() => {
@@ -261,6 +262,7 @@ export default function GooeyBackground() {
         cancelAnimationFrame(requestRef.current);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dimensions, mousePosition]);
 
   return (

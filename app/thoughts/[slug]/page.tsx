@@ -1,3 +1,4 @@
+import BackNavigation from '../../components/layouts/back-navigation';
 import { formatDate, getPostFromSlug } from '../utils';
 import PageTitle from './page-title';
 
@@ -18,6 +19,7 @@ export default async function Blog(props: { params: Promise<{ slug: string }> })
 
   return (
     <section>
+      <BackNavigation />
       <PageTitle>{metadata.title}</PageTitle>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
