@@ -10,7 +10,10 @@ import { merryWeather } from './fonts';
 
 export default function Home() {
   return (
-    <main className="min-h-svh w-screen overflow-hidden">
+    <main className="relative min-h-svh w-screen overflow-hidden">
+      <div className="absolute top-4 right-4 z-10">
+        <ThemeSwitch />
+      </div>
       <BackgroundGradientAnimation>
         <div className={classNames('relative min-h-svh', merryWeather.className)}>
           <div className="absolute top-[20%] md:top-[40%] max-w-5xl flex-col space-y-4 justify-center px-8 md:px-24 text-shadow-lg lg:ml-14">
@@ -66,7 +69,6 @@ export default function Home() {
                   <a href="mailto:hi@dalelarroder.com" aria-label="email" rel="noreferrer">
                     <AtSignIcon className="h-9 w-9" />
                   </a>
-                  <ThemeSwitch />
                 </div>
               </div>
               <div className="h-14 border-l border-gray-300" />
