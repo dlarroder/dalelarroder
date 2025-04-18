@@ -72,7 +72,7 @@ export default function Home() {
               >
                 <XIcon className="h-9 w-9" />
               </Link>
-              <a href="mailto:hi@dalelarroder.com">
+              <a href="mailto:hi@dalelarroder.com" aria-label="email" rel="noreferrer">
                 <AtSignIcon className="h-9 w-9" />
               </a>
             </div>
