@@ -31,7 +31,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body className="bg-white text-black antialiased dark:bg-black dark:text-white selection:bg-primary-500 selection:text-white">
-        <ThemeProvider attribute="class" defaultTheme="light" themes={['dark', 'light']}>
+        <ThemeProvider attribute="class" defaultTheme="dark" themes={['dark', 'light']}>
           <LenisProvider>{children}</LenisProvider>
           {process.env.NODE_ENV === 'production' && <Analytics />}
         </ThemeProvider>
