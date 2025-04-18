@@ -5,6 +5,7 @@ import { AtSignIcon } from './components/layouts/icons/at-sign-icon';
 import { GithubIcon } from './components/layouts/icons/github-icon';
 import { LinkedinIcon } from './components/layouts/icons/linkedin-icon';
 import { XIcon } from './components/layouts/icons/x-icon';
+import ThemeSwitch from './components/layouts/theme-switch/theme-switch';
 import { merryWeather } from './fonts';
 
 export default function Home() {
@@ -65,6 +66,7 @@ export default function Home() {
                   <a href="mailto:hi@dalelarroder.com" aria-label="email" rel="noreferrer">
                     <AtSignIcon className="h-9 w-9" />
                   </a>
+                  <ThemeSwitch />
                 </div>
               </div>
               <div className="h-14 border-l border-gray-300" />
