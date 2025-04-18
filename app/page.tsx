@@ -26,8 +26,8 @@ export default function Home() {
                 I&apos;m Dale Larroder — a Software Engineer and forever a student of the craft. I
                 love building things for the web and am always on the lookout for new challenges and
                 opportunities to learn. I&apos;m passionate about creating beautiful and functional
-                user experiences. I believe the best way to learn is by doing, so I&apos;m always
-                exploring new projects. Currently, I&apos;m working as a Software Engineer at a{' '}
+                user experiences. I believe the best way to learn is by doing, so I&apos;m
+                constantly exploring new technologies. Right now, I&apos;m building cool things at{' '}
                 <a
                   href="https://www.aphex.co/"
                   className="underline-magical"
@@ -36,6 +36,7 @@ export default function Home() {
                 >
                   Aphex
                 </a>
+                .
               </p>
             </section>
             <section className="relative z-10 flex space-x-4 items-center text-sm">
