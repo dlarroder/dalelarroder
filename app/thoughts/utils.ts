@@ -64,8 +64,8 @@ export function getMDXData(dir: string): BlogPost[] {
   });
 }
 
-export function getBlogPosts(): BlogPost[] {
-  const posts = getMDXData(path.join(process.cwd(), 'app/blog/posts'));
+export function getPosts(): BlogPost[] {
+  const posts = getMDXData(path.join(process.cwd(), 'app/thoughts/posts'));
 
   return posts
     .filter((post) => !post.metadata.draft)
@@ -114,7 +114,7 @@ export function formatDate(date: string, includeRelative = false) {
 
 export async function getPostFromSlug(slug: string) {
   const source = await fs.promises.readFile(
-    path.join(process.cwd(), 'app/blog/posts', `${slug}.mdx`),
+    path.join(process.cwd(), 'app/thoughts/posts', `${slug}.mdx`),
     'utf-8'
   );
 

@@ -11,7 +11,7 @@ import {
   HiOutlineUser,
 } from 'react-icons/hi';
 import { TbBolt, TbBoltOff } from 'react-icons/tb';
-import { getBlogPosts } from '../../blog/utils';
+import { getPosts } from '../../thoughts/utils';
 
 type PaletteOption = {
   id: string;
@@ -23,7 +23,7 @@ type PaletteOption = {
 export default function usePaletteOptions() {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
-  const posts = getBlogPosts();
+  const posts = getPosts();
 
   const generalOptions: PaletteOption[] = [
     {

@@ -26,9 +26,9 @@ const ThemeSwitch = () => {
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
       {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? (
-        <SunMediumIcon className="h-10 w-10" />
+        <SunMediumIcon className="h-9 w-9" />
       ) : (
-        <MoonIcon className="h-10 w-10" />
+        <MoonIcon className="h-9 w-9" />
       )}
     </motion.button>
   );

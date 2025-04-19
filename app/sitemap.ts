@@ -1,10 +1,10 @@
-import { getBlogPosts } from 'app/blog/utils';
+import { getPosts } from './thoughts/utils';
 
 export const baseUrl = 'https://dalelarroder.com';
 
 export default async function sitemap() {
-  const blogs = getBlogPosts().map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
+  const blogs = getPosts().map((post) => ({
+    url: `${baseUrl}/thoughts/${post.slug}`,
     lastModified: post.metadata.publishedAt,
   }));
 

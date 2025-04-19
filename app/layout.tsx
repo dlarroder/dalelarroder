@@ -1,6 +1,4 @@
 import Analytics from 'app/components/analytics/analytics';
-import Footer from 'app/components/layouts/footer';
-import Header from 'app/components/layouts/header';
 import LenisProvider from 'app/components/providers/LenisProvider';
 import ThemeProvider from 'app/components/providers/ThemeProvider';
 import { Metadata } from 'next';
@@ -33,15 +31,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body className="bg-white text-black antialiased dark:bg-black dark:text-white selection:bg-primary-500 selection:text-white">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          themes={['dark', 'light']}
-        >
-          <Header />
+        <ThemeProvider attribute="class" defaultTheme="dark" themes={['dark', 'light']}>
           <LenisProvider>{children}</LenisProvider>
-          <Footer />
           {process.env.NODE_ENV === 'production' && <Analytics />}
         </ThemeProvider>
       </body>
