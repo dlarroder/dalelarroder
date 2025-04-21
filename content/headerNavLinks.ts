@@ -1,11 +1,11 @@
 const headerNavLinks = [
-  { href: '/blog/arteAnonimo', title: 'Arte' },
-  { href: '/blog/idiomasAnonimo', title: 'Idiomas' },
-  { href: '/blog/tecnologiaAnonimo', title: 'Cripto' },
-  //{ href: '/projects', title: 'Projects' },
+  { href: '/blog/chocolate', title: 'Chocolate' },
+  { href: '/blog/cafe', title: 'Café' },
+  { href: '/menu', title: 'Menú' },
   { href: '/about', title: 'About' },
+  { href: '/blog/ubicacion', title: 'Ubicacion' },
+  { href: '/https://revepos.com/integraciones.html', title: 'Facturación' },
   { href: '/blog', title: 'Blog' },
-  { href: '/uses', title: 'Menú' },
 ];
 
 export default headerNavLinks;
