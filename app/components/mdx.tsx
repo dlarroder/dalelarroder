@@ -11,12 +11,18 @@ type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
 export const components = {
   h1: ({ children, ...props }: HeadingProps) => (
-    <h1 className="text-2xl md:text-4xl font-bold py-3 text-gray-900 dark:text-gray-100" {...props}>
+    <h1
+      className="text-2xl md:text-4xl font-bold py-3 text-gray-900 dark:text-gray-100"
+      {...props}
+    >
       {children}
     </h1>
   ),
   h2: ({ children, ...props }: HeadingProps) => (
-    <h2 className="text-xl md:text-3xl font-bold py-3 text-gray-900 dark:text-gray-100" {...props}>
+    <h2
+      className="text-xl md:text-3xl font-bold py-3 text-gray-900 dark:text-gray-100"
+      {...props}
+    >
       {children}
     </h2>
   ),
@@ -29,23 +35,39 @@ export const components = {
     </h3>
   ),
   h4: ({ children, ...props }: HeadingProps) => (
-    <h4 className="text-sm md:text-xl font-bold py-3 text-gray-900 dark:text-gray-100" {...props}>
+    <h4
+      className="text-sm md:text-xl font-bold py-3 text-gray-900 dark:text-gray-100"
+      {...props}
+    >
       {children}
     </h4>
   ),
   ol: (props: ListProps) => (
-    <ol className="list-decimal pl-5 text-gray-900 dark:text-gray-100" {...props} />
+    <ol
+      className="list-decimal pl-5 text-gray-900 dark:text-gray-100"
+      {...props}
+    />
   ),
   ul: (props: ListProps) => (
-    <ul className="list-disc pl-5 text-gray-900 dark:text-gray-100" {...props} />
+    <ul
+      className="list-disc pl-5 text-gray-900 dark:text-gray-100"
+      {...props}
+    />
   ),
-  li: (props: ListItemProps) => <li className="text-gray-900 dark:text-gray-100" {...props} />,
-  em: (props: ComponentPropsWithoutRef<'em'>) => <em className="font-medium" {...props} />,
+  li: (props: ListItemProps) => (
+    <li className="text-gray-900 dark:text-gray-100" {...props} />
+  ),
+  em: (props: ComponentPropsWithoutRef<'em'>) => (
+    <em className="font-medium" {...props} />
+  ),
   strong: (props: ComponentPropsWithoutRef<'strong'>) => (
     <strong className="font-bold text-gray-900 dark:text-gray-100" {...props} />
   ),
   p: ({ children, ...props }: ParagraphProps) => (
-    <p className="leading-snug text-gray-900 dark:text-gray-100 py-4" {...props}>
+    <p
+      className="leading-snug text-gray-900 dark:text-gray-100 py-4"
+      {...props}
+    >
       {children}
     </p>
   ),
@@ -67,7 +89,13 @@ export const components = {
       );
     }
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={className} {...props}>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+        {...props}
+      >
         {children}
       </a>
     );
@@ -81,13 +109,24 @@ export const components = {
     );
   },
   pre: (props: ComponentPropsWithoutRef<'pre'>) => (
-    <pre className="bg-gray-800 p-4 rounded-md overflow-x-auto text-sm" {...props} />
+    <pre
+      className="bg-gray-800 p-4 rounded-md overflow-x-auto text-sm"
+      {...props}
+    />
   ),
   blockquote: (props: BlockquoteProps) => (
-    <blockquote className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700" {...props} />
+    <blockquote
+      className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700"
+      {...props}
+    />
   ),
 };
 
 export function CustomMDX(props: MDXRemoteProps) {
-  return <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />;
+  return (
+    <MDXRemote
+      {...props}
+      components={{ ...components, ...(props.components || {}) }}
+    />
+  );
 }

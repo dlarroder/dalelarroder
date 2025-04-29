@@ -20,7 +20,9 @@ export default function Calendar({ contributions }: Props) {
           {months.map((month) => (
             <li
               key={month.firstDay}
-              className={classNames(`${month.totalWeeks < 2 ? 'invisible' : ''}`)}
+              className={classNames(
+                `${month.totalWeeks < 2 ? 'invisible' : ''}`,
+              )}
               style={{ minWidth: 14.3 * month.totalWeeks }}
             >
               {month.name}
@@ -32,9 +34,11 @@ export default function Calendar({ contributions }: Props) {
           {weeks?.map((week) => (
             <div key={week.firstDay}>
               {week.contributionDays.map((contribution) => {
-                const backgroundColor = contribution.contributionCount > 0 && contribution.color;
+                const backgroundColor =
+                  contribution.contributionCount > 0 && contribution.color;
 
-                const randomizedDelay = Math.random() * week.contributionDays.length * 0.2;
+                const randomizedDelay =
+                  Math.random() * week.contributionDays.length * 0.2;
 
                 return (
                   <ActivityTooltip
@@ -52,7 +56,9 @@ export default function Calendar({ contributions }: Props) {
                           },
                         }}
                         className="my-0.5 block h-3 w-3 rounded-xs bg-neutral-200 dark:bg-[#161B22]"
-                        style={backgroundColor ? { backgroundColor } : undefined}
+                        style={
+                          backgroundColor ? { backgroundColor } : undefined
+                        }
                       />
                     }
                     count={contribution.contributionCount}

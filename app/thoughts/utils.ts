@@ -71,7 +71,8 @@ export function getPosts(): BlogPost[] {
     .filter((post) => !post.metadata.draft)
     .sort((a, b) => {
       return (
-        new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime()
+        new Date(b.metadata.publishedAt).getTime() -
+        new Date(a.metadata.publishedAt).getTime()
       );
     });
 }
@@ -115,7 +116,7 @@ export function formatDate(date: string, includeRelative = false) {
 export async function getPostFromSlug(slug: string) {
   const source = await fs.promises.readFile(
     path.join(process.cwd(), 'app/thoughts/posts', `${slug}.mdx`),
-    'utf-8'
+    'utf-8',
   );
 
   const { content, frontmatter } = await compileMDX<Metadata>({

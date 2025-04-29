@@ -20,29 +20,37 @@ const getWakatimeToken = cache(() => {
 const token = getWakatimeToken();
 
 // https://wakatime.com/developers#all_time_since_today
-export const getAllTimeStats = cache(async (): Promise<WakaTimeAllTimeStats> => {
-  const response = await fetch(`${WAKATIME_ENDPOINT}/users/current/all_time_since_today`, {
-    headers: {
-      Authorization: `Basic ${token}`,
-    },
-  });
+export const getAllTimeStats = cache(
+  async (): Promise<WakaTimeAllTimeStats> => {
+    const response = await fetch(
+      `${WAKATIME_ENDPOINT}/users/current/all_time_since_today`,
+      {
+        headers: {
+          Authorization: `Basic ${token}`,
+        },
+      },
+    );
 
-  if (!response.ok) {
-    console.error('Error:', response.status, await response.text());
-  }
+    if (!response.ok) {
+      console.error('Error:', response.status, await response.text());
+    }
 
-  const result = await response.json();
+    const result = await response.json();
 
-  return result.data;
-});
+    return result.data;
+  },
+);
 
 // https://wakatime.com/developers#stats
 export const getStatsThisWeek = cache(async (): Promise<UserStats> => {
-  const response = await fetch(`${WAKATIME_ENDPOINT}/users/current/stats/last_7_days`, {
-    headers: {
-      Authorization: `Basic ${token}`,
+  const response = await fetch(
+    `${WAKATIME_ENDPOINT}/users/current/stats/last_7_days`,
+    {
+      headers: {
+        Authorization: `Basic ${token}`,
+      },
     },
-  });
+  );
 
   if (!response.ok) {
     console.error('Error:', response.status, await response.text());

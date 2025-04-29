@@ -11,7 +11,8 @@ n.prototype = {
   },
   update: function () {
     return (
-      (this.phase += this.frequency), (e = this.offset + Math.sin(this.phase) * this.amplitude)
+      (this.phase += this.frequency),
+      (e = this.offset + Math.sin(this.phase) * this.amplitude)
     );
   },
   value: function () {
@@ -89,7 +90,8 @@ function onMousemove(e) {
       e.preventDefault();
   }
   function l(e) {
-    1 == e.touches.length && ((pos.x = e.touches[0].pageX), (pos.y = e.touches[0].pageY));
+    1 == e.touches.length &&
+      ((pos.x = e.touches[0].pageX), (pos.y = e.touches[0].pageY));
   }
   document.removeEventListener('mousemove', onMousemove),
     document.removeEventListener('touchstart', onMousemove),

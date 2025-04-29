@@ -25,12 +25,15 @@ export default function Hero() {
   return (
     <div>
       <h1 className="sr-only">
-        Hello I&apos;m Dale Larroder, I&apos;m a software developer, and I love building things for
-        the web.
+        Hello I&apos;m Dale Larroder, I&apos;m a software developer, and I love
+        building things for the web.
       </h1>
       <div className="relative z-10 flex h-[calc(100vh-81px)] items-center md:h-[calc(100vh-116px)]">
         <div className="mx-auto w-screen max-w-3xl px-4 sm:px-9 xl:max-w-5xl xl:px-0">
-          <div ref={ref} className="flex cursor-default flex-col space-y-2 -mt-36">
+          <div
+            ref={ref}
+            className="flex cursor-default flex-col space-y-2 -mt-36"
+          >
             <h1 className="text-5xl font-semibold sm:text-7xl md:text-8xl xl:text-9xl">
               Dale Larroder
             </h1>
@@ -64,7 +67,10 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-      <canvas className="bg-skin-base pointer-events-none absolute inset-0" id="canvas"></canvas>
+      <canvas
+        className="bg-skin-base pointer-events-none absolute inset-0"
+        id="canvas"
+      ></canvas>
     </div>
   );
 }

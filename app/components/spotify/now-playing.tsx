@@ -10,7 +10,7 @@ export default function NowPlaying() {
     () => fetchNowPlaying(),
     {
       refreshInterval: 15000,
-    }
+    },
   );
 
   if (!nowPlaying) {
@@ -23,7 +23,9 @@ export default function NowPlaying() {
           />
         </svg>
         <div className="inline-flex space-x-1">
-          <p className="font-medium text-gray-800 dark:text-gray-200">Not Playing</p>
+          <p className="font-medium text-gray-800 dark:text-gray-200">
+            Not Playing
+          </p>
           <span className="text-gray-500 dark:text-gray-300">{' – '}</span>
           <p className="text-gray-500 dark:text-gray-300">Spotify</p>
         </div>

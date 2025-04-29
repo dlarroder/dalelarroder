@@ -11,7 +11,10 @@ export default function BackNavigation() {
   return (
     <button
       onClick={() => router.back()}
-      className={classNames('flex w-full cursor-pointer text-primary-500 mb-12', mukta.className)}
+      className={classNames(
+        'flex w-full cursor-pointer text-primary-500 mb-12',
+        mukta.className,
+      )}
     >
       <div className="flex w-full items-center">
         <SquareArrowLeftIcon size={20} className="h-9 w-9" />

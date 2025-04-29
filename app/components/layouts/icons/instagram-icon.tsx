@@ -115,7 +115,7 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
           onMouseEnter?.(e);
         }
       },
-      [lineControls, onMouseEnter, pathControls, rectControls]
+      [lineControls, onMouseEnter, pathControls, rectControls],
     );
 
     const handleMouseLeave = useCallback(
@@ -128,14 +128,14 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
           onMouseLeave?.(e);
         }
       },
-      [rectControls, pathControls, lineControls, onMouseLeave]
+      [rectControls, pathControls, lineControls, onMouseLeave],
     );
 
     return (
       <div
         className={classNames(
           `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
-          className
+          className,
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -181,7 +181,7 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
         </svg>
       </div>
     );
-  }
+  },
 );
 
 InstagramIcon.displayName = 'InstagramIcon';

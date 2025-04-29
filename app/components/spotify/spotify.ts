@@ -70,7 +70,9 @@ export async function fetchNowPlaying(): Promise<NowPlayingSong | null> {
     }
 
     const title = song.item.name;
-    const artist = song.item.artists.map((artist: Artist) => artist.name).join(', ');
+    const artist = song.item.artists
+      .map((artist: Artist) => artist.name)
+      .join(', ');
     const album = song.item.album.name;
     const albumImageUrl = song.item.album.images[0].url;
     const songUrl = song.item.external_urls.spotify;

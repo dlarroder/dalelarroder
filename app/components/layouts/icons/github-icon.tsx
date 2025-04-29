@@ -92,7 +92,7 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
           onMouseEnter?.(e);
         }
       },
-      [bodyControls, onMouseEnter, tailControls]
+      [bodyControls, onMouseEnter, tailControls],
     );
 
     const handleMouseLeave = useCallback(
@@ -104,14 +104,14 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
           onMouseLeave?.(e);
         }
       },
-      [bodyControls, tailControls, onMouseLeave]
+      [bodyControls, tailControls, onMouseLeave],
     );
 
     return (
       <div
         className={classNames(
           `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
-          className
+          className,
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -143,7 +143,7 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
         </svg>
       </div>
     );
-  }
+  },
 );
 
 GithubIcon.displayName = 'GithubIcon';

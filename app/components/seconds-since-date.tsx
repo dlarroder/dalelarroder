@@ -19,8 +19,15 @@ export default function SecondsSinceDate({ date }: { date: Date }) {
   }, [date]);
 
   return (
-    <span className={classNames('inline-block w-[11ch] text-right tabular-nums', dmMono.className)}>
-      {secondsPassed !== null ? secondsPassed.toLocaleString('en-US') : '\u00A0'}
+    <span
+      className={classNames(
+        'inline-block w-[11ch] text-right tabular-nums',
+        dmMono.className,
+      )}
+    >
+      {secondsPassed !== null
+        ? secondsPassed.toLocaleString('en-US')
+        : '\u00A0'}
     </span>
   );
 }

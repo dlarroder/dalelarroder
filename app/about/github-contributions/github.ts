@@ -11,9 +11,7 @@ const getGraphqlWithAuth = cache(() => {
   }
 
   const graphqlWithAuth = graphql.defaults({
-    headers: {
-      authorization: `bearer ${github_token}`,
-    },
+    headers: { authorization: `bearer ${github_token}` },
   });
 
   return graphqlWithAuth;
@@ -52,7 +50,11 @@ export type GithubResponse = {
         colors: string[];
         totalContributions: number;
         weeks: {
-          contributionDays: { color: string; date: string; contributionCount: number }[];
+          contributionDays: {
+            color: string;
+            date: string;
+            contributionCount: number;
+          }[];
           firstDay: string;
         }[];
         months: { firstDay: string; name: string; totalWeeks: number }[];
@@ -63,7 +65,8 @@ export type GithubResponse = {
 
 export type GithubUser = GithubResponse['user'];
 
-export type ContributionCalendar = GithubUser['contributionsCollection']['contributionCalendar'];
+export type ContributionCalendar =
+  GithubUser['contributionsCollection']['contributionCalendar'];
 
 export type ContributionMonths = ContributionCalendar['months'];
 
@@ -107,25 +110,16 @@ export const getContributions = cache(
     });
 
     return response.user.contributionsCollection.contributionCalendar;
-  }
+  },
 );
 
 export const getBestDay = (weeks: ContributionWeeks) => {
-  let bestDay: {
-    day: string;
-    count: number;
-  } = {
-    day: '',
-    count: 0,
-  };
+  let bestDay: { day: string; count: number } = { day: '', count: 0 };
 
   weeks.forEach((week) => {
     week.contributionDays.forEach((day) => {
       if (day.contributionCount > bestDay.count) {
-        bestDay = {
-          day: day.date,
-          count: day.contributionCount,
-        };
+        bestDay = { day: day.date, count: day.contributionCount };
       }
     });
   });
@@ -137,7 +131,10 @@ export const getThisWeeksContributions = (weeks: ContributionWeeks) => {
   return (
     weeks[weeks.length - 1]?.contributionDays
       ?.map((item) => item.contributionCount)
-      ?.reduce((previousValue, currentValue) => previousValue + currentValue, 0) || 0
+      ?.reduce(
+        (previousValue, currentValue) => previousValue + currentValue,
+        0,
+      ) || 0
   );
 };
 
@@ -145,7 +142,9 @@ export const getDaysFromContribution = (weeks: ContributionWeeks) => {
   return weeks.flatMap((week) => week.contributionDays).length;
 };
 
-export function getContributionStreak(contributionDays: ContributionDay[]): ContributionStreak {
+export function getContributionStreak(
+  contributionDays: ContributionDay[],
+): ContributionStreak {
   let longestStreak = 0;
   let currentStreak = 0;
   let tempStreak = 0;
@@ -159,7 +158,10 @@ export function getContributionStreak(contributionDays: ContributionDay[]): Cont
     const currentDate = new Date(date);
 
     if (contributionCount > 0) {
-      if (previousDate && currentDate.getTime() - previousDate.getTime() === 86400000) {
+      if (
+        previousDate &&
+        currentDate.getTime() - previousDate.getTime() === 86400000
+      ) {
         tempStreak++;
       } else {
         tempStreak = 1;

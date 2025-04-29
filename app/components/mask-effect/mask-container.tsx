@@ -23,7 +23,10 @@ export const MaskContainer = ({
   className?: string;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [mousePosition, setMousePosition] = useState<MousePosition>({ x: null, y: null });
+  const [mousePosition, setMousePosition] = useState<MousePosition>({
+    x: null,
+    y: null,
+  });
   const containerRef = useRef<HTMLDivElement | null>(null);
   const updateMousePosition = (e: MouseEvent) => {
     const rect = containerRef.current?.getBoundingClientRect();
@@ -85,7 +88,9 @@ export const MaskContainer = ({
         </div>
       </motion.div>
 
-      <div className="flex h-full w-full items-center justify-center">{revealText}</div>
+      <div className="flex h-full w-full items-center justify-center">
+        {revealText}
+      </div>
     </motion.div>
   );
 };

@@ -15,19 +15,25 @@ export default function Home() {
         <ThemeSwitch />
       </div>
       <BackgroundGradientAnimation>
-        <div className={classNames('relative min-h-svh', merryWeather.className)}>
+        <div
+          className={classNames('relative min-h-svh', merryWeather.className)}
+        >
           <div className="absolute top-[20%] md:top-[40%] max-w-5xl flex-col space-y-4 justify-center px-8 md:px-24 text-shadow-lg lg:ml-14">
             <h1 className="font-serif text-2xl font-medium md:mr-4 md:text-4xl">
-              Welcome to my <span className="font-bold">personal portfolio — </span> or, as I like
-              to call it, my <span className="italic border-b">playground</span> on the web.
+              Welcome to my{' '}
+              <span className="font-bold">personal portfolio — </span> or, as I
+              like to call it, my{' '}
+              <span className="italic border-b">playground</span> on the web.
             </h1>
             <section className="relative z-10">
               <p className="text-base text-justify">
-                I&apos;m Dale Larroder — a Software Engineer and forever a student of the craft. I
-                love building things for the web and am always on the lookout for new challenges and
-                opportunities to learn. I&apos;m passionate about creating beautiful and functional
-                user experiences. I believe the best way to learn is by doing, so I&apos;m
-                constantly exploring new technologies. Right now, I&apos;m building cool things at{' '}
+                I&apos;m Dale Larroder — a Software Engineer and forever a
+                student of the craft. I love building things for the web and am
+                always on the lookout for new challenges and opportunities to
+                learn. I&apos;m passionate about creating beautiful and
+                functional user experiences. I believe the best way to learn is
+                by doing, so I&apos;m constantly exploring new technologies.
+                Right now, I&apos;m building cool things at{' '}
                 <a
                   href="https://www.aphex.co/"
                   className="underline-magical"
@@ -67,9 +73,13 @@ export default function Home() {
                   >
                     <XIcon className="h-9 w-9" />
                   </Link>
-                  <a href="mailto:hi@dalelarroder.com" aria-label="email" rel="noreferrer">
+                  <Link
+                    href="mailto:hi@dalelarroder.com"
+                    aria-label="email"
+                    rel="noreferrer"
+                  >
                     <AtSignIcon className="h-9 w-9" />
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="h-14 border-l border-gray-300" />

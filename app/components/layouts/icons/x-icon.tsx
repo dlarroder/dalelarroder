@@ -48,7 +48,7 @@ const XIcon = forwardRef<XIconHandle, XIconProps>(
           onMouseEnter?.(e);
         }
       },
-      [controls, onMouseEnter]
+      [controls, onMouseEnter],
     );
 
     const handleMouseLeave = useCallback(
@@ -59,13 +59,13 @@ const XIcon = forwardRef<XIconHandle, XIconProps>(
           onMouseLeave?.(e);
         }
       },
-      [controls, onMouseLeave]
+      [controls, onMouseLeave],
     );
     return (
       <div
         className={classNames(
           `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
-          className
+          className,
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -82,7 +82,11 @@ const XIcon = forwardRef<XIconHandle, XIconProps>(
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <motion.path variants={pathVariants} animate={controls} d="M18 6 6 18" />
+          <motion.path
+            variants={pathVariants}
+            animate={controls}
+            d="M18 6 6 18"
+          />
           <motion.path
             transition={{ delay: 0.2 }}
             variants={pathVariants}
@@ -92,7 +96,7 @@ const XIcon = forwardRef<XIconHandle, XIconProps>(
         </svg>
       </div>
     );
-  }
+  },
 );
 
 XIcon.displayName = 'XIcon';

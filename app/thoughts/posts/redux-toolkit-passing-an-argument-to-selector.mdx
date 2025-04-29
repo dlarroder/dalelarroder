@@ -31,7 +31,7 @@ export const calendarProjectOptionsSelector = createSelector(
         },
       }));
     return options;
-  }
+  },
 );
 ```
 
@@ -41,7 +41,7 @@ Just pass `projectId` as a second argument to the selector
 
 ```tsx
 const calendarOptions = useSelector((state: RootState) =>
-  calendarProjectOptionsSelector(state, projectId)
+  calendarProjectOptionsSelector(state, projectId),
 );
 ```
 
@@ -52,7 +52,10 @@ This is a sample snippet in creating a selector that accepts **multiple** argume
 ```tsx
 export const groupedPackagesSelector = createSelector(
   activePackagesSelector,
-  (_: RootState, { ownerId, projectId }: { ownerId: string; projectId: string }) => ({
+  (
+    _: RootState,
+    { ownerId, projectId }: { ownerId: string; projectId: string },
+  ) => ({
     ownerId,
     projectId,
   }),
@@ -74,7 +77,7 @@ export const groupedPackagesSelector = createSelector(
       });
 
     return groupedPackages;
-  }
+  },
 );
 ```
 
@@ -84,7 +87,7 @@ Just pass `projectId` and `ownerId` in a object as a second argument to the sele
 
 ```tsx
 const groupedPackages = useSelector((state: RootState) =>
-  groupedPackagesSelector(state, { ownerId, projectId })
+  groupedPackagesSelector(state, { ownerId, projectId }),
 );
 ```
 

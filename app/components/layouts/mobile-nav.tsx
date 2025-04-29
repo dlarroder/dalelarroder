@@ -28,7 +28,11 @@ export default function MobileNav() {
 
   return (
     <div className="sm:hidden">
-      <button type="button" aria-label="Toggle Menu" onClick={() => setNavShow(!navShow)}>
+      <button
+        type="button"
+        aria-label="Toggle Menu"
+        onClick={() => setNavShow(!navShow)}
+      >
         <HiOutlineMenu size={30} className="mt-1.5" />
       </button>
       <AnimatePresence>
@@ -40,7 +44,7 @@ export default function MobileNav() {
           exit="exit"
           variants={variants}
           className={classNames(
-            'fixed inset-0 z-20 h-full w-full bg-white opacity-95 dark:bg-black'
+            'fixed inset-0 z-20 h-full w-full bg-white opacity-95 dark:bg-black',
           )}
         >
           <header className="flex justify-end py-5 px-4">
@@ -71,7 +75,7 @@ export default function MobileNav() {
                 onClick={() => setNavShow(!navShow)}
                 className={classNames(
                   'horizontal-underline font-bold tracking-widest text-gray-900 backdrop:text-2xl dark:text-gray-100',
-                  { 'horizontal-underline-active': pathName === '/' }
+                  { 'horizontal-underline-active': pathName === '/' },
                 )}
               >
                 Home
@@ -87,7 +91,7 @@ export default function MobileNav() {
                     onClick={() => setNavShow(!navShow)}
                     className={classNames(
                       'horizontal-underline font-bold tracking-widest text-gray-900 backdrop:text-2xl dark:text-gray-100',
-                      { 'horizontal-underline-active': active }
+                      { 'horizontal-underline-active': active },
                     )}
                     aria-label={title}
                   >

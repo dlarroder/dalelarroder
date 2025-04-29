@@ -79,7 +79,7 @@ const AtSignIcon = forwardRef<AtSignIconHandle, AtSignIconProps>(
           onMouseEnter?.(e);
         }
       },
-      [controls, onMouseEnter]
+      [controls, onMouseEnter],
     );
 
     const handleMouseLeave = useCallback(
@@ -90,14 +90,14 @@ const AtSignIcon = forwardRef<AtSignIconHandle, AtSignIconProps>(
           onMouseLeave?.(e);
         }
       },
-      [controls, onMouseLeave]
+      [controls, onMouseLeave],
     );
 
     return (
       <div
         className={classNames(
           `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
-          className
+          className,
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -114,7 +114,13 @@ const AtSignIcon = forwardRef<AtSignIconHandle, AtSignIconProps>(
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <motion.circle variants={circleVariants} animate={controls} cx="12" cy="12" r="4" />
+          <motion.circle
+            variants={circleVariants}
+            animate={controls}
+            cx="12"
+            cy="12"
+            r="4"
+          />
           <motion.path
             variants={pathVariants}
             animate={controls}
@@ -123,7 +129,7 @@ const AtSignIcon = forwardRef<AtSignIconHandle, AtSignIconProps>(
         </svg>
       </div>
     );
-  }
+  },
 );
 
 AtSignIcon.displayName = 'AtSignIcon';

@@ -24,7 +24,10 @@ interface Blob {
 export default function GooeyBackground() {
   const [blobs, setBlobs] = useState<Blob[]>([]);
   const [dimensions, setDimensions] = useState({ width: 1200, height: 800 });
-  const [mousePosition, setMousePosition] = useState<{ x: number; y: number } | null>(null);
+  const [mousePosition, setMousePosition] = useState<{
+    x: number;
+    y: number;
+  } | null>(null);
   const requestRef = useRef<number | null>(null);
   const previousTimeRef = useRef<number | undefined>(undefined);
 
@@ -160,7 +163,7 @@ export default function GooeyBackground() {
     y: number,
     radius: number,
     sides: number,
-    rotation: number
+    rotation: number,
   ): string => {
     let path = '';
     const angleStep = (Math.PI * 2) / sides;
@@ -248,7 +251,7 @@ export default function GooeyBackground() {
             y: newY,
             rotation: newRotation,
           };
-        })
+        }),
       );
     }
     previousTimeRef.current = time;
@@ -275,7 +278,11 @@ export default function GooeyBackground() {
       >
         <defs>
           <filter id="gooey">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="30" result="blur" />
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="30"
+              result="blur"
+            />
             <feColorMatrix
               in="blur"
               mode="matrix"
@@ -319,7 +326,7 @@ export default function GooeyBackground() {
                 opacity="0.8"
                 transform={`rotate(${blob.rotation}, ${blob.x}, ${blob.y})`}
               />
-            )
+            ),
           )}
         </g>
       </svg>

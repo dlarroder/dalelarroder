@@ -15,7 +15,7 @@ export default function Contributions() {
 
   const { data: contributions, isLoading } = useSWR(
     ['contributions', GITHUB_USERNAME, year], // Cache key
-    () => getContributions(GITHUB_USERNAME, year)
+    () => getContributions(GITHUB_USERNAME, year),
   );
 
   if (!contributions || isLoading) {

@@ -1,4 +1,6 @@
-export const extractHoursAndMinutes = (timeString: string): { hours: number; minutes: number } => {
+export const extractHoursAndMinutes = (
+  timeString: string,
+): { hours: number; minutes: number } => {
   const hoursMatch = timeString.match(/([\d,]+)\s*hrs?/i);
   const minutesMatch = timeString.match(/(\d+)\s*mins?/i);
 

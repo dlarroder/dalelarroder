@@ -8,7 +8,13 @@ interface ProjectProps {
   setModal: (modal: ProjectModal) => void;
 }
 
-export default function ProjectItem({ index, title, url, role, setModal }: ProjectProps) {
+export default function ProjectItem({
+  index,
+  title,
+  url,
+  role,
+  setModal,
+}: ProjectProps) {
   return (
     <a
       href={url}

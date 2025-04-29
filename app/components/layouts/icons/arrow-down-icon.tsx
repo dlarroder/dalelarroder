@@ -58,7 +58,7 @@ const ArrowDownIcon = forwardRef<ArrowDownIconHandle, ArrowDownIconProps>(
           onMouseEnter?.(e);
         }
       },
-      [controls, onMouseEnter]
+      [controls, onMouseEnter],
     );
 
     const handleMouseLeave = useCallback(
@@ -69,14 +69,14 @@ const ArrowDownIcon = forwardRef<ArrowDownIconHandle, ArrowDownIconProps>(
           onMouseLeave?.(e);
         }
       },
-      [controls, onMouseLeave]
+      [controls, onMouseLeave],
     );
 
     return (
       <div
         className={classNames(
           `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
-          className
+          className,
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -93,12 +93,20 @@ const ArrowDownIcon = forwardRef<ArrowDownIconHandle, ArrowDownIconProps>(
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <motion.path d="m19 12-7 7-7-7" variants={pathVariants} animate={controls} />
-          <motion.path d="M12 5v14" variants={secondPathVariants} animate={controls} />
+          <motion.path
+            d="m19 12-7 7-7-7"
+            variants={pathVariants}
+            animate={controls}
+          />
+          <motion.path
+            d="M12 5v14"
+            variants={secondPathVariants}
+            animate={controls}
+          />
         </svg>
       </div>
     );
-  }
+  },
 );
 
 ArrowDownIcon.displayName = 'ArrowDownIcon';

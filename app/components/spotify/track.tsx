@@ -8,7 +8,9 @@ interface TrackProps {
 export default function Track({ track, ranking }: TrackProps) {
   return (
     <div className="mt-4 flex w-full max-w-5xl flex-row items-baseline border-b border-gray-200 dark:border-gray-800">
-      <p className="text-sm font-bold text-gray-500 dark:text-gray-600">{ranking}</p>
+      <p className="text-sm font-bold text-gray-500 dark:text-gray-600">
+        {ranking}
+      </p>
       <div className="flex flex-col pl-3">
         <a
           className="w-60 truncate font-medium text-gray-900 dark:text-gray-100 sm:w-96 md:w-full"

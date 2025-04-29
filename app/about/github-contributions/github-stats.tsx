@@ -18,7 +18,7 @@ export default function GithubStats({ contributions }: Props) {
   const bestDay = getBestDay(weeks);
   const daysFromContribution = getDaysFromContribution(weeks);
   const streak = getContributionStreak(
-    contributions.weeks.flatMap((week) => week.contributionDays)
+    contributions.weeks.flatMap((week) => week.contributionDays),
   );
   const averageContribution = totalContributions / daysFromContribution;
 

@@ -116,7 +116,7 @@ const LinkedinIcon = forwardRef<LinkedinIconHandle, LinkedinIconProps>(
           onMouseEnter?.(e);
         }
       },
-      [circleControls, onMouseEnter, pathControls, rectControls]
+      [circleControls, onMouseEnter, pathControls, rectControls],
     );
 
     const handleMouseLeave = useCallback(
@@ -129,14 +129,14 @@ const LinkedinIcon = forwardRef<LinkedinIconHandle, LinkedinIconProps>(
           onMouseLeave?.(e);
         }
       },
-      [pathControls, rectControls, circleControls, onMouseLeave]
+      [pathControls, rectControls, circleControls, onMouseLeave],
     );
 
     return (
       <div
         className={classNames(
           `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
-          className
+          className,
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -179,7 +179,7 @@ const LinkedinIcon = forwardRef<LinkedinIconHandle, LinkedinIconProps>(
         </svg>
       </div>
     );
-  }
+  },
 );
 
 LinkedinIcon.displayName = 'LinkedinIcon';

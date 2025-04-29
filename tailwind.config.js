@@ -3,7 +3,12 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 
 module.exports = {
   mode: 'jit',
-  content: ['./app/**/*.tsx', './components/**/*.tsx', './layouts/**/*.tsx', './lib/**/*.ts'],
+  content: [
+    './app/**/*.tsx',
+    './components/**/*.tsx',
+    './layouts/**/*.tsx',
+    './lib/**/*.ts',
+  ],
   darkMode: 'class',
   theme: {
     extend: {

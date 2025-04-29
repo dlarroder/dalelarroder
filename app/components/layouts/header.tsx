@@ -19,7 +19,10 @@ export default function Header() {
           <div>
             <Link
               href="/"
-              className={classNames('hidden text-2xl font-extrabold sm:block', copse.className)}
+              className={classNames(
+                'hidden text-2xl font-extrabold sm:block',
+                copse.className,
+              )}
             >
               D
             </Link>

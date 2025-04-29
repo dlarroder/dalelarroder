@@ -51,7 +51,7 @@ const MoonIcon = forwardRef<MoonIconHandle, MoonIconProps>(
           onMouseEnter?.(e);
         }
       },
-      [controls, onMouseEnter]
+      [controls, onMouseEnter],
     );
 
     const handleMouseLeave = useCallback(
@@ -62,13 +62,13 @@ const MoonIcon = forwardRef<MoonIconHandle, MoonIconProps>(
           onMouseLeave?.(e);
         }
       },
-      [controls, onMouseLeave]
+      [controls, onMouseLeave],
     );
     return (
       <div
         className={classNames(
           `cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
-          className
+          className,
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -92,7 +92,7 @@ const MoonIcon = forwardRef<MoonIconHandle, MoonIconProps>(
         </motion.svg>
       </div>
     );
-  }
+  },
 );
 
 MoonIcon.displayName = 'MoonIcon';

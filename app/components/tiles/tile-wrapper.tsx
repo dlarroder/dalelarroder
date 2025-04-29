@@ -22,8 +22,10 @@ export default function TileWrapper({ children, numOfPages }: WrapperProps) {
     const screenH = window.innerHeight;
     const halfH = screenH / 2;
     const percentY =
-      Math.min(clientHeight + halfH, Math.max(-screenH, scrollY - offsetTop) + halfH) /
-      clientHeight;
+      Math.min(
+        clientHeight + halfH,
+        Math.max(-screenH, scrollY - offsetTop) + halfH,
+      ) / clientHeight;
 
     currentPage = percentY * numOfPages;
   }

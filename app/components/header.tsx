@@ -9,7 +9,7 @@ export default function Header({ title }: { title: string }) {
       href="/"
       className={classNames(
         'flex gap-2 items-center text-primary-500 mb-12 outline-0',
-        mukta.className
+        mukta.className,
       )}
     >
       <div className="flex items-center">
@@ -20,7 +20,7 @@ export default function Header({ title }: { title: string }) {
       <span
         className={classNames(
           'text-black dark:text-white text-lg md:text-4xl',
-          merryWeather.className
+          merryWeather.className,
         )}
       >
         {title}

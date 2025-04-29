@@ -22,5 +22,9 @@ export const ScrollProvider = ({ children }: ScrollProviderProps) => {
     setScrollY(scroll);
   });
 
-  return <ScrollContext.Provider value={{ scrollY }}>{children}</ScrollContext.Provider>;
+  return (
+    <ScrollContext.Provider value={{ scrollY }}>
+      {children}
+    </ScrollContext.Provider>
+  );
 };

@@ -23,15 +23,33 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning className={mukta.className}>
       <head>
-        <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="76x76"
+          href="/static/favicons/favicon.ico"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/static/favicons/favicon.ico"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/static/favicons/favicon.ico"
+        />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#000000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body className="bg-white text-black antialiased dark:bg-black dark:text-white selection:bg-primary-500 selection:text-white">
-        <ThemeProvider attribute="class" defaultTheme="dark" themes={['dark', 'light']}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          themes={['dark', 'light']}
+        >
           <LenisProvider>{children}</LenisProvider>
           {process.env.NODE_ENV === 'production' && <Analytics />}
         </ThemeProvider>

@@ -7,7 +7,10 @@ interface AnimateCounterProps extends HTMLProps<HTMLSpanElement> {
   number: number;
 }
 
-export default function AnimatedNumber({ number, ...rest }: AnimateCounterProps) {
+export default function AnimatedNumber({
+  number,
+  ...rest
+}: AnimateCounterProps) {
   const countRef = useRef<HTMLSpanElement>(null);
   const initialCount = 0;
 
