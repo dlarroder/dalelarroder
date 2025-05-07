@@ -5,8 +5,8 @@ const siteMetadata = {
   description: 'Sabor ancestral, placer eterno.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteLogo: '/static/images/anonimo3.jpeg',
-  image: '/static/images/anonimo1.jpeg',
+  siteLogo: '/static/images/XocoBanner.jpg',
+  image: '/static/images/Xoco.jpeg',
   socialBanner: '/static/images/twitter-card.png',
   siteUrl: 'https://xococafe.netlify.app',
   siteRepo: 'https://github.com/driano7/XocoCafe',

@@ -10,7 +10,7 @@ import ThemeProvider from '@/components/Providers/ThemeProvider';
 
 export const metadata = {
   title: 'Xoco Café',
-  description: 'Tagline: sabor ancestral, placer eterno',
+  description: 'Sabor ancestral, placer eterno',
   metadataBase: new URL('https://xococafe.netlify.app'),
 };
 
