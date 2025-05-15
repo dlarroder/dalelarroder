@@ -10,8 +10,8 @@ export type WorkTile = {
 
 export const workTiles: WorkTile[] = [
   {
-    description: `Dinámicas para aprender de`,
-    title: `Web 3 y Cripto sin estafas.`,
+    description: `Intencional`,
+    title: `Nada en Xoco es casual. Desde su menú compacto hasta la disposición del local`,
     image: {
       src: '/static/images/imgsCafe/cripto.jpg',
       width: 600,
@@ -19,8 +19,8 @@ export const workTiles: WorkTile[] = [
     },
   },
   {
-    description: 'Dinámicas para aprender',
-    title: 'nuevos idiomas.',
+    description: 'todo responde a una intención clara:',
+    title: 'facilitar una experiencia rápida, funcional y estética para el usuario.',
     image: {
       src: '/static/images/imgsCafe/idiomas.png',
       width: 600,
@@ -28,8 +28,8 @@ export const workTiles: WorkTile[] = [
     },
   },
   {
-    description: `Dinámicas para mandar mensajes`,
-    title: 'Anónimos a tus seres queridos.',
+    description: `Vanguardista`,
+    title: 'Xoco rompe con el molde tradicional de las cafeterías.',
     image: {
       src: '/static/images/imgsCafe/portavoz.jpeg',
       width: 600,
@@ -37,8 +37,8 @@ export const workTiles: WorkTile[] = [
     },
   },
   {
-    description: `Dinámicas de arte`,
-    title: 'para que vuelvas a ser un niño de nuevo.',
+    description: `Su propuesta minimalista y centrada en el “grab & go”`,
+    title: 'nos posiciona a la vanguardia de los nuevos hábitos de consumo, conectando con generaciones digitales y prácticas.',
     image: {
       src: '/static/images/imgsCafe/arte.jpeg',
       width: 600,
