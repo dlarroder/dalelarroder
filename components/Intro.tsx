@@ -52,19 +52,19 @@ export default function Intro() {
             className="introText inline-block after:content-['_']"
             style={{ opacity: opacityForBlock(progress, 1) }}
           >
-            Anónima.
+            Intencional.
           </span>
           <span
             className="introText inline-block after:content-['_']"
             style={{ opacity: opacityForBlock(progress, 2) }}
           >
-            Simple & divertida.
+            Vanguardista.
           </span>
           <span
             className="introText inline-block"
             style={{ opacity: opacityForBlock(progress, 3) }}
           >
-            Un espacio acogedor para pláticar, trabajar o aprender con nuestras dinámicas.
+            Experiencias sensoriales.
           </span>
         </div>
       </div>
