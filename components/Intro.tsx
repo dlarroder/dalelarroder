@@ -64,7 +64,7 @@ export default function Intro() {
             className="introText inline-block"
             style={{ opacity: opacityForBlock(progress, 3) }}
           >
-            Experiencias sensoriales.
+            Sensorial.
           </span>
         </div>
       </div>
