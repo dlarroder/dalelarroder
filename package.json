@@ -22,7 +22,7 @@
     "classnames": "2.5.1",
     "cmdk": "1.1.1",
     "date-fns": "^4.1.0",
-    "eslint": "9.23.0",
+    "eslint": "9.30.1",
     "eslint-config-next": "15.2.4",
     "eslint-config-prettier": "10.1.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
