@@ -3,6 +3,7 @@ import LenisProvider from 'app/components/providers/LenisProvider';
 import ThemeProvider from 'app/components/providers/ThemeProvider';
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
+import ThemeSwitch from './components/layouts/theme-switch/theme-switch';
 import { mukta } from './fonts';
 import './tailwind.css';
 
@@ -50,7 +51,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           defaultTheme="dark"
           themes={['dark', 'light']}
         >
-          <LenisProvider>{children}</LenisProvider>
+          <LenisProvider>
+            <ThemeSwitch />
+            {children}
+          </LenisProvider>
           {process.env.NODE_ENV === 'production' && <Analytics />}
         </ThemeProvider>
       </body>

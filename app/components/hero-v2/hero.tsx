@@ -6,15 +6,11 @@ import { AtSignIcon } from '../layouts/icons/at-sign-icon';
 import { GithubIcon } from '../layouts/icons/github-icon';
 import { LinkedinIcon } from '../layouts/icons/linkedin-icon';
 import { XIcon } from '../layouts/icons/x-icon';
-import ThemeSwitch from '../layouts/theme-switch/theme-switch';
 import ArrowDown from './arrow-down';
 
 export default function Hero() {
   return (
     <main className="relative min-h-svh w-screen overflow-hidden">
-      <div className="absolute top-4 right-4 z-10">
-        <ThemeSwitch />
-      </div>
       <BackgroundGradientAnimation>
         <div
           className={classNames('relative min-h-svh', merryWeather.className)}
@@ -33,9 +29,8 @@ export default function Hero() {
                 student of the craft. I love building things for the web and am
                 always on the lookout for new challenges and opportunities to
                 learn. I&apos;m passionate about creating beautiful and
-                functional user experiences. I believe the best way to learn is
-                by doing, so I&apos;m constantly exploring new technologies.
-                Right now, I&apos;m building cool things at{' '}
+                functional user experiences. Right now, I&apos;m building cool
+                things at{' '}
                 <a
                   href="https://www.aphex.co/"
                   className="underline-magical"
