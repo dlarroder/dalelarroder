@@ -30,7 +30,7 @@
     "gsap": "3.12.7",
     "husky": "9.1.7",
     "lenis": "^1.2.3",
-    "lint-staged": "15.5.0",
+    "lint-staged": "15.5.2",
     "logrocket": "9.0.2",
     "motion": "12.9.2",
     "next": "15.3.4",
