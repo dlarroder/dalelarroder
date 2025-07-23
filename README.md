@@ -1,78 +1,73 @@
-# dalelarroder.com ⚡️
 
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Deployment**: [Vercel](https://vercel.com)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Analytics**: [Logrocket](https://logrocket.com/)
-- **Content**: [MDX](https://mdxjs.com/) with [Contentlayer](https://www.contentlayer.dev/)
+# 🟤 Xoco Café — README
 
-## Running Locally
+## 🌱 Descripción general
 
-### Installation
+**Xoco Café** es un proyecto de cafetería artesanal inspirado en la riqueza del café mexicano, con un enfoque en sostenibilidad, diseño consciente y conexión directa con productores. Ubicado en la Colonia Roma de la Ciudad de México, Xoco busca crear un espacio cultural donde convergen la calidad, el arte y la comunidad.
 
-1. Clone this repo
+---
 
-```bash
-git clone git@github.com:dlarroder/dalelarroder.git
-```
+## ⭐ Propuesta de valor
 
-2. Change directory
+> *Ofrecemos una experiencia auténtica de café de especialidad mexicano, directo de origen, en un ambiente curado que celebra la estética, el sabor y el comercio justo.*
 
-```sh
-cd dalelarroder
-```
+Basado en el análisis del **Business Model Canvas** y el estudio de mercado, la propuesta se sostiene en tres pilares:
 
-3. Install yarn packages
+1. **Producto diferenciado:** Café de origen, seleccionado por su calidad y trazabilidad.  
+2. **Experiencia sensorial y estética:** Diseño de marca elegante, menú curado y espacio visualmente atractivo.  
+3. **Ética y sostenibilidad:** Relación directa con productores, consumo responsable y transparencia operativa.
 
-```bash
-yarn
-```
+---
 
-1. Create a `.env.local` file following the `.env.example`
+## 🧱 Componentes del proyecto
 
-```bash
-cp .env.example .env.local
-```
+### 📊 Estudios e investigación
+- Estudio financiero completo: costos iniciales, operativos, rentabilidad proyectada.
+- Encuesta sobre menú y hábitos de consumo en la zona.
+- Análisis de competencia (cafeterías en la Roma).
+- Feedback de visitas a cafeterías similares.
 
-5. Add your environment variables to `.env.local`
+### 📋 Documentación organizacional
+- Contrato de responsabilidades.
+- Tabla de referencias legales.
+- Registro SAS.
 
-```txt
-SPOTIFY_REFRESH_TOKEN=<Your env>
-SPOTIFY_CLIENT_SECRET=<Your env>
-SPOTIFY_CLIENT_ID=<Your env>
-// ...
-```
+### 🧾 Presupuestos
+- Costos de apertura.
+- Gastos mensuales.
+- Proyección de ganancias por eventos.
+- Presupuesto óptimo y análisis de sensibilidad.
 
-6. Run the development server
+### ⚙️ Operación y calidad
+- Lista de proveedores.
+- Metodologías para control de calidad.
+- Plan de compras y abastecimiento.
 
-```bash
-yarn dev
-```
+---
 
-## Contributing
+## 💻 Tecnologías del sitio web
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+El sitio web oficial del proyecto: [https://xococafe.netlify.app](https://xococafe.netlify.app)
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+Está desarrollado con las siguientes tecnologías:
 
-1. Fork the Project
-2. Commit your Changes (`git commit -m 'Add some Feature'`)
-3. Push to the Branch (`git push origin main`)
-4. Open a Pull Request
+| Tecnología           | Función                          |
+|----------------------|----------------------------------|
+| **React.js**         | Framework principal del sitio    |
+| **Netlify**          | Hosting y despliegue continuo    |
+| **HTML5 / CSS3**     | Estructura y estilos base        |
+| **JavaScript ES6+**  | Interactividad del sitio         |
+| **Google Fonts**     | Tipografía personalizada         |
+| **Animaciones**      | Experiencia visual fluida        |
+| **Diseño responsive**| Optimizado para móviles          |
 
-## Lighthouse Score
+---
 
-![Screen Shot 2022-07-04 at 10 52 02 AM](https://user-images.githubusercontent.com/52998821/177234494-f6bc0203-ba71-4f59-8eb7-6375e3784b31.png)
+## ✒️ Créditos
 
-## Previous Version
+**Equipo fundador:**
+- Sergio Cortés  
+- Alejandro Galván  
+- Donovan Riaño  
+- David Valdez
 
-This is the second version of my website.
-
-Prevoius v1 version:
-
-- https://v1.dalelarroder.com/
-
-## Licence
-
-[MIT](https://github.com/dlarroder/dalelarroder/blob/master/LICENSE) © [Dale Larroder](https://www.dalelarroder.com)
