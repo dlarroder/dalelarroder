@@ -61,12 +61,12 @@ export default function Hero(): ReactElement {
       </div>
       <div className="pointer-events-none absolute inset-0">
         <DarkVeil
-          speed={0.3}
-          hueShift={180}
-          noiseIntensity={0.1}
-          scanlineIntensity={0.05}
+          speed={0.5}
+          hueShift={56}
+          noiseIntensity={0.2}
+          scanlineIntensity={0}
           scanlineFrequency={0.5}
-          warpAmount={0.2}
+          warpAmount={0}
         />
       </div>
     </div>
