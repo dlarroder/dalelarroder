@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import headerNavLinks from 'content/headerNavLinks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import CommandPalette from './CommandPalette/CommandPalette';
 import MobileNav from './MobileNav';
 import SectionContainer from './SectionContainer';
@@ -12,10 +13,26 @@ import Image from 'next/image';
 
 export default function Header() {
   const pathName = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <SectionContainer>
-      <header className="z-40 bg-transparent py-5 md:py-10">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 py-3'
+          : 'bg-transparent py-5 md:py-10'
+      }`}
+    >
+      <SectionContainer>
         <div className="mx-auto flex max-w-5xl items-center justify-between">
           <div>
             <Link
@@ -62,7 +79,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-      </header>
-    </SectionContainer>
+      </SectionContainer>
+    </header>
   );
 }
