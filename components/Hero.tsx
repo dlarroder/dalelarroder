@@ -2,10 +2,10 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ReactElement, useContext, useEffect, useRef } from 'react';
+import { ReactElement, useContext, useRef } from 'react';
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi';
 import { ScrollContext } from './Providers/ScrollProvider';
-import { renderCanvas } from './renderCanvas';
+import DarkVeil from './DarkVeil';
 
 export default function Hero(): ReactElement {
   const ref = useRef<HTMLHeadingElement>(null);
@@ -17,10 +17,6 @@ export default function Hero(): ReactElement {
   if (elContainer) {
     progress = Math.min(1, scrollY / elContainer.clientHeight);
   }
-
-  useEffect(() => {
-    renderCanvas();
-  }, []);
 
   return (
     <div>
@@ -63,7 +59,16 @@ export default function Hero(): ReactElement {
           </div>
         </div>
       </div>
-      <canvas className="bg-skin-base pointer-events-none absolute inset-0" id="canvas"></canvas>
+      <div className="pointer-events-none absolute inset-0">
+        <DarkVeil
+          speed={0.3}
+          hueShift={180}
+          noiseIntensity={0.1}
+          scanlineIntensity={0.05}
+          scanlineFrequency={0.5}
+          warpAmount={0.2}
+        />
+      </div>
     </div>
   );
 }
