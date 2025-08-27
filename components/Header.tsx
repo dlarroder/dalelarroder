@@ -14,6 +14,7 @@ import Image from 'next/image';
 export default function Header() {
   const pathName = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const isHomePage = pathName === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +34,9 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/28 dark:bg-gray-900/28 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 py-3'
+            ? isHomePage
+              ? 'bg-gray-900/28 backdrop-blur-md border-b border-gray-700/50 py-3'
+              : 'bg-white/28 dark:bg-gray-900/28 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 py-3'
             : 'bg-transparent py-5 md:py-10'
         }`}
       >
@@ -70,7 +73,11 @@ export default function Header() {
                       })}
                       aria-label={title}
                     >
-                      <span className="font-semibold tracking-wide text-gray-900 dark:text-gray-100">
+                      <span
+                        className={`font-semibold tracking-wide ${
+                          isHomePage ? 'text-gray-100' : 'text-gray-900 dark:text-gray-100'
+                        }`}
+                      >
                         {title}
                       </span>
                     </Link>

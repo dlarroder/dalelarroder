@@ -2,12 +2,15 @@
 
 import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { BsMoonFill, BsSunFill } from 'react-icons/bs';
 
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
+  const pathName = usePathname();
+  const isHomePage = pathName === '/';
 
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), []);
@@ -24,13 +27,17 @@ const ThemeSwitch = () => {
         transition: { duration: 0.2 },
       }}
       whileHover={{ scale: 1.2 }}
-      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+      onClick={() => {
+        if (!isHomePage) {
+          setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+        }
+      }}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
-        className="text-gray-900 dark:text-gray-100"
+        className={isHomePage ? 'text-gray-100' : 'text-gray-900 dark:text-gray-100'}
       >
         {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? (
           <BsSunFill size={16} />

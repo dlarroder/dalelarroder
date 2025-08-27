@@ -17,6 +17,7 @@ uniform float uNoise;
 uniform float uScan;
 uniform float uScanFreq;
 uniform float uWarp;
+uniform vec3 uBackgroundColor;
 #define iTime uTime
 #define iResolution uResolution
 
@@ -66,6 +67,10 @@ void mainImage(out vec4 fragColor,in vec2 fragCoord){
 void main(){
     vec4 col;mainImage(col,gl_FragCoord.xy);
     col.rgb=hueShiftRGB(col.rgb,uHueShift);
+    
+    // 混合背景颜色
+    col.rgb = mix(uBackgroundColor, col.rgb, col.a);
+    
     float scanline_val=sin(gl_FragCoord.y*uScanFreq)*0.5+0.5;
     col.rgb*=1.-(scanline_val*scanline_val)*uScan;
     col.rgb+=(rand(gl_FragCoord.xy+uTime)-0.5)*uNoise;
@@ -81,6 +86,7 @@ type Props = {
   scanlineFrequency?: number;
   warpAmount?: number;
   resolutionScale?: number;
+  backgroundColor?: [number, number, number]; // RGB值，范围0-1
 };
 
 export default function DarkVeil({
@@ -91,6 +97,7 @@ export default function DarkVeil({
   scanlineFrequency = 0,
   warpAmount = 0,
   resolutionScale = 1,
+  backgroundColor = [0.0, 0.0, 0.0], // 默认黑色背景
 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -116,6 +123,7 @@ export default function DarkVeil({
         uScan: { value: scanlineIntensity },
         uScanFreq: { value: scanlineFrequency },
         uWarp: { value: warpAmount },
+        uBackgroundColor: { value: backgroundColor },
       },
     });
 
@@ -141,6 +149,7 @@ export default function DarkVeil({
       program.uniforms.uScan.value = scanlineIntensity;
       program.uniforms.uScanFreq.value = scanlineFrequency;
       program.uniforms.uWarp.value = warpAmount;
+      program.uniforms.uBackgroundColor.value = backgroundColor;
       renderer.render({ scene: mesh });
       frame = requestAnimationFrame(loop);
     };
@@ -159,6 +168,7 @@ export default function DarkVeil({
     scanlineFrequency,
     warpAmount,
     resolutionScale,
+    backgroundColor,
   ]);
   return <canvas ref={ref} className="w-full h-full block" />;
 }

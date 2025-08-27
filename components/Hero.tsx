@@ -67,6 +67,7 @@ export default function Hero(): ReactElement {
           scanlineIntensity={0}
           scanlineFrequency={0.5}
           warpAmount={0}
+          backgroundColor={[0.0, 0.0, 0.0]}
         />
       </div>
     </div>
