@@ -7,10 +7,6 @@ import TopTracks from '@/components/Spotify/TopTracks';
 import { allCoreContent, sortedBlogPost } from '@/lib/utils/contentlayer';
 import { allBlogs } from 'contentlayer/generated';
 import { Suspense } from 'react';
-import dynamic from 'next/dynamic';
-
-// Dynamically import the ThreeScene component for client-side rendering
-const ThreeScene = dynamic(() => import('@/components/ThreeScene'), { ssr: false });
 
 export default function Page() {
   const sortedPosts = sortedBlogPost(allBlogs);
@@ -20,8 +16,7 @@ export default function Page() {
     <ScrollProvider>
       <Hero />
       <Intro />
-      {/* Insert the ThreeScene component below the Intro */}
-      <ThreeScene />
+
       <SectionContainer>
         <RecentPosts posts={posts} />
         <Suspense fallback="loading..">

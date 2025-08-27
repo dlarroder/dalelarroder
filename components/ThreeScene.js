@@ -81,7 +81,11 @@ function GelatinousCube() {
 
 function ThreeScene() {
   return (
-    <Canvas shadows camera={{ position: [55, 8, 5], fov: 15 }} style={{ height: '50vh' }}>
+    <Canvas
+      shadows
+      camera={{ position: [55, 8, 5], fov: 15 }}
+      style={{ width: '100%', height: '100%' }}
+    >
       <ambientLight intensity={Math.PI} />
       <group position={[0, -2.5, 0]}>
         <Center top>
