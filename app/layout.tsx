@@ -31,7 +31,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Header />
           <LenisProvider>
-            <main className="pt-24 md:pt-32">{children}</main>
+            <main>{children}</main>
           </LenisProvider>
           <Footer />
         </ThemeProvider>
