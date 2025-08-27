@@ -6,10 +6,22 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useMobileNav } from './MobileNavContext';
 
-export default function MobileNav() {
+export default function MobileNavOverlay() {
   const pathName = usePathname();
-  const [navShow, setNavShow] = useState(false);
+  const { navShow, toggleNav } = useMobileNav();
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const checkDarkMode = () => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    };
+    checkDarkMode();
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
 
   const variants = {
     enter: { opacity: 1, x: 0 },
@@ -26,44 +38,29 @@ export default function MobileNav() {
   }, [navShow]);
 
   return (
-    <div className="sm:hidden">
-      <button
-        type="button"
-        className="ml-1 mr-1 h-8 w-8 rounded py-1"
-        aria-label="Toggle Menu"
-        onClick={() => setNavShow(!navShow)}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          className="text-gray-900 dark:text-gray-100"
-        >
-          <path
-            fillRule="evenodd"
-            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </button>
-      <AnimatePresence>
+    <AnimatePresence>
+      {navShow && (
         <motion.div
-          key="MobileNav"
+          key="MobileNavOverlay"
           transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
-          animate={navShow ? 'enter' : 'exit'}
+          animate="enter"
           initial="exit"
           exit="exit"
           variants={variants}
-          className={classNames(
-            'fixed inset-0 z-20 h-full w-full bg-white opacity-95 dark:bg-black'
-          )}
+          className={classNames('fixed inset-0 z-[60] h-full w-full bg-white dark:bg-black')}
+          style={{
+            backgroundColor: isDark ? '#000000' : '#ffffff',
+            opacity: 1,
+            backdropFilter: 'none',
+            WebkitBackdropFilter: 'none',
+          }}
         >
           <header className="flex justify-end py-5 px-4">
             <button
               type="button"
               aria-label="toggle modal"
               className="h-8 w-8 rounded"
-              onClick={() => setNavShow(!navShow)}
+              onClick={toggleNav}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +80,7 @@ export default function MobileNav() {
             <div key="Home" className="px-12 py-4">
               <Link
                 href="/"
-                onClick={() => setNavShow(!navShow)}
+                onClick={toggleNav}
                 className={classNames(
                   'horizontal-underline font-bold tracking-widest text-gray-900 backdrop:text-2xl dark:text-gray-100',
                   { 'horizontal-underline-active': pathName === '/' }
@@ -99,7 +96,7 @@ export default function MobileNav() {
                 <div key={title} className="px-12 py-4">
                   <Link
                     href={href}
-                    onClick={() => setNavShow(!navShow)}
+                    onClick={toggleNav}
                     className={classNames(
                       'horizontal-underline font-bold tracking-widest text-gray-900 backdrop:text-2xl dark:text-gray-100',
                       { 'horizontal-underline-active': active }
@@ -113,7 +110,7 @@ export default function MobileNav() {
             })}
           </nav>
         </motion.div>
-      </AnimatePresence>
-    </div>
+      )}
+    </AnimatePresence>
   );
 }

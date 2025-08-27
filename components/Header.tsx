@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import CommandPalette from './CommandPalette/CommandPalette';
-import MobileNav from './MobileNav';
+import MobileNavButton from './MobileNavButton';
 import SectionContainer from './SectionContainer';
 import ThemeSwitch from './ThemeSwitch';
 import Image from 'next/image';
@@ -80,7 +80,7 @@ export default function Header() {
               <div className="flex items-center">
                 <CommandPalette />
                 <ThemeSwitch />
-                <MobileNav />
+                <MobileNavButton />
               </div>
             </div>
           </div>
