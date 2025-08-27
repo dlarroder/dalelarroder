@@ -1,168 +1,262 @@
 function n(e) {
-  this.init(e || {});
+  this.phase = 0;
+  this.offset = e.offset || 0;
+  this.frequency = e.frequency || 0.001;
+  this.amplitude = e.amplitude || 1;
 }
-n.prototype = {
-  init: function (e) {
-    this.phase = e.phase || 0;
-    this.offset = e.offset || 0;
-    this.frequency = e.frequency || 0.001;
-    this.amplitude = e.amplitude || 1;
-  },
-  update: function () {
-    return (
-      (this.phase += this.frequency), (e = this.offset + Math.sin(this.phase) * this.amplitude)
-    );
-  },
-  value: function () {
-    return e;
-  },
+
+n.prototype.update = function () {
+  this.phase += this.frequency;
+  var e = this.offset + Math.sin(this.phase) * this.amplitude;
+  return e;
 };
 
-function Line(e) {
-  this.init(e || {});
+n.prototype.value = function () {
+  return this.offset + Math.sin(this.phase) * this.amplitude;
+};
+
+function Particle() {
+  this.x = 0;
+  this.y = 0;
+  this.vx = 0;
+  this.vy = 0;
+  this.life = 1.0;
+  this.maxLife = Math.random() * 80 + 40; // 40-120 frames
+  this.size = Math.random() * 25 + 15; // 15-40px squares - much larger
+  // Sci-fi 8-bit color palette: cyan, electric blue, neon green, purple, magenta
+  var colors = [180, 200, 220, 120, 280, 300]; // cyan, blue, electric blue, green, purple, magenta
+  this.hue = colors[Math.floor(Math.random() * colors.length)];
+  this.brightness = Math.random() * 0.4 + 0.7; // 0.7-1.1 - brighter
+  this.glowSize = this.size * (Math.random() * 3 + 2); // 2-5x glow effect - more dramatic
+  this.rotation = Math.random() * Math.PI * 2; // random rotation for variety
 }
 
-Line.prototype = {
-  init: function (e) {
-    this.spring = e.spring + 0.1 * Math.random() - 0.05;
-    this.friction = E.friction + 0.01 * Math.random() - 0.005;
-    this.nodes = [];
-    for (var t, n = 0; n < E.size; n++) {
-      t = new Node();
-      t.x = pos.x;
-      t.y = pos.y;
-      this.nodes.push(t);
+function ParticleSystem() {
+  this.particles = [];
+  this.maxParticles = 80; // more particles for dramatic effect
+  this.spawnRate = 5; // more particles per frame when mouse moves
+}
+
+ParticleSystem.prototype.addParticle = function (x, y) {
+  if (this.particles.length < this.maxParticles) {
+    var particle = new Particle();
+    particle.x = x + (Math.random() - 0.5) * 30;
+    particle.y = y + (Math.random() - 0.5) * 30;
+    // Random explosion in all directions - more dramatic spread
+    var angle = Math.random() * Math.PI * 2;
+    var speed = Math.random() * 8 + 3; // 3-11 speed
+    particle.vx = Math.cos(angle) * speed;
+    particle.vy = Math.sin(angle) * speed;
+    this.particles.push(particle);
+  }
+};
+
+ParticleSystem.prototype.update = function () {
+  // Add new particles when mouse moves
+  if (mouseMoving && this.particles.length < this.maxParticles) {
+    for (var j = 0; j < this.spawnRate; j++) {
+      this.addParticle(pos.x, pos.y);
     }
-  },
-  update: function () {
-    var e = this.spring,
-      t = this.nodes[0];
-    t.vx += (pos.x - t.x) * e;
-    t.vy += (pos.y - t.y) * e;
-    for (var n, i = 0, a = this.nodes.length; i < a; i++)
-      (t = this.nodes[i]),
-        0 < i &&
-          ((n = this.nodes[i - 1]),
-          (t.vx += (n.x - t.x) * e),
-          (t.vy += (n.y - t.y) * e),
-          (t.vx += n.vx * E.dampening),
-          (t.vy += n.vy * E.dampening)),
-        (t.vx *= this.friction),
-        (t.vy *= this.friction),
-        (t.x += t.vx),
-        (t.y += t.vy),
-        (e *= E.tension);
-  },
-  draw: function () {
-    var e,
-      t,
-      n = this.nodes[0].x,
-      i = this.nodes[0].y;
-    ctx.beginPath();
-    ctx.moveTo(n, i);
-    for (var a = 1, o = this.nodes.length - 2; a < o; a++) {
-      e = this.nodes[a];
-      t = this.nodes[a + 1];
-      n = 0.5 * (e.x + t.x);
-      i = 0.5 * (e.y + t.y);
-      ctx.quadraticCurveTo(e.x, e.y, n, i);
+  }
+
+  // Update existing particles
+  for (var i = this.particles.length - 1; i >= 0; i--) {
+    var p = this.particles[i];
+
+    // Update position
+    p.x += p.vx;
+    p.y += p.vy;
+
+    // Apply friction only (no gravity) - particles spread in all directions
+    p.vx *= 0.96; // slightly more friction for dramatic slow-down
+    p.vy *= 0.96;
+
+    // Update rotation for dynamic effect
+    p.rotation += 0.05;
+
+    // Update life
+    p.life -= 1.0 / p.maxLife;
+
+    // Remove dead particles
+    if (p.life <= 0) {
+      this.particles.splice(i, 1);
     }
-    e = this.nodes[a];
-    t = this.nodes[a + 1];
-    ctx.quadraticCurveTo(e.x, e.y, t.x, t.y);
-    ctx.stroke();
-    ctx.closePath();
-  },
+  }
+};
+
+ParticleSystem.prototype.draw = function () {
+  ctx.globalCompositeOperation = 'lighter';
+
+  for (var i = 0; i < this.particles.length; i++) {
+    var p = this.particles[i];
+    var alpha = p.life * p.brightness;
+
+    if (alpha > 0) {
+      // Draw outer glow effect - more dramatic
+      ctx.globalAlpha = alpha * 0.2;
+      ctx.fillStyle = 'hsla(' + p.hue + ', 100%, 50%, ' + alpha * 0.2 + ')';
+      ctx.fillRect(p.x - p.glowSize / 2, p.y - p.glowSize / 2, p.glowSize, p.glowSize);
+
+      // Draw middle glow
+      ctx.globalAlpha = alpha * 0.4;
+      ctx.fillStyle = 'hsla(' + p.hue + ', 95%, 60%, ' + alpha * 0.4 + ')';
+      var midGlow = p.glowSize * 0.6;
+      ctx.fillRect(p.x - midGlow / 2, p.y - midGlow / 2, midGlow, midGlow);
+
+      // Draw main particle (pixelated square) - more saturated sci-fi colors
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = 'hsla(' + p.hue + ', 100%, 75%, ' + alpha + ')';
+      ctx.fillRect(
+        Math.floor(p.x - p.size / 2),
+        Math.floor(p.y - p.size / 2),
+        Math.floor(p.size),
+        Math.floor(p.size)
+      );
+
+      // Add ultra-bright center for intense 8-bit sci-fi effect
+      ctx.globalAlpha = alpha * 0.9;
+      ctx.fillStyle = 'hsla(' + p.hue + ', 100%, 95%, ' + alpha * 0.9 + ')';
+      var centerSize = Math.max(2, Math.floor(p.size * 0.3));
+      ctx.fillRect(
+        Math.floor(p.x - centerSize / 2),
+        Math.floor(p.y - centerSize / 2),
+        centerSize,
+        centerSize
+      );
+
+      // Add small white core for extra intensity
+      ctx.globalAlpha = alpha * 0.6;
+      ctx.fillStyle = 'rgba(255, 255, 255, ' + alpha * 0.6 + ')';
+      var coreSize = Math.max(1, Math.floor(p.size * 0.15));
+      ctx.fillRect(
+        Math.floor(p.x - coreSize / 2),
+        Math.floor(p.y - coreSize / 2),
+        coreSize,
+        coreSize
+      );
+    }
+  }
+
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.globalAlpha = 1;
 };
 
 function onMousemove(e) {
-  function o() {
-    lines = [];
-    for (var e = 0; e < E.trails; e++)
-      lines.push(new Line({ spring: 0.45 + (e / E.trails) * 0.025 }));
+  var newX = e.clientX || (e.touches && e.touches[0].clientX);
+  var newY = e.clientY || (e.touches && e.touches[0].clientY);
+
+  // Check if mouse actually moved
+  mouseMoving = Math.abs(newX - lastMousePos.x) > 2 || Math.abs(newY - lastMousePos.y) > 2;
+
+  pos.x = newX;
+  pos.y = newY;
+  lastMousePos.x = newX;
+  lastMousePos.y = newY;
+}
+
+function onTouchMove(e) {
+  if (e.touches.length == 1) {
+    var newX = e.touches[0].pageX;
+    var newY = e.touches[0].pageY;
+    mouseMoving = Math.abs(newX - lastMousePos.x) > 2 || Math.abs(newY - lastMousePos.y) > 2;
+    pos.x = newX;
+    pos.y = newY;
+    lastMousePos.x = newX;
+    lastMousePos.y = newY;
+    e.preventDefault();
   }
-  function c(e) {
-    e.touches
-      ? ((pos.x = e.touches[0].pageX), (pos.y = e.touches[0].pageY))
-      : ((pos.x = e.clientX), (pos.y = e.clientY)),
-      e.preventDefault();
+}
+
+function onTouchStart(e) {
+  if (e.touches.length == 1) {
+    pos.x = e.touches[0].pageX;
+    pos.y = e.touches[0].pageY;
+    lastMousePos.x = pos.x;
+    lastMousePos.y = pos.y;
+    e.preventDefault();
   }
-  function l(e) {
-    1 == e.touches.length && ((pos.x = e.touches[0].pageX), (pos.y = e.touches[0].pageY));
-  }
-  document.removeEventListener('mousemove', onMousemove),
-    document.removeEventListener('touchstart', onMousemove),
-    document.addEventListener('mousemove', c),
-    document.addEventListener('touchmove', c),
-    document.addEventListener('touchstart', l),
-    c(e),
-    o(),
-    render();
 }
 
 function render() {
-  if (ctx.running) {
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    ctx.globalCompositeOperation = 'lighter';
-    ctx.strokeStyle = 'hsla(' + Math.round(f.update()) + ',90%,50%,0.25)';
-    ctx.lineWidth = 1;
-    for (var e, t = 0; t < E.trails; t++) {
-      (e = lines[t]).update();
-      e.draw();
-    }
-    ctx.frame++;
-    window.requestAnimationFrame(render);
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+  // Fade mouse movement flag
+  if (mouseMoving) {
+    setTimeout(function () {
+      mouseMoving = false;
+    }, 100);
   }
+
+  particleSystem.update();
+  particleSystem.draw();
+
+  ctx.frame++;
+  window.requestAnimationFrame(render);
 }
 
 function resizeCanvas() {
-  ctx.canvas.width = window.innerWidth - 20;
-  ctx.canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }
 
-var ctx,
-  f,
-  e = 0,
+function onFocus() {
+  if (!ctx.running) {
+    ctx.running = true;
+    render();
+  }
+}
+
+function onBlur() {
+  ctx.running = false;
+}
+
+var canvas,
+  ctx,
   pos = {},
-  lines = [],
-  E = {
-    debug: true,
-    friction: 0.5,
-    trails: 20,
-    size: 50,
-    dampening: 0.25,
-    tension: 0.98,
-  };
-function Node() {
-  this.x = 0;
-  this.y = 0;
-  this.vy = 0;
-  this.vx = 0;
-}
+  particleSystem = new ParticleSystem(),
+  mouseMoving = false,
+  lastMousePos = { x: 0, y: 0 };
 
-export const renderCanvas = function () {
-  ctx = document.getElementById('canvas').getContext('2d');
+function initCanvas() {
+  canvas = document.getElementById('canvas');
+  if (!canvas) return;
+
+  ctx = canvas.getContext('2d');
   ctx.running = true;
   ctx.frame = 1;
-  f = new n({
-    phase: Math.random() * 2 * Math.PI,
-    amplitude: 85,
-    frequency: 0.0015,
-    offset: 285,
-  });
-  document.addEventListener('mousemove', onMousemove);
-  document.addEventListener('touchstart', onMousemove);
-  document.body.addEventListener('orientationchange', resizeCanvas);
-  window.addEventListener('resize', resizeCanvas);
-  window.addEventListener('focus', () => {
-    if (!ctx.running) {
-      ctx.running = true;
-      render();
-    }
-  });
-  window.addEventListener('blur', () => {
-    ctx.running = true;
-  });
+
+  pos.x = canvas.width / 2;
+  pos.y = canvas.height / 2;
+  lastMousePos.x = pos.x;
+  lastMousePos.y = pos.y;
+
   resizeCanvas();
-};
+
+  document.removeEventListener('mousemove', onMousemove);
+  document.removeEventListener('touchmove', onTouchMove);
+  document.removeEventListener('touchstart', onTouchStart);
+  document.addEventListener('mousemove', onMousemove);
+  document.addEventListener('touchmove', onTouchMove);
+  document.addEventListener('touchstart', onTouchStart);
+
+  render();
+}
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('focus', onFocus);
+  window.addEventListener('blur', onBlur);
+  window.addEventListener('load', initCanvas);
+}
+
+// Export function for React component
+export function renderCanvas() {
+  if (typeof window !== 'undefined') {
+    if (document.readyState === 'loading') {
+      window.addEventListener('load', initCanvas);
+    } else {
+      initCanvas();
+    }
+  }
+}
