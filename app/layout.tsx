@@ -3,15 +3,18 @@ import '@/css/tailwind.css';
 import '@fontsource/mukta';
 
 import Analytics from '@/components/Analytics';
+import { AnalyticsProvider } from '@/components/Analytics/AnalyticsProvider';
+import { AuthProvider } from '@/components/Auth/AuthProvider';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import LenisProvider from '@/components/Providers/LenisProvider';
 import ThemeProvider from '@/components/Providers/ThemeProvider';
+import { SessionProvider } from 'next-auth/react';
 
 export const metadata = {
   title: 'Xoco Café',
   description: 'Sabor ancestral, placer eterno',
-  metadataBase: new URL('https://xococafe.netlify.app'),
+  metadataBase: new URL('http://localhost:8000'),
 };
 
 interface RootLayoutProps {
@@ -35,19 +38,34 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body className="bg-white text-black antialiased dark:bg-black dark:text-white">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          themes={['dark', 'light']}
-        >
-          <Header />
-          <LenisProvider>
-            <main>{children}</main>
-          </LenisProvider>
-          <Footer />
-          <Analytics />
-        </ThemeProvider>
+        <SessionProvider>
+          <AnalyticsProvider
+            options={{
+              trackPageViews: true,
+              trackScrollDepth: true,
+              trackTimeOnPage: true,
+              trackBounce: true,
+              trackExitPage: true,
+              debug: process.env.NODE_ENV === 'development',
+            }}
+          >
+            <AuthProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="dark"
+                enableSystem={false}
+                themes={['dark', 'light']}
+              >
+                <Header />
+                <LenisProvider>
+                  <main>{children}</main>
+                </LenisProvider>
+                <Footer />
+                <Analytics />
+              </ThemeProvider>
+            </AuthProvider>
+          </AnalyticsProvider>
+        </SessionProvider>
       </body>
     </html>
   );

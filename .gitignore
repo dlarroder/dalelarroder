@@ -40,3 +40,6 @@ yarn-error.log*
 # Contentlayer
 .contentlayer
 .env*.local
+
+/generated/prisma
+node_modules

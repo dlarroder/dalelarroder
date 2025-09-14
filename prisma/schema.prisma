@@ -1,0 +1,303 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(cuid())
+  email             String   @unique
+  passwordHash      String?
+  clientId          String   @unique @default(cuid()) // ID del programa de lealtad
+  walletAddress     String?  // Wallet EVM opcional
+  authProvider      String   @default("email") // "email" o "google"
+  googleId          String?  // ID de Google OAuth
+  
+  // Información personal opcional
+  firstName         String?
+  lastName          String?
+  phone             String?
+  city              String?
+  country           String?
+  
+  // Consentimientos GDPR
+  termsAccepted     Boolean  @default(false)
+  privacyAccepted   Boolean  @default(false)
+  marketingEmail    Boolean  @default(false)
+  marketingSms      Boolean  @default(false)
+  marketingPush     Boolean  @default(false)
+  consentUpdatedAt  DateTime @default(now())
+  
+  // Metadatos GDPR
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  lastLoginAt       DateTime?
+  dataRetentionUntil DateTime? // Fecha límite de retención de datos
+  
+  // Campos de analítica pasiva
+  registrationSource String?  // 'email', 'google', 'referral', etc.
+  userAgent         String?  // User agent del navegador
+  ipAddress         String?  // Dirección IP
+  referrerUrl       String?  // URL de referencia
+  utmSource         String?  // Parámetros UTM
+  utmMedium         String?
+  utmCampaign       String?
+  utmTerm           String?
+  utmContent        String?
+  
+  // Métricas de comportamiento
+  totalSessions     Int      @default(0)
+  totalPageViews    Int      @default(0)
+  avgSessionDuration Int     @default(0) // en segundos
+  lastActivityAt    DateTime @default(now())
+  
+  // Segmentación
+  userSegment       String?  // 'new', 'active', 'vip', 'churned'
+  acquisitionChannel String? // Canal de adquisición
+  lifetimeValue     Decimal  @default(0.00) @db.Decimal(10, 2)
+  
+  // Relaciones
+  addresses         Address[]
+  orders            Order[]
+  loyaltyPoints     LoyaltyPoint[]
+  sessions          Session[]
+  dataRetentionLogs DataRetentionLog[]
+  pageAnalytics     PageAnalytics[]
+  conversionEvents  ConversionEvent[]
+  reviews           Review[]
+  
+  @@map("users")
+}
+
+model Address {
+  id          String   @id @default(cuid())
+  userId      String
+  type        String   // "shipping", "billing"
+  street      String
+  city        String
+  state       String?
+  postalCode  String
+  country     String
+  isDefault   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("addresses")
+}
+
+model Order {
+  id          String   @id @default(cuid())
+  userId      String
+  orderNumber String   @unique
+  status      String   // "pending", "confirmed", "shipped", "delivered", "cancelled"
+  total       Decimal
+  currency    String   @default("USD")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items       OrderItem[]
+  
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  productId String
+  quantity  Int
+  price     Decimal
+  discount  Decimal @default(0.00) @db.Decimal(5, 2)
+  createdAt DateTime @default(now())
+  
+  // Relaciones
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  @@map("order_items")
+}
+
+model LoyaltyPoint {
+  id          String   @id @default(cuid())
+  userId      String
+  points      Int
+  reason      String   // "purchase", "referral", "bonus", etc.
+  orderId     String?
+  expiresAt   DateTime?
+  createdAt   DateTime @default(now())
+  
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("loyalty_points")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String?
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  
+  // Analítica de sesión
+  ipAddress         String?
+  userAgent         String?
+  deviceType        String?  // 'desktop', 'mobile', 'tablet'
+  browser           String?
+  os                String?
+  country           String?
+  city              String?
+  sessionDuration   Int      @default(0) // en segundos
+  pageViews         Int      @default(0)
+  lastActivityAt    DateTime @default(now())
+  
+  // Relaciones
+  user              User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  pageAnalytics     PageAnalytics[]
+  conversionEvents  ConversionEvent[]
+  
+  @@map("sessions")
+}
+
+model DataRetentionLog {
+  id          String   @id @default(cuid())
+  userId      String
+  action      String   // "data_export", "data_deletion", "consent_update"
+  details     String?  // JSON con detalles adicionales
+  createdAt   DateTime @default(now())
+  
+  // Metadatos de la acción
+  ipAddress   String?
+  userAgent   String?
+  adminUserId String?
+  
+  // Relaciones
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("data_retention_logs")
+}
+
+// Modelo para analítica de páginas (analítica pasiva)
+model PageAnalytics {
+  id          String   @id @default(cuid())
+  userId      String?
+  sessionId   String?
+  
+  // Datos de la página
+  pagePath    String   // Ruta de la página
+  pageTitle   String?
+  pageCategory String?
+  
+  // Métricas de comportamiento
+  timeOnPage  Int      @default(0) // en segundos
+  scrollDepth Int      @default(0) // porcentaje
+  bounce      Boolean  @default(false)
+  exitPage    Boolean  @default(false)
+  
+  // Datos técnicos
+  createdAt   DateTime @default(now())
+  ipAddress   String?
+  userAgent   String?
+  referrerUrl String?
+  
+  // Datos de conversión
+  conversionEvent String?  // 'signup', 'purchase', 'download', etc.
+  conversionValue Decimal? @db.Decimal(10, 2)
+  
+  // Relaciones
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  session     Session? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+  
+  @@map("page_analytics")
+}
+
+// Modelo para eventos de conversión
+model ConversionEvent {
+  id          String   @id @default(cuid())
+  userId      String?
+  sessionId   String?
+  
+  eventType   String   // 'signup', 'login', 'purchase', 'newsletter_signup', etc.
+  eventCategory String? // 'engagement', 'conversion', 'retention'
+  eventValue  Decimal? @db.Decimal(10, 2)
+  
+  // Datos del evento
+  eventData   Json?    // Datos adicionales en formato JSON
+  
+  // Datos técnicos
+  createdAt   DateTime @default(now())
+  ipAddress   String?
+  userAgent   String?
+  pagePath    String?
+  
+  // Relaciones
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  session     Session? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+  
+  @@map("conversion_events")
+}
+
+// Modelo para productos con analítica
+model Product {
+  id          String   @id @default(cuid())
+  productId   String   @unique // ID del producto en el sistema
+  name        String
+  category    String?
+  subcategory String?
+  price       Decimal  @db.Decimal(10, 2)
+  cost        Decimal? @db.Decimal(10, 2)
+  
+  // Métricas de producto
+  totalSales     Int     @default(0)
+  totalRevenue   Decimal @default(0.00) @db.Decimal(12, 2)
+  avgRating      Decimal @default(0.00) @db.Decimal(3, 2)
+  reviewCount    Int     @default(0)
+  
+  // Datos de inventario
+  stockQuantity      Int     @default(0)
+  lowStockThreshold  Int     @default(10)
+  
+  // Metadatos
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  isActive  Boolean  @default(true)
+  
+  // Relaciones
+  orderItems OrderItem[]
+  reviews    Review[]
+  
+  @@map("products")
+}
+
+// Modelo para reseñas con analítica
+model Review {
+  id          String   @id @default(cuid())
+  userId      String
+  productId   String
+  orderId     String?
+  
+  rating      Int      // 1-5 estrellas
+  title       String?
+  content     String?
+  
+  // Métricas de reseña
+  helpfulVotes    Int     @default(0)
+  totalVotes      Int     @default(0)
+  verifiedPurchase Boolean @default(false)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relaciones
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  @@map("reviews")
+}
