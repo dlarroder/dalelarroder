@@ -1,6 +1,7 @@
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import { ComponentPropsWithoutRef } from 'react';
+import { CodeBlock } from 'renoun';
 
 type HeadingProps = ComponentPropsWithoutRef<'h1'>;
 type ParagraphProps = ComponentPropsWithoutRef<'p'>;
@@ -108,18 +109,14 @@ export const components = {
       />
     );
   },
-  pre: (props: ComponentPropsWithoutRef<'pre'>) => (
-    <pre
-      className="bg-gray-800 p-4 rounded-md overflow-x-auto text-sm"
-      {...props}
-    />
-  ),
+  pre: CodeBlock,
   blockquote: (props: BlockquoteProps) => (
     <blockquote
       className="ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700"
       {...props}
     />
   ),
+  CodeBlock,
 };
 
 export function CustomMDX(props: MDXRemoteProps) {

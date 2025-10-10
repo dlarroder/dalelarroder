@@ -8,8 +8,8 @@ export const metadata = {
   description: 'My Thoughts - Dale Larroder',
 };
 
-export default function ThoughtsPage() {
-  const posts = getPosts();
+export default async function ThoughtsPage() {
+  const posts = await getPosts();
 
   return (
     <PageContainer>
