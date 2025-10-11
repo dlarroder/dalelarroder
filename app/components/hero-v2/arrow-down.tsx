@@ -5,6 +5,7 @@ import { ArrowDownIcon } from '../layouts/icons/arrow-down-icon';
 export default function ArrowDown() {
   return (
     <button
+      aria-label="Scroll down"
       onClick={() => {
         const intro = document.querySelector('#intro');
 
