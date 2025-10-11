@@ -1,7 +1,5 @@
 @import 'tailwindcss';
 
-@config '../tailwind.config.js';
-
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -21,6 +19,16 @@
 }
 
 @theme inline {
+  --color-primary-100: #fdd1d9;
+  --color-primary-200: #fba4bc;
+  --color-primary-300: #f575a5;
+  --color-primary-400: #eb519b;
+  --color-primary-500: #de1d8d;
+  --color-primary-600: #be1588;
+  --color-primary-700: #9f0e7f;
+  --color-primary-800: #800972;
+  --color-primary-900: #6a0568;
+
   --animate-first: moveVertical 30s ease infinite;
   --animate-second: moveInCircle 20s reverse infinite;
   --animate-third: moveInCircle 40s linear infinite;
