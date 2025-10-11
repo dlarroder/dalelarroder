@@ -112,3 +112,35 @@ input:-webkit-autofill:focus {
 .intro-text {
   transition: opacity 0.4s;
 }
+
+/* ViewTransition API Animations for Theme Toggle */
+html {
+  view-transition-name: theme;
+}
+
+::view-transition-old(theme),
+::view-transition-new(theme) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Circle animation from top-right */
+::view-transition-new(theme) {
+  clip-path: circle(0% at top right);
+  animation: circle-top-right 0.5s ease-out;
+  animation-fill-mode: both;
+  transform-origin: top right;
+}
+
+::view-transition-old(theme) {
+  z-index: -1;
+}
+
+@keyframes circle-top-right {
+  from {
+    clip-path: circle(0% at top right);
+  }
+  to {
+    clip-path: circle(150% at top right);
+  }
+}
