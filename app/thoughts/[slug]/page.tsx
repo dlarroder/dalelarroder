@@ -35,7 +35,7 @@ export default async function Blog(props: {
       <section>
         <BackNavigation />
         <PageTitle>{metadata.title}</PageTitle>
-        <div className="flex justify-between items-center mt-2 mb-8 text-sm">
+        <div className="flex justify-between items-center mt-2 text-sm">
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
             {formatDate(metadata.publishedAt)}
           </p>

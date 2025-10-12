@@ -1,5 +1,6 @@
 'use client';
 
+import classNames from 'classnames';
 import { useEffect, useState } from 'react';
 import { Heading } from './extract-headings';
 
@@ -90,14 +91,14 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
                       window.history.pushState(null, '', `#${heading.id}`);
                     }
                   }}
-                  className={`
-                    block py-1 transition-colors duration-200
-                    ${
-                      isActive
-                        ? 'text-primary-500 font-medium'
-                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
-                    }
-                  `}
+                  className={classNames(
+                    'block py-1 transition-colors duration-200',
+                    {
+                      'dark:text-white text-black underline': isActive,
+                      'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100':
+                        !isActive,
+                    },
+                  )}
                 >
                   {heading.text}
                 </a>
