@@ -4,7 +4,7 @@ publishedAt: '2022-05-18'
 summary: 'A guide on how to merge any existing app or library into a Nx monorepo.'
 ---
 
-### What is Nx?
+# What is Nx?
 
 [Nx](https://nx.dev/) is a framework that allows you to architect,
 test, and build your project at any scale with the most popular modern
@@ -14,13 +14,13 @@ To make this possible, Nx comes shipped with a large toolset that simplifies you
 management. If you are unfamiliar with [Monorepo](https://semaphoreci.com/blog/what-is-monorepo#:~:text=A%20monorepo%20is%20a%20version,Monorepos%20can%20reach%20colossal%20sizes.),
 it is basically a version-controlled code repository that holds many projects and libraries.
 
-### Prerequisites
+## Prerequisites
 
 - Git
 - Node
 - Nx CLI
 
-### Creating an Nx Workspace
+## Creating an Nx Workspace
 
 ```bash
 npx create-nx-workspace@latest
@@ -28,7 +28,7 @@ npx create-nx-workspace@latest
 
 ![image](/static/blog/nx/create-nx-workspace.webp)
 
-### Nx Workspace Folder structure
+## Nx Workspace Folder structure
 
 ```
 nx-workspace/
@@ -43,7 +43,7 @@ nx-workspace/
 
 You can read more about Nx's folder structure [here](https://nx.dev/getting-started/nx-setup#folder-structure)
 
-### Step 1: Clone source repository
+## Step 1: Clone source repository
 
 ```bash
 git clone <repo-url> packageC
@@ -52,7 +52,7 @@ git clone <repo-url> packageC
 It is recommended to create a new copy of the repository you are about to clone into the nx monorepo, as there
 will be some git changes that are easier to delete than to start over.
 
-### Step 2: Move all files into the right sub directory.
+## Step 2: Move all files into the right sub directory.
 
 If you are trying to move an app, the sub directory should be `apps/packageC`
 
@@ -80,7 +80,7 @@ git filter-branch --prune-empty --tree-filter '
 '
 ```
 
-### Step 3: Add remote in your monorepo to packageC
+## Step 3: Add remote in your monorepo to packageC
 
 This will print the working directory of the current package you are trying to clone.
 
@@ -98,7 +98,7 @@ cd nx-workspace
 git remote add packageC <packageC-pwd>
 ```
 
-### Step 4: Merge packageC into monorepo
+## Step 4: Merge packageC into monorepo
 
 ```bash
 git fetch packageC --no-tags
@@ -118,7 +118,7 @@ After successfully merging, its time to cleanup duplicate config files, `package
 
 ## Other tips
 
-#### Environment variables
+### Environment variables
 
 If you are using env variables in your application, don't forget to change the naming of your env variables
 to have a prefix of NX\_, you can read more about Nx environment variables [here](https://nx.dev/guides/environment-variables)
@@ -130,7 +130,7 @@ For Example when you merged in a react app to nx:
 +NX_AUTH_HOST=http://localhost:3002
 ```
 
-#### Fixing absolute imports from your Create React App
+### Fixing absolute imports from your Create React App
 
 If you are importing a CRA, One of the errors you'll be getting is `@nrwl/nx/enforce-module-boundaries` error.
 
@@ -149,7 +149,7 @@ and fix all the files that use absolute paths
 +import Modal from '@design-system/src/components/Modal/Modal';
 ```
 
-#### Fixing Error: global is not defined
+### Fixing Error: global is not defined
 
 If you have merged an existing create react app into nx, you might have encountered this error: `global is not defined`
 

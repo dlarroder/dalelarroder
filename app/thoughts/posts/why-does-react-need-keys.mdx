@@ -4,7 +4,9 @@ publishedAt: '2022-07-31'
 summary: 'This article will show you what is the purpose if the “key” prop in React and some best practices around it.'
 ---
 
-### Why does React need keys?
+## Introduction
+
+When rendering a list of items in React, you will often see a warning in the console if you forget to provide a `key` prop to the elements in the list.
 
 The `key` prop is the only thing React can use to identify components in the DOM when they are
 mapped from an array. If no key is provided then you will see an error like this:
@@ -34,13 +36,13 @@ It is stated in the official React [docs](https://reactjs.org/docs/lists-and-key
 
 Robin Pokorny has an amazing [article](https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318) explaining in detail the negative impacts of using an index as a key.
 
-#### Rules of keys
+## Rules of keys
 
 - Keys must be `unique` among siblings. However, it’s okay to use the same keys for JSX nodes
   in different arrays.
 - Keys must `not change` or that defeats their purpose! Don’t generate them while rendering.
 
-#### Where to get your key
+## Where to get your key
 
 - **Data from a database:** If your data is coming from a database, you can use the database keys/IDs,
   which are unique by nature.
