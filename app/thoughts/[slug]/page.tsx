@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import path from 'path';
 import BackNavigation from '../../components/layouts/back-navigation';
 import { formatDate, getPostFromSlug, readMDXFile } from '../utils';
@@ -7,13 +8,41 @@ import TableOfContents from './table-of-contents';
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<Metadata> {
   const params = await props.params;
   const { metadata } = await getPostFromSlug(params.slug);
+
+  const url = `https://dalelarroder.com/thoughts/${params.slug}`;
+  const ogImage = metadata.image || '/static/og-image.png';
 
   return {
     title: metadata.title,
     description: metadata.summary,
+    openGraph: {
+      title: metadata.title,
+      description: metadata.summary,
+      type: 'article',
+      url: url,
+      publishedTime: metadata.publishedAt,
+      authors: ['Dale Larroder'],
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: metadata.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: metadata.title,
+      description: metadata.summary,
+      images: [ogImage],
+    },
+    alternates: {
+      canonical: url,
+    },
   };
 }
 
