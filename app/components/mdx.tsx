@@ -9,6 +9,15 @@ type ListItemProps = ComponentPropsWithoutRef<'li'>;
 type AnchorProps = ComponentPropsWithoutRef<'a'>;
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 export const components = {
   h1: ({ children, ...props }: HeadingProps) => (
     <h1
@@ -18,22 +27,30 @@ export const components = {
       {children}
     </h1>
   ),
-  h2: ({ children, ...props }: HeadingProps) => (
-    <h2
-      className="text-xl md:text-3xl font-bold py-3 text-gray-900 dark:text-gray-100"
-      {...props}
-    >
-      {children}
-    </h2>
-  ),
-  h3: ({ children, ...props }: HeadingProps) => (
-    <h3
-      className="text-base md:text-2xl font-bold py-3 text-gray-900 dark:text-gray-100"
-      {...props}
-    >
-      {children}
-    </h3>
-  ),
+  h2: ({ children, ...props }: HeadingProps) => {
+    const id = typeof children === 'string' ? slugify(children) : undefined;
+    return (
+      <h2
+        id={id}
+        className="text-xl md:text-3xl font-bold py-3 text-gray-900 dark:text-gray-100 scroll-mt-20"
+        {...props}
+      >
+        {children}
+      </h2>
+    );
+  },
+  h3: ({ children, ...props }: HeadingProps) => {
+    const id = typeof children === 'string' ? slugify(children) : undefined;
+    return (
+      <h3
+        id={id}
+        className="text-base md:text-2xl font-bold py-3 text-gray-900 dark:text-gray-100 scroll-mt-20"
+        {...props}
+      >
+        {children}
+      </h3>
+    );
+  },
   h4: ({ children, ...props }: HeadingProps) => (
     <h4
       className="text-sm md:text-xl font-bold py-3 text-gray-900 dark:text-gray-100"
