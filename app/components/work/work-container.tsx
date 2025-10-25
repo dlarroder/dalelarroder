@@ -1,13 +1,13 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface Props {
-  children: ReactNode;
+	children: ReactNode;
 }
 
 export function WorkContainer({ children }: Props) {
-  return (
-    <div className="grid min-h-screen w-full grid-cols-1 lg:grid-cols-2">
-      {children}
-    </div>
-  );
+	return (
+		<div className='grid min-h-screen w-full grid-cols-1 lg:grid-cols-2'>
+			{children}
+		</div>
+	);
 }

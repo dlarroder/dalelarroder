@@ -9,12 +9,12 @@ import { Fragment } from 'react';
 const umamiWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ?? '';
 
 export default function Analytics() {
-  return (
-    <Fragment>
-      <Script defer src="/umami.js" data-website-id={umamiWebsiteId} />
-      <LogRocket />
-      <VercelAnalytics />
-      <SpeedInsights />
-    </Fragment>
-  );
+	return (
+		<Fragment>
+			<Script defer src='/umami.js' data-website-id={umamiWebsiteId} />
+			<LogRocket />
+			<VercelAnalytics />
+			<SpeedInsights />
+		</Fragment>
+	);
 }

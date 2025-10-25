@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface TileBackgroundProps {
-  children: ReactNode;
+	children: ReactNode;
 }
 
 export default function TileBackground({ children }: TileBackgroundProps) {
-  return <div className="absolute h-full w-full">{children}</div>;
+	return <div className='absolute h-full w-full'>{children}</div>;
 }

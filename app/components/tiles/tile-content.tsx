@@ -1,11 +1,11 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface TileContentProps {
-  children?: ReactNode;
+	children?: ReactNode;
 }
 
 export const TileContent = ({ children }: TileContentProps) => {
-  return (
-    <div className="sticky top-0 h-screen overflow-hidden">{children}</div>
-  );
+	return (
+		<div className='sticky top-0 h-screen overflow-hidden'>{children}</div>
+	);
 };

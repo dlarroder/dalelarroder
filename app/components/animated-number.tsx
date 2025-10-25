@@ -1,33 +1,33 @@
 'use client';
 
-import { animate, AnimationPlaybackControls } from 'motion/react';
-import { HTMLProps, useEffect, useRef } from 'react';
+import { type AnimationPlaybackControls, animate } from 'motion/react';
+import { type HTMLProps, useEffect, useRef } from 'react';
 
 interface AnimateCounterProps extends HTMLProps<HTMLSpanElement> {
-  number: number;
+	number: number;
 }
 
 export default function AnimatedNumber({
-  number,
-  ...rest
+	number,
+	...rest
 }: AnimateCounterProps) {
-  const countRef = useRef<HTMLSpanElement>(null);
-  const initialCount = 0;
+	const countRef = useRef<HTMLSpanElement>(null);
+	const initialCount = 0;
 
-  useEffect(() => {
-    const count = countRef.current;
+	useEffect(() => {
+		const count = countRef.current;
 
-    const controls: AnimationPlaybackControls = animate(initialCount, number, {
-      duration: 1,
-      onUpdate: (value) => {
-        if (count) {
-          count.textContent = Math.floor(value).toString();
-        }
-      },
-    });
+		const controls: AnimationPlaybackControls = animate(initialCount, number, {
+			duration: 1,
+			onUpdate: (value) => {
+				if (count) {
+					count.textContent = Math.floor(value).toString();
+				}
+			},
+		});
 
-    return () => controls.stop();
-  }, [number]);
+		return () => controls.stop();
+	}, [number]);
 
-  return <span {...rest} ref={countRef} />;
+	return <span {...rest} ref={countRef} />;
 }
