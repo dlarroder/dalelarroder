@@ -1,5 +1,5 @@
 import { Fragment, Suspense } from 'react';
-import GithubContributions from '../about/github-contributions/github-contributions';
+import GithubContributions from '../components/github-contributions/github-contributions';
 import Header from '../components/header';
 import NowPlaying from '../components/spotify/now-playing';
 import SpotifySkeleton from '../components/spotify/spotify-skeleton';

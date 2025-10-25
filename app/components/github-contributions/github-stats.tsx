@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
-import AnimatedNumber from '../../components/animated-number';
-import StatItem from '../../components/stat-item';
+import AnimatedNumber from '../animated-number';
+import StatItem from '../stat-item';
 import {
 	type ContributionCalendar,
 	getBestDay,
