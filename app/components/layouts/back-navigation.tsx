@@ -10,6 +10,7 @@ export default function BackNavigation() {
 
 	return (
 		<button
+			type='button'
 			onClick={() => router.back()}
 			className={classNames(
 				'flex w-full cursor-pointer text-primary-500 mb-12',

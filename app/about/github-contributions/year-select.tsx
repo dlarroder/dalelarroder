@@ -14,6 +14,7 @@ export default function YearSelect({ selectedYear, onYearChange }: Props) {
 		<div className='flex flex-col space-y-2 text-sm'>
 			{yearOptions.map((year) => (
 				<button
+					type='button'
 					onClick={() => {
 						onYearChange(year);
 					}}

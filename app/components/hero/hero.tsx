@@ -53,8 +53,8 @@ export default function Hero() {
 						}}
 						className='absolute bottom-4 left-1/2 -translate-x-1/2 transform md:bottom-8'
 					>
-						<div
-							role='presentation'
+						<button
+							type='button'
 							className='flex cursor-pointer flex-col items-center justify-center'
 							onClick={() => {
 								const intro = document.querySelector('#intro');
@@ -63,7 +63,7 @@ export default function Hero() {
 							}}
 						>
 							<ArrowDownIcon size={20} />
-						</div>
+						</button>
 					</motion.div>
 				</div>
 			</div>
