@@ -31,7 +31,7 @@ const getAccessToken = cache(async () => {
 	return response.json();
 });
 
-export const getNowPlaying = cache(async () => {
+const getNowPlaying = cache(async () => {
 	const { access_token } = await getAccessToken();
 
 	return fetch(NOW_PLAYING_ENDPOINT, {

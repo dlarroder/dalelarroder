@@ -6,7 +6,7 @@ import { motion, useAnimation } from 'motion/react';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
 
-export interface ArrowDownIconHandle {
+interface ArrowDownIconHandle {
 	startAnimation: () => void;
 	stopAnimation: () => void;
 }

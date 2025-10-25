@@ -43,7 +43,7 @@ const query = `
   }
 `;
 
-export type GithubResponse = {
+type GithubResponse = {
 	user: {
 		contributionsCollection: {
 			contributionCalendar: {
@@ -63,18 +63,16 @@ export type GithubResponse = {
 	};
 };
 
-export type GithubUser = GithubResponse['user'];
+type GithubUser = GithubResponse['user'];
 
 export type ContributionCalendar =
 	GithubUser['contributionsCollection']['contributionCalendar'];
 
-export type ContributionMonths = ContributionCalendar['months'];
+type ContributionWeeks = ContributionCalendar['weeks'];
 
-export type ContributionWeeks = ContributionCalendar['weeks'];
+type ContributionDay = ContributionWeeks[0]['contributionDays'][0];
 
-export type ContributionDay = ContributionWeeks[0]['contributionDays'][0];
-
-export type ContributionStreak = {
+type ContributionStreak = {
 	longestStreak: number;
 	currentStreak: number;
 	longestStreakStart: string | null;
@@ -125,17 +123,6 @@ export const getBestDay = (weeks: ContributionWeeks) => {
 	});
 
 	return bestDay;
-};
-
-export const getThisWeeksContributions = (weeks: ContributionWeeks) => {
-	return (
-		weeks[weeks.length - 1]?.contributionDays
-			?.map((item) => item.contributionCount)
-			?.reduce(
-				(previousValue, currentValue) => previousValue + currentValue,
-				0,
-			) || 0
-	);
 };
 
 export const getDaysFromContribution = (weeks: ContributionWeeks) => {

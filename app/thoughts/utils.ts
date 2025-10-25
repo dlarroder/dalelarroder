@@ -10,7 +10,7 @@ export interface BlogPost {
 	content: string;
 }
 
-export type Metadata = {
+type Metadata = {
 	title: string;
 	publishedAt: string;
 	summary: string;
@@ -50,7 +50,7 @@ export function readMDXFile(filePath: string) {
 	return parseFrontmatter(rawContent);
 }
 
-export function getMDXData(dir: string): BlogPost[] {
+function getMDXData(dir: string): BlogPost[] {
 	const mdxFiles = getMDXFiles(dir);
 	return mdxFiles.map((file) => {
 		const { metadata, content } = readMDXFile(path.join(dir, file));

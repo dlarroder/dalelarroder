@@ -21,7 +21,3 @@ export const secondsToHours = (seconds: number): number => {
 	// Format to 2 decimal places
 	return Number.parseFloat(hours.toFixed(2));
 };
-
-export const formatDateToISO = (date: Date) => {
-	return date.toISOString().split('T')[0];
-};

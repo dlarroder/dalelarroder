@@ -1,17 +1,17 @@
 'use client';
 
 import classNames from 'classnames';
-import type { Variants } from 'framer-motion';
-import { motion, useAnimation } from 'framer-motion';
+import type { Variants } from 'motion/react';
+import { motion, useAnimation } from 'motion/react';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
 
-export interface SquareArrowLeftIconHandle {
+interface SquareArrowLeftIconHandle {
 	startAnimation: () => void;
 	stopAnimation: () => void;
 }
 
-interface SquareArrowLeftIconProps extends HTMLAttributes<HTMLButtonElement> {
+interface SquareArrowLeftIconProps extends HTMLAttributes<HTMLDivElement> {
 	size?: number;
 }
 
@@ -53,7 +53,7 @@ const SquareArrowLeftIcon = forwardRef<
 	});
 
 	const handleMouseEnter = useCallback(
-		(e: React.MouseEvent<HTMLButtonElement>) => {
+		(e: React.MouseEvent<HTMLDivElement>) => {
 			if (!isControlledRef.current) controls.start('animate');
 			else onMouseEnter?.(e);
 		},
@@ -61,7 +61,7 @@ const SquareArrowLeftIcon = forwardRef<
 	);
 
 	const handleMouseLeave = useCallback(
-		(e: React.MouseEvent<HTMLButtonElement>) => {
+		(e: React.MouseEvent<HTMLDivElement>) => {
 			if (!isControlledRef.current) controls.start('normal');
 			else onMouseLeave?.(e);
 		},
@@ -69,8 +69,7 @@ const SquareArrowLeftIcon = forwardRef<
 	);
 
 	return (
-		<button
-			type='button'
+		<div
 			className={classNames(
 				`cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
 				className,
@@ -89,9 +88,7 @@ const SquareArrowLeftIcon = forwardRef<
 				strokeWidth='2'
 				strokeLinecap='round'
 				strokeLinejoin='round'
-				aria-label='Back arrow icon'
 			>
-				<title>Back arrow icon</title>
 				<motion.rect
 					width='18'
 					height='18'
@@ -115,7 +112,7 @@ const SquareArrowLeftIcon = forwardRef<
 					d='M16 12H8'
 				/>
 			</svg>
-		</button>
+		</div>
 	);
 });
 
