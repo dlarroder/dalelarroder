@@ -11,7 +11,7 @@ export interface AtSignIconHandle {
 	stopAnimation: () => void;
 }
 
-interface AtSignIconProps extends HTMLAttributes<HTMLDivElement> {
+interface AtSignIconProps extends HTMLAttributes<HTMLButtonElement> {
 	size?: number;
 }
 
@@ -72,7 +72,7 @@ const AtSignIcon = forwardRef<AtSignIconHandle, AtSignIconProps>(
 		});
 
 		const handleMouseEnter = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
+			(e: React.MouseEvent<HTMLButtonElement>) => {
 				if (!isControlledRef.current) {
 					controls.start('animate');
 				} else {
@@ -83,7 +83,7 @@ const AtSignIcon = forwardRef<AtSignIconHandle, AtSignIconProps>(
 		);
 
 		const handleMouseLeave = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
+			(e: React.MouseEvent<HTMLButtonElement>) => {
 				if (!isControlledRef.current) {
 					controls.start('normal');
 				} else {
@@ -94,7 +94,8 @@ const AtSignIcon = forwardRef<AtSignIconHandle, AtSignIconProps>(
 		);
 
 		return (
-			<div
+			<button
+				type='button'
 				className={classNames(
 					`cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
 					className,
@@ -113,7 +114,9 @@ const AtSignIcon = forwardRef<AtSignIconHandle, AtSignIconProps>(
 					strokeWidth='2'
 					strokeLinecap='round'
 					strokeLinejoin='round'
+					aria-label='At sign icon'
 				>
+					<title>At sign icon</title>
 					<motion.circle
 						variants={circleVariants}
 						animate={controls}
@@ -127,7 +130,7 @@ const AtSignIcon = forwardRef<AtSignIconHandle, AtSignIconProps>(
 						d='M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8'
 					/>
 				</svg>
-			</div>
+			</button>
 		);
 	},
 );

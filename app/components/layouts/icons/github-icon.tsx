@@ -11,7 +11,7 @@ export interface GithubIconHandle {
 	stopAnimation: () => void;
 }
 
-interface GithubIconProps extends HTMLAttributes<HTMLDivElement> {
+interface GithubIconProps extends HTMLAttributes<HTMLButtonElement> {
 	size?: number;
 }
 
@@ -83,7 +83,7 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 		});
 
 		const handleMouseEnter = useCallback(
-			async (e: React.MouseEvent<HTMLDivElement>) => {
+			async (e: React.MouseEvent<HTMLButtonElement>) => {
 				if (!isControlledRef.current) {
 					bodyControls.start('animate');
 					await tailControls.start('draw');
@@ -96,7 +96,7 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 		);
 
 		const handleMouseLeave = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
+			(e: React.MouseEvent<HTMLButtonElement>) => {
 				if (!isControlledRef.current) {
 					bodyControls.start('normal');
 					tailControls.start('normal');
@@ -108,7 +108,8 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 		);
 
 		return (
-			<div
+			<button
+				type='button'
 				className={classNames(
 					`cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
 					className,
@@ -127,7 +128,9 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 					strokeWidth='2'
 					strokeLinecap='round'
 					strokeLinejoin='round'
+					aria-label='GitHub icon'
 				>
+					<title>GitHub icon</title>
 					<motion.path
 						variants={bodyVariants}
 						initial='normal'
@@ -141,7 +144,7 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 						d='M9 18c-4.51 2-5-2-7-2'
 					/>
 				</svg>
-			</div>
+			</button>
 		);
 	},
 );

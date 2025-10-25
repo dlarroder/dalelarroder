@@ -11,7 +11,7 @@ export interface InstagramIconHandle {
 	stopAnimation: () => void;
 }
 
-interface InstagramIconProps extends HTMLAttributes<HTMLDivElement> {
+interface InstagramIconProps extends HTMLAttributes<HTMLButtonElement> {
 	size?: number;
 }
 
@@ -106,7 +106,7 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
 		});
 
 		const handleMouseEnter = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
+			(e: React.MouseEvent<HTMLButtonElement>) => {
 				if (!isControlledRef.current) {
 					rectControls.start('animate');
 					pathControls.start('animate');
@@ -119,7 +119,7 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
 		);
 
 		const handleMouseLeave = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
+			(e: React.MouseEvent<HTMLButtonElement>) => {
 				if (!isControlledRef.current) {
 					rectControls.start('normal');
 					pathControls.start('normal');
@@ -132,7 +132,8 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
 		);
 
 		return (
-			<div
+			<button
+				type='button'
 				className={classNames(
 					`cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
 					className,
@@ -151,7 +152,9 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
 					strokeWidth='2'
 					strokeLinecap='round'
 					strokeLinejoin='round'
+					aria-label='Instagram icon'
 				>
+					<title>Instagram icon</title>
 					<motion.rect
 						variants={rectVariants}
 						initial='normal'
@@ -179,7 +182,7 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
 						y2='6.5'
 					/>
 				</svg>
-			</div>
+			</button>
 		);
 	},
 );

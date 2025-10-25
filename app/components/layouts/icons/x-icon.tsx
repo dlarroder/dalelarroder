@@ -11,7 +11,7 @@ export interface XIconHandle {
 	stopAnimation: () => void;
 }
 
-interface XIconProps extends HTMLAttributes<HTMLDivElement> {
+interface XIconProps extends HTMLAttributes<HTMLButtonElement> {
 	size?: number;
 }
 
@@ -41,7 +41,7 @@ const XIcon = forwardRef<XIconHandle, XIconProps>(
 		});
 
 		const handleMouseEnter = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
+			(e: React.MouseEvent<HTMLButtonElement>) => {
 				if (!isControlledRef.current) {
 					controls.start('animate');
 				} else {
@@ -52,7 +52,7 @@ const XIcon = forwardRef<XIconHandle, XIconProps>(
 		);
 
 		const handleMouseLeave = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
+			(e: React.MouseEvent<HTMLButtonElement>) => {
 				if (!isControlledRef.current) {
 					controls.start('normal');
 				} else {
@@ -62,7 +62,8 @@ const XIcon = forwardRef<XIconHandle, XIconProps>(
 			[controls, onMouseLeave],
 		);
 		return (
-			<div
+			<button
+				type='button'
 				className={classNames(
 					`cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
 					className,
@@ -81,7 +82,9 @@ const XIcon = forwardRef<XIconHandle, XIconProps>(
 					strokeWidth='2'
 					strokeLinecap='round'
 					strokeLinejoin='round'
+					aria-label='X icon'
 				>
+					<title>X icon</title>
 					<motion.path
 						variants={pathVariants}
 						animate={controls}
@@ -94,7 +97,7 @@ const XIcon = forwardRef<XIconHandle, XIconProps>(
 						d='m6 6 12 12'
 					/>
 				</svg>
-			</div>
+			</button>
 		);
 	},
 );

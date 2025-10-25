@@ -11,7 +11,7 @@ export interface LinkedinIconHandle {
 	stopAnimation: () => void;
 }
 
-interface LinkedinIconProps extends HTMLAttributes<HTMLDivElement> {
+interface LinkedinIconProps extends HTMLAttributes<HTMLButtonElement> {
 	size?: number;
 }
 
@@ -107,7 +107,7 @@ const LinkedinIcon = forwardRef<LinkedinIconHandle, LinkedinIconProps>(
 		});
 
 		const handleMouseEnter = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
+			(e: React.MouseEvent<HTMLButtonElement>) => {
 				if (!isControlledRef.current) {
 					pathControls.start('animate');
 					rectControls.start('animate');
@@ -120,7 +120,7 @@ const LinkedinIcon = forwardRef<LinkedinIconHandle, LinkedinIconProps>(
 		);
 
 		const handleMouseLeave = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
+			(e: React.MouseEvent<HTMLButtonElement>) => {
 				if (!isControlledRef.current) {
 					pathControls.start('normal');
 					rectControls.start('normal');
@@ -133,7 +133,8 @@ const LinkedinIcon = forwardRef<LinkedinIconHandle, LinkedinIconProps>(
 		);
 
 		return (
-			<div
+			<button
+				type='button'
 				className={classNames(
 					`cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
 					className,
@@ -152,7 +153,9 @@ const LinkedinIcon = forwardRef<LinkedinIconHandle, LinkedinIconProps>(
 					strokeLinecap='round'
 					strokeLinejoin='round'
 					viewBox='0 0 24 24'
+					aria-label='LinkedIn icon'
 				>
+					<title>LinkedIn icon</title>
 					<motion.path
 						variants={pathVariants}
 						initial='normal'
@@ -177,7 +180,7 @@ const LinkedinIcon = forwardRef<LinkedinIconHandle, LinkedinIconProps>(
 						r='2'
 					/>
 				</svg>
-			</div>
+			</button>
 		);
 	},
 );
