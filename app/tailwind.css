@@ -115,8 +115,8 @@ input:-webkit-autofill:focus {
 }
 
 #nprogress .bar {
-  background: #de1d8d !important;
-  height: 4px !important;
+  background: #de1d8d;
+  height: 4px;
 }
 
 .intro-text {

@@ -7,14 +7,14 @@ import { ScrollProvider } from '../components/providers/ScrollProvider';
 import Works from '../components/work/works';
 
 export default function OldHomePage() {
-  return (
-    <ScrollProvider>
-      <Header />
-      <Hero />
-      <Intro />
-      <Works />
-      <Contact />
-      <Footer />
-    </ScrollProvider>
-  );
+	return (
+		<ScrollProvider>
+			<Header />
+			<Hero />
+			<Intro />
+			<Works />
+			<Contact />
+			<Footer />
+		</ScrollProvider>
+	);
 }

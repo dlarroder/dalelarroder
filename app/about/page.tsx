@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import { Fragment, Suspense } from 'react';
 import Footer from '../components/layouts/footer';
 import Header from '../components/layouts/header';
@@ -15,29 +15,29 @@ const contentPath = path.join(process.cwd(), 'app', 'about', 'content.mdx');
 const { content } = readMDXFile(contentPath);
 
 export const metadata = {
-  title: 'About',
-  description: 'About Dale Larroder',
+	title: 'About',
+	description: 'About Dale Larroder',
 };
 
 export default function Page() {
-  return (
-    <Fragment>
-      <Header />
-      <Occupation />
-      <CustomMDX source={content} />
-      <GithubContributions />
-      <Suspense
-        fallback={
-          <Fragment>
-            <WakatimeSkeleton />
-            <SpotifySkeleton />
-          </Fragment>
-        }
-      >
-        <WakaStats />
-        <TopTracks />
-      </Suspense>
-      <Footer />
-    </Fragment>
-  );
+	return (
+		<Fragment>
+			<Header />
+			<Occupation />
+			<CustomMDX source={content} />
+			<GithubContributions />
+			<Suspense
+				fallback={
+					<Fragment>
+						<WakatimeSkeleton />
+						<SpotifySkeleton />
+					</Fragment>
+				}
+			>
+				<WakaStats />
+				<TopTracks />
+			</Suspense>
+			<Footer />
+		</Fragment>
+	);
 }
