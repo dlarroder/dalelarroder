@@ -1238,7 +1238,8 @@ function SplashCursor({
 				];
 
 				// Select a random color from the palette
-				const c = primaryColors[Math.floor(Math.random() * primaryColors.length)];
+				const c =
+					primaryColors[Math.floor(Math.random() * primaryColors.length)];
 
 				// Apply intensity multiplier (adjust this value to make colors more/less vibrant)
 				return {
@@ -1340,6 +1341,21 @@ function SplashCursor({
 			return hash;
 		}
 
+		// Helper to check if element should skip splash cursor
+		function shouldSkipSplash(target: EventTarget | null): boolean {
+			if (!target || !(target instanceof Element)) return false;
+
+			// Check if the target or any parent has data-skip-splash-cursor
+			let element: Element | null = target;
+			while (element) {
+				if (element.hasAttribute('data-skip-splash-cursor')) {
+					return true;
+				}
+				element = element.parentElement;
+			}
+			return false;
+		}
+
 		// Helper to get position relative to container
 		function getRelativePosition(clientX: number, clientY: number) {
 			// container is guaranteed to be non-null due to early return check at line 48
@@ -1352,6 +1368,8 @@ function SplashCursor({
 		}
 
 		const handleMouseDown = (e: MouseEvent) => {
+			if (shouldSkipSplash(e.target)) return;
+
 			const pos = getRelativePosition(e.clientX, e.clientY);
 			const pointer = pointers[0];
 			const posX = scaleByPixelRatio(pos.x);
@@ -1362,6 +1380,8 @@ function SplashCursor({
 
 		let firstMouseMove = true;
 		const handleMouseMove = (e: MouseEvent) => {
+			if (shouldSkipSplash(e.target)) return;
+
 			const pos = getRelativePosition(e.clientX, e.clientY);
 			const pointer = pointers[0];
 			const posX = scaleByPixelRatio(pos.x);
@@ -1380,6 +1400,8 @@ function SplashCursor({
 
 		let firstTouchStart = true;
 		const handleTouchStart = (e: TouchEvent) => {
+			if (shouldSkipSplash(e.target)) return;
+
 			const touches = e.targetTouches;
 			const pointer = pointers[0];
 			for (let i = 0; i < touches.length; i++) {
@@ -1396,6 +1418,8 @@ function SplashCursor({
 		};
 
 		const handleTouchMove = (e: TouchEvent) => {
+			if (shouldSkipSplash(e.target)) return;
+
 			const touches = e.targetTouches;
 			const pointer = pointers[0];
 			for (let i = 0; i < touches.length; i++) {
