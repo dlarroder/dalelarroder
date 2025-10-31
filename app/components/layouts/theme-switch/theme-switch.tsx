@@ -27,7 +27,7 @@ const ThemeSwitch = () => {
 	};
 
 	return (
-		<div className='absolute top-4 right-4 z-10'>
+		<div className='absolute top-4 right-4 z-11'>
 			<motion.button
 				aria-label='Toggle Dark Mode'
 				type='button'

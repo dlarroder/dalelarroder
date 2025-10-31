@@ -1,23 +1,26 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { merryWeather } from '../../fonts';
-import { BackgroundGradientAnimation } from '../background-gradient-animation';
 import { AtSignIcon } from '../layouts/icons/at-sign-icon';
 import { GithubIcon } from '../layouts/icons/github-icon';
 import { LinkedinIcon } from '../layouts/icons/linkedin-icon';
 import { XIcon } from '../layouts/icons/x-icon';
+import SplashCursor from '../splash-cursor';
 import ArrowDown from './arrow-down';
 
 export default function Hero() {
 	return (
 		<main className='relative min-h-svh w-screen overflow-hidden'>
-			<BackgroundGradientAnimation>
+			<SplashCursor
+				containerClassName='min-h-svh w-screen'
+				usePrimaryColors={true}
+			>
 				<div
 					className={classNames('relative min-h-svh', merryWeather.className)}
 				>
 					<ArrowDown />
-					<div className='absolute top-[20%] md:top-[40%] max-w-5xl flex-col space-y-4 justify-center px-8 md:px-24 text-shadow-lg lg:ml-14'>
-						<h1 className='font-serif text-2xl font-medium md:mr-4 md:text-4xl'>
+					<div className='absolute top-[20%] md:top-[40%] max-w-5xl flex-col space-y-4 justify-center px-8 md:px-24 lg:ml-14'>
+						<h1 className='text-2xl font-medium md:mr-4 md:text-4xl'>
 							Welcome to my{' '}
 							<span className='font-bold'>personal portfolio — </span> or, as I
 							like to call it, my{' '}
@@ -89,7 +92,7 @@ export default function Hero() {
 						</section>
 					</div>
 				</div>
-			</BackgroundGradientAnimation>
+			</SplashCursor>
 		</main>
 	);
 }
