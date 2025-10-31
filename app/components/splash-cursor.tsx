@@ -687,7 +687,7 @@ function SplashCursor({
 		const curlProgram = new Program(baseVertexShader, curlShader);
 		const vorticityProgram = new Program(baseVertexShader, vorticityShader);
 		const pressureProgram = new Program(baseVertexShader, pressureShader);
-		const gradienSubtractProgram = new Program(
+		const gradientSubtractProgram = new Program(
 			baseVertexShader,
 			gradientSubtractShader,
 		);
@@ -1030,18 +1030,18 @@ function SplashCursor({
 				pressure.swap();
 			}
 
-			gradienSubtractProgram.bind();
+			gradientSubtractProgram.bind();
 			gl.uniform2f(
-				gradienSubtractProgram.uniforms.texelSize,
+				gradientSubtractProgram.uniforms.texelSize,
 				velocity.texelSizeX,
 				velocity.texelSizeY,
 			);
 			gl.uniform1i(
-				gradienSubtractProgram.uniforms.uPressure,
+				gradientSubtractProgram.uniforms.uPressure,
 				pressure.read.attach(0),
 			);
 			gl.uniform1i(
-				gradienSubtractProgram.uniforms.uVelocity,
+				gradientSubtractProgram.uniforms.uVelocity,
 				velocity.read.attach(1),
 			);
 			blit(velocity.write);
