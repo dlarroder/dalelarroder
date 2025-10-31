@@ -1,5 +1,3 @@
-'server only';
-
 import { cache } from 'react';
 import type { UserStats, WakaTimeAllTimeStats } from './types';
 

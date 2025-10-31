@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import type { Variants } from 'motion/react';
 import { motion, useAnimation } from 'motion/react';
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useImperativeHandle, useRef } from 'react';
 
 interface XIconHandle {
 	startAnimation: () => void;
@@ -40,27 +40,21 @@ const XIcon = forwardRef<XIconHandle, XIconProps>(
 			};
 		});
 
-		const handleMouseEnter = useCallback(
-			(e: React.MouseEvent<HTMLButtonElement>) => {
-				if (!isControlledRef.current) {
-					controls.start('animate');
-				} else {
-					onMouseEnter?.(e);
-				}
-			},
-			[controls, onMouseEnter],
-		);
+		const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+			if (!isControlledRef.current) {
+				controls.start('animate');
+			} else {
+				onMouseEnter?.(e);
+			}
+		};
 
-		const handleMouseLeave = useCallback(
-			(e: React.MouseEvent<HTMLButtonElement>) => {
-				if (!isControlledRef.current) {
-					controls.start('normal');
-				} else {
-					onMouseLeave?.(e);
-				}
-			},
-			[controls, onMouseLeave],
-		);
+		const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+			if (!isControlledRef.current) {
+				controls.start('normal');
+			} else {
+				onMouseLeave?.(e);
+			}
+		};
 		return (
 			<button
 				type='button'

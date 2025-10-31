@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import type { Variants } from 'motion/react';
 import { motion, useAnimation } from 'motion/react';
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useImperativeHandle, useRef } from 'react';
 
 interface GithubIconHandle {
 	startAnimation: () => void;
@@ -82,30 +82,24 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 			};
 		});
 
-		const handleMouseEnter = useCallback(
-			async (e: React.MouseEvent<HTMLButtonElement>) => {
-				if (!isControlledRef.current) {
-					bodyControls.start('animate');
-					await tailControls.start('draw');
-					tailControls.start('wag');
-				} else {
-					onMouseEnter?.(e);
-				}
-			},
-			[bodyControls, onMouseEnter, tailControls],
-		);
+		const handleMouseEnter = async (e: React.MouseEvent<HTMLButtonElement>) => {
+			if (!isControlledRef.current) {
+				bodyControls.start('animate');
+				await tailControls.start('draw');
+				tailControls.start('wag');
+			} else {
+				onMouseEnter?.(e);
+			}
+		};
 
-		const handleMouseLeave = useCallback(
-			(e: React.MouseEvent<HTMLButtonElement>) => {
-				if (!isControlledRef.current) {
-					bodyControls.start('normal');
-					tailControls.start('normal');
-				} else {
-					onMouseLeave?.(e);
-				}
-			},
-			[bodyControls, tailControls, onMouseLeave],
-		);
+		const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+			if (!isControlledRef.current) {
+				bodyControls.start('normal');
+				tailControls.start('normal');
+			} else {
+				onMouseLeave?.(e);
+			}
+		};
 
 		return (
 			<button
