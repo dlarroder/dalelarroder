@@ -1,5 +1,3 @@
-'server only';
-
 import { cache } from 'react';
 import type { Artist, NowPlayingSong } from './types';
 

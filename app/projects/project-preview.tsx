@@ -17,15 +17,15 @@ const scaleAnimation = {
 		scale: 1,
 		x: '-50%',
 		y: '-50%',
-		transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] },
+		transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] as const },
 	},
 	closed: {
 		scale: 0,
 		x: '-50%',
 		y: '-50%',
-		transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] },
+		transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] as const },
 	},
-};
+} as const;
 
 export default function ProjectPreview({ modal, projects }: ProjectModalProps) {
 	const { active, index } = modal;
@@ -93,13 +93,13 @@ export default function ProjectPreview({ modal, projects }: ProjectModalProps) {
 						transition: 'top 0.6s cubic-bezier(0.76, 0, 0.24, 1)',
 					}}
 				>
-					{projects.map((project, index) => {
+					{projects.map((project) => {
 						const { src, color } = project;
 						return (
 							<div
 								className='flex h-full w-full items-center justify-center'
 								style={{ backgroundColor: color }}
-								key={`modal_${index}`}
+								key={`modal_${src}`}
 							>
 								<Image
 									className='h-auto'

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import type { Variants } from 'motion/react';
 import { motion, useAnimation } from 'motion/react';
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useImperativeHandle, useRef } from 'react';
 
 interface SquareArrowLeftIconHandle {
 	startAnimation: () => void;
@@ -52,21 +52,15 @@ const SquareArrowLeftIcon = forwardRef<
 		};
 	});
 
-	const handleMouseEnter = useCallback(
-		(e: React.MouseEvent<HTMLDivElement>) => {
-			if (!isControlledRef.current) controls.start('animate');
-			else onMouseEnter?.(e);
-		},
-		[controls, onMouseEnter],
-	);
+	const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+		if (!isControlledRef.current) controls.start('animate');
+		else onMouseEnter?.(e);
+	};
 
-	const handleMouseLeave = useCallback(
-		(e: React.MouseEvent<HTMLDivElement>) => {
-			if (!isControlledRef.current) controls.start('normal');
-			else onMouseLeave?.(e);
-		},
-		[controls, onMouseLeave],
-	);
+	const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+		if (!isControlledRef.current) controls.start('normal');
+		else onMouseLeave?.(e);
+	};
 
 	return (
 		<div

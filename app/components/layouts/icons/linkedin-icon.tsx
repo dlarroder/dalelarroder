@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import type { Variants } from 'motion/react';
 import { motion, useAnimation } from 'motion/react';
 import type { HTMLAttributes } from 'react';
-import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useImperativeHandle, useRef } from 'react';
 
 interface LinkedinIconHandle {
 	startAnimation: () => void;
@@ -106,31 +106,25 @@ const LinkedinIcon = forwardRef<LinkedinIconHandle, LinkedinIconProps>(
 			};
 		});
 
-		const handleMouseEnter = useCallback(
-			(e: React.MouseEvent<HTMLButtonElement>) => {
-				if (!isControlledRef.current) {
-					pathControls.start('animate');
-					rectControls.start('animate');
-					circleControls.start('animate');
-				} else {
-					onMouseEnter?.(e);
-				}
-			},
-			[circleControls, onMouseEnter, pathControls, rectControls],
-		);
+		const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+			if (!isControlledRef.current) {
+				pathControls.start('animate');
+				rectControls.start('animate');
+				circleControls.start('animate');
+			} else {
+				onMouseEnter?.(e);
+			}
+		};
 
-		const handleMouseLeave = useCallback(
-			(e: React.MouseEvent<HTMLButtonElement>) => {
-				if (!isControlledRef.current) {
-					pathControls.start('normal');
-					rectControls.start('normal');
-					circleControls.start('normal');
-				} else {
-					onMouseLeave?.(e);
-				}
-			},
-			[pathControls, rectControls, circleControls, onMouseLeave],
-		);
+		const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+			if (!isControlledRef.current) {
+				pathControls.start('normal');
+				rectControls.start('normal');
+				circleControls.start('normal');
+			} else {
+				onMouseLeave?.(e);
+			}
+		};
 
 		return (
 			<button
