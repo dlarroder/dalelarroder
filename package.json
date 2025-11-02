@@ -21,7 +21,7 @@
     "@vercel/speed-insights": "^1.0.2",
     "classnames": "2.5.1",
     "date-fns": "^4.1.0",
-    "gsap": "3.12.7",
+    "gsap": "3.13.0",
     "husky": "9.1.7",
     "lenis": "^1.2.3",
     "lint-staged": "16.2.6",
