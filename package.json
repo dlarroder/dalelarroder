@@ -16,7 +16,7 @@
     "@radix-ui/react-tooltip": "1.2.8",
     "@tailwindcss/postcss": "^4.0.15",
     "@types/node": "24.10.1",
-    "@types/react": "19.2.2",
+    "@types/react": "19.2.6",
     "@vercel/analytics": "1.5.0",
     "@vercel/speed-insights": "^1.0.2",
     "classnames": "2.5.1",
