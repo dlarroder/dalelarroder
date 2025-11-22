@@ -24,7 +24,7 @@
     "gsap": "3.13.0",
     "husky": "9.1.7",
     "lenis": "^1.2.3",
-    "lint-staged": "16.2.6",
+    "lint-staged": "16.2.7",
     "logrocket": "10.1.0",
     "motion": "12.23.24",
     "next": "^16.0.0",
