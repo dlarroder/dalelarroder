@@ -25,7 +25,7 @@
     "husky": "9.1.7",
     "lenis": "^1.2.3",
     "lint-staged": "16.2.7",
-    "logrocket": "10.1.0",
+    "logrocket": "10.1.1",
     "motion": "12.23.24",
     "next": "^16.0.0",
     "next-mdx-remote": "5.0.0",
