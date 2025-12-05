@@ -17,7 +17,7 @@
     "@tailwindcss/postcss": "^4.0.15",
     "@types/node": "24.10.1",
     "@types/react": "19.2.6",
-    "@vercel/analytics": "1.5.0",
+    "@vercel/analytics": "1.6.1",
     "@vercel/speed-insights": "^1.0.2",
     "classnames": "2.5.1",
     "date-fns": "^4.1.0",
