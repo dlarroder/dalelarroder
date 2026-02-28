@@ -1,0 +1,223 @@
+---
+title: 'React Under the Hood'
+publishedAt: '2026-02-28'
+summary: 'A deep dive into how React actually works behind the scenes, from JSX to the Virtual DOM, reconciliation, and the Fiber architecture.'
+---
+
+## Introduction
+
+If you're like me, you've probably been writing React for a while now, building components, managing state, passing props around, without really thinking about what's going on behind the curtain. And honestly, you don't *have* to know. React's API is nice enough that you can be productive without understanding its guts.
+
+But once you peek under the hood? It makes a lot of things click. Performance issues start making sense. Those weird "rules of hooks" finally have a reason. And honestly, it's just cool to see how it all works.
+
+So let's dig in.
+
+## JSX is Just Syntactic Sugar
+
+First things first. JSX is not HTML. I know it looks like it, but it's really just syntactic sugar for function calls.
+
+When you write this:
+
+```jsx
+const element = <h1 className="greeting">Hello, world!</h1>;
+```
+
+Your compiler (SWC, OXC, Babel, whatever you're using) turns it into this:
+
+```js
+const element = React.createElement('h1', { className: 'greeting' }, 'Hello, world!');
+```
+
+And `React.createElement` just returns a plain JavaScript object, a **React Element**:
+
+```js
+{
+  type: 'h1',
+  props: {
+    className: 'greeting',
+    children: 'Hello, world!'
+  }
+}
+```
+
+That's literally it. React elements are just tiny objects that describe what should show up on the screen. They're super cheap to create, and React throws them away and recreates them on every single render. No big deal.
+
+## The Virtual DOM
+
+You've definitely heard this term thrown around. It sounds fancy, but the idea is pretty simple.
+
+The Virtual DOM is just a tree of those React element objects we talked about. React keeps this tree in memory and uses it to figure out what actually needs to change in the real DOM.
+
+Here's the basic flow:
+
+1. **Something changes.** You call `setState`, a context updates, a parent re-renders, whatever.
+2. **React rebuilds the tree.** It calls your component functions again and creates a fresh Virtual DOM tree.
+3. **React diffs the trees.** It compares the new tree with the old one to see what's different (this is called **reconciliation**).
+4. **React updates the real DOM.** But only the parts that actually changed.
+
+The whole point is that messing with JavaScript objects is *way* faster than touching the real DOM. So this extra step actually saves a ton of work.
+
+## Reconciliation: The Diffing Algorithm
+
+So how does React figure out what changed? That's reconciliation.
+
+A generic tree diff algorithm runs in O(n³), which is... not great. React gets it down to O(n) by making two smart assumptions:
+
+### Assumption 1: Different types = different trees
+
+If the element type changes, say from a `<div>` to a `<span>`, or from `<Article>` to `<Comment>`, React doesn't even bother comparing. It tears down the whole old tree and starts fresh.
+
+```jsx
+// Before: wrapped in a <div>
+<div>
+  <Counter />
+</div>
+
+// After: wrapped in a <span>
+<span>
+  <Counter />
+</span>
+```
+
+The only change here is `<div>` to `<span>`, but that's enough. RIP to that `Counter` component. It gets completely unmounted and rebuilt from scratch. All its state? Gone.
+
+### Assumption 2: Keys tell React what's what
+
+When React is comparing a list of children, it goes through them one by one. Without keys, it matches by index. And that can get messy fast.
+
+Say you add an item to the *beginning* of a list:
+
+```jsx
+// Before
+<ul>
+  <li>Apple</li>
+  <li>Banana</li>
+</ul>
+
+// After
+<ul>
+  <li>Cherry</li>  {/* React thinks Apple turned into Cherry */}
+  <li>Apple</li>   {/* React thinks Banana turned into Apple */}
+  <li>Banana</li>  {/* React thinks this is brand new */}
+</ul>
+```
+
+Without keys, React basically thinks everything changed. With keys, it knows exactly which items moved, which are new, and which got removed. Way more efficient.
+
+## Fiber: React's Internal Engine
+
+Okay, this is where things get really interesting.
+
+Before React 16, rendering was synchronous. Once React started working through your component tree, it couldn't stop. For big apps, this meant the main thread could get blocked for way too long, leading to dropped frames and a janky UI that nobody wants.
+
+So the React team did a full rewrite of the rendering engine. They called it **Fiber**, and the big idea is simple: **make rendering interruptible**.
+
+### What's a Fiber exactly?
+
+A Fiber is just a JavaScript object that represents a chunk of work. Every React element gets its own Fiber node, and together they form a **Fiber tree**.
+
+Here's a simplified version of what one looks like:
+
+```js
+{
+  tag: FunctionComponent,
+  type: App,
+  stateNode: null,
+  child: fiberForHeader,
+  sibling: fiberForFooter,
+  return: fiberForParent,
+  pendingProps: { ... },
+  memoizedProps: { ... },
+  memoizedState: { ... },
+  alternate: previousFiber,
+}
+```
+
+See how it uses `child`, `sibling`, and `return` instead of a regular tree structure? It's basically a linked list. And that's the secret sauce. Unlike a recursive call stack that you can't pause, React can stop at any Fiber node, hand control back to the browser, and pick up right where it left off.
+
+### Two Phases
+
+Fiber splits the work into two phases:
+
+**Phase 1: Render (the interruptible part)**
+
+React walks through the Fiber tree, calls your components, figures out what changed, and builds up a list of DOM updates. But it doesn't touch the actual DOM yet. This phase can be paused, restarted, or even thrown away entirely.
+
+**Phase 2: Commit (the fast, synchronous part)**
+
+React takes that list of changes and applies them to the DOM all at once. This part can't be interrupted. It needs to be quick and consistent so you don't end up with a half-updated UI.
+
+This split is what makes things like Concurrent Mode, `useTransition`, and Suspense possible. It also lets React prioritize urgent updates (like typing in an input) over less important ones (like rendering a large list), yielding back to the browser between chunks of work so the UI stays responsive.
+
+### Double Buffering
+
+Here's a neat trick React borrows from game dev. It keeps *two* Fiber trees around at all times:
+
+- **Current tree**: what's on screen right now.
+- **Work-in-progress tree**: the one React is building during the render phase.
+
+When the render is done and the commit phase finishes, React just swaps the pointers. The work-in-progress tree becomes the current tree. This is called **double buffering**, and it's the same idea GPUs use to avoid screen tearing.
+
+## How Hooks Work Under the Hood
+
+Ever been annoyed by the "rules of hooks"? Like, why can't you put a hook inside an `if` statement? The answer actually makes a lot of sense once you see how they're stored.
+
+Each Fiber node has a `memoizedState` field that holds a linked list of hooks, in the order you called them:
+
+```
+Fiber {
+  memoizedState: Hook1 -> Hook2 -> Hook3 -> null
+}
+```
+
+And each hook looks something like:
+
+```js
+{
+  memoizedState: currentValue,
+  queue: updateQueue,
+  next: nextHook,
+}
+```
+
+React matches hooks to their state purely by **call order**. First hook call? That's Hook1. Second call? Hook2. And so on.
+
+Now imagine you wrap `useState` in an `if` block. On one render it runs, on the next it doesn't. Suddenly the call order shifts, and React pairs the wrong hooks with the wrong state. Everything breaks. That's why the rules exist. They're not some arbitrary style choice, they're a direct consequence of how the thing is built.
+
+## Batching: Fewer Renders Than You Think
+
+Here's something nice that React does for you. When you fire off multiple state updates, React doesn't re-render for each one. It batches them.
+
+```jsx
+function handleClick() {
+  setCount((c) => c + 1);
+  setFlag((f) => !f);
+  setName('React');
+  // Only ONE re-render, not three
+}
+```
+
+In React 18+, this works everywhere: event handlers, promises, `setTimeout` callbacks, you name it.
+
+Behind the scenes, each `setState` just adds an update to the Fiber's queue. React processes the entire queue in one go during the next render and computes the final state all at once. Pretty slick.
+
+## Putting It All Together
+
+Let's walk through what actually happens when you click a button that calls `setState`:
+
+1. **Enqueue.** The update gets added to the Fiber's update queue.
+2. **Schedule.** React determines the priority of the update and schedules a render.
+3. **Render.** React kicks off a work loop. It walks the Fiber tree, calls your components, computes new state, and diffs the output.
+4. **Yield.** If there's more work than can fit in a single frame, React pauses and picks it up on the next frame so the browser stays responsive.
+5. **Finish render.** Once every Fiber is processed, the work-in-progress tree is complete.
+6. **Commit.** React flushes all DOM mutations synchronously, fires `useLayoutEffect` callbacks, then queues up `useEffect` callbacks to run asynchronously.
+
+And that's the full journey from `setState` to pixels on screen.
+
+## Wrapping Up
+
+React's internals are full of clever trade-offs. The Virtual DOM trades a bit of memory for fewer DOM operations. Fiber trades a simple recursive approach for interruptible, prioritized rendering. Hooks trade some flexibility (no conditionals!) for a dead-simple, composable API.
+
+You definitely don't need to memorize all of this to ship great React apps. But the next time you're staring at a performance issue, wondering why a component keeps re-rendering, or trying to explain to someone why keys matter, this mental model is going to come in clutch.
+
+Happy coding!
