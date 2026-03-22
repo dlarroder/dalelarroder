@@ -1,7 +1,11 @@
 import type { Metadata } from 'next';
 import BackNavigation from '../../components/layouts/back-navigation';
-import { formatDate, getPostFromSlug } from '../utils';
+import { formatDate, getPostFromSlug, getPosts } from '../utils';
 import PageTitle from './page-title';
+
+export function generateStaticParams() {
+	return getPosts().map((post) => ({ slug: post.slug }));
+}
 
 export async function generateMetadata(props: {
 	params: Promise<{ slug: string }>;
