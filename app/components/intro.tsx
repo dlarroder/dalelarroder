@@ -1,6 +1,6 @@
 'use client';
 
-import { useLenis } from 'lenis/dist/lenis-react';
+import { useLenis } from 'lenis/react';
 import { useRef, useState } from 'react';
 
 function opacityForBlock(sectionProgress: number, blockNumber: number) {
