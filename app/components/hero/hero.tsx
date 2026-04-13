@@ -6,7 +6,6 @@ import { GithubIcon } from '../layouts/icons/github-icon';
 import { LinkedinIcon } from '../layouts/icons/linkedin-icon';
 import { XIcon } from '../layouts/icons/x-icon';
 import SplashCursor from '../splash-cursor';
-import ArrowDown from './arrow-down';
 
 export default function Hero() {
 	return (
@@ -18,7 +17,6 @@ export default function Hero() {
 				<div
 					className={classNames('relative min-h-svh', merryWeather.className)}
 				>
-					<ArrowDown />
 					<div className='absolute top-[20%] md:top-[40%] max-w-5xl flex-col space-y-4 justify-center px-8 md:px-24 lg:ml-14'>
 						<h1 className='text-2xl font-medium md:mr-4 md:text-4xl'>
 							Welcome to my{' '}

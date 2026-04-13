@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 
 function SplashCursor({
 	SIM_RESOLUTION = 128,
-	DYE_RESOLUTION = 1440,
+	DYE_RESOLUTION = 800,
 	CAPTURE_RESOLUTION = 512,
 	DENSITY_DISSIPATION = 3.5,
 	VELOCITY_DISSIPATION = 2,
@@ -1389,7 +1389,6 @@ function SplashCursor({
 
 			if (firstMouseMove) {
 				const color = generateColor();
-				updateFrame();
 				updatePointerMoveData(pointer, posX, posY, color);
 				firstMouseMove = false;
 			} else {
@@ -1398,7 +1397,6 @@ function SplashCursor({
 			}
 		};
 
-		let firstTouchStart = true;
 		const handleTouchStart = (e: TouchEvent) => {
 			if (shouldSkipSplash(e.target)) return;
 
@@ -1408,11 +1406,6 @@ function SplashCursor({
 				const pos = getRelativePosition(touches[i].clientX, touches[i].clientY);
 				const posX = scaleByPixelRatio(pos.x);
 				const posY = scaleByPixelRatio(pos.y);
-
-				if (firstTouchStart) {
-					updateFrame();
-					firstTouchStart = false;
-				}
 				updatePointerDownData(pointer, touches[i].identifier, posX, posY);
 			}
 		};
