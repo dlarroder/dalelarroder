@@ -22,7 +22,10 @@ export default function Hero() {
 							Welcome to my{' '}
 							<span className='font-bold'>personal portfolio — </span> or, as I
 							like to call it, my{' '}
-							<span className='italic border-b'>playground</span> on the web.
+							<span className='italic border-b border-b-primary-500'>
+								playground
+							</span>{' '}
+							on the web.
 						</h1>
 						<section className='relative z-10'>
 							<p className='text-base text-justify'>
