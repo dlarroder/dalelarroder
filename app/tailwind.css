@@ -98,7 +98,7 @@ input:-webkit-autofill:focus {
 	background-size: 0 3px;
 	background-position: 0 100%;
 	background-repeat: no-repeat;
-	transition: background-size 0.5s ease-in-out;
+	transition: background-size 0.2s ease-out;
 }
 
 .horizontal-underline:hover {
@@ -109,6 +109,10 @@ input:-webkit-autofill:focus {
 .horizontal-underline-active {
 	background-size: 100% 3px;
 	background-position: 0 100%;
+}
+
+[data-radix-tooltip-content] {
+	transform-origin: var(--radix-tooltip-content-transform-origin);
 }
 
 #nprogress .bar {

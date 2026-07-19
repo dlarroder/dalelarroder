@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { useState } from 'react';
 import useBreakpoint from 'use-breakpoint';
 import { projects } from './constants';
@@ -11,6 +11,7 @@ import type { ProjectModal } from './types';
 const BREAKPOINTS = { mobile: 0, tablet: 768, desktop: 1280 };
 
 export default function Projects() {
+	const prefersReducedMotion = useReducedMotion();
 	const { breakpoint } = useBreakpoint(BREAKPOINTS);
 	const [modal, setModal] = useState<ProjectModal>({ active: false, index: 0 });
 
@@ -19,9 +20,16 @@ export default function Projects() {
 			{projects.map((project, index) => (
 				<motion.div
 					key={project.title}
-					initial={{ scale: 0.8, opacity: 0, filter: 'blur(2px)' }}
+					initial={{
+						scale: prefersReducedMotion ? 1 : 0.8,
+						opacity: 0,
+						filter: prefersReducedMotion ? 'blur(0px)' : 'blur(2px)',
+					}}
 					animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
-					transition={{ duration: 0.6, delay: index / 10 }}
+					transition={{
+						duration: prefersReducedMotion ? 0.2 : 0.6,
+						delay: prefersReducedMotion ? 0 : index / 10,
+					}}
 				>
 					<ProjectItem
 						index={index}

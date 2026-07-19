@@ -1,20 +1,29 @@
 'use client';
 
 import { format } from 'date-fns';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
 import type { BlogPost } from '../thoughts/utils';
 
 export function Thoughts({ posts }: { posts: BlogPost[] }) {
+	const prefersReducedMotion = useReducedMotion();
+
 	return (
 		<ul>
 			{posts.map((post, index) => (
 				<motion.li
 					key={post.slug}
 					className='border-b border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 hover:border-gray-400 transition-colors duration-500'
-					initial={{ scale: 0.8, opacity: 0, filter: 'blur(2px)' }}
+					initial={{
+						scale: prefersReducedMotion ? 1 : 0.8,
+						opacity: 0,
+						filter: prefersReducedMotion ? 'blur(0px)' : 'blur(2px)',
+					}}
 					animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
-					transition={{ duration: 0.6, delay: index / 10 }}
+					transition={{
+						duration: prefersReducedMotion ? 0.2 : 0.6,
+						delay: prefersReducedMotion ? 0 : index / 10,
+					}}
 				>
 					<Link
 						href={`/thoughts/${post.slug}`}
