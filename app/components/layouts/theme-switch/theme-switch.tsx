@@ -32,11 +32,11 @@ const ThemeSwitch = () => {
 				aria-label='Toggle Dark Mode'
 				type='button'
 				whileTap={{
-					scale: 0.7,
+					scale: 0.95,
 					rotate: 360,
 					transition: { duration: 0.2 },
 				}}
-				whileHover={{ scale: 1.2 }}
+				whileHover={{ scale: 1.1 }}
 				onClick={toggleTheme}
 			>
 				{mounted && (theme === 'dark' || resolvedTheme === 'dark') ? (

@@ -87,7 +87,7 @@ input:-webkit-autofill:focus {
 }
 
 .underline-magical {
-	@apply bg-linear-to-r from-primary-500 to-primary-500 bg-no-repeat no-underline bg-position-[0_100%] bg-size-[100%_0.2em] focus:bg-size-[100%_100%] hover:text-white hover:bg-size-[100%_100%] motion-safe:transition-all motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500;
+	@apply bg-linear-to-r from-primary-500 to-primary-500 bg-no-repeat no-underline bg-position-[0_100%] bg-size-[100%_0.2em] focus:bg-size-[100%_100%] hover:text-white hover:bg-size-[100%_100%] motion-safe:transition-[background-size,color] motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500;
 }
 
 .horizontal-underline {

@@ -89,7 +89,7 @@ export const components = {
 		</p>
 	),
 	a: ({ href, children, ...props }: AnchorProps) => {
-		const className = `text-gray-900 dark:text-gray-100 no-underline cursor-pointer bg-no-repeat bg-linear-to-r  from-primary-500 to-primary-500 [background-position:0_100%] [background-size:100%_0.2em] hover:[background-size:100%_100%] hover:text-white focus:[background-size:100%_100%] motion-safe:transition-all motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500`;
+		const className = `text-gray-900 dark:text-gray-100 no-underline cursor-pointer bg-no-repeat bg-linear-to-r  from-primary-500 to-primary-500 [background-position:0_100%] [background-size:100%_0.2em] hover:[background-size:100%_100%] hover:text-white focus:[background-size:100%_100%] motion-safe:transition-[background-size,color] motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500`;
 
 		if (href?.startsWith('/')) {
 			return (

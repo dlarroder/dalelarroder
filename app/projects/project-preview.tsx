@@ -12,15 +12,17 @@ interface ProjectModalProps {
 }
 
 const scaleAnimation = {
-	initial: { scale: 0, x: '-50%', y: '-50%' },
+	initial: { scale: 0.9, opacity: 0, x: '-50%', y: '-50%' },
 	enter: {
 		scale: 1,
+		opacity: 1,
 		x: '-50%',
 		y: '-50%',
 		transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] as const },
 	},
 	closed: {
-		scale: 0,
+		scale: 0.9,
+		opacity: 0,
 		x: '-50%',
 		y: '-50%',
 		transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] as const },
