@@ -5,6 +5,14 @@ import type { Song, TrackInfo } from './types';
 async function fetchTopTracks(): Promise<Song[] | null> {
 	try {
 		const response = await getTopTracks();
+
+		if (!response.ok) {
+			console.error(
+				`Spotify top-tracks request failed with status ${response.status}`,
+			);
+			return null;
+		}
+
 		const { items } = await response.json();
 
 		const tracks = items?.slice(0, 5).map((track: TrackInfo) => ({

@@ -27,7 +27,15 @@ const getAccessToken = cache(async () => {
 		},
 	});
 
-	return response.json();
+	const data = await response.json();
+
+	if (!response.ok) {
+		throw new Error(
+			`Spotify token refresh failed (${response.status}): ${data.error_description ?? data.error ?? 'unknown error'}`,
+		);
+	}
+
+	return data;
 });
 
 const getNowPlaying = cache(async () => {
@@ -50,6 +58,9 @@ export const getTopTracks = cache(async () => {
 		headers: {
 			Authorization: `Bearer ${access_token}`,
 		},
+		next: {
+			revalidate: 3600,
+		},
 	});
 });
 
@@ -57,7 +68,14 @@ export async function fetchNowPlaying(): Promise<NowPlayingSong | null> {
 	try {
 		const response = await getNowPlaying();
 
-		if (response.status === 204 || response.status > 400) {
+		if (response.status === 204) {
+			return null;
+		}
+
+		if (!response.ok) {
+			console.error(
+				`Spotify currently-playing request failed with status ${response.status}`,
+			);
 			return null;
 		}
 
