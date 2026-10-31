@@ -39,7 +39,7 @@
     "shiki": "4.5.0",
     "swr": "2.5.1",
     "tailwindcss": "^4.3.3",
-    "typescript": "5.9.3",
+    "typescript": "7.0.2",
     "use-breakpoint": "4.0.10"
   },
   "lint-staged": {
