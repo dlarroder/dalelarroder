@@ -36,47 +36,58 @@ export default function ProjectPreview({ modal, projects }: ProjectModalProps) {
 	const cursorLabel = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		if (window !== undefined) {
-			// Move Container
-			const xMoveContainer = gsap.quickTo(modalContainer.current, 'left', {
-				duration: 0.8,
-				ease: 'power3',
-			});
-			const yMoveContainer = gsap.quickTo(modalContainer.current, 'top', {
-				duration: 0.8,
-				ease: 'power3',
-			});
+		const targets = [
+			modalContainer.current,
+			cursor.current,
+			cursorLabel.current,
+		];
 
-			// Move cursor
-			const xMoveCursor = gsap.quickTo(cursor.current, 'left', {
-				duration: 0.5,
-				ease: 'power3',
-			});
-			const yMoveCursor = gsap.quickTo(cursor.current, 'top', {
-				duration: 0.5,
-				ease: 'power3',
-			});
+		// Move Container
+		const xMoveContainer = gsap.quickTo(modalContainer.current, 'left', {
+			duration: 0.8,
+			ease: 'power3',
+		});
+		const yMoveContainer = gsap.quickTo(modalContainer.current, 'top', {
+			duration: 0.8,
+			ease: 'power3',
+		});
 
-			// Move cursor label
-			const xMoveCursorLabel = gsap.quickTo(cursorLabel.current, 'left', {
-				duration: 0.45,
-				ease: 'power3',
-			});
-			const yMoveCursorLabel = gsap.quickTo(cursorLabel.current, 'top', {
-				duration: 0.45,
-				ease: 'power3',
-			});
+		// Move cursor
+		const xMoveCursor = gsap.quickTo(cursor.current, 'left', {
+			duration: 0.5,
+			ease: 'power3',
+		});
+		const yMoveCursor = gsap.quickTo(cursor.current, 'top', {
+			duration: 0.5,
+			ease: 'power3',
+		});
 
-			window.addEventListener('mousemove', (e) => {
-				const { pageX, pageY } = e;
-				xMoveContainer(pageX);
-				yMoveContainer(pageY);
-				xMoveCursor(pageX);
-				yMoveCursor(pageY);
-				xMoveCursorLabel(pageX);
-				yMoveCursorLabel(pageY);
-			});
-		}
+		// Move cursor label
+		const xMoveCursorLabel = gsap.quickTo(cursorLabel.current, 'left', {
+			duration: 0.45,
+			ease: 'power3',
+		});
+		const yMoveCursorLabel = gsap.quickTo(cursorLabel.current, 'top', {
+			duration: 0.45,
+			ease: 'power3',
+		});
+
+		const handleMouseMove = (e: MouseEvent) => {
+			const { pageX, pageY } = e;
+			xMoveContainer(pageX);
+			yMoveContainer(pageY);
+			xMoveCursor(pageX);
+			yMoveCursor(pageY);
+			xMoveCursorLabel(pageX);
+			yMoveCursorLabel(pageY);
+		};
+
+		window.addEventListener('mousemove', handleMouseMove);
+
+		return () => {
+			window.removeEventListener('mousemove', handleMouseMove);
+			gsap.killTweensOf(targets);
+		};
 	}, []);
 
 	return (
