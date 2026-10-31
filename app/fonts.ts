@@ -1,7 +1,7 @@
 import { Merriweather, Mukta } from 'next/font/google';
 
 export const mukta = Mukta({
-	weight: ['200', '300', '400', '500', '600', '700'],
+	weight: ['300', '400', '500', '600', '700'],
 	variable: '--font-mukta',
 	subsets: ['latin'],
 	display: 'swap',
@@ -9,7 +9,7 @@ export const mukta = Mukta({
 });
 
 export const merryWeather = Merriweather({
-	weight: ['300', '400', '700', '900'],
+	weight: ['400', '700'],
 	variable: '--font-merriweather',
 	subsets: ['latin'],
 	display: 'swap',
