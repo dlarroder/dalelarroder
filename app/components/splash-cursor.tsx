@@ -2,6 +2,11 @@
 import classNames from 'classnames';
 import { useEffect, useRef } from 'react';
 
+const DEFAULT_BACK_COLOR = { r: 0.5, g: 0, b: 0 };
+
+// Keep simulating this long after the last input so the dye can fade out
+const IDLE_TIMEOUT_MS = 4000;
+
 function SplashCursor({
 	SIM_RESOLUTION = 128,
 	DYE_RESOLUTION = 800,
@@ -15,7 +20,7 @@ function SplashCursor({
 	SPLAT_FORCE = 6000,
 	SHADING = true,
 	COLOR_UPDATE_SPEED = 10,
-	BACK_COLOR = { r: 0.5, g: 0, b: 0 },
+	BACK_COLOR = DEFAULT_BACK_COLOR,
 	TRANSPARENT = true,
 	usePrimaryColors = false,
 	children,
@@ -918,6 +923,8 @@ function SplashCursor({
 		initFramebuffers();
 		let lastUpdateTime = Date.now();
 		let colorUpdateTimer = 0.0;
+		let frameId: number | null = null;
+		let lastInputTime = Date.now();
 
 		function updateFrame() {
 			const dt = calcDeltaTime();
@@ -926,7 +933,31 @@ function SplashCursor({
 			applyInputs();
 			step(dt);
 			render(null);
-			requestAnimationFrame(updateFrame);
+
+			// Stop simulating once the fluid has settled; input restarts the loop
+			if (Date.now() - lastInputTime > IDLE_TIMEOUT_MS) {
+				frameId = null;
+				return;
+			}
+			frameId = requestAnimationFrame(updateFrame);
+		}
+
+		function startLoop() {
+			lastInputTime = Date.now();
+			if (frameId !== null || document.hidden) return;
+			lastUpdateTime = Date.now();
+			frameId = requestAnimationFrame(updateFrame);
+		}
+
+		function stopLoop() {
+			if (frameId === null) return;
+			cancelAnimationFrame(frameId);
+			frameId = null;
+		}
+
+		function handleVisibilityChange() {
+			if (document.hidden) stopLoop();
+			else startLoop();
 		}
 
 		function calcDeltaTime() {
@@ -1369,6 +1400,7 @@ function SplashCursor({
 
 		const handleMouseDown = (e: MouseEvent) => {
 			if (shouldSkipSplash(e.target)) return;
+			startLoop();
 
 			const pos = getRelativePosition(e.clientX, e.clientY);
 			const pointer = pointers[0];
@@ -1381,6 +1413,7 @@ function SplashCursor({
 		let firstMouseMove = true;
 		const handleMouseMove = (e: MouseEvent) => {
 			if (shouldSkipSplash(e.target)) return;
+			startLoop();
 
 			const pos = getRelativePosition(e.clientX, e.clientY);
 			const pointer = pointers[0];
@@ -1399,6 +1432,7 @@ function SplashCursor({
 
 		const handleTouchStart = (e: TouchEvent) => {
 			if (shouldSkipSplash(e.target)) return;
+			startLoop();
 
 			const touches = e.targetTouches;
 			const pointer = pointers[0];
@@ -1412,6 +1446,7 @@ function SplashCursor({
 
 		const handleTouchMove = (e: TouchEvent) => {
 			if (shouldSkipSplash(e.target)) return;
+			startLoop();
 
 			const touches = e.targetTouches;
 			const pointer = pointers[0];
@@ -1437,8 +1472,9 @@ function SplashCursor({
 		container.addEventListener('touchstart', handleTouchStart);
 		container.addEventListener('touchmove', handleTouchMove, false);
 		container.addEventListener('touchend', handleTouchEnd);
+		document.addEventListener('visibilitychange', handleVisibilityChange);
 
-		updateFrame();
+		startLoop();
 
 		// Cleanup
 		return () => {
@@ -1447,6 +1483,8 @@ function SplashCursor({
 			container.removeEventListener('touchstart', handleTouchStart);
 			container.removeEventListener('touchmove', handleTouchMove);
 			container.removeEventListener('touchend', handleTouchEnd);
+			document.removeEventListener('visibilitychange', handleVisibilityChange);
+			stopLoop();
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [
