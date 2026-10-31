@@ -1,4 +1,5 @@
 import Analytics from 'app/components/analytics/analytics';
+import ContentRefresh from 'app/components/providers/ContentRefresh';
 import LenisProvider from 'app/components/providers/LenisProvider';
 import ThemeProvider from 'app/components/providers/ThemeProvider';
 import type { Metadata } from 'next';
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 						{children}
 					</LenisProvider>
 					{process.env.NODE_ENV === 'production' && <Analytics />}
+					{process.env.NODE_ENV === 'development' && <ContentRefresh />}
 				</ThemeProvider>
 			</body>
 		</html>
