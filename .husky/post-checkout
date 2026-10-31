@@ -1,0 +1,15 @@
+# Link env files from the main checkout into new git worktrees, so
+# `vercel env pull` in the main checkout reaches every worktree.
+
+# Only act inside a linked worktree (its git dir differs from the shared one)
+git_dir=$(git rev-parse --absolute-git-dir)
+common_dir=$(cd "$(git rev-parse --git-common-dir)" && pwd)
+[ "$git_dir" = "$common_dir" ] && exit 0
+
+main_dir=$(dirname "$common_dir")
+
+for file in .env .env.local; do
+	if [ -f "$main_dir/$file" ] && [ ! -e "$file" ]; then
+		ln -s "$main_dir/$file" "$file"
+	fi
+done
