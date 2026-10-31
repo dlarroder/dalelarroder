@@ -12,7 +12,6 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@octokit/graphql": "^9.0.5",
     "@radix-ui/react-tooltip": "1.4.1",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "24.19.2",
