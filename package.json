@@ -17,7 +17,7 @@
     "@types/node": "24.19.2",
     "@types/react": "19.3.0",
     "@vercel/analytics": "2.0.1",
-    "@vercel/speed-insights": "^1.0.2",
+    "@vercel/speed-insights": "^2.0.0",
     "classnames": "2.5.1",
     "date-fns": "^4.4.0",
     "gray-matter": "^4.0.3",
