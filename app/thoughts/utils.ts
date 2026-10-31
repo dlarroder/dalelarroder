@@ -9,7 +9,6 @@ import { components } from '../components/mdx';
 export interface BlogPost {
 	metadata: Metadata;
 	slug: string;
-	content: string;
 }
 
 type Metadata = {
@@ -62,13 +61,13 @@ export function readMDXFile(filePath: string) {
 function getMDXData(dir: string): BlogPost[] {
 	const mdxFiles = getMDXFiles(dir);
 	return mdxFiles.map((file) => {
-		const { metadata, content } = readMDXFile(path.join(dir, file));
+		// Listings only need frontmatter; the body is compiled per post in getPostFromSlug
+		const { metadata } = readMDXFile(path.join(dir, file));
 		const slug = path.basename(file, path.extname(file));
 
 		return {
 			metadata,
 			slug,
-			content,
 		};
 	});
 }
