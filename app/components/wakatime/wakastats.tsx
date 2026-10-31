@@ -5,8 +5,14 @@ import { extractHoursAndMinutes, secondsToHours } from './utils';
 import { getAllTimeStats, getStatsThisWeek } from './wakatime';
 
 export default async function WakaStats() {
-	const allTimeStats = await getAllTimeStats();
-	const thisWeekStats = await getStatsThisWeek();
+	const [allTimeStats, thisWeekStats] = await Promise.all([
+		getAllTimeStats(),
+		getStatsThisWeek(),
+	]);
+
+	if (!allTimeStats || !thisWeekStats) {
+		return null;
+	}
 
 	const { hours, minutes } = extractHoursAndMinutes(allTimeStats.text);
 
