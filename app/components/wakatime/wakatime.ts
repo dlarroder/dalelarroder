@@ -4,23 +4,26 @@ import type { UserStats, WakaTimeAllTimeStats } from './types';
 const WAKATIME_ENDPOINT = 'https://wakatime.com/api/v1';
 const REQUEST_TIMEOUT_MS = 10_000;
 
-const getWakatimeToken = cache(() => {
+const getWakatimeToken = cache((): string | null => {
 	const secret_key = process.env.WAKATIME_SECRET_KEY;
 
 	if (!secret_key) {
-		throw new Error('WAKATIME_SECRET_KEY is required');
+		console.error('WAKATIME_SECRET_KEY is not set; skipping WakaTime stats');
+		return null;
 	}
 
-	const encodedKey = Buffer.from(`${secret_key} :`).toString('base64');
-
-	return encodedKey;
+	return Buffer.from(`${secret_key} :`).toString('base64');
 });
 
-const token = getWakatimeToken();
-
-// Returns null on network or API failure so an unreachable WakaTime
-// doesn't fail the build while prerendering /stats.
+// Returns null on a missing key, network or API failure so WakaTime
+// can't fail the build while prerendering /stats.
 async function fetchWakatime<T>(path: string): Promise<T | null> {
+	const token = getWakatimeToken();
+
+	if (!token) {
+		return null;
+	}
+
 	try {
 		const response = await fetch(`${WAKATIME_ENDPOINT}${path}`, {
 			headers: {
