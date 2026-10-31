@@ -14,7 +14,7 @@
   "dependencies": {
     "@radix-ui/react-tooltip": "1.4.1",
     "@tailwindcss/postcss": "^4.3.3",
-    "@types/node": "24.19.2",
+    "@types/node": "26.6.6",
     "@types/react": "19.3.0",
     "@vercel/analytics": "2.0.1",
     "@vercel/speed-insights": "^2.0.0",
