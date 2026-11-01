@@ -5,7 +5,7 @@ export const baseUrl = 'https://dalelarroder.com';
 export default async function sitemap() {
 	const blogs = getPosts().map((post) => ({
 		url: `${baseUrl}/thoughts/${post.slug}`,
-		lastModified: post.metadata.publishedAt,
+		lastModified: post.publishedAt,
 	}));
 
 	const routes = ['', 'thoughts', 'projects', 'stats', 'uses'].map((route) => ({

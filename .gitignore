@@ -37,6 +37,6 @@ yarn-error.log*
 .env.production.local
 
 
-# Contentlayer
-.contentlayer
+# content-collections
+.content-collections
 .env*.local
