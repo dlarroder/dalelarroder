@@ -12,7 +12,10 @@ import { z } from 'zod';
 
 const mdxOptions: Options = {
 	remarkPlugins: [remarkGfm],
-	rehypePlugins: [rehypeSlug, [rehypePrettyCode, { theme: 'dracula' }]],
+	rehypePlugins: [
+		rehypeSlug,
+		[rehypePrettyCode, { theme: { light: 'github-light', dark: 'dracula' } }],
+	],
 };
 
 const posts = defineCollection({

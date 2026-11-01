@@ -113,11 +113,30 @@ input:-webkit-autofill:focus {
 
 /* Code block filename, from ```lang title="..." in MDX */
 [data-rehype-pretty-code-title] {
-	@apply rounded-t-md bg-gray-900 px-4 py-2 font-mono text-sm text-gray-300;
+	@apply rounded-t-md border-b border-gray-300 bg-gray-200 px-4 py-2 font-mono text-sm text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300;
 }
 
 [data-rehype-pretty-code-title] + pre {
 	@apply rounded-t-none;
+}
+
+/* Code blocks carry both themes as CSS variables; pick one per site theme */
+[data-rehype-pretty-code-figure] pre {
+	color: var(--shiki-light);
+	background-color: var(--color-gray-100);
+}
+
+[data-rehype-pretty-code-figure] pre span {
+	color: var(--shiki-light);
+}
+
+.dark [data-rehype-pretty-code-figure] pre {
+	color: var(--shiki-dark);
+	background-color: var(--shiki-dark-bg);
+}
+
+.dark [data-rehype-pretty-code-figure] pre span {
+	color: var(--shiki-dark);
 }
 
 [data-radix-tooltip-content] {
