@@ -9,6 +9,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { z } from 'zod';
+import { extractHeadings } from './app/thoughts/extract-headings';
 
 const mdxOptions: Options = {
 	remarkPlugins: [remarkGfm],
@@ -38,6 +39,7 @@ const posts = defineCollection({
 			slug: document._meta.path,
 			// Formatted at build time so server and client never disagree on the day
 			date: format(parseISO(post.publishedAt), 'MMMM d, yyyy'),
+			headings: extractHeadings(content),
 			mdx,
 		};
 	},

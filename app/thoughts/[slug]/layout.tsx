@@ -1,12 +1,6 @@
-import { Fragment, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import PageContainer from '../../components/layouts/page-container';
-import ScrollProgressBar from './scroll-progress-bar';
 
 export default function Layout({ children }: { children: ReactNode }) {
-	return (
-		<Fragment>
-			<ScrollProgressBar />
-			<PageContainer>{children}</PageContainer>
-		</Fragment>
-	);
+	return <PageContainer>{children}</PageContainer>;
 }
