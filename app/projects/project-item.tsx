@@ -25,13 +25,13 @@ export default function ProjectItem({
 			onMouseLeave={() => {
 				setModal({ active: false, index });
 			}}
-			className='group flex w-full items-center justify-between border-b px-4 py-10 sm:px-10 sm:py-16'
+			className='group flex w-full items-center justify-between py-2 sm:py-3'
 			rel='noreferrer'
 		>
-			<h2 className='text-2xl transition-transform group-hover:-translate-x-3 group-hover:scale-110 sm:text-6xl'>
+			<h2 className='origin-left text-2xl transition-transform group-hover:scale-110 sm:text-4xl'>
 				{title}
 			</h2>
-			<p className='text-sm font-light transition-transform group-hover:translate-x-3 group-hover:scale-110 sm:text-lg'>
+			<p className='origin-right text-sm text-gray-500 transition-transform group-hover:scale-110 dark:text-gray-400'>
 				{role}
 			</p>
 		</a>

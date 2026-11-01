@@ -2,13 +2,16 @@
 
 import classNames from 'classnames';
 import { AnimatePresence, motion } from 'motion/react';
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import ActivityTooltip from './activity-tooltip';
 import type { ContributionCalendar } from './github';
 
 interface Props {
 	contributions: ContributionCalendar;
 }
+
+const WEEK_GAP = 3;
+const WEEK_WIDTH = 12 + WEEK_GAP;
 
 interface HoveredCell {
 	count: number;
@@ -20,6 +23,14 @@ interface HoveredCell {
 export default function Calendar({ contributions }: Props) {
 	const { weeks, months, colors } = contributions;
 	const [hoveredCell, setHoveredCell] = useState<HoveredCell | null>(null);
+	const scrollRef = useRef<HTMLDivElement>(null);
+
+	// A full year is wider than the page, so start at the most recent weeks.
+	// Switching years shows the skeleton, so this remounts for each year.
+	useLayoutEffect(() => {
+		const scroller = scrollRef.current;
+		if (scroller) scroller.scrollLeft = scroller.scrollWidth;
+	}, []);
 
 	const handleCellMouseEnter = (
 		e: React.MouseEvent<HTMLSpanElement>,
@@ -36,60 +47,73 @@ export default function Calendar({ contributions }: Props) {
 	};
 
 	return (
-		<div className='relative flex flex-col space-y-2 w-[calc(100%-53px)] md:w-160 lg:w-200'>
-			<ul className='flex justify-end gap-0.75 overflow-hidden text-xs dark:text-neutral-400 md:justify-start'>
-				{months.map((month) => (
-					<li
-						key={month.firstDay}
-						className={classNames(`${month.totalWeeks < 2 ? 'invisible' : ''}`)}
-						style={{ minWidth: 14.3 * month.totalWeeks }}
-					>
-						{month.name}
-					</li>
-				))}
-			</ul>
-
+		<div className='relative flex min-w-0 flex-1 flex-col space-y-2'>
 			<div
-				role='presentation'
-				className='flex justify-start gap-0.75 overflow-hidden'
-				onMouseLeave={() => setHoveredCell(null)}
+				ref={scrollRef}
+				className='overflow-x-auto'
+				onScroll={() => setHoveredCell(null)}
 			>
-				{weeks?.map((week) => (
-					<div key={week.firstDay}>
-						{week.contributionDays.map((contribution) => {
-							const backgroundColor =
-								contribution.contributionCount > 0 && contribution.color;
+				<div className='flex w-max flex-col space-y-2'>
+					{/* Months can share a week, so labels may run past the grid and get clipped */}
+					<ul className='flex w-0 min-w-full gap-0.75 overflow-hidden text-sm dark:text-neutral-400'>
+						{months.map((month) => (
+							<li
+								key={month.firstDay}
+								className={classNames(
+									'shrink-0',
+									month.totalWeeks < 2 && 'invisible',
+								)}
+								// Each week is a 12px column plus a 3px gap, so labels sit over their weeks
+								style={{ width: WEEK_WIDTH * month.totalWeeks - WEEK_GAP }}
+							>
+								{month.name}
+							</li>
+						))}
+					</ul>
 
-							const randomizedDelay =
-								Math.random() * week.contributionDays.length * 0.2;
+					<div
+						role='presentation'
+						className='flex gap-0.75'
+						onMouseLeave={() => setHoveredCell(null)}
+					>
+						{weeks?.map((week) => (
+							<div key={week.firstDay}>
+								{week.contributionDays.map((contribution) => {
+									const backgroundColor =
+										contribution.contributionCount > 0 && contribution.color;
 
-							return (
-								<motion.span
-									key={contribution.date}
-									initial='initial'
-									animate='animate'
-									variants={{
-										initial: { opacity: 0, translateY: -20 },
-										animate: {
-											opacity: 1,
-											translateY: 0,
-											transition: { delay: randomizedDelay },
-										},
-									}}
-									onMouseEnter={(e) =>
-										handleCellMouseEnter(
-											e,
-											contribution.contributionCount,
-											new Date(contribution.date),
-										)
-									}
-									className='my-0.5 block h-3 w-3 rounded-xs bg-neutral-200 dark:bg-[#161B22] cursor-default'
-									style={backgroundColor ? { backgroundColor } : undefined}
-								/>
-							);
-						})}
+									const randomizedDelay =
+										Math.random() * week.contributionDays.length * 0.2;
+
+									return (
+										<motion.span
+											key={contribution.date}
+											initial='initial'
+											animate='animate'
+											variants={{
+												initial: { opacity: 0, translateY: -20 },
+												animate: {
+													opacity: 1,
+													translateY: 0,
+													transition: { delay: randomizedDelay },
+												},
+											}}
+											onMouseEnter={(e) =>
+												handleCellMouseEnter(
+													e,
+													contribution.contributionCount,
+													new Date(contribution.date),
+												)
+											}
+											className='my-0.5 block h-3 w-3 rounded-xs bg-neutral-200 dark:bg-[#161B22] cursor-default'
+											style={backgroundColor ? { backgroundColor } : undefined}
+										/>
+									);
+								})}
+							</div>
+						))}
 					</div>
-				))}
+				</div>
 			</div>
 
 			<div className='flex flex-wrap items-center justify-between gap-2'>

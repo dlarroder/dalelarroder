@@ -20,9 +20,9 @@ export default function ActivityTooltip({ count, date, x, y }: Props) {
 	return createPortal(
 		<motion.div
 			className='pointer-events-none fixed z-50 whitespace-nowrap'
+			// Position comes only from initial/animate, so the spring can slide it
+			// between cells; a static left/top here would snap it instead
 			style={{
-				left: x,
-				top: y,
 				translate: '-50% calc(-100% - 12px)',
 				transformOrigin: 'center bottom',
 			}}
@@ -37,7 +37,7 @@ export default function ActivityTooltip({ count, date, x, y }: Props) {
 			}}
 		>
 			<div
-				className='relative rounded-lg px-3 py-1.5 text-xs'
+				className='relative rounded-lg px-3 py-1.5 text-sm'
 				style={{
 					background: 'rgba(15, 15, 15, 0.92)',
 					backdropFilter: 'blur(12px)',

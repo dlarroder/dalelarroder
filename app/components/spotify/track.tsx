@@ -7,7 +7,7 @@ interface TrackProps {
 
 export default function Track({ track, ranking }: TrackProps) {
 	return (
-		<div className='mt-4 flex w-full max-w-5xl flex-row items-baseline border-b border-gray-200 dark:border-gray-800'>
+		<div className='mt-2 flex w-full flex-row items-baseline'>
 			<p className='text-sm font-bold text-gray-500 dark:text-gray-600'>
 				{ranking}
 			</p>
@@ -20,7 +20,7 @@ export default function Track({ track, ranking }: TrackProps) {
 				>
 					{track.title}
 				</a>
-				<p className='mb-2 w-60 truncate text-gray-500 dark:text-gray-400 sm:w-96 md:w-full'>
+				<p className='w-60 truncate text-gray-500 dark:text-gray-400 sm:w-96 md:w-full'>
 					{track.artist}
 				</p>
 			</div>

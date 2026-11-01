@@ -18,6 +18,11 @@
 	::file-selector-button {
 		border-color: var(--color-gray-200, currentColor);
 	}
+
+	/* Text without a size class follows the 14px base; rem spacing stays on 16px */
+	body {
+		font-size: var(--text-base);
+	}
 }
 
 @theme inline {
@@ -30,6 +35,21 @@
 	--color-primary-700: #9f0e7f;
 	--color-primary-800: #800972;
 	--color-primary-900: #6a0568;
+
+	/* Every step sits 2px below Tailwind's default, so text-base is 14px */
+	--text-xs: 0.625rem;
+	--text-sm: 0.75rem;
+	--text-base: 0.875rem;
+	--text-lg: 1rem;
+	--text-xl: 1.125rem;
+	--text-2xl: 1.375rem;
+	--text-3xl: 1.75rem;
+	--text-4xl: 2.125rem;
+	--text-5xl: 2.875rem;
+	--text-6xl: 3.625rem;
+	--text-7xl: 4.375rem;
+	--text-8xl: 5.875rem;
+	--text-9xl: 7.875rem;
 
 	--animate-first: moveVertical 30s ease infinite;
 	--animate-second: moveInCircle 20s reverse infinite;

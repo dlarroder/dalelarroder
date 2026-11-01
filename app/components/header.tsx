@@ -1,25 +1,25 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { merryWeather, mukta } from '../fonts';
-import { SquareArrowLeftIcon } from './layouts/icons/square-arrow-left';
+import { ReturnIcon } from './layouts/icons/return-icon';
 
 export default function Header({ title }: { title: string }) {
 	return (
 		<Link
 			href='/'
 			className={classNames(
-				'flex gap-2 items-center text-primary-500 mb-12 outline-0',
+				'group flex items-center gap-2 outline-0',
 				mukta.className,
 			)}
 		>
-			<div className='flex items-center'>
-				<SquareArrowLeftIcon size={20} className='h-9 w-9' />
-				<span className='font-bold'>Home</span>
-			</div>
-			<div className='mx-1 w-full border-b border-primary-500' />
+			<span className='flex shrink-0 items-center gap-1 text-sm text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-gray-100 motion-safe:transition-colors'>
+				<ReturnIcon />
+				Home
+			</span>
+			<div className='mx-1 w-full border-b border-gray-200 dark:border-gray-800' />
 			<span
 				className={classNames(
-					'text-black dark:text-white text-lg md:text-4xl',
+					'shrink-0 text-black dark:text-white text-xl md:text-2xl',
 					merryWeather.className,
 				)}
 			>

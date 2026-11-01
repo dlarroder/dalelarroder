@@ -14,7 +14,11 @@ export default function Page() {
 		<Fragment>
 			<Header title='Uses' />
 			<UsesTitle />
-			<MDX code={usesPage.mdx} />
+			{/* Like posts, so content spacing comes from MDX styles, not the page
+			    gap; mt-2 keeps the intro 32px above the first section, as on /stats */}
+			<article className='mt-2'>
+				<MDX code={usesPage.mdx} />
+			</article>
 		</Fragment>
 	);
 }

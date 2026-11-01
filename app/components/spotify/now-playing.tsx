@@ -33,7 +33,7 @@ export default function NowPlaying() {
 	}
 
 	return (
-		<div className='mt-4 flex items-center justify-center space-x-2 sm:flex-row sm:justify-start sm:space-x-2'>
+		<div className='flex items-center justify-center space-x-2 sm:flex-row sm:justify-start sm:space-x-2'>
 			<AnimatedBars />
 			<div className='inline-flex max-w-[70%] items-center space-x-2 text-sm sm:max-w-[90%] sm:text-base'>
 				<a

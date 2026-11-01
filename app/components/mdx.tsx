@@ -10,7 +10,7 @@ type AnchorProps = ComponentPropsWithoutRef<'a'>;
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
 const h2ClassName =
-	'text-xl md:text-3xl font-bold py-3 text-gray-900 dark:text-gray-100 scroll-mt-20';
+	'text-xl md:text-2xl font-bold pt-2 text-gray-900 dark:text-gray-100 scroll-mt-20';
 
 export const components = {
 	// The page title is the only h1, so a `#` heading in a post renders as h2
@@ -26,7 +26,7 @@ export const components = {
 	),
 	h3: ({ children, ...props }: HeadingProps) => (
 		<h3
-			className='text-base md:text-2xl font-bold py-3 text-gray-900 dark:text-gray-100 scroll-mt-20'
+			className='text-lg md:text-xl font-semibold pt-2 text-gray-900 dark:text-gray-100 scroll-mt-20'
 			{...props}
 		>
 			{children}
@@ -34,7 +34,7 @@ export const components = {
 	),
 	h4: ({ children, ...props }: HeadingProps) => (
 		<h4
-			className='text-sm md:text-xl font-bold py-3 text-gray-900 dark:text-gray-100'
+			className='text-base md:text-lg font-semibold pt-2 text-gray-900 dark:text-gray-100'
 			{...props}
 		>
 			{children}
@@ -42,18 +42,18 @@ export const components = {
 	),
 	ol: (props: ListProps) => (
 		<ol
-			className='list-decimal pl-5 text-gray-900 dark:text-gray-100'
+			className='list-decimal py-2 pl-5 text-gray-900 in-[li]:py-0 dark:text-gray-100'
 			{...props}
 		/>
 	),
 	ul: (props: ListProps) => (
 		<ul
-			className='list-disc pl-5 text-gray-900 dark:text-gray-100'
+			className='list-disc py-2 pl-5 text-gray-900 in-[li]:py-0 dark:text-gray-100'
 			{...props}
 		/>
 	),
 	li: (props: ListItemProps) => (
-		<li className='text-gray-900 dark:text-gray-100' {...props} />
+		<li className='py-0.5 text-gray-900 dark:text-gray-100' {...props} />
 	),
 	em: (props: ComponentPropsWithoutRef<'em'>) => (
 		<em className='font-medium' {...props} />
@@ -63,7 +63,7 @@ export const components = {
 	),
 	p: ({ children, ...props }: ParagraphProps) => (
 		<p
-			className='leading-snug text-gray-900 dark:text-gray-100 py-4'
+			className='leading-snug text-gray-900 dark:text-gray-100 py-2'
 			{...props}
 		>
 			{children}

@@ -42,13 +42,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
 					href='/static/favicons/favicon.ico'
 				/>
 				<meta name='msapplication-TileColor' content='#000000' />
-				<meta name='theme-color' content='#000000' />
+				<meta name='theme-color' content='#ffffff' />
 				<link rel='alternate' type='application/rss+xml' href='/feed.xml' />
 			</head>
 			<body className='bg-white text-black antialiased dark:bg-black dark:text-white selection:bg-primary-500 selection:text-white'>
 				<ThemeProvider
 					attribute='class'
-					defaultTheme='dark'
+					defaultTheme='light'
 					themes={['dark', 'light']}
 				>
 					<LenisProvider>

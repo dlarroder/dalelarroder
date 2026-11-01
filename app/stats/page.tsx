@@ -14,16 +14,16 @@ export const metadata = {
 
 export default function StatsPage() {
 	return (
-		<div>
+		<Fragment>
 			<Header title='Stats' />
-			<div className='space-y-2 md:space-y-5 mb-5'>
-				<p className='text-lg leading-7 text-gray-500 dark:text-gray-400'>
-					Here are some personal stats that I managed to gather over different
-					APIs.
-				</p>
-			</div>
+			<p className='text-lg leading-7 text-gray-500 dark:text-gray-400'>
+				Here are some personal stats that I managed to gather over different
+				APIs.
+			</p>
 
-			<section className='space-y-3'>
+			{/* Spacing lives here rather than in each section: the page gap plus
+			    mt-4 above the first section, then gap-4 between sections */}
+			<section className='mt-4 flex flex-col gap-4'>
 				<GithubContributions />
 				<Suspense
 					fallback={
@@ -38,6 +38,6 @@ export default function StatsPage() {
 				</Suspense>
 				<NowPlaying />
 			</section>
-		</div>
+		</Fragment>
 	);
 }
