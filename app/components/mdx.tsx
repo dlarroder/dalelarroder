@@ -9,20 +9,18 @@ type ListItemProps = ComponentPropsWithoutRef<'li'>;
 type AnchorProps = ComponentPropsWithoutRef<'a'>;
 type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
+const h2ClassName =
+	'text-xl md:text-3xl font-bold py-3 text-gray-900 dark:text-gray-100 scroll-mt-20';
+
 export const components = {
+	// The page title is the only h1, so a `#` heading in a post renders as h2
 	h1: ({ children, ...props }: HeadingProps) => (
-		<h1
-			className='text-2xl md:text-4xl font-bold py-3 text-gray-900 dark:text-gray-100'
-			{...props}
-		>
+		<h2 className={h2ClassName} {...props}>
 			{children}
-		</h1>
+		</h2>
 	),
 	h2: ({ children, ...props }: HeadingProps) => (
-		<h2
-			className='text-xl md:text-3xl font-bold py-3 text-gray-900 dark:text-gray-100 scroll-mt-20'
-			{...props}
-		>
+		<h2 className={h2ClassName} {...props}>
 			{children}
 		</h2>
 	),
@@ -100,23 +98,23 @@ export const components = {
 			</a>
 		);
 	},
-	code: (props: ComponentPropsWithoutRef<'code'>) => {
+	code: (
+		props: ComponentPropsWithoutRef<'code'> & { 'data-language'?: string },
+	) => {
+		// Fenced blocks are colored by rehype-pretty-code; only style inline code
+		if (props['data-language']) {
+			return <code {...props} />;
+		}
 		return (
-			<code
-				className='bg-transparent before:content-none after:content-none text-green-500 text-sm'
-				{...props}
-			/>
+			<code className='text-green-700 dark:text-green-500 text-sm' {...props} />
 		);
 	},
 	pre: (props: ComponentPropsWithoutRef<'pre'>) => (
-		<pre
-			className='bg-gray-800 p-4 rounded-md overflow-x-auto text-sm'
-			{...props}
-		/>
+		<pre className='p-4 rounded-md overflow-x-auto text-sm' {...props} />
 	),
 	blockquote: (props: BlockquoteProps) => (
 		<blockquote
-			className='ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-700'
+			className='ml-[0.075em] border-l-3 border-gray-300 pl-4 text-gray-600 dark:border-gray-600 dark:text-gray-400 [&_p]:text-inherit'
 			{...props}
 		/>
 	),
