@@ -1,6 +1,5 @@
 'use client';
 
-import { format } from 'date-fns';
 import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
 import type { PostSummary } from '../thoughts/utils';
@@ -35,8 +34,11 @@ export function Thoughts({ posts }: { posts: PostSummary[] }) {
 									{post.title}
 								</h2>
 								<div className='mx-1 flex flex-1 border-b border-primary-500' />
-								<time className='w-max whitespace-nowrap text-sm pl-2 text-gray-500 dark:text-gray-400'>
-									{format(new Date(post.publishedAt), 'MMMM dd, yyyy')}
+								<time
+									dateTime={post.publishedAt}
+									className='w-max whitespace-nowrap text-sm pl-2 text-gray-500 dark:text-gray-400'
+								>
+									{post.date}
 								</time>
 							</div>
 							<p className='text-gray-500 dark:text-gray-400'>{post.summary}</p>

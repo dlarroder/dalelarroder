@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import BackNavigation from '../../components/layouts/back-navigation';
 import { MDX } from '../../components/mdx';
-import { formatDate, getPost, getPosts } from '../utils';
+import { getPost, getPosts } from '../utils';
 import PageTitle from './page-title';
 
 // Drafts and unknown slugs 404 instead of rendering on demand
@@ -71,9 +71,12 @@ export default async function Blog(props: {
 				<BackNavigation />
 				<PageTitle>{post.title}</PageTitle>
 				<div className='flex justify-between items-center mt-2 text-sm'>
-					<p className='text-sm text-neutral-600 dark:text-neutral-400'>
-						{formatDate(post.publishedAt)}
-					</p>
+					<time
+						dateTime={post.publishedAt}
+						className='text-sm text-neutral-600 dark:text-neutral-400'
+					>
+						{post.date}
+					</time>
 				</div>
 			</section>
 			<article className='md:max-w-5xl'>

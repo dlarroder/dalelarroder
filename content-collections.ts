@@ -4,11 +4,15 @@ import {
 	defineSingleton,
 } from '@content-collections/core';
 import { compileMDX, type Options } from '@content-collections/mdx';
+import { format, parseISO } from 'date-fns';
 import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 import { z } from 'zod';
 
 const mdxOptions: Options = {
-	rehypePlugins: [[rehypePrettyCode, { theme: 'dracula' }]],
+	remarkPlugins: [remarkGfm],
+	rehypePlugins: [rehypeSlug, [rehypePrettyCode, { theme: 'dracula' }]],
 };
 
 const posts = defineCollection({
@@ -26,7 +30,13 @@ const posts = defineCollection({
 	transform: async (document, context) => {
 		const { content, ...post } = document;
 		const mdx = await compileMDX(context, document, mdxOptions);
-		return { ...post, slug: document._meta.path, mdx };
+		return {
+			...post,
+			slug: document._meta.path,
+			// Formatted at build time so server and client never disagree on the day
+			date: format(parseISO(post.publishedAt), 'MMMM d, yyyy'),
+			mdx,
+		};
 	},
 });
 
