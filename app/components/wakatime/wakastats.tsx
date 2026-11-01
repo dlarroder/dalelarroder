@@ -17,16 +17,16 @@ export default async function WakaStats() {
 	const { hours, minutes } = extractHoursAndMinutes(allTimeStats.text);
 
 	return (
-		<section className='space-y-4 mt-7'>
+		<section className='space-y-2'>
 			<div>
-				<h2 className='text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100'>
+				<h2 className='text-xl font-bold leading-8 tracking-tight text-gray-900 dark:text-gray-100'>
 					Wakatime
 				</h2>
 				<p className='text-gray-500 dark:text-gray-400 leading-4'>
 					Coding Stats
 				</p>
 			</div>
-			<div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+			<div className='grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2'>
 				<StatItem title='All time'>
 					<AnimatedNumber number={hours} /> <span>hours </span>
 					<AnimatedNumber number={minutes} /> <span>minutes</span>

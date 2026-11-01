@@ -98,7 +98,7 @@ export default function TableOfContentsMobile({
 					animate={{ opacity: 1, y: 0 }}
 					exit={{ opacity: 0, y: -12 }}
 					transition={{ duration: 0.2, ease: 'easeOut' }}
-					className='fixed inset-x-4 top-4 z-40 mx-auto max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-white/80 shadow-lg backdrop-blur-md dark:border-gray-300/20 dark:bg-gray-900/80 lg:hidden'
+					className='fixed inset-x-4 top-4 z-40 mx-auto max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-white/80 shadow-lg backdrop-blur-md dark:border-gray-300/20 dark:bg-gray-900/80 xl:hidden'
 				>
 					<button
 						type='button'

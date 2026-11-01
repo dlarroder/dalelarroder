@@ -30,7 +30,7 @@ export default function Contributions() {
 
 	if (!contributions || isLoading) {
 		return (
-			<div className='flex flex-col space-y-4'>
+			<div className='flex flex-col space-y-2'>
 				<div className='flex space-x-2'>
 					<Days />
 					<GithubCalendarSkeleton />

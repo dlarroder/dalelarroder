@@ -73,8 +73,11 @@ export default async function Blog(props: {
 	return (
 		<>
 			<section>
-				<BackNavigation />
-				<PageTitle>{post.title}</PageTitle>
+				{/* From xl up, Back moves into the left rail */}
+				<BackNavigation className='xl:hidden' />
+				<div className='mt-8 xl:mt-0'>
+					<PageTitle>{post.title}</PageTitle>
+				</div>
 				<div className='flex justify-between items-center mt-2 text-sm'>
 					<time
 						dateTime={post.publishedAt}
@@ -84,22 +87,18 @@ export default async function Blog(props: {
 					</time>
 				</div>
 			</section>
-			{showToc ? (
-				<div className='lg:grid lg:grid-cols-[minmax(0,1fr)_13rem] lg:gap-12'>
-					<article className='min-w-0'>
-						<MDX code={post.mdx} />
-					</article>
-					<aside className='hidden lg:block'>
-						<div className='sticky top-24 max-h-[calc(100svh-8rem)] overflow-y-auto'>
-							<TableOfContents headings={post.headings} />
-						</div>
-					</aside>
-					<TableOfContentsMobile title={post.title} headings={post.headings} />
-				</div>
-			) : (
-				<article className='md:max-w-5xl'>
-					<MDX code={post.mdx} />
-				</article>
+			{/* Long prose needs more air above headings than the shared MDX styles,
+			    which /uses also uses for its tighter list sections */}
+			<article className='[&>h2]:pt-6 [&>h3]:pt-4 [&>h4]:pt-4'>
+				<MDX code={post.mdx} />
+			</article>
+			{/* Fills the left gutter, which only fits from xl up */}
+			<aside className='fixed top-18 left-8 hidden max-h-[calc(100svh-6rem)] w-52 flex-col gap-16 overflow-y-auto xl:flex 2xl:left-16'>
+				<BackNavigation compact />
+				{showToc && <TableOfContents headings={post.headings} />}
+			</aside>
+			{showToc && (
+				<TableOfContentsMobile title={post.title} headings={post.headings} />
 			)}
 		</>
 	);

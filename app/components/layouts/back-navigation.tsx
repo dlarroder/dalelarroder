@@ -3,9 +3,19 @@
 import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 import { mukta } from '../../fonts';
-import { SquareArrowLeftIcon } from './icons/square-arrow-left';
+import { ReturnIcon } from './icons/return-icon';
 
-export default function BackNavigation() {
+const linkClassName =
+	'flex shrink-0 items-center gap-1 text-sm text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-gray-100 motion-safe:transition-colors';
+
+export default function BackNavigation({
+	compact = false,
+	className,
+}: {
+	// Just the link, for the side rail, instead of the full-width bar
+	compact?: boolean;
+	className?: string;
+}) {
 	const router = useRouter();
 
 	return (
@@ -13,15 +23,19 @@ export default function BackNavigation() {
 			type='button'
 			onClick={() => router.back()}
 			className={classNames(
-				'flex w-full cursor-pointer text-primary-500 mb-12',
+				'group flex cursor-pointer items-center',
+				!compact && 'w-full gap-2',
 				mukta.className,
+				className,
 			)}
 		>
-			<div className='flex w-full items-center'>
-				<SquareArrowLeftIcon size={20} className='h-9 w-9' />
-				<span className='font-bold'>Back</span>
-				<div className='mx-1 w-full border-b border-primary-500' />
-			</div>
+			<span className={linkClassName}>
+				<ReturnIcon />
+				Back
+			</span>
+			{!compact && (
+				<div className='mx-1 w-full border-b border-gray-200 dark:border-gray-800' />
+			)}
 		</button>
 	);
 }

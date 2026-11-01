@@ -12,7 +12,6 @@ export function Thoughts({ posts }: { posts: PostSummary[] }) {
 			{posts.map((post, index) => (
 				<motion.li
 					key={post.slug}
-					className='border-b border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 hover:border-gray-400 transition-colors duration-500'
 					initial={{
 						scale: prefersReducedMotion ? 1 : 0.8,
 						opacity: 0,
@@ -24,19 +23,20 @@ export function Thoughts({ posts }: { posts: PostSummary[] }) {
 						delay: prefersReducedMotion ? 0 : index / 10,
 					}}
 				>
+					{/* No row borders, so the title underline is the hover cue */}
 					<Link
 						href={`/thoughts/${post.slug}`}
 						aria-label={`Read "${post.title}"`}
+						className='group'
 					>
-						<article className='space-y-2 py-5 border-b border-gray-300/20'>
+						<article className='space-y-1 py-2'>
 							<div className='flex w-full items-center justify-between'>
-								<h2 className='text-md w-full max-w-2xl truncate whitespace-nowrap pr-2 font-medium text-black dark:text-white group-hover:underline md:w-auto md:flex-none md:text-xl'>
+								<h2 className='text-md w-full min-w-0 truncate whitespace-nowrap pr-2 font-medium text-black dark:text-white group-hover:underline md:w-auto md:flex-initial md:text-lg'>
 									{post.title}
 								</h2>
-								<div className='mx-1 flex flex-1 border-b border-primary-500' />
 								<time
 									dateTime={post.publishedAt}
-									className='w-max whitespace-nowrap text-sm pl-2 text-gray-500 dark:text-gray-400'
+									className='w-max shrink-0 whitespace-nowrap text-sm pl-2 text-gray-500 dark:text-gray-400'
 								>
 									{post.date}
 								</time>

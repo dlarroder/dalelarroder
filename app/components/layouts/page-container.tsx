@@ -7,7 +7,7 @@ export default function PageContainer({
 }) {
 	return (
 		<div className='flex w-full flex-col items-center justify-center'>
-			<main className='flex min-h-svh w-full max-w-5xl flex-col gap-4 border-gray-200 dark:border-gray-300/20 p-8 pt-16 md:p-18 border-x'>
+			<main className='flex min-h-svh w-full max-w-2xl flex-col gap-4 p-8 pt-16 md:px-8 md:py-18'>
 				{children}
 			</main>
 		</div>

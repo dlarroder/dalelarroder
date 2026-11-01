@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import type { Project, ProjectModal } from './types';
 
 interface ProjectModalProps {
@@ -73,13 +74,13 @@ export default function ProjectPreview({ modal, projects }: ProjectModalProps) {
 		});
 
 		const handleMouseMove = (e: MouseEvent) => {
-			const { pageX, pageY } = e;
-			xMoveContainer(pageX);
-			yMoveContainer(pageY);
-			xMoveCursor(pageX);
-			yMoveCursor(pageY);
-			xMoveCursorLabel(pageX);
-			yMoveCursorLabel(pageY);
+			const { clientX, clientY } = e;
+			xMoveContainer(clientX);
+			yMoveContainer(clientY);
+			xMoveCursor(clientX);
+			yMoveCursor(clientY);
+			xMoveCursorLabel(clientX);
+			yMoveCursorLabel(clientY);
 		};
 
 		window.addEventListener('mousemove', handleMouseMove);
@@ -90,10 +91,13 @@ export default function ProjectPreview({ modal, projects }: ProjectModalProps) {
 		};
 	}, []);
 
-	return (
+	// Next scrolls a new page into view when any element it renders, portals
+	// included, starts above the viewport. Fixed and centered until the cursor
+	// moves, these never do, and they no longer stretch the page either.
+	return createPortal(
 		<>
 			<motion.div
-				className='pointer-events-none absolute flex h-[350px] w-[400px] items-center justify-center overflow-hidden bg-white'
+				className='pointer-events-none fixed top-1/2 left-1/2 z-10 flex h-[240px] w-[320px] items-center justify-center overflow-hidden rounded-xl bg-white'
 				ref={modalContainer}
 				variants={scaleAnimation}
 				initial='initial'
@@ -109,32 +113,36 @@ export default function ProjectPreview({ modal, projects }: ProjectModalProps) {
 					{projects.map((project) => {
 						const { src, color } = project;
 						return (
+							// Every screenshot fills the same 16px inset; squarer ones lose their
+							// bottom edge, keeping each app's header in view
 							<div
-								className='flex h-full w-full items-center justify-center'
+								className='h-full w-full p-4'
 								style={{ backgroundColor: color }}
 								key={`modal_${src}`}
 							>
-								<Image
-									className='h-auto'
-									src={`/static/images/project/${src}`}
-									width={300}
-									height={300}
-									alt='image'
-								/>
+								<div className='relative h-full w-full overflow-hidden rounded-md'>
+									<Image
+										className='object-cover object-top'
+										src={`/static/images/project/${src}`}
+										fill
+										sizes='288px'
+										alt=''
+									/>
+								</div>
 							</div>
 						);
 					})}
 				</div>
 			</motion.div>
 			<motion.div
-				className='font-base pointer-events-none absolute z-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary-500 font-light text-white'
+				className='font-base pointer-events-none fixed top-1/2 left-1/2 z-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary-500 font-light text-white'
 				ref={cursor}
 				variants={scaleAnimation}
 				initial='initial'
 				animate={active ? 'enter' : 'closed'}
 			></motion.div>
 			<motion.div
-				className='font-base pointer-events-none absolute z-10 flex h-16 w-16 items-center justify-center rounded-full bg-transparent font-light text-white'
+				className='font-base pointer-events-none fixed top-1/2 left-1/2 z-10 flex h-16 w-16 items-center justify-center rounded-full bg-transparent font-light text-white'
 				ref={cursorLabel}
 				variants={scaleAnimation}
 				initial='initial'
@@ -142,6 +150,7 @@ export default function ProjectPreview({ modal, projects }: ProjectModalProps) {
 			>
 				View
 			</motion.div>
-		</>
+		</>,
+		document.body,
 	);
 }
