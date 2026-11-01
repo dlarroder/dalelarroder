@@ -15,7 +15,8 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "paths": {
-      "app/*": ["./app/*"]
+      "app/*": ["./app/*"],
+      "content-collections": ["./.content-collections/generated"]
     },
     "plugins": [
       {

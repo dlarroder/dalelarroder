@@ -1,7 +1,12 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import BackNavigation from '../../components/layouts/back-navigation';
-import { formatDate, getPostFromSlug, getPosts } from '../utils';
+import { MDX } from '../../components/mdx';
+import { formatDate, getPost, getPosts } from '../utils';
 import PageTitle from './page-title';
+
+// Drafts and unknown slugs 404 instead of rendering on demand
+export const dynamicParams = false;
 
 export function generateStaticParams() {
 	return getPosts().map((post) => ({ slug: post.slug }));
@@ -11,7 +16,10 @@ export async function generateMetadata(props: {
 	params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
 	const params = await props.params;
-	const { metadata } = await getPostFromSlug(params.slug);
+	const metadata = getPost(params.slug);
+	if (!metadata) {
+		notFound();
+	}
 
 	const url = `https://dalelarroder.com/thoughts/${params.slug}`;
 	const ogImage = metadata.image || '/static/og-image.png';
@@ -52,20 +60,25 @@ export default async function Blog(props: {
 }) {
 	const params = await props.params;
 
-	const { metadata, content } = await getPostFromSlug(params.slug);
+	const post = getPost(params.slug);
+	if (!post) {
+		notFound();
+	}
 
 	return (
 		<>
 			<section>
 				<BackNavigation />
-				<PageTitle>{metadata.title}</PageTitle>
+				<PageTitle>{post.title}</PageTitle>
 				<div className='flex justify-between items-center mt-2 text-sm'>
 					<p className='text-sm text-neutral-600 dark:text-neutral-400'>
-						{formatDate(metadata.publishedAt)}
+						{formatDate(post.publishedAt)}
 					</p>
 				</div>
 			</section>
-			<article className='md:max-w-5xl'>{content}</article>
+			<article className='md:max-w-5xl'>
+				<MDX code={post.mdx} />
+			</article>
 		</>
 	);
 }
