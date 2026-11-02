@@ -7,17 +7,18 @@ const DEFAULT_BACK_COLOR = { r: 0.5, g: 0, b: 0 };
 // Keep simulating this long after the last input so the dye can fade out
 const IDLE_TIMEOUT_MS = 4000;
 
+// Calm preset: a soft trail that fades quickly rather than a full-screen swirl
 function SplashCursor({
 	SIM_RESOLUTION = 128,
 	DYE_RESOLUTION = 800,
 	CAPTURE_RESOLUTION = 512,
-	DENSITY_DISSIPATION = 3.5,
+	DENSITY_DISSIPATION = 5,
 	VELOCITY_DISSIPATION = 2,
 	PRESSURE = 0.1,
 	PRESSURE_ITERATIONS = 20,
-	CURL = 3,
-	SPLAT_RADIUS = 0.2,
-	SPLAT_FORCE = 6000,
+	CURL = 1.5,
+	SPLAT_RADIUS = 0.12,
+	SPLAT_FORCE = 3500,
 	SHADING = true,
 	COLOR_UPDATE_SPEED = 10,
 	BACK_COLOR = DEFAULT_BACK_COLOR,
@@ -53,6 +54,16 @@ function SplashCursor({
 		const canvas = canvasRef.current;
 		const container = containerRef.current;
 		if (!canvas || !container) return;
+
+		// Skip the simulation for reduced motion, and on touch screens where a
+		// tap leaving a smudge reads as a bug
+		const prefersReducedMotion = window.matchMedia(
+			'(prefers-reduced-motion: reduce)',
+		).matches;
+		const hasFinePointer = window.matchMedia(
+			'(hover: hover) and (pointer: fine)',
+		).matches;
+		if (prefersReducedMotion || !hasFinePointer) return;
 
 		class Pointer {
 			id = -1;
@@ -1148,9 +1159,9 @@ function SplashCursor({
 
 		function clickSplat(pointer: Pointer): void {
 			const color = generateColor();
-			color.r *= 10.0;
-			color.g *= 10.0;
-			color.b *= 10.0;
+			color.r *= 4.0;
+			color.g *= 4.0;
+			color.b *= 4.0;
 			const dx = 10 * (Math.random() - 0.5);
 			const dy = 30 * (Math.random() - 0.5);
 			splat(pointer.texcoordX, pointer.texcoordY, dx, dy, color);
@@ -1274,9 +1285,9 @@ function SplashCursor({
 
 				// Apply intensity multiplier (adjust this value to make colors more/less vibrant)
 				return {
-					r: c.r * 0.15,
-					g: c.g * 0.15,
-					b: c.b * 0.15,
+					r: c.r * 0.1,
+					g: c.g * 0.1,
+					b: c.b * 0.1,
 				};
 			}
 
