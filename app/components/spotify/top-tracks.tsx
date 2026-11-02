@@ -1,6 +1,10 @@
 import { getTopTracks } from 'app/components/spotify/spotify';
 import Track from './track';
-import type { Song, TrackInfo } from './types';
+import type { AlbumImage, Song, TrackInfo } from './types';
+
+// Spotify lists covers largest first (640, 300, 64); 300 stays sharp at 2x without fetching the full size
+const pickAlbumImage = (images: AlbumImage[]) =>
+	(images.find((image) => image.width <= 300) ?? images[0])?.url ?? null;
 
 async function fetchTopTracks(): Promise<Song[] | null> {
 	try {
@@ -16,6 +20,8 @@ async function fetchTopTracks(): Promise<Song[] | null> {
 		const { items } = await response.json();
 
 		const tracks = items?.slice(0, 5).map((track: TrackInfo) => ({
+			album: track.album.name,
+			albumImageUrl: pickAlbumImage(track.album.images),
 			artist: track.artists.map((_artist) => _artist.name).join(', '),
 			songUrl: track.external_urls.spotify,
 			title: track.name,

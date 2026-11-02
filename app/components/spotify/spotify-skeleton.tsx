@@ -13,14 +13,15 @@ export default function SpotifySkeleton() {
 	);
 }
 
-// Same 42px row as a loaded track: title and artist lines, 8px apart
+// Same 42px row as a loaded track: cover, then title and artist lines
 function TrackSkeleton({ rank }: { rank: number }) {
 	return (
-		<div className='mt-2 flex h-10.5 w-full flex-row items-start'>
-			<p className='text-sm font-bold text-gray-500 dark:text-gray-600'>
+		<div className='mt-2 flex h-10.5 w-full flex-row items-center'>
+			<p className='w-3 shrink-0 text-sm font-bold text-gray-500 dark:text-gray-600'>
 				{rank}
 			</p>
-			<div className='flex h-full flex-col justify-center gap-2.5 pl-3'>
+			<Skeleton className='ml-3 size-10.5 shrink-0' />
+			<div className='flex h-full min-w-0 flex-1 flex-col justify-center gap-2.5 pl-3'>
 				<Skeleton className='h-4 w-56 max-w-full' />
 				<Skeleton className='h-4 w-36 max-w-full' />
 			</div>
