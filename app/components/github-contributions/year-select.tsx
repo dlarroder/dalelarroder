@@ -1,5 +1,6 @@
 'use client';
 
+import classNames from 'classnames';
 import { motion, useReducedMotion } from 'motion/react';
 
 interface Props {
@@ -14,7 +15,8 @@ export default function YearSelect({ selectedYear, onYearChange }: Props) {
 	const yearOptions = Array.from({ length: 5 }, (_, i) => thisYear - i);
 
 	return (
-		<div className='flex flex-col space-y-2 text-sm'>
+		// Sits above the calendar as a row of tabs, so the grid gets the full width
+		<div className='flex gap-4 text-sm text-gray-500 dark:text-gray-400'>
 			{yearOptions.map((year) => (
 				<button
 					type='button'
@@ -22,13 +24,19 @@ export default function YearSelect({ selectedYear, onYearChange }: Props) {
 						onYearChange(year);
 					}}
 					key={year}
-					className='relative cursor-pointer border-b-2 border-transparent'
+					aria-pressed={selectedYear === year}
+					className={classNames(
+						'relative cursor-pointer pb-0.5 motion-safe:transition-colors',
+						selectedYear === year
+							? 'text-gray-900 dark:text-gray-100'
+							: 'hover:text-gray-900 dark:hover:text-gray-100',
+					)}
 				>
 					{year}
 					{selectedYear === year && (
 						<motion.div
 							layoutId='year-select-indicator'
-							className='absolute inset-x-0 -bottom-0.5 h-0.5 bg-primary-500'
+							className='absolute inset-x-0 -bottom-0.5 h-0.5 bg-accent'
 							transition={
 								prefersReducedMotion
 									? { duration: 0 }

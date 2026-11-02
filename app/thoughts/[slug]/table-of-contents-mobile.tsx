@@ -30,7 +30,7 @@ function ProgressRing() {
 				fill='none'
 				strokeWidth={2}
 				strokeLinecap='round'
-				className='stroke-primary-500'
+				className='stroke-accent'
 				style={{ pathLength: scrollYProgress }}
 			/>
 		</svg>
@@ -98,7 +98,7 @@ export default function TableOfContentsMobile({
 					animate={{ opacity: 1, y: 0 }}
 					exit={{ opacity: 0, y: -12 }}
 					transition={{ duration: 0.2, ease: 'easeOut' }}
-					className='fixed inset-x-4 top-4 z-40 mx-auto max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-white/80 shadow-lg backdrop-blur-md dark:border-gray-300/20 dark:bg-gray-900/80 xl:hidden'
+					className='fixed inset-x-4 top-4 z-40 mx-auto max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-raised/80 shadow-lg backdrop-blur-md dark:border-gray-800 xl:hidden'
 				>
 					<button
 						type='button'
@@ -152,7 +152,7 @@ export default function TableOfContentsMobile({
 												className={classNames(
 													'block truncate py-1.5 pl-8',
 													section.id === currentId
-														? 'text-primary-500'
+														? 'text-accent'
 														: 'text-gray-500 dark:text-gray-400',
 												)}
 											>

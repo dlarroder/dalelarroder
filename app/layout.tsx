@@ -41,11 +41,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
 					sizes='16x16'
 					href='/static/favicons/favicon.ico'
 				/>
-				<meta name='msapplication-TileColor' content='#000000' />
-				<meta name='theme-color' content='#ffffff' />
+				<meta name='msapplication-TileColor' content='#15120f' />
+				<meta name='theme-color' content='#faf8f4' />
 				<link rel='alternate' type='application/rss+xml' href='/feed.xml' />
 			</head>
-			<body className='bg-white text-black antialiased dark:bg-black dark:text-white selection:bg-primary-500 selection:text-white'>
+			<body className='bg-white text-black antialiased dark:bg-black dark:text-white selection:bg-accent selection:text-accent-fg'>
 				<ThemeProvider
 					attribute='class'
 					defaultTheme='light'

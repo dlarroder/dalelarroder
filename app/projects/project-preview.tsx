@@ -135,7 +135,7 @@ export default function ProjectPreview({ modal, projects }: ProjectModalProps) {
 				</div>
 			</motion.div>
 			<motion.div
-				className='font-base pointer-events-none fixed top-1/2 left-1/2 z-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary-500 font-light text-white'
+				className='font-base pointer-events-none fixed top-1/2 left-1/2 z-10 flex h-16 w-16 items-center justify-center rounded-full bg-accent font-light text-accent-fg'
 				ref={cursor}
 				variants={scaleAnimation}
 				initial='initial'

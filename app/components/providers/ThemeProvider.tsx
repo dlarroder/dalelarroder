@@ -9,8 +9,8 @@ import { useEffect } from 'react';
 
 // Matches the body background, so mobile browser toolbars blend with the page
 const THEME_COLORS: Record<string, string> = {
-	light: '#ffffff',
-	dark: '#000000',
+	light: '#faf8f4',
+	dark: '#15120f',
 };
 
 function ThemeColorSync() {

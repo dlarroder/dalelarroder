@@ -1257,15 +1257,15 @@ function SplashCursor({
 			if (usePrimaryColors) {
 				// Primary color palette
 				const primaryColors = [
-					{ r: 0xfd / 255, g: 0xd1 / 255, b: 0xd9 / 255 }, // #fdd1d9
-					{ r: 0xfb / 255, g: 0xa4 / 255, b: 0xbc / 255 }, // #fba4bc
-					{ r: 0xf5 / 255, g: 0x75 / 255, b: 0xa5 / 255 }, // #f575a5
-					{ r: 0xeb / 255, g: 0x51 / 255, b: 0x9b / 255 }, // #eb519b
-					{ r: 0xde / 255, g: 0x1d / 255, b: 0x8d / 255 }, // #de1d8d
-					{ r: 0xbe / 255, g: 0x15 / 255, b: 0x88 / 255 }, // #be1588
-					{ r: 0x9f / 255, g: 0x0e / 255, b: 0x7f / 255 }, // #9f0e7f
-					{ r: 0x80 / 255, g: 0x09 / 255, b: 0x72 / 255 }, // #800972
-					{ r: 0x6a / 255, g: 0x05 / 255, b: 0x68 / 255 }, // #6a0568
+					{ r: 0xf1 / 255, g: 0xdf / 255, b: 0xe0 / 255 }, // #f1dfe0
+					{ r: 0xe0 / 255, g: 0x85 / 255, b: 0x92 / 255 }, // #e08592
+					{ r: 0xc2 / 255, g: 0x4e / 255, b: 0x5f / 255 }, // #c24e5f
+					{ r: 0xa8 / 255, g: 0x3a / 255, b: 0x4a / 255 }, // #a83a4a
+					{ r: 0x8e / 255, g: 0x2c / 255, b: 0x3b / 255 }, // #8e2c3b
+					{ r: 0x6e / 255, g: 0x1f / 255, b: 0x2c / 255 }, // #6e1f2c
+					{ r: 0xd4 / 255, g: 0xb0 / 255, b: 0x6a / 255 }, // #d4b06a
+					{ r: 0xb8 / 255, g: 0x8f / 255, b: 0x45 / 255 }, // #b88f45
+					{ r: 0x8a / 255, g: 0x6a / 255, b: 0x2c / 255 }, // #8a6a2c
 				];
 
 				// Select a random color from the palette

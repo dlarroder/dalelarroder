@@ -19,22 +19,97 @@
 		border-color: var(--color-gray-200, currentColor);
 	}
 
+	/* One visible keyboard focus style for every link, button and tab */
+	:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
+		border-radius: 2px;
+	}
+
 	/* Text without a size class follows the 14px base; rem spacing stays on 16px */
 	body {
 		font-size: var(--text-base);
 	}
 }
 
+/* Oxblood & gold. The accent lightens in dark mode so it keeps contrast on the off-black */
+:root {
+	--accent: #8e2c3b;
+	--accent-fg: #faf8f4;
+	--accent-subtle: #f1dfe0;
+	--accent-2: #8a6a2c;
+
+	/* Raised lifts code blocks and popovers off the page; sunk sits under inline code */
+	--surface-raised: #fffefb;
+	--surface-sunk: #f1ede6;
+
+	/* Contribution calendar: empty days, then four steps toward the accent */
+	--contribution-0: #e2dacd;
+	--contribution-1: color-mix(
+		in oklab,
+		var(--accent) 30%,
+		var(--contribution-0)
+	);
+	--contribution-2: color-mix(
+		in oklab,
+		var(--accent) 55%,
+		var(--contribution-0)
+	);
+	--contribution-3: color-mix(
+		in oklab,
+		var(--accent) 80%,
+		var(--contribution-0)
+	);
+	--contribution-4: var(--accent);
+}
+
+.dark {
+	--accent: #e08592;
+	--accent-fg: #15120f;
+	--accent-subtle: #3a1d21;
+	--accent-2: #d4b06a;
+
+	--surface-raised: #201c19;
+	--surface-sunk: #0f0d0b;
+
+	--contribution-0: #2e2925;
+}
+
 @theme inline {
-	--color-primary-100: #fdd1d9;
-	--color-primary-200: #fba4bc;
-	--color-primary-300: #f575a5;
-	--color-primary-400: #eb519b;
-	--color-primary-500: #de1d8d;
-	--color-primary-600: #be1588;
-	--color-primary-700: #9f0e7f;
-	--color-primary-800: #800972;
-	--color-primary-900: #6a0568;
+	--color-accent: var(--accent);
+	--color-accent-fg: var(--accent-fg);
+	--color-accent-subtle: var(--accent-subtle);
+	--color-accent-2: var(--accent-2);
+	--color-raised: var(--surface-raised);
+	--color-sunk: var(--surface-sunk);
+
+	/* Warm off-white and off-black, so every bg-white / text-black follows */
+	--color-white: #faf8f4;
+	--color-black: #15120f;
+
+	/* Warm grays replace Tailwind's cool ones; neutral shares the scale */
+	--color-gray-50: #f3efe8;
+	--color-gray-100: #ece6dc;
+	--color-gray-200: #e2dacd;
+	--color-gray-300: #cfc5b6;
+	--color-gray-400: #a39a8f;
+	--color-gray-500: #776e64;
+	--color-gray-600: #5c544c;
+	--color-gray-700: #463f39;
+	--color-gray-800: #2e2925;
+	--color-gray-900: #1f1b18;
+	--color-gray-950: #191613;
+	--color-neutral-50: var(--color-gray-50);
+	--color-neutral-100: var(--color-gray-100);
+	--color-neutral-200: var(--color-gray-200);
+	--color-neutral-300: var(--color-gray-300);
+	--color-neutral-400: var(--color-gray-400);
+	--color-neutral-500: var(--color-gray-500);
+	--color-neutral-600: var(--color-gray-600);
+	--color-neutral-700: var(--color-gray-700);
+	--color-neutral-800: var(--color-gray-800);
+	--color-neutral-900: var(--color-gray-900);
+	--color-neutral-950: var(--color-gray-950);
 
 	/* Every step sits 2px below Tailwind's default, so text-base is 14px */
 	--text-xs: 0.625rem;
@@ -106,15 +181,41 @@ input:-webkit-autofill:focus {
 		color 600000s 0s;
 }
 
+/* Faint hairline at rest; on hover an accent underline draws across it */
 .underline-magical {
-	@apply bg-linear-to-r from-primary-500 to-primary-500 bg-no-repeat no-underline bg-position-[0_100%] bg-size-[100%_0.2em] focus:bg-size-[100%_100%] hover:text-white hover:bg-size-[100%_100%] motion-safe:transition-[background-size,color] motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500;
+	text-decoration: none;
+	background-image:
+		linear-gradient(var(--color-gray-200), var(--color-gray-200)),
+		linear-gradient(var(--accent), var(--accent));
+	background-repeat: no-repeat;
+	background-position:
+		0 100%,
+		0 100%;
+	background-size:
+		100% 1px,
+		0 2px;
+	@apply motion-safe:transition-[background-size,color] motion-safe:duration-300 motion-safe:ease-out;
+}
+
+.dark .underline-magical {
+	background-image:
+		linear-gradient(var(--color-gray-700), var(--color-gray-700)),
+		linear-gradient(var(--accent), var(--accent));
+}
+
+.underline-magical:hover,
+.underline-magical:focus-visible {
+	color: var(--accent);
+	background-size:
+		100% 1px,
+		100% 2px;
 }
 
 .horizontal-underline {
 	border-bottom-width: 0;
 	background-image:
 		linear-gradient(transparent, transparent),
-		linear-gradient(var(--color-primary-500), var(--color-primary-500));
+		linear-gradient(var(--accent), var(--accent));
 	background-size: 0 3px;
 	background-position: 0 100%;
 	background-repeat: no-repeat;
@@ -131,32 +232,35 @@ input:-webkit-autofill:focus {
 	background-position: 0 100%;
 }
 
-/* Code block filename, from ```lang title="..." in MDX */
-[data-rehype-pretty-code-title] {
-	@apply rounded-t-md border-b border-gray-300 bg-gray-200 px-4 py-2 font-mono text-sm text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300;
+/* Code blocks sit on the raised surface with a hairline and a soft shadow */
+[data-rehype-pretty-code-figure] {
+	@apply overflow-hidden rounded-md border border-gray-200 shadow-[0_1px_2px_rgb(70_45_25/0.07)] dark:border-gray-800 dark:shadow-[0_1px_2px_rgb(0_0_0/0.35)];
 }
 
-[data-rehype-pretty-code-title] + pre {
-	@apply rounded-t-none;
+/* Code block filename, from ```lang title="..." in MDX */
+[data-rehype-pretty-code-title] {
+	@apply border-b border-gray-200 bg-sunk px-4 py-2 font-mono text-sm text-gray-600 dark:border-gray-800 dark:text-gray-400;
 }
 
 /* Code blocks carry both themes as CSS variables; pick one per site theme */
 [data-rehype-pretty-code-figure] pre {
+	@apply rounded-none;
 	color: var(--shiki-light);
-	background-color: var(--color-gray-100);
+	background-color: var(--surface-raised);
 }
 
 [data-rehype-pretty-code-figure] pre span {
 	color: var(--shiki-light);
+	font-style: var(--shiki-light-font-style);
 }
 
 .dark [data-rehype-pretty-code-figure] pre {
 	color: var(--shiki-dark);
-	background-color: var(--shiki-dark-bg);
 }
 
 .dark [data-rehype-pretty-code-figure] pre span {
 	color: var(--shiki-dark);
+	font-style: var(--shiki-dark-font-style);
 }
 
 [data-radix-tooltip-content] {
@@ -164,7 +268,7 @@ input:-webkit-autofill:focus {
 }
 
 #nprogress .bar {
-	background: var(--color-primary-500);
+	background: var(--accent);
 	height: 4px;
 }
 

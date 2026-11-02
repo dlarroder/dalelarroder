@@ -56,7 +56,7 @@ const SunMediumIcon = forwardRef<SunMediumIconHandle, SunMediumIconProps>(
 		return (
 			<div
 				className={classNames(
-					`cursor-pointer select-none p-2 hover:bg-accent rounded-md transition-colors duration-200 flex items-center justify-center`,
+					`cursor-pointer select-none p-2 rounded-md transition-colors duration-200 flex items-center justify-center`,
 					className,
 				)}
 				onMouseEnter={handleMouseEnter}
