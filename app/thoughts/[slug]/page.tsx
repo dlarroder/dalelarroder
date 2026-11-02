@@ -23,8 +23,8 @@ export async function generateMetadata(props: {
 		notFound();
 	}
 
+	// The share image comes from opengraph-image.tsx next to this page
 	const url = `https://dalelarroder.com/thoughts/${params.slug}`;
-	const ogImage = metadata.image || '/static/og-image.png';
 
 	return {
 		title: metadata.title,
@@ -36,20 +36,11 @@ export async function generateMetadata(props: {
 			url: url,
 			publishedTime: metadata.publishedAt,
 			authors: ['Dale Larroder'],
-			images: [
-				{
-					url: ogImage,
-					width: 1200,
-					height: 630,
-					alt: metadata.title,
-				},
-			],
 		},
 		twitter: {
 			card: 'summary_large_image',
 			title: metadata.title,
 			description: metadata.summary,
-			images: [ogImage],
 		},
 		alternates: {
 			canonical: url,
