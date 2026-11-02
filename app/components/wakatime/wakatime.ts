@@ -4,15 +4,17 @@ import type { UserStats, WakaTimeAllTimeStats } from './types';
 const WAKATIME_ENDPOINT = 'https://wakatime.com/api/v1';
 const REQUEST_TIMEOUT_MS = 10_000;
 
+// WakaTime API keys are write-only (plugins); reads need a personal OAuth
+// token with the read_stats scope, from https://wakatime.com/oauth
 const getWakatimeToken = cache((): string | null => {
-	const secret_key = process.env.WAKATIME_SECRET_KEY;
+	const access_token = process.env.WAKATIME_ACCESS_TOKEN;
 
-	if (!secret_key) {
-		console.error('WAKATIME_SECRET_KEY is not set; skipping WakaTime stats');
+	if (!access_token) {
+		console.error('WAKATIME_ACCESS_TOKEN is not set; skipping WakaTime stats');
 		return null;
 	}
 
-	return Buffer.from(`${secret_key} :`).toString('base64');
+	return access_token;
 });
 
 // Returns null on a missing key, network or API failure so WakaTime
@@ -27,7 +29,7 @@ async function fetchWakatime<T>(path: string): Promise<T | null> {
 	try {
 		const response = await fetch(`${WAKATIME_ENDPOINT}${path}`, {
 			headers: {
-				Authorization: `Basic ${token}`,
+				Authorization: `Bearer ${token}`,
 			},
 			signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
 		});

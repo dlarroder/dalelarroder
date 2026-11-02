@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	pageExtensions: ['ts', 'tsx'],
 	reactCompiler: true,
+	images: {
+		remotePatterns: [new URL('https://i.scdn.co/image/**')],
+	},
 	turbopack: {
 		root: path.join(__dirname, '..'),
 	},

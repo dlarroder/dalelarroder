@@ -52,9 +52,10 @@ export default function Calendar({ contributions }: Props) {
 
 	return (
 		<div className='relative flex min-w-0 flex-1 flex-col space-y-2'>
+			{/* Cells drop in from above, so clip vertically and hide the bar to stop it flashing */}
 			<div
 				ref={scrollRef}
-				className='overflow-x-auto'
+				className='overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'
 				onScroll={() => setHoveredCell(null)}
 			>
 				<div className='flex w-max flex-col space-y-2'>
