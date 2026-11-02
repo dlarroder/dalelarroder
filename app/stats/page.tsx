@@ -17,8 +17,8 @@ export default function StatsPage() {
 		<Fragment>
 			<Header title='Stats' />
 			<p className='text-lg leading-7 text-gray-500 dark:text-gray-400'>
-				Here are some personal stats that I managed to gather over different
-				APIs.
+				A few numbers on how I spend my days: commits, keystrokes and songs on
+				repeat.
 			</p>
 
 			{/* Spacing lives here rather than in each section: the page gap plus
