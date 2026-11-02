@@ -11,7 +11,7 @@ export type PostSummary = {
 export function getPosts(): PostSummary[] {
 	return (
 		allPosts
-			.filter((post) => !post.draft)
+			.filter((post) => !post.draft && !post.archived)
 			.sort(
 				(a, b) =>
 					new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
@@ -25,6 +25,11 @@ export function getPosts(): PostSummary[] {
 				date,
 			}))
 	);
+}
+
+// Every page that gets built, archived posts included so old links keep working
+export function getPostSlugs() {
+	return allPosts.filter((post) => !post.draft).map((post) => post.slug);
 }
 
 export function getPost(slug: string) {

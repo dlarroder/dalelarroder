@@ -28,6 +28,8 @@ const posts = defineCollection({
 		publishedAt: z.iso.date(),
 		summary: z.string().default(''),
 		draft: z.boolean().default(false),
+		// Still reachable by URL, but left out of the listing, sitemap and search
+		archived: z.boolean().default(false),
 		image: z.string().optional(),
 		content: z.string(),
 	}),
