@@ -28,7 +28,7 @@ export default function TableOfContents({
 									'block py-0.5 leading-snug motion-safe:transition-colors',
 									active
 										? 'text-gray-900 dark:text-gray-100'
-										: 'text-gray-400 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-100',
+										: 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100',
 								)}
 							>
 								{heading.text}

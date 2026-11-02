@@ -3,7 +3,7 @@ import { ReturnIcon } from './layouts/icons/return-icon';
 
 export default function Header({ title }: { title: string }) {
 	return (
-		<Link href='/' className='group flex items-center gap-2 outline-0'>
+		<Link href='/' className='group flex items-center gap-2'>
 			<span className='flex shrink-0 items-center gap-1 text-sm text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-gray-100 motion-safe:transition-colors'>
 				<ReturnIcon />
 				Home

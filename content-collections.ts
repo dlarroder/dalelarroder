@@ -9,13 +9,17 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { z } from 'zod';
+import { codeThemeDark, codeThemeLight } from './app/thoughts/code-theme';
 import { extractHeadings } from './app/thoughts/extract-headings';
 
 const mdxOptions: Options = {
 	remarkPlugins: [remarkGfm],
 	rehypePlugins: [
 		rehypeSlug,
-		[rehypePrettyCode, { theme: { light: 'github-light', dark: 'dracula' } }],
+		[
+			rehypePrettyCode,
+			{ theme: { light: codeThemeLight, dark: codeThemeDark } },
+		],
 	],
 };
 

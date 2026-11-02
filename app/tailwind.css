@@ -19,6 +19,13 @@
 		border-color: var(--color-gray-200, currentColor);
 	}
 
+	/* One visible keyboard focus style for every link, button and tab */
+	:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
+		border-radius: 2px;
+	}
+
 	/* Text without a size class follows the 14px base; rem spacing stays on 16px */
 	body {
 		font-size: var(--text-base);
@@ -35,6 +42,25 @@
 	/* Raised lifts code blocks and popovers off the page; sunk sits under inline code */
 	--surface-raised: #fffefb;
 	--surface-sunk: #f1ede6;
+
+	/* Contribution calendar: empty days, then four steps toward the accent */
+	--contribution-0: #e2dacd;
+	--contribution-1: color-mix(
+		in oklab,
+		var(--accent) 30%,
+		var(--contribution-0)
+	);
+	--contribution-2: color-mix(
+		in oklab,
+		var(--accent) 55%,
+		var(--contribution-0)
+	);
+	--contribution-3: color-mix(
+		in oklab,
+		var(--accent) 80%,
+		var(--contribution-0)
+	);
+	--contribution-4: var(--accent);
 }
 
 .dark {
@@ -45,6 +71,8 @@
 
 	--surface-raised: #201c19;
 	--surface-sunk: #0f0d0b;
+
+	--contribution-0: #2e2925;
 }
 
 @theme inline {
@@ -223,6 +251,7 @@ input:-webkit-autofill:focus {
 
 [data-rehype-pretty-code-figure] pre span {
 	color: var(--shiki-light);
+	font-style: var(--shiki-light-font-style);
 }
 
 .dark [data-rehype-pretty-code-figure] pre {
@@ -231,6 +260,7 @@ input:-webkit-autofill:focus {
 
 .dark [data-rehype-pretty-code-figure] pre span {
 	color: var(--shiki-dark);
+	font-style: var(--shiki-dark-font-style);
 }
 
 [data-radix-tooltip-content] {
