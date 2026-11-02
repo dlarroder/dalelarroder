@@ -48,23 +48,32 @@ export default function Hero() {
 			>
 				<div className='relative flex min-h-svh justify-center'>
 					{/* Same 672px column and side padding as PageContainer, so text
-					    stays put when moving between Home and the inner pages */}
-					<div className='flex w-full max-w-2xl flex-col justify-center space-y-4 p-8 md:px-8'>
+					    stays put when moving between Home and the inner pages. The
+					    extra bottom padding lifts it a little above dead centre. */}
+					<div className='flex w-full max-w-2xl flex-col justify-center space-y-4 p-8 pb-[20svh] md:px-8 md:pb-[35svh]'>
 						<h1 className='text-2xl font-medium md:mr-4 md:text-[30px]'>
-							Welcome to my{' '}
-							<span className='font-bold'>personal portfolio</span> — or, as I
+							welcome to my{' '}
+							<span className='font-bold'>personal portfolio</span> — or, as i
 							like to call it, my{' '}
 							<span className='italic border-b border-b-primary-500'>
 								playground
 							</span>{' '}
 							on the web.
 						</h1>
-						<section className='relative z-10'>
+						<section className='relative z-10 space-y-4'>
 							<p className='text-base'>
-								I&apos;m Dale Larroder, a software engineer and forever a
-								student of the craft. Most days you&apos;ll find me shipping,
-								tinkering, or falling down a rabbit hole. Right now I&apos;m
-								making cool things at{' '}
+								i&apos;m dale larroder, a software engineer from the philippines{' '}
+								<span role='img' aria-label='Philippine flag'>
+									🇵🇭
+								</span>
+							</p>
+							<p className='text-base'>
+								i work mostly with react and typescript, in the space where
+								product meets platform. i care less about the stack and more
+								about software that stays fast and easy to work on as it grows.
+							</p>
+							<p className='text-base'>
+								right now i&apos;m making cool things at{' '}
 								<CompanyLink href='https://www.aphex.co/'>aphex</CompanyLink>,
 								prev{' '}
 								<CompanyLink href='https://anything.com/'>anything</CompanyLink>{' '}
@@ -73,6 +82,10 @@ export default function Hero() {
 									codeandtheory
 								</CompanyLink>
 								.
+							</p>
+							<p className='text-base'>
+								when i&apos;m not shipping, i&apos;m usually tinkering or deep
+								in some rabbit hole.
 							</p>
 						</section>
 						{/* Small grey links, matching the inner pages' header and Back links */}
