@@ -3,8 +3,14 @@ import Skeleton from '../skeleton';
 export default function SpotifySkeleton() {
 	return (
 		<section>
-			<div className='flex h-8 items-center'>
-				<Skeleton className='h-5 w-[180px]' />
+			{/* Matches the 32px title and 16px subtitle lines */}
+			<div>
+				<div className='flex h-8 items-center'>
+					<Skeleton className='h-5 w-[78px]' />
+				</div>
+				<div className='flex h-4 items-center'>
+					<Skeleton className='h-3 w-[72px]' />
+				</div>
 			</div>
 			{[1, 2, 3, 4, 5].map((rank) => (
 				<TrackSkeleton key={rank} rank={rank} />
