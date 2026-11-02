@@ -105,7 +105,7 @@ export default function Calendar({ contributions }: Props) {
 													new Date(contribution.date),
 												)
 											}
-											className='my-0.5 block h-3 w-3 rounded-xs bg-neutral-200 dark:bg-[#161B22] cursor-default'
+											className='my-0.5 block h-3 w-3 rounded-xs bg-neutral-200 dark:bg-neutral-900 cursor-default'
 											style={backgroundColor ? { backgroundColor } : undefined}
 										/>
 									);

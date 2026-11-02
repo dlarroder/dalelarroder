@@ -70,7 +70,8 @@ export const components = {
 		</p>
 	),
 	a: ({ href, children, ...props }: AnchorProps) => {
-		const className = `text-gray-900 dark:text-gray-100 no-underline cursor-pointer bg-no-repeat bg-linear-to-r  from-primary-500 to-primary-500 [background-position:0_100%] [background-size:100%_0.2em] hover:[background-size:100%_100%] hover:text-white focus:[background-size:100%_100%] motion-safe:transition-[background-size,color] motion-safe:duration-300 dark:from-primary-500 dark:to-primary-500`;
+		const className =
+			'underline-magical cursor-pointer text-gray-900 dark:text-gray-100';
 
 		if (href?.startsWith('/')) {
 			return (
@@ -106,7 +107,10 @@ export const components = {
 			return <code {...props} />;
 		}
 		return (
-			<code className='text-green-700 dark:text-green-500 text-sm' {...props} />
+			<code
+				className='rounded-sm bg-sunk px-1 py-0.5 text-accent-2 text-sm'
+				{...props}
+			/>
 		);
 	},
 	pre: (props: ComponentPropsWithoutRef<'pre'>) => (

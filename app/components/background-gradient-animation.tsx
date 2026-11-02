@@ -47,8 +47,8 @@ export const BackgroundGradientAnimation = ({
 	const { theme } = useTheme();
 
 	// Set up gradient background colors based on theme
-	const gradientBackgroundStart = theme === 'dark' ? '#000000' : '#ffffff';
-	const gradientBackgroundEnd = theme === 'dark' ? '#000000' : '#ffffff';
+	const gradientBackgroundStart = theme === 'dark' ? '#15120f' : '#faf8f4';
+	const gradientBackgroundEnd = theme === 'dark' ? '#15120f' : '#faf8f4';
 
 	// Set up CSS variables
 	useEffect(() => {

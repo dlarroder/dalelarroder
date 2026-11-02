@@ -55,7 +55,7 @@ export default function Hero() {
 							welcome to my{' '}
 							<span className='font-bold'>personal portfolio</span> — or, as i
 							like to call it, my{' '}
-							<span className='italic border-b border-b-primary-500'>
+							<span className='italic border-b border-b-accent'>
 								playground
 							</span>{' '}
 							on the web.

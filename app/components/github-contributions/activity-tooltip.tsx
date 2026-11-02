@@ -36,24 +36,20 @@ export default function ActivityTooltip({ count, date, x, y }: Props) {
 				scale: { duration: 0.1 },
 			}}
 		>
-			<div
-				className='relative rounded-lg px-3 py-1.5 text-sm'
-				style={{
-					background: 'rgba(15, 15, 15, 0.92)',
-					backdropFilter: 'blur(12px)',
-					WebkitBackdropFilter: 'blur(12px)',
-					border: '1px solid rgba(255, 255, 255, 0.08)',
-					boxShadow: '0 4px 20px rgba(0, 0, 0, 0.35)',
-				}}
-			>
-				<span className='font-semibold text-white'>{count} contributions</span>
-				<span className='text-neutral-400'> · {formattedDate}</span>
+			<div className='relative rounded-lg border border-gray-200 bg-raised px-3 py-1.5 text-sm shadow-[0_4px_16px_rgb(70_45_25/0.07)] dark:border-gray-800 dark:shadow-[0_4px_16px_rgb(0_0_0/0.35)]'>
+				<span className='font-semibold text-black dark:text-white'>
+					{count} contributions
+				</span>
+				<span className='text-gray-500 dark:text-gray-400'>
+					{' '}
+					· {formattedDate}
+				</span>
 				<div
 					className='absolute left-1/2 bottom-0 translate-y-full -translate-x-1/2 w-0 h-0'
 					style={{
 						borderLeft: '5px solid transparent',
 						borderRight: '5px solid transparent',
-						borderTop: '5px solid rgba(15, 15, 15, 0.92)',
+						borderTop: '5px solid var(--surface-raised)',
 					}}
 				/>
 			</div>
