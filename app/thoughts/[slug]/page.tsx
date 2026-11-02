@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import BackNavigation from '../../components/layouts/back-navigation';
 import { MDX } from '../../components/mdx';
-import { getPost, getPosts } from '../utils';
+import { getPost, getPostSlugs } from '../utils';
 import PageTitle from './page-title';
 import TableOfContents from './table-of-contents';
 import TableOfContentsMobile from './table-of-contents-mobile';
@@ -11,7 +11,7 @@ import TableOfContentsMobile from './table-of-contents-mobile';
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-	return getPosts().map((post) => ({ slug: post.slug }));
+	return getPostSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata(props: {
@@ -54,6 +54,7 @@ export async function generateMetadata(props: {
 		alternates: {
 			canonical: url,
 		},
+		...(metadata.archived && { robots: { index: false } }),
 	};
 }
 
@@ -85,6 +86,9 @@ export default async function Blog(props: {
 					>
 						{post.date}
 					</time>
+					{post.archived && (
+						<span className='text-sm text-neutral-500'>archived</span>
+					)}
 				</div>
 			</section>
 			{/* Long prose needs more air above headings than the shared MDX styles,

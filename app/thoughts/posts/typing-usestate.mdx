@@ -1,70 +1,129 @@
 ---
 title: 'How to type the setState function from the useState hook'
 publishedAt: '2022-04-14'
-summary: 'A deep dive into how to properly type a setState function from the useState hook.'
+summary: 'What Dispatch<SetStateAction<T>> actually means, when a plain function type is enough, and why you might not want to pass setState around at all.'
+archived: true
 ---
 
-Imagine you have a component with a number state, and you pass the same state into another component for it you be used:
+## The setup
 
-```tsx
+Say you have some state in a parent, and a child that needs to change it:
+
+```tsx title="counter.tsx"
 import { useState } from 'react';
-import { Snippets } from './snippets';
+import { CounterButton } from './counter-button';
 
-export const Sample = () => {
-  const [number, setNumber] = useState<number>(0);
+export function Counter() {
+  const [count, setCount] = useState(0);
 
-  return <Snippets number={number} setNumber={setNumber} />;
-};
+  return <CounterButton count={count} setCount={setCount} />;
+}
 ```
 
-What should the SnippetsProps interface look like?
+Quick side note: you don't need `useState<number>(0)` here. TypeScript already infers `number` from the `0`. You only need the generic when the initial value doesn't tell the whole story, like `useState<User | null>(null)`.
 
-Most people will type something like this:
+Now, what goes in `CounterButtonProps`? If you hover over `setCount` in your editor, you'll see this:
 
 ```tsx
-import { Dispatch, SetStateAction } from 'react';
-
-interface SnippetsProps {
-  number: number;
-  setNumber: Dispatch<SetStateAction<number>>;
-}
-
-export const Snippets = ({ number, setNumber }: SnippetsProps) => {
-  return (
-    <div>
-      <span>Clicked {number} times</span>
-      <button onClick={() => setNumber(number + 1)}>Click me</button>
-    </div>
-  );
-};
+Dispatch<SetStateAction<number>>
 ```
 
-But it bothers me to have to import `Dispatch` and `SetStateAction` from react just to be able to define the interface.
+Which looks a bit scary the first time. So let's unpack it.
 
-The type `Dispatch<SetStateAction<T>>` here is basically a function that accepts whatever type you declared your state is, in this case, its a number.
+## What that type actually is
 
-So basically you can also do this here:
+Both of these come from React's type definitions, and they're tiny:
+
+```ts
+type SetStateAction<S> = S | ((prevState: S) => S);
+type Dispatch<A> = (value: A) => void;
+```
+
+So `Dispatch<SetStateAction<number>>` is just a function that takes **either** a number **or** an updater function, and returns nothing:
+
+```ts
+(value: number | ((prevState: number) => number)) => void
+```
+
+That second form is the important bit. It's what lets you write `setCount((c) => c + 1)` instead of `setCount(count + 1)`.
+
+## Option 1: use React's types
+
+This is the most accurate option, and it's what I reach for by default:
+
+```tsx title="counter-button.tsx"
+import type { Dispatch, SetStateAction } from 'react';
+
+interface CounterButtonProps {
+  count: number;
+  setCount: Dispatch<SetStateAction<number>>;
+}
+
+export function CounterButton({ count, setCount }: CounterButtonProps) {
+  return (
+    <button type="button" onClick={() => setCount((c) => c + 1)}>
+      Clicked {count} times
+    </button>
+  );
+}
+```
+
+Two imports for one prop always bugged me a little. But with `import type` they disappear from your bundle entirely, so it's really just a readability thing.
+
+## Option 2: a plain function type
+
+Back when I first wrote this post, I said you could skip the imports and do this instead:
 
 ```tsx
-interface SnippetsProps {
-  number: number;
-  setNumber: (v: number) => void;
+interface CounterButtonProps {
+  count: number;
+  setCount: (value: number) => void;
 }
-
-export const Snippets = ({ number, setNumber }: SnippetsProps) => {
-  return (
-    <div>
-      <span>Clicked {number} times</span>
-      <button onClick={() => setNumber(number + 1)}>Click me</button>
-    </div>
-  );
-};
 ```
 
-We just saved two imports just by declaring it as a function that accepts a number, and returns nothing.
+It works, and it reads nicely. But it's **not** the same type, and I glossed over that back then.
 
-I know its just a small detail but I really believe it makes the code look cleaner.
+With this version the child can only pass a plain number. `setCount((c) => c + 1)` is now a type error. That matters more than it sounds, because the updater form is how you avoid stale state. Call `setCount(count + 1)` twice in the same handler and you only go up by one, since both calls read the same `count`. Call `setCount((c) => c + 1)` twice and you go up by two.
 
-This is just one of my pet peeves, but at the end of the day, it really depends on the coding standard that you or your company follows.
+So: a plain function type is fine when the child only ever sets a value directly. If it needs the previous state, use Option 1.
 
-Hope you like one of my first blogs, will try to make more soon!
+## Option 3: don't pass setState at all
+
+This is the one I've come around to the most.
+
+Passing `setCount` down means the child knows exactly how the parent stores its state. If the parent later swaps `useState` for `useReducer`, or moves the state somewhere else, every child that took the setter has to change too.
+
+Instead, pass what the child actually wants to *do*:
+
+```tsx title="counter.tsx"
+export function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <CounterButton count={count} onIncrement={() => setCount((c) => c + 1)} />
+  );
+}
+```
+
+```tsx title="counter-button.tsx"
+interface CounterButtonProps {
+  count: number;
+  onIncrement: () => void;
+}
+
+export function CounterButton({ count, onIncrement }: CounterButtonProps) {
+  return (
+    <button type="button" onClick={onIncrement}>
+      Clicked {count} times
+    </button>
+  );
+}
+```
+
+No React types to import, nothing to get wrong, and the child is easier to reuse and test.
+
+## Wrapping up
+
+- `Dispatch<SetStateAction<T>>` is a function that takes a value **or** an updater. Use it when the child genuinely needs `setState`.
+- `(value: T) => void` is simpler but narrower. It drops the updater form.
+- Most of the time, the cleanest prop isn't a setter at all. It's a callback named after what happened, like `onIncrement`, `onChange` or `onSelect`.

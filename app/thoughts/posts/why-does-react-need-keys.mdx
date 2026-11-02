@@ -1,72 +1,140 @@
 ---
 title: 'Why does React need keys?'
 publishedAt: '2022-07-31'
-summary: 'This article will show you what is the purpose if the “key” prop in React and some best practices around it.'
+summary: 'What the key prop actually tells React, the bug you get from index keys, and a few handy tricks keys unlock.'
+archived: true
 ---
 
-## Introduction
+## The warning everyone has seen
 
-When rendering a list of items in React, you will often see a warning in the console if you forget to provide a `key` prop to the elements in the list.
+If you've rendered a list in React, you've probably met this in your console:
 
-The `key` prop is the only thing React can use to identify components in the DOM when they are
-mapped from an array. If no key is provided then you will see an error like this:
-
-```bash
-Missing “key” prop for element in iterator
+```txt
+Each child in a list should have a unique "key" prop.
 ```
 
-In that case, React will default to use the index of the element in the array as the key.
-Usually, developers will also provide index as the key just to remove the warning.
+And if you're like me back then, the quick fix was `key={index}`. Warning gone, everyone's happy.
 
-#### Using the index as a key is dangerous
+Except that fix can quietly break your UI. To see why, it helps to know what React actually does with keys.
 
-#### Please do NOT do this:
+## What React does on a re-render
 
-```js
-todos.map((todo, index) => (
-    <Todo {...todo} key={index} />
-  ));
+When a component re-renders, React compares the new list of children with the old one to figure out what changed. This is reconciliation, and it has to be fast, so React doesn't try to be clever.
+
+Without keys, it matches children **by position**. The first new child is treated as the same component as the first old child, the second as the second, and so on.
+
+With keys, it matches children **by key** instead:
+
+- **Same key as before:** React keeps that component, including its state and DOM, and just updates its props.
+- **New key:** React creates a fresh component.
+- **Key that disappeared:** React removes that component.
+
+So a key is basically a name tag. It tells React "this item is the same one as last time", even if it moved.
+
+## The index key bug
+
+Here's where `key={index}` bites. Say each todo has its own input, and that input keeps its own state:
+
+```tsx title="todo-list.tsx"
+function TodoItem({ label }: { label: string }) {
+  const [note, setNote] = useState('');
+
+  return (
+    <li>
+      {label}
+      <input value={note} onChange={(e) => setNote(e.target.value)} />
+    </li>
+  );
+}
+
+export function TodoList({ todos }: { todos: Todo[] }) {
+  return (
+    <ul>
+      {todos.map((todo, index) => (
+        <TodoItem key={index} label={todo.label} />
+      ))}
+    </ul>
+  );
 }
 ```
 
-It is stated in the official React [docs](https://reactjs.org/docs/lists-and-keys.html) that this is not recommended.
+Say **Groceries** is the first todo. Type "buy oat milk" into its note, then add a new todo to the **top** of the list.
 
-> We don’t recommend using indexes for keys if the order of items may change.
-> This can negatively impact performance and may cause issues with component state.
+Every todo shifts down one spot, but the keys don't move with them. The component that used to be at index `0` is still at index `0`, so React keeps it, state and all, and just hands it the new label. Your "buy oat milk" note now sits next to the new todo instead of Groceries.
 
-Robin Pokorny has an amazing [article](https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318) explaining in detail the negative impacts of using an index as a key.
+Nothing crashes and nothing warns you. The data just ends up attached to the wrong row. Inputs, checkboxes, open dropdowns, focus and animations all get the same treatment.
 
-## Rules of keys
+Use a key that belongs to the item and the problem goes away:
 
-- Keys must be `unique` among siblings. However, it’s okay to use the same keys for JSX nodes
-  in different arrays.
-- Keys must `not change` or that defeats their purpose! Don’t generate them while rendering.
-
-## Where to get your key
-
-- **Data from a database:** If your data is coming from a database, you can use the database keys/IDs,
-  which are unique by nature.
-- **Locally generated data:** If your data is generated and persisted locally (e.g. notes in a note-taking app),
-  use an incrementing counter, `crypto.randomUUID()` or a package like `uuid` when creating items.
-
-<br />
-
-```js
-// id must be from db, which are unique by nature.
-const todos = [
-  {
-    id: 22,
-    name: 'eat breakfast',
-  },
-  // ....
-];
-
-// Much better
-todos.map((todo) => <Todo {...todo} key={todo.id} />);
+```tsx
+{todos.map((todo) => (
+  <TodoItem key={todo.id} label={todo.label} />
+))}
 ```
 
-#### Conclusion
+Now Groceries keeps its note wherever it moves, because React is following `todo.id`, not the row number.
 
-- Always try to use stable **unique** IDs as the key.
-- If the list is **never** reordered or filtered, you can use their index as keys. (As a last resort)
-- If you're a visual learner, Dan Abramov has a short visual [explanation](https://twitter.com/dan_abramov/status/1415279090446204929?lang=en) on why React needs keys, check it out!
+## The rules
+
+A good key is:
+
+- **Unique among its siblings.** Two items in the same list can't share a key. The same key in a *different* list is fine.
+- **Stable.** The same item gets the same key on every render.
+
+That second rule is why you should never generate keys during render:
+
+```tsx
+// Don't do this
+{todos.map((todo) => (
+  <TodoItem key={crypto.randomUUID()} label={todo.label} />
+))}
+```
+
+Every render produces brand-new keys, so React throws away every item and mounts it again from scratch. You lose all their state, and it's slow.
+
+## Where to get a good key
+
+- **Data from a database or API:** use its ID. It's already unique and stable.
+- **Data you create on the client**, like a new note or a new row: generate the ID **once, when you create the item**, and store it with the data.
+
+```ts
+function addTodo(label: string) {
+  setTodos((todos) => [{ id: crypto.randomUUID(), label }, ...todos]);
+}
+```
+
+And when is `key={index}` actually fine? When the list never changes order, never gets items added or removed in the middle, and the items don't hold any state of their own. A static list of nav links is a good example. If you're not sure, use an ID.
+
+## Bonus: keys outside of lists
+
+Once you think of keys as "this is the same thing as before", a couple of handy tricks fall out.
+
+**Resetting state on purpose.** Give a component a different key and React treats it as a brand-new component. This is the cleanest way to reset a form when the thing it's editing changes:
+
+```tsx
+<EditProfileForm key={userId} userId={userId} />
+```
+
+Switch users, and the form starts fresh. No effects needed to clear the old values.
+
+**Keys on fragments.** If each item renders more than one element, use `Fragment` with a key, since the `<>` shorthand can't take one:
+
+```tsx
+import { Fragment } from 'react';
+
+{terms.map((term) => (
+  <Fragment key={term.id}>
+    <dt>{term.name}</dt>
+    <dd>{term.definition}</dd>
+  </Fragment>
+))}
+```
+
+## Wrapping up
+
+- Keys tell React which item is which between renders, so it can keep the right state with the right item.
+- Index keys tie state to a *position*, which breaks as soon as items are added, removed or reordered.
+- Use stable, unique IDs, generated when the data is created, never during render.
+- Changing a key is a deliberate way to reset a component.
+
+If you want to go deeper, the React docs on [rendering lists](https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key) and [preserving and resetting state](https://react.dev/learn/preserving-and-resetting-state) are both great.
